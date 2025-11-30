@@ -54,6 +54,9 @@ Welcome to the penta-core team documentation hub. This documentation is designed
 - **[Multi-Agent Systems & MCP Guide](multi-agent-mcp-guide.md)**
   100 topics for designing multi-agent AI systems: cluster design, MCP fundamentals, orchestration, memory management, error handling, security, observability, and deployment.
 
+- **[MCP Protocol & Autonomous Debugging Strategy](mcp-protocol-debugging.md)** ⭐ NEW
+  Comprehensive MCP protocol specification and autonomous debugging strategy for operation when human operators are not active. Covers message formats, tool invocation, self-healing mechanisms, monitoring, alerting, runbooks, and implementation checklist.
+
 - **[DAiW Music Brain Architecture](daiw-music-brain.md)**
   Complete project architecture for the AI-powered music composition system: groove analysis, emotional mapping, DAW integration, and knowledge vault.
 
@@ -80,7 +83,8 @@ Welcome to the penta-core team documentation hub. This documentation is designed
 11. **Researching music AI?** Explore the [Music Generation Research Topics](music-generation-research.md)
 12. **Working with AI tools?** See the [AI Prompting & Efficiency Guide](ai-prompting-guide.md)
 13. **Building multi-agent systems?** Check out the [Multi-Agent Systems & MCP Guide](multi-agent-mcp-guide.md)
-14. **Working on DAiW Music Brain?** See the [DAiW Music Brain Architecture](daiw-music-brain.md)
+14. **Setting up autonomous debugging?** See the [MCP Protocol & Debugging Strategy](mcp-protocol-debugging.md)
+15. **Working on DAiW Music Brain?** See the [DAiW Music Brain Architecture](daiw-music-brain.md)
 15. **Building DAW user interfaces?** Check out the [DAW UI Design Patterns](daw-ui-patterns.md)
 16. **Researching instrument learning?** See the [Instrument Learning Research Tool](instrument-learning-research.md)
 

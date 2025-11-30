@@ -20,6 +20,7 @@ Check out the [team documentation](docs/README.md) to get up to speed on:
 - [Music Generation Research](docs/music-generation-research.md) - 150 AI/ML research topics
 - [AI Prompting Guide](docs/ai-prompting-guide.md) - 150 techniques for effective AI prompting
 - [Multi-Agent MCP Guide](docs/multi-agent-mcp-guide.md) - Multi-agent systems & MCP architecture
+- [MCP Protocol & Debugging Strategy](docs/mcp-protocol-debugging.md) ⭐ NEW - Autonomous operation protocol & debugging
 - [DAW Programs](docs/daw-programs.md)
 - [Audio Software/Hardware Interfaces](docs/audio-interfaces.md)
 - [Media Production](docs/media-production.md)
