@@ -11,7 +11,8 @@ Check out the [team documentation](docs/README.md) to get up to speed on:
 - [Rust DAW Backend](docs/rust-daw-backend.md) - 150 things to know about building a Rust DAW
 - [Low-Latency DAW Subjects](docs/low-latency-daw.md) - Real-time systems, DSP, and DAW architecture
 - [DAW Engine Stability](docs/daw-engine-stability.md) - 100 topics for robust audio engines
-- [DAiW Music Brain](docs/daiw-music-brain.md) ⭐ NEW - AI-powered music composition system architecture
+- [DAiW Music Brain](docs/daiw-music-brain.md) - AI-powered music composition system architecture
+- [Instrument Learning Research](docs/instrument-learning-research.md) ⭐ NEW - GitHub research automation tool
 - [Music Generation Research](docs/music-generation-research.md) - 150 AI/ML research topics
 - [AI Prompting Guide](docs/ai-prompting-guide.md) - 150 techniques for effective AI prompting
 - [Multi-Agent MCP Guide](docs/multi-agent-mcp-guide.md) - Multi-agent systems & MCP architecture

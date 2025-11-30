@@ -43,8 +43,11 @@ Welcome to the penta-core team documentation hub. This documentation is designed
 - **[Multi-Agent Systems & MCP Guide](multi-agent-mcp-guide.md)**
   100 topics for designing multi-agent AI systems: cluster design, MCP fundamentals, orchestration, memory management, error handling, security, observability, and deployment.
 
-- **[DAiW Music Brain Architecture](daiw-music-brain.md)** ⭐ NEW
+- **[DAiW Music Brain Architecture](daiw-music-brain.md)**
   Complete project architecture for the AI-powered music composition system: groove analysis, emotional mapping, DAW integration, and knowledge vault.
+
+- **[Instrument Learning Research Tool](instrument-learning-research.md)** ⭐ NEW
+  Automated GitHub repository research tool for discovering music education and instrument learning applications.
 
 ## Quick Links
 
@@ -61,6 +64,7 @@ Welcome to the penta-core team documentation hub. This documentation is designed
 9. **Working with AI tools?** See the [AI Prompting & Efficiency Guide](ai-prompting-guide.md)
 10. **Building multi-agent systems?** Check out the [Multi-Agent Systems & MCP Guide](multi-agent-mcp-guide.md)
 11. **Working on DAiW Music Brain?** See the [DAiW Music Brain Architecture](daiw-music-brain.md)
+12. **Researching instrument learning?** See the [Instrument Learning Research Tool](instrument-learning-research.md)
 
 ### External Resources
 
