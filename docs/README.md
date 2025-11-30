@@ -49,6 +49,9 @@ Welcome to the penta-core team documentation hub. This documentation is designed
 - **[DAiW Music Brain Architecture](daiw-music-brain.md)**
   Complete project architecture for the AI-powered music composition system: groove analysis, emotional mapping, DAW integration, and knowledge vault.
 
+- **[DAW UI Design Patterns](daw-ui-patterns.md)** ⭐ NEW
+  React/TypeScript UI patterns for modern DAW interfaces: dual-face cassette metaphor, ghost writer overlays, IMIDI/EMIDI routing, latency monitoring, and 3D flip animations.
+
 - **[Instrument Learning Research Tool](instrument-learning-research.md)** ⭐ NEW
   Automated GitHub repository research tool for discovering music education and instrument learning applications.
 
@@ -68,7 +71,8 @@ Welcome to the penta-core team documentation hub. This documentation is designed
 9. **Working with AI tools?** See the [AI Prompting & Efficiency Guide](ai-prompting-guide.md)
 10. **Building multi-agent systems?** Check out the [Multi-Agent Systems & MCP Guide](multi-agent-mcp-guide.md)
 11. **Working on DAiW Music Brain?** See the [DAiW Music Brain Architecture](daiw-music-brain.md)
-12. **Researching instrument learning?** See the [Instrument Learning Research Tool](instrument-learning-research.md)
+12. **Building DAW user interfaces?** Check out the [DAW UI Design Patterns](daw-ui-patterns.md)
+13. **Researching instrument learning?** See the [Instrument Learning Research Tool](instrument-learning-research.md)
 
 ### External Resources
 

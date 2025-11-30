@@ -13,7 +13,8 @@ Check out the [team documentation](docs/README.md) to get up to speed on:
 - [DAW Engine Stability](docs/daw-engine-stability.md) - 100 topics for robust audio engines
 - [Psychoacoustic Sound Design](docs/psychoacoustic-sound-design.md) ⭐ NEW - 90+ cinematic audio manipulation techniques
 - [DAiW Music Brain](docs/daiw-music-brain.md) - AI-powered music composition system architecture
-- [Instrument Learning Research](docs/instrument-learning-research.md) ⭐ NEW - GitHub research automation tool
+- [DAW UI Design Patterns](docs/daw-ui-patterns.md) ⭐ NEW - React/TypeScript UI patterns for DAW interfaces
+- [Instrument Learning Research](docs/instrument-learning-research.md) - GitHub research automation tool
 - [Music Generation Research](docs/music-generation-research.md) - 150 AI/ML research topics
 - [AI Prompting Guide](docs/ai-prompting-guide.md) - 150 techniques for effective AI prompting
 - [Multi-Agent MCP Guide](docs/multi-agent-mcp-guide.md) - Multi-agent systems & MCP architecture
