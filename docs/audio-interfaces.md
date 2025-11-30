@@ -173,10 +173,10 @@ Buffer size directly affects latency:
 Latency (ms) = (Buffer Size / Sample Rate) × 1000
 
 Examples at 48kHz:
-- 64 samples  = 1.33 ms
-- 128 samples = 2.67 ms
-- 256 samples = 5.33 ms
-- 512 samples = 10.67 ms
+- 64 samples   =  1.33 ms
+- 128 samples  =  2.67 ms
+- 256 samples  =  5.33 ms
+- 512 samples  = 10.67 ms
 - 1024 samples = 21.33 ms
 ```
 

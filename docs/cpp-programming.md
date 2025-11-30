@@ -74,9 +74,12 @@ public:
 
 ```cpp
 #include <cmath>
+#include <numbers>
 #include <vector>
 
 class SineWaveGenerator {
+    static constexpr double TwoPi = 2.0 * std::numbers::pi;
+    
     double phase = 0.0;
     double frequency;
     double sampleRate;
@@ -86,14 +89,14 @@ public:
         : frequency(freq), sampleRate(sr) {}
     
     void generate(std::vector<float>& buffer) {
-        const double phaseIncrement = 2.0 * M_PI * frequency / sampleRate;
+        const double phaseIncrement = TwoPi * frequency / sampleRate;
         
         for (auto& sample : buffer) {
             sample = static_cast<float>(std::sin(phase));
             phase += phaseIncrement;
             
-            if (phase >= 2.0 * M_PI) {
-                phase -= 2.0 * M_PI;
+            if (phase >= TwoPi) {
+                phase -= TwoPi;
             }
         }
     }

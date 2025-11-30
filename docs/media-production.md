@@ -175,22 +175,50 @@ class MediaReader {
     AVFormatContext* formatContext = nullptr;
     
 public:
+    MediaReader() = default;
+    
+    // Disable copy operations
+    MediaReader(const MediaReader&) = delete;
+    MediaReader& operator=(const MediaReader&) = delete;
+    
+    // Enable move operations
+    MediaReader(MediaReader&& other) noexcept 
+        : formatContext(other.formatContext) {
+        other.formatContext = nullptr;
+    }
+    
+    MediaReader& operator=(MediaReader&& other) noexcept {
+        if (this != &other) {
+            close();
+            formatContext = other.formatContext;
+            other.formatContext = nullptr;
+        }
+        return *this;
+    }
+    
     bool open(const char* filename) {
         if (avformat_open_input(&formatContext, filename, nullptr, nullptr) < 0) {
             return false;
         }
         
         if (avformat_find_stream_info(formatContext, nullptr) < 0) {
+            // Clean up on failure to prevent resource leak
+            avformat_close_input(&formatContext);
             return false;
         }
         
         return true;
     }
     
-    ~MediaReader() {
+    void close() {
         if (formatContext) {
             avformat_close_input(&formatContext);
+            formatContext = nullptr;
         }
+    }
+    
+    ~MediaReader() {
+        close();
     }
 };
 ```
