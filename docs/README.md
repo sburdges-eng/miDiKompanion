@@ -35,6 +35,9 @@ Welcome to the penta-core team documentation hub. This documentation is designed
 - **[Psychoacoustic & Cinematic Sound Design Guide](psychoacoustic-sound-design.md)** ⭐ NEW
   90+ techniques for emotional manipulation through sound: biological triggers, harmonic subversion, temporal manipulation, spectral design, spatial audio, and film scoring applications.
 
+- **[DAW Track Import Methods](daw-track-import-methods.md)** ⭐ NEW
+  100 comprehensive methods for importing tracks into a DAW: file-based audio, session interchange, MIDI/score, live capture, virtual instruments, network/cloud, AI generation, and hybrid methods.
+
 ### AI & Research
 
 - **[Music Generation Research Topics](music-generation-research.md)**
@@ -67,7 +70,8 @@ Welcome to the penta-core team documentation hub. This documentation is designed
 6. **Optimizing for low latency?** Read the [Low-Latency DAW Subjects](low-latency-daw.md)
 7. **Building stable audio engines?** See the [DAW Engine Stability Guide](daw-engine-stability.md)
 8. **Working on film/game audio?** Explore the [Psychoacoustic Sound Design Guide](psychoacoustic-sound-design.md)
-9. **Researching music AI?** Explore the [Music Generation Research Topics](music-generation-research.md)
+9. **Implementing track import?** Check out the [DAW Track Import Methods](daw-track-import-methods.md)
+10. **Researching music AI?** Explore the [Music Generation Research Topics](music-generation-research.md)
 9. **Working with AI tools?** See the [AI Prompting & Efficiency Guide](ai-prompting-guide.md)
 10. **Building multi-agent systems?** Check out the [Multi-Agent Systems & MCP Guide](multi-agent-mcp-guide.md)
 11. **Working on DAiW Music Brain?** See the [DAiW Music Brain Architecture](daiw-music-brain.md)
