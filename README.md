@@ -2,6 +2,16 @@
 
 A simple HTTP server application.
 
+## Team Documentation
+
+Check out the [team documentation](docs/README.md) to get up to speed on:
+
+- [Swift SDKs Development](docs/swift-sdks.md)
+- [C++ Programming](docs/cpp-programming.md)
+- [DAW Programs](docs/daw-programs.md)
+- [Audio Software/Hardware Interfaces](docs/audio-interfaces.md)
+- [Media Production](docs/media-production.md)
+
 ## Setup
 
 1. Copy the example environment file:

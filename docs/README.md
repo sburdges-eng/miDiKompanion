@@ -1,0 +1,53 @@
+# Penta Core Team Documentation
+
+Welcome to the penta-core team documentation hub. This documentation is designed to bring the team up to speed on key technologies and concepts.
+
+## Documentation Index
+
+### Development Technologies
+
+- **[Swift SDKs Development Guide](swift-sdks.md)**
+  Overview of Swift SDK development, Apple frameworks, and best practices for iOS/macOS development.
+
+- **[C++ Programming Guide](cpp-programming.md)**
+  Modern C++ programming concepts, memory management, templates, and audio programming with C++.
+
+### Audio and Media
+
+- **[DAW (Digital Audio Workstation) Programs Guide](daw-programs.md)**
+  Comprehensive overview of DAW software, plugin formats, and audio production workflows.
+
+- **[Audio Software/Hardware Interface Guide](audio-interfaces.md)**
+  Understanding audio interfaces, drivers (ASIO, Core Audio, JACK), MIDI, and hardware/software integration.
+
+- **[Media Production Guide](media-production.md)**
+  Audio and video production workflows, formats, streaming, and development tools like FFmpeg.
+
+## Quick Links
+
+### Getting Started
+
+1. **New to Swift?** Start with the [Swift SDKs Guide](swift-sdks.md)
+2. **New to C++?** Check out the [C++ Programming Guide](cpp-programming.md)
+3. **Working with audio?** Review the [Audio Interfaces Guide](audio-interfaces.md)
+4. **Building DAW plugins?** See the [DAW Programs Guide](daw-programs.md)
+
+### External Resources
+
+- [Swift Documentation](https://swift.org/documentation/)
+- [C++ Reference](https://en.cppreference.com/)
+- [JUCE Framework](https://juce.com/) - Cross-platform audio plugin development
+- [FFmpeg](https://ffmpeg.org/) - Media processing toolkit
+
+## Contributing
+
+To contribute to this documentation:
+
+1. Fork the repository
+2. Create a new branch for your changes
+3. Add or update documentation in the `docs/` directory
+4. Submit a pull request
+
+## Questions?
+
+If you have questions about any of these topics, please reach out to the team or open an issue in the repository.
