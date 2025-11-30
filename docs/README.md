@@ -26,6 +26,11 @@ Welcome to the penta-core team documentation hub. This documentation is designed
 - **[Media Production Guide](media-production.md)**
   Audio and video production workflows, formats, streaming, and development tools like FFmpeg.
 
+### AI & Research
+
+- **[Music Generation Research Topics](music-generation-research.md)** ⭐ NEW
+  150 research topics spanning neural architectures, foundation models, training methods, audio representations, controllable generation, evaluation metrics, MIR integration, and synthesis.
+
 ## Quick Links
 
 ### Getting Started
@@ -35,6 +40,7 @@ Welcome to the penta-core team documentation hub. This documentation is designed
 3. **Working with audio?** Review the [Audio Interfaces Guide](audio-interfaces.md)
 4. **Building DAW plugins?** See the [DAW Programs Guide](daw-programs.md)
 5. **Building a Rust DAW backend?** Check out the [Rust DAW Backend Guide](rust-daw-backend.md)
+6. **Researching music AI?** Explore the [Music Generation Research Topics](music-generation-research.md)
 
 ### External Resources
 
