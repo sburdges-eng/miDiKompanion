@@ -26,8 +26,11 @@ Welcome to the penta-core team documentation hub. This documentation is designed
 - **[Media Production Guide](media-production.md)**
   Audio and video production workflows, formats, streaming, and development tools like FFmpeg.
 
-- **[Low-Latency DAW Subjects](low-latency-daw.md)** ⭐ NEW
+- **[Low-Latency DAW Subjects](low-latency-daw.md)**
   Technical subjects for building low-latency DAWs: real-time systems, DSP, audio effects, synthesis, and DAW architecture.
+
+- **[DAW Audio Engine Stability Guide](daw-engine-stability.md)** ⭐ NEW
+  100 topics for building stable, robust DAW engines: real-time thread safety, plugin stability, session management, error recovery, and production-readiness.
 
 ### AI & Research
 
@@ -50,9 +53,10 @@ Welcome to the penta-core team documentation hub. This documentation is designed
 4. **Building DAW plugins?** See the [DAW Programs Guide](daw-programs.md)
 5. **Building a Rust DAW backend?** Check out the [Rust DAW Backend Guide](rust-daw-backend.md)
 6. **Optimizing for low latency?** Read the [Low-Latency DAW Subjects](low-latency-daw.md)
-7. **Researching music AI?** Explore the [Music Generation Research Topics](music-generation-research.md)
-8. **Working with AI tools?** See the [AI Prompting & Efficiency Guide](ai-prompting-guide.md)
-9. **Building multi-agent systems?** Check out the [Multi-Agent Systems & MCP Guide](multi-agent-mcp-guide.md)
+7. **Building stable audio engines?** See the [DAW Engine Stability Guide](daw-engine-stability.md)
+8. **Researching music AI?** Explore the [Music Generation Research Topics](music-generation-research.md)
+9. **Working with AI tools?** See the [AI Prompting & Efficiency Guide](ai-prompting-guide.md)
+10. **Building multi-agent systems?** Check out the [Multi-Agent Systems & MCP Guide](multi-agent-mcp-guide.md)
 
 ### External Resources
 
