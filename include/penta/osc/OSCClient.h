@@ -6,7 +6,7 @@
 
 namespace penta::osc {
 
-struct OSCMessage;
+class OSCMessage;
 
 /**
  * OSC client for sending messages

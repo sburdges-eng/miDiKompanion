@@ -26,8 +26,10 @@ set(PENTA_CORE_SOURCES
     # OSC communication
     osc/OSCServer.cpp
     osc/OSCClient.cpp
-    osc/RTMessageQueue.cpp
-    osc/OSCHub.cpp
+        osc/OSCMessage.cpp
+        osc/OSCClient.cpp
+        osc/OSCHub.cpp
+        osc/RTMessageQueue.cpp
 )
 
 set(PENTA_CORE_HEADERS
@@ -51,6 +53,7 @@ set(PENTA_CORE_HEADERS
     
     ${PROJECT_SOURCE_DIR}/include/penta/osc/OSCServer.h
     ${PROJECT_SOURCE_DIR}/include/penta/osc/OSCClient.h
+    ${PROJECT_SOURCE_DIR}/include/penta/osc/OSCMessage.h
     ${PROJECT_SOURCE_DIR}/include/penta/osc/RTMessageQueue.h
     ${PROJECT_SOURCE_DIR}/include/penta/osc/OSCHub.h
 )

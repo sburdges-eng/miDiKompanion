@@ -11,9 +11,9 @@ from .context import MusicalContext, CONTEXT_GROUPS
 from .base import Rule, RuleViolation, RuleBreakSuggestion
 from .emotion import Emotion, get_techniques_for_emotion, get_emotions_for_technique
 from .timing import TimingPocket, SwingType, get_genre_pocket, apply_pocket_to_midi
-# from .voice_leading import VoiceLeadingRules
-# from .harmony_rules import HarmonyRules
-# from .counterpoint_rules import CounterpointRules
+from .voice_leading import VoiceLeadingRules
+from .harmony_rules import HarmonyRules
+from .counterpoint_rules import CounterpointRules
 from .rhythm_rules import RhythmRules
 
 __all__ = [
@@ -30,9 +30,9 @@ __all__ = [
     "RuleBreakSuggestion",
     "TimingPocket",
     # Rule collections
-    # "VoiceLeadingRules",
-    # "HarmonyRules",
-    # "CounterpointRules",
+    "VoiceLeadingRules",
+    "HarmonyRules",
+    "CounterpointRules",
     "RhythmRules",
     # Functions
     "get_techniques_for_emotion",

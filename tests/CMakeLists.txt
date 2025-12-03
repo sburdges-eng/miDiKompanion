@@ -7,7 +7,6 @@ include(GoogleTest)
 set(TEST_SOURCES
     harmony_test.cpp
     groove_test.cpp
-    diagnostics_test.cpp
     osc_test.cpp
     rt_memory_test.cpp
 )

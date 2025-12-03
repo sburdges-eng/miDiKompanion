@@ -1,48 +1,12 @@
 #pragma once
 
-#include <array>
 #include <atomic>
-#include <cstdint>
-#include <string>
-#include <variant>
+#include <cstddef>
 #include <vector>
 
+#include "penta/osc/OSCMessage.h"
+
 namespace penta::osc {
-
-/**
- * OSC message value types
- */
-using OSCValue = std::variant<
-    int32_t,
-    float,
-    std::string,
-    std::vector<uint8_t>  // blob
->;
-
-/**
- * OSC message structure
- */
-struct OSCMessage {
-    static constexpr size_t kMaxAddressLength = 128;
-    static constexpr size_t kMaxArguments = 16;
-    
-    std::array<char, kMaxAddressLength> address;
-    std::array<OSCValue, kMaxArguments> arguments;
-    size_t argumentCount;
-    uint64_t timestamp;  // Samples or system time
-    
-    OSCMessage() 
-        : address{}
-        , arguments{}
-        , argumentCount(0)
-        , timestamp(0) {}
-    
-    void setAddress(const char* addr);
-    void addInt(int32_t value);
-    void addFloat(float value);
-    void addString(const char* value);
-    void clear();
-};
 
 /**
  * Lock-free message queue for RT-safe OSC communication

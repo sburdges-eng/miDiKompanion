@@ -1,7 +1,8 @@
 #pragma once
 
-#include "penta/osc/OSCServer.h"
 #include "penta/osc/OSCClient.h"
+#include "penta/osc/OSCMessage.h"
+#include "penta/osc/OSCServer.h"
 #include "penta/osc/RTMessageQueue.h"
 #include <memory>
 #include <string>

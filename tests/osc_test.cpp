@@ -5,6 +5,7 @@
 #include <gtest/gtest.h>
 #include <thread>
 #include <chrono>
+#include <variant>
 
 using namespace penta::osc;
 
@@ -17,23 +18,23 @@ protected:
 
 TEST_F(RTMessageQueueTest, PushAndPop) {
     OSCMessage msg;
-    msg.address = "/test";
-    msg.data.push_back(42.0f);
+    msg.setAddress("/test");
+    msg.addFloat(42.0f);
     
     EXPECT_TRUE(queue.push(msg));
     
     OSCMessage retrieved;
     EXPECT_TRUE(queue.pop(retrieved));
-    EXPECT_EQ(retrieved.address, "/test");
-    EXPECT_EQ(retrieved.data.size(), 1);
-    EXPECT_FLOAT_EQ(retrieved.data[0], 42.0f);
+    EXPECT_EQ(retrieved.getAddress(), "/test");
+    EXPECT_EQ(retrieved.getArgumentCount(), 1u);
+    EXPECT_FLOAT_EQ(std::get<float>(retrieved.getArgument(0)), 42.0f);
 }
 
 TEST_F(RTMessageQueueTest, FIFOOrder) {
     OSCMessage msg1, msg2, msg3;
-    msg1.address = "/first";
-    msg2.address = "/second";
-    msg3.address = "/third";
+    msg1.setAddress("/first");
+    msg2.setAddress("/second");
+    msg3.setAddress("/third");
     
     queue.push(msg1);
     queue.push(msg2);
@@ -41,13 +42,13 @@ TEST_F(RTMessageQueueTest, FIFOOrder) {
     
     OSCMessage retrieved;
     queue.pop(retrieved);
-    EXPECT_EQ(retrieved.address, "/first");
+    EXPECT_EQ(retrieved.getAddress(), "/first");
     
     queue.pop(retrieved);
-    EXPECT_EQ(retrieved.address, "/second");
+    EXPECT_EQ(retrieved.getAddress(), "/second");
     
     queue.pop(retrieved);
-    EXPECT_EQ(retrieved.address, "/third");
+    EXPECT_EQ(retrieved.getAddress(), "/third");
 }
 
 TEST_F(RTMessageQueueTest, EmptyQueueReturnsFalse) {
@@ -57,7 +58,7 @@ TEST_F(RTMessageQueueTest, EmptyQueueReturnsFalse) {
 
 TEST_F(RTMessageQueueTest, ClearWorks) {
     OSCMessage msg;
-    msg.address = "/test";
+    msg.setAddress("/test");
     
     queue.push(msg);
     queue.clear();
@@ -120,8 +121,8 @@ TEST_F(OSCServerTest, ReceivesMessage) {
     client.start();
     
     OSCMessage msg;
-    msg.address = "/hello";
-    msg.data.push_back(123.0f);
+    msg.setAddress("/hello");
+    msg.addFloat(123.0f);
     client.send(msg);
     
     // Wait for message processing
@@ -158,8 +159,8 @@ TEST_F(OSCClientTest, StartsAndStops) {
 
 TEST_F(OSCClientTest, SendsMessage) {
     OSCMessage msg;
-    msg.address = "/test";
-    msg.data.push_back(42.0f);
+    msg.setAddress("/test");
+    msg.addFloat(42.0f);
     
     client->start();
     EXPECT_TRUE(client->send(msg));
@@ -168,7 +169,7 @@ TEST_F(OSCClientTest, SendsMessage) {
 
 TEST_F(OSCClientTest, FailsWhenNotStarted) {
     OSCMessage msg;
-    msg.address = "/test";
+    msg.setAddress("/test");
     
     EXPECT_FALSE(client->send(msg));
 }
@@ -221,12 +222,12 @@ TEST_F(OSCHubTest, BidirectionalCommunication) {
     
     // Hub sends to remote
     OSCMessage toRemote;
-    toRemote.address = "/to_remote";
+    toRemote.setAddress("/to_remote");
     hub->send(toRemote);
     
     // Remote sends to hub
     OSCMessage toHub;
-    toHub.address = "/to_hub";
+    toHub.setAddress("/to_hub");
     remoteClient.send(toHub);
     
     std::this_thread::sleep_for(std::chrono::milliseconds(200));
@@ -247,10 +248,10 @@ protected:
     OSCMessage testMsg;
     
     void SetUp() override {
-        testMsg.address = "/benchmark";
-        testMsg.data.push_back(1.0f);
-        testMsg.data.push_back(2.0f);
-        testMsg.data.push_back(3.0f);
+        testMsg.setAddress("/benchmark");
+        testMsg.addFloat(1.0f);
+        testMsg.addFloat(2.0f);
+        testMsg.addFloat(3.0f);
         
         client.start();
     }

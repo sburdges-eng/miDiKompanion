@@ -1,7 +1,9 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 #include <pybind11/functional.h>
+#include <stdexcept>
 #include "penta/osc/OSCHub.h"
+#include "penta/osc/OSCMessage.h"
 #include "penta/osc/RTMessageQueue.h"
 
 namespace py = pybind11;
@@ -12,31 +14,48 @@ void bind_osc(py::module_& m) {
     py::class_<OSCMessage>(m, "OSCMessage")
         .def(py::init<>())
         .def_property("address",
-            [](const OSCMessage& msg) { return std::string(msg.address.data()); },
-            [](OSCMessage& msg, const std::string& addr) { msg.setAddress(addr.c_str()); })
-        .def_readonly("argument_count", &OSCMessage::argumentCount)
-        .def_readonly("timestamp", &OSCMessage::timestamp)
+            [](const OSCMessage& msg) { return msg.getAddress(); },
+            [](OSCMessage& msg, const std::string& addr) { msg.setAddress(addr); })
+        .def_property("timestamp",
+            &OSCMessage::getTimestamp,
+            &OSCMessage::setTimestamp)
+        .def_property_readonly("argument_count", &OSCMessage::getArgumentCount)
         .def("add_int", &OSCMessage::addInt, py::arg("value"))
         .def("add_float", &OSCMessage::addFloat, py::arg("value"))
-        .def("add_string", &OSCMessage::addString, py::arg("value"))
+        .def("add_string",
+            py::overload_cast<const std::string&>(&OSCMessage::addString),
+            py::arg("value"))
+        .def("add_string",
+            [](OSCMessage& msg, const char* value) {
+                // Delegate through std::string overload to avoid relying on the char* symbol export.
+                msg.addString(std::string(value));
+            },
+            py::arg("value"))
         .def("clear", &OSCMessage::clear)
         .def("get_argument", [](const OSCMessage& msg, size_t index) -> py::object {
-            if (index >= msg.argumentCount) {
+            try {
+                const auto& arg = msg.getArgument(index);
+                if (std::holds_alternative<int32_t>(arg)) {
+                    return py::cast(std::get<int32_t>(arg));
+                }
+                if (std::holds_alternative<float>(arg)) {
+                    return py::cast(std::get<float>(arg));
+                }
+                if (std::holds_alternative<std::string>(arg)) {
+                    return py::cast(std::get<std::string>(arg));
+                }
+                if (std::holds_alternative<std::vector<uint8_t>>(arg)) {
+                    const auto& blob = std::get<std::vector<uint8_t>>(arg);
+                    return py::bytes(reinterpret_cast<const char*>(blob.data()), blob.size());
+                }
+            } catch (const std::out_of_range&) {
                 throw py::index_error("Argument index out of range");
-            }
-            const auto& arg = msg.arguments[index];
-            if (std::holds_alternative<int32_t>(arg)) {
-                return py::cast(std::get<int32_t>(arg));
-            } else if (std::holds_alternative<float>(arg)) {
-                return py::cast(std::get<float>(arg));
-            } else if (std::holds_alternative<std::string>(arg)) {
-                return py::cast(std::get<std::string>(arg));
             }
             return py::none();
         }, py::arg("index"))
         .def("__repr__", [](const OSCMessage& msg) {
-            return "OSCMessage(address='" + std::string(msg.address.data()) + 
-                   "', args=" + std::to_string(msg.argumentCount) + ")";
+            return "OSCMessage(address='" + msg.getAddress() +
+                   "', args=" + std::to_string(msg.getArgumentCount()) + ")";
         });
     
     // OSCHub configuration
@@ -75,8 +94,7 @@ void bind_osc(py::module_& m) {
     
     // Convenience functions for creating messages
     m.def("create_osc_message", [](const std::string& address) {
-        OSCMessage msg;
-        msg.setAddress(address.c_str());
+        OSCMessage msg(address);
         return msg;
     }, py::arg("address"), "Create a new OSC message");
 }

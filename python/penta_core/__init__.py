@@ -6,11 +6,29 @@ High-level Python interface to C++ engines
 from typing import List, Optional, Tuple
 import numpy as np
 
+import importlib
+import sys
+import os
+native = None
 try:
+    # Try standard import
     from . import penta_core_native as native
 except ImportError:
-    print("Warning: C++ native module not found. Please build the project first.")
-    native = None
+    # Try direct import from .so file if present
+    so_name = None
+    pkg_dir = os.path.dirname(__file__)
+    for fname in os.listdir(pkg_dir):
+        if fname.startswith('penta_core_native') and fname.endswith('.so'):
+            so_name = fname
+            break
+    if so_name:
+        import importlib.util
+        spec = importlib.util.spec_from_file_location('penta_core_native', os.path.join(pkg_dir, so_name))
+        native = importlib.util.module_from_spec(spec)
+        sys.modules['penta_core_native'] = native
+        spec.loader.exec_module(native)
+    else:
+        print("Warning: C++ native module not found. Please build the project first.")
 
 
 class HarmonyEngine:
