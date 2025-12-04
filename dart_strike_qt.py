@@ -16,10 +16,25 @@ from PySide6.QtGui import QFont
 
 class Pin(QPushButton):
     """Interactive bowling pin button"""
+    
+    # Mapping of pin positions to dartboard black section values
+    DARTBOARD_VALUES = {
+        1: 20,   # Front pin -> 20 (top, most valuable)
+        2: 3,    # Left front -> 3
+        3: 11,   # Right front -> 11
+        4: 8,    # Left middle -> 8
+        5: 16,   # Center middle -> 16
+        6: 7,    # Right middle -> 7
+        7: 19,   # Back left -> 19
+        8: 12,   # Back center-left -> 12
+        9: 18,   # Back center-right -> 18
+        10: 9,   # Back right -> 9
+    }
 
     def __init__(self, pin_id, parent=None):
         super().__init__(parent)
         self.pin_id = pin_id
+        self.dartboard_value = self.DARTBOARD_VALUES[pin_id]
         self.standing = True
         self.setFixedSize(50, 50)
         self.update_style()
@@ -59,7 +74,7 @@ class Pin(QPushButton):
                     background-color: #FF6961;
                 }
             """)
-        self.setText(str(self.pin_id))
+        self.setText(str(self.dartboard_value))
 
     def reset(self):
         self.standing = True
@@ -136,7 +151,7 @@ class DartStrikeApp(QMainWindow):
         """)
         pin_layout = QVBoxLayout(pin_frame)
 
-        pin_title = QLabel("Click pins to knock down")
+        pin_title = QLabel("Click dartboard values to score")
         pin_title.setFont(QFont("Helvetica Neue", 12))
         pin_title.setAlignment(Qt.AlignCenter)
         pin_title.setStyleSheet("color: #1D1D1F; background: transparent;")
@@ -263,17 +278,17 @@ class DartStrikeApp(QMainWindow):
         layout.addLayout(controls)
 
     def create_pin_layout(self, parent_layout):
-        """Create 10-pin bowling layout"""
+        """Create 10-pin bowling layout with dartboard black section values"""
         pin_container = QWidget()
         pin_container.setStyleSheet("background: transparent;")
         grid = QGridLayout(pin_container)
         grid.setSpacing(10)
 
-        # Standard 10-pin layout:
-        #       7  8  9  10
-        #         4  5  6
-        #           2  3
-        #             1
+        # Standard 10-pin layout with dartboard values:
+        #       19  12  18   9   (Pins 7, 8, 9, 10)
+        #          8  16   7     (Pins 4, 5, 6)
+        #            3  11       (Pins 2, 3)
+        #             20         (Pin 1)
 
         positions = [
             (3, 1.5, 1),   # Pin 1 - front
