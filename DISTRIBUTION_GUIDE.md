@@ -4,7 +4,42 @@ Complete guide for building and distributing Bulling apps for macOS and iOS.
 
 ---
 
-## 🚀 Quick Start (Automated)
+## ⚠️ **IMPORTANT: Personal Use Only**
+
+**This software is licensed for PERSONAL USE ONLY.**
+
+All distribution methods described in this guide are intended for:
+- ✅ Personal entertainment and use
+- ✅ Sharing with friends and family for personal use
+- ✅ Personal device installation
+- ✅ Personal development and learning
+
+**NOT permitted:**
+- ❌ Commercial use or distribution
+- ❌ Publishing to app stores (Apple App Store, Google Play, etc.)
+- ❌ Business or organizational use
+- ❌ Monetization in any form
+
+📖 **See [LICENSE.txt](LICENSE.txt) and [PERSONAL_USE_README.md](PERSONAL_USE_README.md) for complete terms**
+
+---
+
+## 🚀 Quick Start - Personal Distribution
+
+### Standalone Build (Recommended for Personal Use)
+
+```bash
+# Build unsigned, standalone apps for personal distribution
+./build_standalone.sh all
+
+# Or build specific platforms:
+./build_standalone.sh macos       # macOS app only
+./build_standalone.sh ios         # iOS simulator only
+./build_standalone.sh ios-device  # iOS device (unsigned)
+```
+
+This creates ready-to-use apps in the `dist/` directory that you can share 
+with friends and family for personal use.
 
 ### Create Distribution Zips
 

@@ -8,6 +8,18 @@
 
 ---
 
+## ⚠️ **PERSONAL USE ONLY**
+
+**This software is provided for personal, non-commercial use only.**
+- ✅ Free for personal entertainment
+- ❌ No commercial use or distribution
+- ❌ No app store publishing
+- ❌ No business/organizational use
+
+📖 **See [PERSONAL_USE_README.md](PERSONAL_USE_README.md) for complete licensing terms and download instructions**
+
+---
+
 ## 🎮 Features
 
 - **🐂 Unique Bull Head Design**: Dartboard eyes & bowling pin horns
@@ -486,10 +498,20 @@ rm -rf build dist
 
 ## 📄 License
 
-Check the repository license file for details.
+**PERSONAL USE ONLY** - See [LICENSE.txt](LICENSE.txt) for complete terms.
 
-PySide6 is LGPL licensed.
-SwiftUI is part of Apple's SDK.
+**Summary:**
+- ✅ Free for personal, non-commercial use
+- ✅ Share with friends and family
+- ❌ No commercial use or monetization
+- ❌ No app store publishing (Apple App Store, Google Play, etc.)
+- ❌ No business or organizational use
+
+**Third-Party Components:**
+- **PySide6** (Qt6): LGPL licensed - users must comply with LGPL terms
+- **SwiftUI**: Part of Apple's SDK - subject to Apple's terms
+
+📖 **Full personal use guide: [PERSONAL_USE_README.md](PERSONAL_USE_README.md)**
 
 ---
 

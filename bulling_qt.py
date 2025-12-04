@@ -3,6 +3,10 @@
 Bulling - Bowling Scoring App (Python/Qt6 Version)
 Traditional 10-pin bowling with proper scoring
 Bull head logo with dartboard eyes and bowling pin horns
+
+⚠️ PERSONAL USE ONLY
+This software is licensed for personal, non-commercial use only.
+See LICENSE.txt for complete terms and conditions.
 """
 
 import sys
