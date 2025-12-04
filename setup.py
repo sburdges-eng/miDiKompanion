@@ -24,7 +24,7 @@ OPTIONS = {
         'CFBundleIdentifier': 'com.bulling.app',
         'CFBundleVersion': '1.0.0',
         'CFBundleShortVersionString': '1.0.0',
-        'NSHumanReadableCopyright': '© 2025 Bulling Project. Personal Use Only.',
+        'NSHumanReadableCopyright': 'Copyright © 2025 Bulling Project. Personal Use Only.',
         'NSHighResolutionCapable': True,
     },
     'packages': ['PySide6'],
