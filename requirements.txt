@@ -1,0 +1,4 @@
+# Dart Strike - Python Qt6 Version
+# Dependencies for the bowling scoring application
+
+PySide6>=6.5.0
