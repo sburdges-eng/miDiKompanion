@@ -95,13 +95,17 @@ python3 bulling_qt.py
 ### For Developers (iOS)
 
 ```bash
-# Use files in iOS/Bulling/ folder
-# Follow iOS_SETUP_GUIDE.md for complete instructions
+# Option 1: Open the ready-to-build Xcode project
+open iOS/BullingApp.xcodeproj
+# Select a simulator and press Cmd+R to build and run!
 
-1. Open Xcode
-2. Create new iOS App project named "Bulling"
-3. Copy all .swift files from iOS/Bulling/
-4. Build and run!
+# Option 2: Build from command line (macOS only)
+./build_ios_app.sh simulator   # Build for iOS simulator
+./build_ios_app.sh device      # Build for physical device
+./build_ios_app.sh archive     # Create archive for distribution
+
+# Option 3: Manual setup (alternative)
+# Follow iOS_SETUP_GUIDE.md for complete instructions
 ```
 
 ---
@@ -179,18 +183,25 @@ Pentagon-core-100-things/
 ├── bulling_qt.py              # macOS Python app (main)
 ├── setup.py                   # py2app build configuration
 ├── build_macos_app.sh         # Build script for macOS
+├── build_ios_app.sh           # Build script for iOS
 ├── create_icon.sh             # Icon creation helper
 ├── generate_icon.py           # Bull head icon generator
 ├── bulling_icon.svg           # App icon (SVG)
 ├── requirements.txt           # Python dependencies
 ├── iOS/
-│   └── Bulling/               # iOS Swift app
-│       ├── BullingApp.swift
-│       ├── GameModel.swift
-│       ├── SplashScreen.swift
-│       ├── ContentView.swift
-│       ├── GameView.swift
-│       └── ScorecardView.swift
+│   ├── BullingApp.xcodeproj/  # Xcode project (ready to build)
+│   │   └── project.pbxproj
+│   ├── BullingApp/            # iOS app source code
+│   │   ├── BullingApp.swift
+│   │   ├── GameModel.swift
+│   │   ├── SplashScreen.swift
+│   │   ├── ContentView.swift
+│   │   ├── GameView.swift
+│   │   ├── ScorecardView.swift
+│   │   ├── Info.plist
+│   │   └── Assets.xcassets/
+│   └── Bulling/               # Legacy iOS Swift files
+├── macOS/                     # macOS Swift files
 ├── MACOS_APP_GUIDE.md         # macOS detailed guide
 ├── iOS_SETUP_GUIDE.md         # iOS detailed guide
 └── README.md                  # This file
@@ -254,11 +265,20 @@ Combine (built-in)      # Reactive programming
 #### iOS App
 
 ```bash
-# Create source files package
+# Option 1: Open project in Xcode (recommended)
+open iOS/BullingApp.xcodeproj
+# Then: Product → Run (Cmd+R) or Product → Archive
+
+# Option 2: Build from command line
+./build_ios_app.sh simulator   # Build for simulator
+./build_ios_app.sh device      # Build for device (unsigned)
+./build_ios_app.sh archive     # Create archive
+
+# Option 3: Create source files package
 ./create_ios_zip.sh
 # Result: dist/Bulling-iOS.zip
 
-# OR build in Xcode
+# Distribution via Xcode:
 1. Archive: Product → Archive
 2. Distribute:
    - TestFlight: Beta testing
