@@ -14,7 +14,9 @@
 - **📊 Real-Time Scorecard**: Track scores frame-by-frame
 - **🎯 10th Frame Bonus**: Authentic bowling rules
 - **💾 Auto-Save**: Resume your games anytime
-- **📱 Cross-Platform**: macOS & iOS versions available
+- **📱 Cross-Platform**: Python version supports macOS, Linux & Windows (requires Qt6)
+- **⚡️ Easy Install**: One command installation with `pip install .`
+- **🖥️ Multiple Formats**: Run as CLI command, Python script, or macOS app bundle
 
 ---
 
@@ -46,27 +48,47 @@ This repository contains **TWO complete versions** of Bulling:
 
 ## 🚀 Quick Start
 
-### For Users (macOS)
+### For Users (macOS App Bundle)
 
 1. **Download** `Bulling.app` or `Bulling.zip`
 2. **Unzip** if needed
 3. **Drag** to Applications folder
 4. **Double-click** to play!
 
-### For Developers (macOS)
+### For Users (Install from Source)
+
+```bash
+# Clone or download the repository
+git clone <repository-url>
+cd Pentagon-core-100-things
+
+# Install as executable command
+pip3 install .
+
+# Run the app
+bulling
+```
+
+### For Developers (All Platforms)
 
 ```bash
 # Clone the repository
 git clone <repository-url>
 cd Pentagon-core-100-things
 
-# Install dependencies
-pip3 install -r requirements.txt
+# Option 1: Install as executable (recommended)
+pip3 install .
+bulling  # Run the app
 
-# Run directly
+# Option 2: Install in development mode
+pip3 install -e .
+bulling  # Run the app
+
+# Option 3: Run directly (requires dependencies)
+pip3 install -r requirements.txt
 python3 bulling_qt.py
 
-# OR build standalone app
+# Option 4: Build standalone macOS app
 ./build_macos_app.sh
 ```
 
