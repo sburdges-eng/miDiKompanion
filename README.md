@@ -44,20 +44,25 @@ python3 dart_strike_qt.py
 5. Game automatically advances to next player
 6. View scores in the scorecard on the right
 
-## 🏗️ Project Structure (All Versions)
+## 🏗️ Project Structure
 
 ```
-Pentagon-core-100-things/
+dart-strike/
 ├── dart_strike_qt.py                    # Python Qt6 version (PRIMARY)
 ├── requirements.txt                     # Python dependencies
-├── DartStrikeApp.java                   # Java/JavaFX version
+├── DartStrikeApp.java                   # Java standalone version
 ├── DartStrikeApp.swift                  # iOS Swift version
 ├── GameModel.java                       # Java game logic
 ├── GameModel.swift                      # Swift game logic
 ├── README.md                            # This file
 ├── README_DART_VALUES.md                # Dartboard values documentation
 ├── TODO.md                              # Task tracking
-└── Documentation files                  # Setup guides and summaries
+├── COMPLETE_PROJECT_SUMMARY.md          # Multi-platform project overview
+├── SETUP_GUIDE.md                       # iOS setup instructions
+├── IMPLEMENTATION_SUMMARY.md            # Implementation details
+├── QUICK_START.md                       # Quick reference guide
+├── TRIAL_RUN_CHECKLIST.md               # Testing checklist
+└── dart_strike_screenshot.png           # Application screenshot
 ```
 
 ## 🚀 Getting Started - JavaFX & Swift Versions (Reference)
@@ -67,7 +72,8 @@ The Python Qt6 version is the primary, fully-featured implementation in this rep
 
 ### JavaFX Version
 The JavaFX version (DartStrikeApp.java, GameModel.java) demonstrates the same game logic in Java.
-Setup requires Java 11+ and JavaFX. See `COMPLETE_PROJECT_SUMMARY.md` for detailed setup instructions.
+These are standalone Java files provided for reference. For a complete JavaFX project setup with Maven,
+see the documentation in `COMPLETE_PROJECT_SUMMARY.md`.
 
 ### Swift/iOS Version  
 The Swift version (DartStrikeApp.swift, GameModel.swift) is a native iOS implementation.
