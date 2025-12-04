@@ -23,7 +23,7 @@ This repository contains:
 ## 🚀 Quick Start - Python Qt6 Version (Recommended)
 
 ### Prerequisites
-- **Python 3.9+** (Python 3.12 recommended)
+- **Python 3.9+** (Python 3.11 recommended)
 - **PySide6** (Qt6 for Python)
 
 ### Installation & Running
