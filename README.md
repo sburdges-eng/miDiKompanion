@@ -201,7 +201,22 @@ Combine (built-in)      # Reactive programming
 
 ## 🔧 Building & Distribution
 
-### macOS App
+### Quick Distribution (Automated)
+
+```bash
+# Create both macOS and iOS distribution zips (macOS only)
+./create_distribution_zips.sh
+
+# Creates:
+# - dist/Bulling-macOS.zip (macOS app bundle)
+# - dist/Bulling-iOS.zip (iOS source files)
+```
+
+📖 **[Distribution Scripts Guide](DISTRIBUTION_SCRIPTS_README.md)**
+
+### Manual Build
+
+#### macOS App
 
 ```bash
 # Build the app
@@ -209,19 +224,25 @@ Combine (built-in)      # Reactive programming
 
 # Result: dist/Bulling.app
 
-# Distribute
-cd dist
-zip -r Bulling.zip Bulling.app
-# Share Bulling.zip
+# Create distribution zip
+./create_macos_zip.sh
+# Result: dist/Bulling-macOS.zip
 ```
 
-### iOS App
+#### iOS App
 
-1. **Archive** in Xcode: Product → Archive
-2. **Distribute**:
+```bash
+# Create source files package
+./create_ios_zip.sh
+# Result: dist/Bulling-iOS.zip
+
+# OR build in Xcode
+1. Archive: Product → Archive
+2. Distribute:
    - TestFlight: Beta testing
    - App Store: Public release
    - Ad-Hoc: Direct distribution
+```
 
 ---
 
@@ -353,6 +374,9 @@ SwiftUI is part of Apple's SDK.
 
 ## 🔗 Quick Links
 
+- **[Quick Distribution Guide](QUICK_DISTRIBUTION_GUIDE.md)** - Fast track to creating distribution zips
+- **[Distribution Scripts](DISTRIBUTION_SCRIPTS_README.md)** - Automated zip creation documentation
+- **[Distribution Guide](DISTRIBUTION_GUIDE.md)** - Complete distribution and build guide
 - **[macOS Guide](MACOS_APP_GUIDE.md)** - Detailed macOS setup and usage
 - **[iOS Guide](iOS_SETUP_GUIDE.md)** - Complete iOS development guide
 - **[Icon SVG](bulling_icon.svg)** - Bull head logo design

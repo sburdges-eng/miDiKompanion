@@ -42,3 +42,6 @@ DartStrike.iconset/
 # Temporary files
 *.log
 *.tmp
+
+# Distribution files
+*.zip

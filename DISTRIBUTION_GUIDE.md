@@ -4,6 +4,32 @@ Complete guide for building and distributing Bulling apps for macOS and iOS.
 
 ---
 
+## 🚀 Quick Start (Automated)
+
+### Create Distribution Zips
+
+```bash
+# Create both macOS and iOS distribution packages
+./create_distribution_zips.sh
+```
+
+**Output:**
+- `dist/Bulling-macOS.zip` - macOS application bundle (macOS only)
+- `dist/Bulling-iOS.zip` - iOS source files package
+
+**Or create individually:**
+```bash
+# macOS distribution (requires macOS)
+./create_macos_zip.sh
+
+# iOS source files package (any platform)
+./create_ios_zip.sh
+```
+
+📖 **[Distribution Scripts README](DISTRIBUTION_SCRIPTS_README.md)** - Complete documentation for automated zip creation
+
+---
+
 ## 🖥️ macOS Distribution
 
 ### Prerequisites
@@ -49,9 +75,16 @@ open dist/Bulling.app
 ```
 
 #### 5. Create Distribution Package
+
+**Automated (Recommended):**
+```bash
+./create_macos_zip.sh
+```
+
+**Manual:**
 ```bash
 cd dist
-zip -r Bulling-macOS-v1.0.zip Bulling.app
+zip -r Bulling-macOS.zip Bulling.app
 ```
 
 ### Distribution Options
@@ -104,11 +137,37 @@ create-dmg \
 - Apple Developer account (for device testing/App Store)
 - iOS device or Simulator
 
-### Build Process
+### Source Files Package (Simplified Distribution)
+
+**Quick Method - Automated:**
+```bash
+# Create iOS source files zip
+./create_ios_zip.sh
+```
+
+**Output:** `dist/Bulling-iOS.zip`
+
+**Contains:**
+- All Swift source files (*.swift)
+- iOS_SETUP_GUIDE.md
+- README.md
+- SETUP.txt with quick instructions
+
+**For developers receiving the zip:**
+1. Download and unzip `Bulling-iOS.zip`
+2. Follow SETUP.txt instructions
+3. Open Xcode and create new iOS App
+4. Copy .swift files to project
+5. Build and run
+
+### Full Build Process
 
 #### 1. Setup Xcode Project
 ```bash
-# Follow iOS_SETUP_GUIDE.md
+# Use automated zip (recommended)
+./create_ios_zip.sh
+
+# OR manually follow iOS_SETUP_GUIDE.md
 1. Create new iOS App in Xcode
 2. Name it "Bulling"
 3. Copy all .swift files from iOS/Bulling/
@@ -298,7 +357,7 @@ spctl -a -t exec -vv dist/Bulling.app
 - [ ] App icon created (app_icon.icns)
 - [ ] Build with `./build_macos_app.sh`
 - [ ] Test on clean Mac (if possible)
-- [ ] Create zip archive
+- [ ] Create zip archive with `./create_macos_zip.sh`
 - [ ] (Optional) Code sign
 - [ ] (Optional) Create DMG
 - [ ] Upload to distribution platform
@@ -307,32 +366,53 @@ spctl -a -t exec -vv dist/Bulling.app
 ### iOS Release
 - [ ] Code complete and tested
 - [ ] Version and build numbers updated
-- [ ] App icon added to Assets.xcassets
-- [ ] Screenshots prepared
-- [ ] Privacy policy (if needed)
-- [ ] Archive in Xcode
-- [ ] Upload to App Store Connect
-- [ ] Fill in App Store metadata
-- [ ] Submit for review
-- [ ] Monitor review status
-- [ ] Release when approved
+- [ ] All .swift files in iOS/Bulling/ directory
+- [ ] Create source package with `./create_ios_zip.sh`
+- [ ] (Optional) Build in Xcode for App Store:
+  - [ ] App icon added to Assets.xcassets
+  - [ ] Screenshots prepared
+  - [ ] Privacy policy (if needed)
+  - [ ] Archive in Xcode
+  - [ ] Upload to App Store Connect
+  - [ ] Fill in App Store metadata
+  - [ ] Submit for review
+  - [ ] Monitor review status
+  - [ ] Release when approved
 
 ---
 
 ## 🚀 Quick Distribution Commands
 
-### macOS
+### Both Platforms (Automated)
 ```bash
-# Full build and package
-./build_macos_app.sh
-cd dist
-zip -r Bulling-macOS-v1.0.zip Bulling.app
-echo "✅ Ready to distribute: Bulling-macOS-v1.0.zip"
+# Create both distribution zips at once
+./create_distribution_zips.sh
+
+# Creates:
+# - dist/Bulling-macOS.zip (macOS app)
+# - dist/Bulling-iOS.zip (iOS source files)
 ```
 
-### iOS
+### macOS Only
 ```bash
-# In Xcode
+# Automated (recommended)
+./create_macos_zip.sh
+echo "✅ Ready to distribute: dist/Bulling-macOS.zip"
+
+# Manual
+./build_macos_app.sh
+cd dist
+zip -r Bulling-macOS.zip Bulling.app
+echo "✅ Ready to distribute: Bulling-macOS.zip"
+```
+
+### iOS Only
+```bash
+# Source files package (automated)
+./create_ios_zip.sh
+echo "✅ Ready to distribute: dist/Bulling-iOS.zip"
+
+# OR build in Xcode for App Store
 1. Product → Archive
 2. Distribute App
 3. Choose distribution method
