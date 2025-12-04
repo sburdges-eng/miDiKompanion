@@ -72,12 +72,16 @@ echo ""
 # Show what was created
 if [ -d "dist" ]; then
     echo "Files in dist/ directory:"
-    ls -lh dist/*.zip 2>/dev/null || echo "No zip files found"
+    if find dist -name "*.zip" -print0 2>/dev/null | grep -qz .; then
+        ls -lh dist/*.zip 2>/dev/null
+    else
+        echo "No zip files found"
+    fi
     echo ""
     
     # Calculate total size
-    if ls dist/*.zip &> /dev/null; then
-        total_size=$(du -ch dist/*.zip | tail -1 | cut -f1)
+    if find dist -name "*.zip" -print0 2>/dev/null | grep -qz .; then
+        total_size=$(du -ch dist/*.zip 2>/dev/null | tail -1 | cut -f1)
         echo "Total size: $total_size"
     fi
 fi

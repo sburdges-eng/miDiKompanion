@@ -30,7 +30,7 @@ echo "📦 Packaging iOS source files..."
 mkdir -p "$package_dir"
 
 # Check if Swift files exist
-if [ ! -d "iOS/Bulling" ] || [ -z "$(ls -A iOS/Bulling/*.swift 2>/dev/null)" ]; then
+if ! ls iOS/Bulling/*.swift >/dev/null 2>&1; then
     echo "❌ No Swift files found in iOS/Bulling/"
     rm -rf "$temp_dir"
     exit 1
@@ -84,9 +84,10 @@ For questions or issues, visit the repository.
 EOF
 
 # Create the zip file
+original_dir="$(pwd)"
 cd "$temp_dir"
 zip -r -q Bulling-iOS.zip Bulling-iOS
-cd - > /dev/null
+cd "$original_dir"
 
 # Move zip to dist directory
 mkdir -p dist
@@ -113,9 +114,12 @@ if [ -f "dist/Bulling-iOS.zip" ]; then
     echo "File size: $zip_size"
     echo ""
     
-    # List contents
+    # List contents (with error handling)
     echo "Contents:"
-    unzip -l "dist/Bulling-iOS.zip" | tail -n +4 | head -n -2
+    if ! unzip -l "dist/Bulling-iOS.zip" 2>/dev/null | tail -n +4 | head -n -2; then
+        # Fallback if unzip output format differs
+        unzip -l "dist/Bulling-iOS.zip" 2>/dev/null || echo "  (Unable to list contents, but zip was created)"
+    fi
     echo ""
 else
     echo "❌ Failed to create zip file"
