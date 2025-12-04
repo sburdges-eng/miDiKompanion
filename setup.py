@@ -1,17 +1,16 @@
 """
-Setup script for creating a macOS application bundle (.app) for Bulling.
+Setup script for Bulling - Bowling Scoring Game
 
-This script uses py2app to create a standalone macOS application that can be
-double-clicked to run, with no code or terminal commands required.
+This script can be used to:
+1. Install Bulling as a command-line executable: pip install .
+2. Create a macOS application bundle (.app): python setup.py py2app
 
-To build the app:
-    python setup.py py2app
-
-The .app bundle will be created in the 'dist' folder.
+After installation, run Bulling with: bulling
 """
 
 from setuptools import setup
 
+# For macOS app bundle
 APP = ['bulling_qt.py']
 DATA_FILES = []
 OPTIONS = {
@@ -35,9 +34,23 @@ OPTIONS = {
 }
 
 setup(
-    name='Bulling',
+    name='bulling',
+    version='1.0.0',
+    description='Bowling Scoring Game - Bull Head Edition',
+    author='Bulling Team',
+    py_modules=['bulling_qt'],
+    install_requires=[
+        'PySide6>=6.5.0',
+    ],
+    entry_points={
+        'console_scripts': [
+            'bulling=bulling_qt:main',
+        ],
+    },
+    python_requires='>=3.9',
+    # For macOS app bundle (optional)
     app=APP,
     data_files=DATA_FILES,
     options={'py2app': OPTIONS},
-    setup_requires=['py2app'],
+    setup_requires=['py2app'] if 'py2app' in str(__import__('sys').argv) else [],
 )
