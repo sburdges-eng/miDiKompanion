@@ -1,6 +1,55 @@
 import { useState, useEffect } from "react";
 import { useMusicBrain } from "./hooks/useMusicBrain";
+import { EmotionWheel } from "./components/EmotionWheel";
 import "./App.css";
+
+// Transform API response to EmotionWheel format
+function transformEmotionData(apiResponse: any): any {
+  if (!apiResponse || !apiResponse.emotions) {
+    return null;
+  }
+
+  const transformed: any = {
+    emotions: {},
+    total_nodes: apiResponse.total_nodes || 0
+  };
+
+  // Process each base emotion
+  Object.keys(apiResponse.emotions).forEach((baseKey) => {
+    if (baseKey === 'blends') return; // Skip blends
+    
+    const baseEmotion = apiResponse.emotions[baseKey];
+    transformed.emotions[baseKey] = {
+      intensities: {}
+    };
+
+    // Extract all sub-sub-emotions and their intensity tiers
+    if (baseEmotion.sub_emotions) {
+      Object.keys(baseEmotion.sub_emotions).forEach((subKey) => {
+        const subEmotion = baseEmotion.sub_emotions[subKey];
+        if (subEmotion.sub_sub_emotions) {
+          Object.keys(subEmotion.sub_sub_emotions).forEach((subSubKey) => {
+            const subSubEmotion = subEmotion.sub_sub_emotions[subSubKey];
+            if (subSubEmotion.intensity_tiers) {
+              // For each intensity tier, add the sub-sub-emotion name
+              Object.keys(subSubEmotion.intensity_tiers).forEach((intensityKey) => {
+                if (!transformed.emotions[baseKey].intensities[intensityKey]) {
+                  transformed.emotions[baseKey].intensities[intensityKey] = [];
+                }
+                // Add the sub-sub-emotion name to this intensity tier
+                if (!transformed.emotions[baseKey].intensities[intensityKey].includes(subSubKey)) {
+                  transformed.emotions[baseKey].intensities[intensityKey].push(subSubKey);
+                }
+              });
+            }
+          });
+        }
+      });
+    }
+  });
+
+  return transformed;
+}
 
 function App() {
   console.log("App: Component rendering");
@@ -10,6 +59,7 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [apiStatus, setApiStatus] = useState<'checking' | 'online' | 'offline'>('checking');
+  const [selectedEmotion, setSelectedEmotion] = useState<{base: string; intensity: string; sub: string} | null>(null);
   
   // Always call hooks unconditionally
   const musicBrain = useMusicBrain();
@@ -57,9 +107,11 @@ function App() {
     setError(null);
     try {
       const result = await getEmotions();
-      setEmotions(result);
+      const transformed = transformEmotionData(result);
+      setEmotions(transformed);
       setApiStatus('online');
       console.log('Emotions loaded:', result);
+      console.log('Transformed emotions:', transformed);
     } catch (error) {
       console.error('Error loading emotions:', error);
       setApiStatus('offline');
@@ -190,6 +242,28 @@ function App() {
               <div className="emotion-preview">
                 <p>Total emotion nodes: {emotions.total_nodes}</p>
                 <p>Base emotions: {Object.keys(emotions.emotions).length}</p>
+              </div>
+            )}
+            <div style={{ marginTop: '20px' }}>
+              <EmotionWheel 
+                emotions={emotions} 
+                onEmotionSelected={(emotion) => {
+                  setSelectedEmotion(emotion);
+                  if (emotion) {
+                    console.log('Selected emotion:', emotion);
+                  }
+                }}
+              />
+            </div>
+            {selectedEmotion && (
+              <div style={{ 
+                marginTop: '20px', 
+                padding: '15px', 
+                backgroundColor: 'rgba(99, 102, 241, 0.1)', 
+                border: '1px solid rgba(99, 102, 241, 0.3)', 
+                borderRadius: '8px' 
+              }}>
+                <strong>Selected Emotion:</strong> {selectedEmotion.base} → {selectedEmotion.intensity} → {selectedEmotion.sub}
               </div>
             )}
           </div>
