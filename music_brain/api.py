@@ -56,17 +56,52 @@ async def health_check():
 async def generate_music(request: GenerateRequest):
     """Generate music from emotional intent"""
     try:
-        # TODO: Integrate with actual music generation modules
-        return {
+        from music_brain.session.generator import SongGenerator
+        
+        # Extract parameters from intent
+        intent = request.intent
+        technical = intent.technical or {}
+        
+        # Parse key and mode from technical.key (e.g., "F major" or "C minor")
+        key = "C"
+        mode = "major"
+        if technical.get("key"):
+            key_str = str(technical["key"]).strip()
+            if " " in key_str:
+                parts = key_str.split(" ", 1)
+                key = parts[0]
+                mode = parts[1].lower() if len(parts) > 1 else "major"
+            else:
+                key = key_str
+        
+        # Extract other parameters
+        tempo = technical.get("bpm")
+        genre = technical.get("genre")
+        mood = intent.emotional_intent or None
+        
+        # Generate song
+        generator = SongGenerator()
+        song = generator.generate(
+            key=key,
+            mode=mode,
+            mood=mood,
+            genre=genre,
+            tempo=float(tempo) if tempo else None
+        )
+        
+        # Convert to dict for JSON response using the song's to_dict method
+        result = {
             "success": True,
-            "intent": request.intent.dict(),
-            "result": {
-                "message": "Generation endpoint ready - integration pending",
-                "midi_data": None
-            }
+            "intent": intent.dict(),
+            "song": song.to_dict(),
+            "message": f"Generated {len(song.sections)} sections, {song.total_bars} bars at {song.tempo_bpm} BPM"
         }
         
+        return result
+        
     except Exception as e:
+        import traceback
+        traceback.print_exc()
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.post("/interrogate")

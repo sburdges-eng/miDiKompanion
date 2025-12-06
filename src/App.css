@@ -210,3 +210,26 @@ button:disabled {
     background-color: rgba(255, 255, 255, 0.05);
   }
 }
+/* EmotionWheel Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.emotion-section {
+  margin-bottom: 30px;
+}
+
+.emotion-section h3 {
+  margin-bottom: 15px;
+}

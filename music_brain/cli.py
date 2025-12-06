@@ -16,6 +16,12 @@ Usage:
     daiw intent list                            List all rule-breaking options
     daiw intent validate <file>                 Validate intent file
 
+    daiw learn instruments                      List all supported instruments
+    daiw learn sources <instrument>             Show learning sources for an instrument
+    daiw learn plan <instrument>                Generate a learning plan
+    daiw learn prompt <instrument> <topic>      Generate AI teaching prompt
+    daiw learn curriculum <instrument>          Show curriculum structure
+
 Humanization Styles:
     tight   - Minimal drift, confident (complexity=0.1, vulnerability=0.2)
     natural - Human feel, balanced (complexity=0.4, vulnerability=0.5)
@@ -75,6 +81,38 @@ def get_audio_module():
 def get_arrangement_module():
     from music_brain.arrangement import generate_arrangement, ArrangementGenerator
     return generate_arrangement, ArrangementGenerator
+
+
+def get_learning_module():
+    from music_brain.learning import (
+        DifficultyLevel, SkillCategory, Curriculum, LearningPath, CurriculumBuilder,
+        ResourceFetcher, KNOWN_SOURCES, get_recommended_sources, generate_learning_plan,
+        InstrumentFamily, Instrument, INSTRUMENTS, get_instrument, get_instruments_by_family,
+        get_beginner_instruments, TeachingStyle, StudentProfile, AdaptiveTeacher,
+        PedagogyEngine, generate_ai_teaching_prompt,
+    )
+    return {
+        'DifficultyLevel': DifficultyLevel,
+        'SkillCategory': SkillCategory,
+        'Curriculum': Curriculum,
+        'LearningPath': LearningPath,
+        'CurriculumBuilder': CurriculumBuilder,
+        'ResourceFetcher': ResourceFetcher,
+        'KNOWN_SOURCES': KNOWN_SOURCES,
+        'get_recommended_sources': get_recommended_sources,
+        'generate_learning_plan': generate_learning_plan,
+        'InstrumentFamily': InstrumentFamily,
+        'Instrument': Instrument,
+        'INSTRUMENTS': INSTRUMENTS,
+        'get_instrument': get_instrument,
+        'get_instruments_by_family': get_instruments_by_family,
+        'get_beginner_instruments': get_beginner_instruments,
+        'TeachingStyle': TeachingStyle,
+        'StudentProfile': StudentProfile,
+        'AdaptiveTeacher': AdaptiveTeacher,
+        'PedagogyEngine': PedagogyEngine,
+        'generate_ai_teaching_prompt': generate_ai_teaching_prompt,
+    }
 
 
 def cmd_extract(args):
@@ -761,6 +799,206 @@ def cmd_arrange_templates(args):
     return 0
 
 
+def cmd_learn(args):
+    """Handle learning module commands."""
+    learning = get_learning_module()
+
+    if args.subcommand == 'instruments':
+        # List all instruments
+        instruments = learning['INSTRUMENTS']
+
+        print("\n=== Supported Instruments ===\n")
+
+        # Group by family
+        by_family = {}
+        for inst in instruments.values():
+            family = inst.family.name
+            if family not in by_family:
+                by_family[family] = []
+            by_family[family].append(inst)
+
+        for family, insts in sorted(by_family.items()):
+            print(f"{family}:")
+            for inst in sorted(insts, key=lambda x: x.name):
+                beginner = "✓" if inst.beginner_friendly else " "
+                days = inst.days_to_first_song
+                print(f"  [{beginner}] {inst.name:<20} ({days} days to first song)")
+            print()
+
+        print("Legend: [✓] = Beginner-friendly")
+        print("\nUse 'daiw learn sources <instrument>' to see learning resources")
+
+    elif args.subcommand == 'sources':
+        # Show learning sources for an instrument
+        if not args.instrument:
+            print("Error: Please specify an instrument")
+            return 1
+
+        instrument = args.instrument.lower()
+        get_recommended_sources = learning['get_recommended_sources']
+        get_instrument = learning['get_instrument']
+
+        # Get instrument info
+        inst = get_instrument(instrument)
+        if inst:
+            print(f"\n=== Learning Resources for {inst.name} ===\n")
+            print(f"Beginner-friendly: {'Yes' if inst.beginner_friendly else 'No'}")
+            print(f"Days to first song: {inst.days_to_first_song}")
+            print(f"Months to intermediate: {inst.months_to_intermediate}")
+            print(f"Primary genres: {', '.join(inst.primary_genres)}")
+        else:
+            print(f"\n=== Learning Resources for {instrument.title()} ===\n")
+
+        # Get sources
+        sources = get_recommended_sources(instrument, difficulty=args.level or 1)
+
+        if not sources:
+            print(f"\nNo specific sources found for '{instrument}'.")
+            print("Try one of: guitar, piano, drums, bass, voice, violin, flute")
+            return 1
+
+        print(f"\nRecommended sources (Level {args.level or 1}):\n")
+        for i, source in enumerate(sources, 1):
+            quality = "★" * min(source.get('quality_score', 5), 10)
+            print(f"{i}. {source['name']}")
+            print(f"   URL: {source['base_url']}")
+            print(f"   Quality: {quality}")
+            print(f"   Difficulty: {source.get('difficulty_range', (1, 10))}")
+            print(f"   {source.get('description', '')}")
+            print()
+
+    elif args.subcommand == 'plan':
+        # Generate a learning plan
+        if not args.instrument:
+            print("Error: Please specify an instrument")
+            return 1
+
+        generate_learning_plan = learning['generate_learning_plan']
+        get_instrument = learning['get_instrument']
+
+        instrument = args.instrument.lower()
+        current = args.current or 1
+        target = args.target or 5
+        hours = args.hours or 5.0
+
+        inst = get_instrument(instrument)
+        if inst:
+            print(f"\n=== Learning Plan for {inst.name} ===\n")
+        else:
+            print(f"\n=== Learning Plan for {instrument.title()} ===\n")
+
+        plan = generate_learning_plan(
+            instrument=instrument,
+            current_level=current,
+            target_level=target,
+            weekly_hours=hours,
+        )
+
+        print(f"Current Level: {current} → Target Level: {target}")
+        print(f"Weekly Practice: {hours} hours\n")
+
+        for phase in plan['phases']:
+            level_name = phase['level_name']
+            weeks = phase['estimated_weeks']
+            print(f"LEVEL {phase['level']}: {level_name} (~{weeks} weeks)")
+            print(f"  Focus: {', '.join(phase['focus_areas'])}")
+
+            if phase['recommended_sources']:
+                sources = phase['recommended_sources'][:2]
+                source_names = [s['name'] for s in sources]
+                print(f"  Resources: {', '.join(source_names)}")
+            print()
+
+        # Show instrument-specific tips if available
+        if inst:
+            print("=== First Skills to Master ===")
+            for skill in inst.first_skills[:5]:
+                print(f"  • {skill}")
+
+            print("\n=== Common Challenges ===")
+            for challenge in inst.common_challenges[:3]:
+                print(f"  • {challenge}")
+
+            print("\n=== Practice Tips ===")
+            for tip in inst.practice_tips[:3]:
+                print(f"  • {tip}")
+
+    elif args.subcommand == 'prompt':
+        # Generate AI teaching prompt
+        if not args.instrument or not args.topic:
+            print("Error: Please specify both instrument and topic")
+            return 1
+
+        generate_ai_teaching_prompt = learning['generate_ai_teaching_prompt']
+        StudentProfile = learning['StudentProfile']
+
+        instrument = args.instrument
+        topic = args.topic
+        action = args.action or 'explain'
+        difficulty = args.level or 5
+
+        # Create a default student profile if needed
+        student = None
+        if args.personalize:
+            student = StudentProfile(
+                id="cli_student",
+                name="Student",
+                age=args.age or 25,
+                experience_level=difficulty,
+            )
+
+        prompt = generate_ai_teaching_prompt(
+            action=action,
+            instrument=instrument,
+            topic=topic,
+            student=student,
+            difficulty=difficulty,
+        )
+
+        print("\n=== AI Teaching Prompt ===\n")
+        print(prompt)
+        print("\n" + "=" * 50)
+        print("\nUse this prompt with any AI assistant to get teaching content.")
+
+        # Optionally save to file
+        if args.output:
+            with open(args.output, 'w') as f:
+                f.write(prompt)
+            print(f"\nPrompt saved to: {args.output}")
+
+    elif args.subcommand == 'curriculum':
+        # Show curriculum structure for an instrument
+        if not args.instrument:
+            print("Error: Please specify an instrument")
+            return 1
+
+        get_instrument = learning['get_instrument']
+
+        instrument = args.instrument.lower()
+        inst = get_instrument(instrument)
+
+        if not inst:
+            print(f"Unknown instrument: {instrument}")
+            return 1
+
+        print(f"\n=== Curriculum Structure for {inst.name} ===\n")
+        print(f"Beginner-friendly: {'Yes' if inst.beginner_friendly else 'No'}")
+        print(f"Days to first song: {inst.days_to_first_song}")
+        print(f"Months to intermediate: {inst.months_to_intermediate}")
+        print(f"\nFirst Skills:")
+        for skill in inst.first_skills:
+            print(f"  • {skill}")
+        print(f"\nCommon Challenges:")
+        for challenge in inst.common_challenges:
+            print(f"  • {challenge}")
+
+    else:
+        print("Error: Unknown learn subcommand")
+        return 1
+
+    return 0
+
+
 def main():
     parser = argparse.ArgumentParser(
         prog='daiw',
@@ -904,6 +1142,39 @@ def main():
     # arrange templates
     arrange_subparsers.add_parser('templates', help='List available arrangement templates')
     
+    # Learning commands
+    learn_parser = subparsers.add_parser('learn', help='AI-powered instrument education')
+    learn_subparsers = learn_parser.add_subparsers(dest='subcommand', help='Learning commands')
+    
+    # learn instruments
+    learn_subparsers.add_parser('instruments', help='List all supported instruments')
+    
+    # learn sources
+    learn_sources = learn_subparsers.add_parser('sources', help='Show learning sources for an instrument')
+    learn_sources.add_argument('instrument', help='Instrument name (e.g., piano, guitar)')
+    learn_sources.add_argument('-l', '--level', type=int, help='Difficulty level (1-10)')
+    
+    # learn plan
+    learn_plan = learn_subparsers.add_parser('plan', help='Generate a learning plan')
+    learn_plan.add_argument('instrument', help='Instrument name')
+    learn_plan.add_argument('-c', '--current', type=int, help='Current level (1-10, default: 1)')
+    learn_plan.add_argument('-t', '--target', type=int, help='Target level (1-10, default: 5)')
+    learn_plan.add_argument('-w', '--hours', type=float, help='Weekly practice hours (default: 5.0)')
+    
+    # learn prompt
+    learn_prompt = learn_subparsers.add_parser('prompt', help='Generate AI teaching prompt')
+    learn_prompt.add_argument('instrument', help='Instrument name')
+    learn_prompt.add_argument('topic', help='Topic to learn')
+    learn_prompt.add_argument('-a', '--action', default='explain', help='Action (explain, demonstrate, practice)')
+    learn_prompt.add_argument('-l', '--level', type=int, default=5, help='Difficulty level (1-10)')
+    learn_prompt.add_argument('-p', '--personalize', action='store_true', help='Personalize for student profile')
+    learn_prompt.add_argument('--age', type=int, help='Student age (for personalization)')
+    learn_prompt.add_argument('-o', '--output', help='Save prompt to file')
+    
+    # learn curriculum
+    learn_curriculum = learn_subparsers.add_parser('curriculum', help='Show curriculum structure')
+    learn_curriculum.add_argument('instrument', help='Instrument name')
+    
     args = parser.parse_args()
     
     if not args.command:
@@ -921,6 +1192,7 @@ def main():
         'intent': cmd_intent,
         'audio': cmd_audio,
         'arrange': cmd_arrange,
+        'learn': cmd_learn,
     }
     
     return commands[args.command](args)

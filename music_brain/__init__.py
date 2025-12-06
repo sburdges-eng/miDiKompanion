@@ -10,6 +10,7 @@ A Python package for music production analysis:
 - Therapy-to-music pipeline (Comprehensive Engine)
 - Lyrical fragment generation
 - Reference track DNA analysis
+- AI-powered instrument education (Learning Module)
 """
 
 __version__ = "1.0.0"
@@ -62,6 +63,22 @@ from music_brain.daw.mixer_params import (
     MIXER_PRESETS,
 )
 
+# Learning Module - AI-powered instrument education
+from music_brain.learning import (
+    DifficultyLevel,
+    InstrumentFamily,
+    Instrument,
+    INSTRUMENTS,
+    get_instrument,
+    get_instruments_by_family,
+    get_beginner_instruments,
+    CurriculumBuilder,
+    LearningPath,
+    PedagogyEngine,
+    AdaptiveTeacher,
+    generate_learning_plan,
+)
+
 __all__ = [
     # Groove (file-based)
     "extract_groove",
@@ -108,4 +125,17 @@ __all__ = [
     "EmotionMapper",
     "export_to_logic_automation",
     "MIXER_PRESETS",
+    # Learning Module
+    "DifficultyLevel",
+    "InstrumentFamily",
+    "Instrument",
+    "INSTRUMENTS",
+    "get_instrument",
+    "get_instruments_by_family",
+    "get_beginner_instruments",
+    "CurriculumBuilder",
+    "LearningPath",
+    "PedagogyEngine",
+    "AdaptiveTeacher",
+    "generate_learning_plan",
 ]
