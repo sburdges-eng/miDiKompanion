@@ -1,118 +1,123 @@
-![alt text](https://assets.juce.com/juce/JUCE_banner_github.png "JUCE")
+# iDAW - Intelligent Digital Audio Workstation
 
-JUCE is an open-source cross-platform C++ application framework for creating
-desktop and mobile applications, including VST, VST3, AU, AUv3, AAX and LV2
-audio plug-ins and plug-in hosts. JUCE can be easily integrated with existing
-projects via CMake, or can be used as a project generation tool via the
-[Projucer](#the-projucer), which supports exporting projects for Xcode (macOS
-and iOS), Visual Studio, Android Studio, and Linux Makefiles as well as
-containing a source code editor.
+**Kelly Project Unified Repository**
 
-## Getting Started
+## Overview
 
-The JUCE repository contains a
-[master](https://github.com/juce-framework/JUCE/tree/master) and
-[develop](https://github.com/juce-framework/JUCE/tree/develop) branch. The
-develop branch contains the latest bug fixes and features and is periodically
-merged into the master branch in stable [tagged
-releases](https://github.com/juce-framework/JUCE/releases) (the latest release
-containing pre-built binaries can be also downloaded from the [JUCE
-website](https://juce.com/get-juce)).
+iDAW (Intelligent Digital Audio Workstation), also known as the Kelly Project, is an ambitious therapeutic music generation platform that combines professional DAW features with emotional intelligence and AI-powered music creation.
 
-JUCE projects can be managed with either the Projucer (JUCE's own
-project-configuration tool) or with CMake.
+## Core Concept: Side A / Side B
 
-### The Projucer
+Inspired by cassette tapes, iDAW features a unique dual-interface:
 
-The repository doesn't contain a pre-built Projucer so you will need to build it
-for your platform - Xcode, Visual Studio and Linux Makefile projects are located
-in [extras/Projucer/Builds](/extras/Projucer/Builds) (the minimum system
-requirements are listed in the [minimum system
-requirements](#minimum-system-requirements) section below). The Projucer can
-then be used to create new JUCE projects, view tutorials and run examples. It is
-also possible to include the JUCE modules source code in an existing project
-directly, or build them into a static or dynamic library which can be linked
-into a project.
+- **Side A**: Traditional DAW interface with professional production tools
+- **Side B**: Therapeutic/creative interface with emotion-based generation
 
-For further help getting started, please refer to the JUCE
-[documentation](https://juce.com/learn/documentation) and
-[tutorials](https://juce.com/learn/tutorials).
+## Key Features
 
-### CMake
+### Professional DAW (Side A)
+- Full-featured mixer with channel strips
+- Timeline and transport controls
+- VU meters and audio visualization
+- Plugin hosting capabilities
+- MIDI and audio recording
 
-Version 3.22 or higher is required. To use CMake, you will need to install it,
-either from your system package manager or from the [official download
-page](https://cmake.org/download/). For comprehensive documentation on JUCE's
-CMake API, see the [JUCE CMake documentation](/docs/CMake%20API.md). For
-examples which may be useful as starting points for new CMake projects, see the
-[CMake examples directory](/examples/CMake).
+### Therapeutic Engine (Side B)
+- **6×6×6 Emotion Thesaurus**: 216 emotion nodes for precise emotional targeting
+- **Emotion Wheel**: Visual emotion selection interface
+- **GhostWriter**: AI-powered lyric and melody generation
+- **Interrogator**: Conversational music creation assistant
+- **Dreamstate Mode**: Experimental/therapeutic music exploration
+- **Parrot Feature**: Learning and mimicking musical styles
 
-#### Building Examples
+### Music Brain
+- Intelligent music theory engine
+- Chord progression generation
+- Scale and harmony analysis
+- Genre-specific templates
 
-To use CMake to build the examples and extras bundled with JUCE, simply clone
-JUCE and then run the following commands, replacing "DemoRunner" with the name
-of the target you wish to build.
+### Music Vault
+- Centralized sample and preset management
+- Audio cataloging and tagging
+- Smart search and retrieval
 
-    cd /path/to/JUCE
-    cmake . -B cmake-build -DJUCE_BUILD_EXAMPLES=ON -DJUCE_BUILD_EXTRAS=ON
-    cmake --build cmake-build --target DemoRunner
+## Tech Stack
 
-## Minimum System Requirements
+- **Frontend**: React 18, TypeScript, Tailwind CSS
+- **Backend**: Tauri 2.0, Rust
+- **Audio Engine**: Penta-core (C++ audio processing)
+- **AI Integration**: Python-based music generation
+- **Build System**: Vite
 
-#### Building JUCE Projects
+## Project Structure
 
-- __C++ Standard__: 17
-- __macOS/iOS__: Xcode 12.4 (Intel macOS 10.15.4, Apple Silicon macOS 11.0)
-- __Windows__: Visual Studio 2019 (Windows 10)
-- __Linux__: g++ 7.0 or Clang 6.0 (for a full list of dependencies, see
-[here](/docs/Linux%20Dependencies.md)).
-- __Android__: Android Studio (NDK 26) on Windows, macOS or Linux
+```
+iDAW/
+├── src/                       # React/TypeScript frontend
+├── src-tauri/                 # Rust backend
+├── emotion_thesaurus/         # 6×6×6 emotion system
+├── music_brain/               # Core music intelligence
+├── vault/                     # Sample and preset management
+├── penta_core/                # Audio processing engine
+├── cpp_music_brain/           # C++ music algorithms
+├── docs/                      # Technical documentation
+├── Obsidian_Documentation/    # Knowledge base
+├── Production_Workflows/      # Guides and templates
+└── Python_Tools/              # Utilities and scripts
+```
 
-#### Deployment Targets
+## Quick Start
 
-- __macOS__: macOS 10.11 (x86_64, Arm64)
-- __Windows__: Windows 10 (x86_64, x86, Arm64, Arm64EC)
-- __Linux__: Mainstream Linux distributions (x86_64, Arm64/aarch64, (32 bit Arm systems like armv7 should work but are not regularly tested))
-- __iOS__: iOS 12 (Arm64, Arm64e, x86_64 (Simulator))
-- __Android__: Android 7 - Nougat (API Level 24) (arm64-v8a, armeabi-v7a, x86_64, x86)
+### Prerequisites
+- Node.js 18+
+- Rust 1.70+
+- Python 3.9+
+- CMake (for C++ components)
 
-## Contributing
+### Installation
 
-Please see our [contribution guidelines](.github/contributing.md).
+```bash
+# Clone the repository
+git clone https://github.com/sburdges-eng/1DAW1.git
+cd 1DAW1
 
-## Licensing
+# Install dependencies
+npm install
 
-See [LICENSE.md](LICENSE.md) for licensing and dependency information.
+# Build and run
+npm run tauri dev
+```
 
-## AAX Plug-Ins
+## Documentation
 
-AAX plug-ins need to be digitally signed using PACE Anti-Piracy's signing tools
-before they will run in commercially available versions of Pro Tools. These
-tools are provided free of charge by Avid. Before obtaining the signing tools,
-you will need to use a special build of Pro Tools, called Pro Tools Developer,
-to test your unsigned plug-ins. The steps to obtain Pro Tools Developer are:
+- **[CONSOLIDATION_LOG.md](./CONSOLIDATION_LOG.md)**: How this repo was consolidated
+- **[Obsidian_Documentation/](./Obsidian_Documentation/)**: Comprehensive knowledge base
+- **[Production_Workflows/](./Production_Workflows/)**: Production guides and workflows
+- **[docs/](./docs/)**: Technical documentation
 
-1. Sign up as an AAX Developer [here](https://developer.avid.com/aax/).
-2. Request a Pro Tools Developer Bundle activation code by sending an email to
-   [devauth@avid.com](mailto:devauth@avid.com).
-3. Download the latest Pro Tools Developer build from your Avid Developer
-   account.
+## Development
 
-When your plug-ins have been tested and debugged in Pro Tools Developer, and you
-are ready to digitally sign them, please send an email to
-[audiosdk@avid.com](mailto:audiosdk@avid.com) with the subject "PACE Eden
-Signing Tools Request". You need to include an overview of each plug-in along
-with a screen recording showing the plug-in running in Pro Tools Developer, with
-audio if possible.
+This project was consolidated from 5 separate repositories:
+- iDAW (base)
+- DAiW-Music-Brain (emotion system)
+- penta-core (audio engine)
+- iDAWi (experimental)
+- 1DAW1 (target)
 
-Please also include the following information:
+See [CONSOLIDATION_LOG.md](./CONSOLIDATION_LOG.md) for details.
 
-- Company name
-- Admin full name
-- Telephone number
+## License
 
-Once the request is submitted, PACE Anti-Piracy will contact you directly with
-information about signing your plug-ins. When the plug-ins have been signed, you
-are free to sell and distribute them. If you are interested in selling your
-plug-ins on the Avid Marketplace, please send an email to
-[audiosdk@avid.com](mailto:audiosdk@avid.com).
+MIT License - See LICENSE file for details
+
+## Author
+
+Sean Burdges ([@sburdges-eng](https://github.com/sburdges-eng))
+
+## Acknowledgments
+
+Built with Claude AI assistance for code generation, architecture, and consolidation.
+
+---
+
+**Status**: Active Development (Consolidated 2025-12-06)
