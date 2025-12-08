@@ -1,0 +1,2164 @@
+2025-12-06T11:35:36.480Z [DEBUG] [LSP MANAGER] initializeLspServerManager() called
+2025-12-06T11:35:36.480Z [DEBUG] [LSP MANAGER] Created manager instance, state=pending
+2025-12-06T11:35:36.480Z [DEBUG] [LSP MANAGER] Starting async initialization (generation 1)
+2025-12-06T11:35:36.480Z [DEBUG] [LSP SERVER MANAGER] initialize() called
+2025-12-06T11:35:36.480Z [DEBUG] [LSP SERVER MANAGER] Calling getAllLspServers()
+2025-12-06T11:35:36.493Z [DEBUG] Found 0 plugins (0 enabled, 0 disabled)
+2025-12-06T11:35:36.498Z [DEBUG] Total LSP servers loaded: 0
+2025-12-06T11:35:36.502Z [DEBUG] [LSP SERVER MANAGER] getAllLspServers returned 0 server(s)
+2025-12-06T11:35:36.502Z [DEBUG] LSP manager initialized with 0 servers
+2025-12-06T11:35:36.502Z [DEBUG] LSP server manager initialized successfully
+2025-12-06T11:35:36.502Z [DEBUG] LSP notification handlers registered successfully for all 0 server(s)
+2025-12-06T11:35:36.506Z [DEBUG] Loading skills from directories: managed=/Library/Application Support/ClaudeCode/.claude/skills, user=/Users/seanburdges/.claude/skills, project=/Users/seanburdges/.claude-worktrees/iDAW-copilot-merge-code-assets-workflows/hungry-taussig/.claude/skills
+2025-12-06T11:35:36.506Z [DEBUG] >>>>> getPluginSkills CALLED <<<<<
+2025-12-06T11:35:36.577Z [DEBUG] Creating shell snapshot for zsh (/bin/zsh)
+2025-12-06T11:35:36.577Z [DEBUG] Looking for shell config file: /Users/seanburdges/.zshrc
+2025-12-06T11:35:36.577Z [DEBUG] Snapshots directory: /Users/seanburdges/.claude/shell-snapshots
+2025-12-06T11:35:36.577Z [DEBUG] Creating snapshot at: /Users/seanburdges/.claude/shell-snapshots/snapshot-zsh-1765020936577-t4sst8.sh
+2025-12-06T11:35:36.577Z [DEBUG] Shell binary exists: true
+2025-12-06T11:35:36.577Z [DEBUG] Execution timeout: 10000ms
+2025-12-06T11:35:36.582Z [DEBUG] Writing to temp file: /Users/seanburdges/.claude/todos/4b6cb41f-11fd-4259-abb5-e0595f55936f-agent-4b6cb41f-11fd-4259-abb5-e0595f55936f.json.tmp.92118.1765020936582
+2025-12-06T11:35:36.584Z [DEBUG] Temp file written successfully, size: 2 bytes
+2025-12-06T11:35:36.584Z [DEBUG] Renaming /Users/seanburdges/.claude/todos/4b6cb41f-11fd-4259-abb5-e0595f55936f-agent-4b6cb41f-11fd-4259-abb5-e0595f55936f.json.tmp.92118.1765020936582 to /Users/seanburdges/.claude/todos/4b6cb41f-11fd-4259-abb5-e0595f55936f-agent-4b6cb41f-11fd-4259-abb5-e0595f55936f.json
+2025-12-06T11:35:36.584Z [DEBUG] File /Users/seanburdges/.claude/todos/4b6cb41f-11fd-4259-abb5-e0595f55936f-agent-4b6cb41f-11fd-4259-abb5-e0595f55936f.json written atomically
+2025-12-06T11:35:36.586Z [DEBUG] getPluginSkills: Processing 0 enabled plugins
+2025-12-06T11:35:36.586Z [DEBUG] Total plugin skills loaded: 0
+2025-12-06T11:35:36.586Z [DEBUG] Total plugin commands loaded: 0
+2025-12-06T11:35:36.586Z [DEBUG] Registered 0 hooks from 0 plugins
+2025-12-06T11:35:36.595Z [DEBUG] Loaded 0 unique skills (managed: 0, user: 0, project: 0, duplicates removed: 0)
+2025-12-06T11:35:36.596Z [DEBUG] getSkills returning: 0 skill dir commands, 0 plugin skills
+2025-12-06T11:35:36.596Z [DEBUG] Total plugin agents loaded: 0
+2025-12-06T11:35:36.601Z [DEBUG] Getting matching hook commands for SessionStart with query: startup
+2025-12-06T11:35:36.601Z [DEBUG] Found 0 hook matchers in settings
+2025-12-06T11:35:36.601Z [DEBUG] Matched 0 unique hooks for query "startup" (0 before deduplication)
+2025-12-06T11:35:36.626Z [DEBUG] Git remote URL: https://github.com/seanmdevelopment/lariat-bible.git
+2025-12-06T11:35:36.626Z [DEBUG] Parsed repository: seanmdevelopment/lariat-bible from https://github.com/seanmdevelopment/lariat-bible.git
+2025-12-06T11:35:36.626Z [DEBUG] Parsed repository: seanmdevelopment/lariat-bible from URL: https://github.com/seanmdevelopment/lariat-bible.git
+2025-12-06T11:35:36.628Z [DEBUG] Writing to temp file: /Users/seanburdges/.claude.json.tmp.92118.1765020936628
+2025-12-06T11:35:36.628Z [DEBUG] Preserving file permissions: 100600
+2025-12-06T11:35:36.628Z [DEBUG] Temp file written successfully, size: 51970 bytes
+2025-12-06T11:35:36.628Z [DEBUG] Applied original permissions to temp file
+2025-12-06T11:35:36.628Z [DEBUG] Renaming /Users/seanburdges/.claude.json.tmp.92118.1765020936628 to /Users/seanburdges/.claude.json
+2025-12-06T11:35:36.628Z [DEBUG] File /Users/seanburdges/.claude.json written atomically
+2025-12-06T11:35:36.628Z [DEBUG] Added /Users/seanburdges/.claude-worktrees/iDAW-copilot-merge-code-assets-workflows/hungry-taussig to tracked paths for repo seanmdevelopment/lariat-bible
+2025-12-06T11:35:36.636Z [DEBUG] Shell snapshot created successfully (1009 bytes)
+2025-12-06T11:35:36.641Z [DEBUG] Total plugin output styles loaded: 0
+2025-12-06T11:35:36.646Z [ERROR] "Error: Error: Error opening file /Users/seanburdges/.claude/projects/-Users-seanburdges--claude-worktrees-iDAW-copilot-merge-code-assets-workflows-hungry-taussig/4b6cb41f-11fd-4259-abb5-e0595f55936f.jsonl: Error: ENOENT: no such file or directory, open '/Users/seanburdges/.claude/projects/-Users-seanburdges--claude-worktrees-iDAW-copilot-merge-code-assets-workflows-hungry-taussig/4b6cb41f-11fd-4259-abb5-e0595f55936f.jsonl'\n    at Ea (/$bunfs/root/claude:77:175)\n    at async b2R (/$bunfs/root/claude:4243:2763)\n    at processTicksAndRejections (native:7:39)"
+2025-12-06T11:35:36.667Z [DEBUG] Getting matching hook commands for SubagentStart with query: Plan
+2025-12-06T11:35:36.667Z [DEBUG] Found 0 hook matchers in settings
+2025-12-06T11:35:36.667Z [DEBUG] Matched 0 unique hooks for query "Plan" (0 before deduplication)
+2025-12-06T11:35:36.667Z [DEBUG] Getting matching hook commands for SubagentStart with query: Explore
+2025-12-06T11:35:36.667Z [DEBUG] Found 0 hook matchers in settings
+2025-12-06T11:35:36.667Z [DEBUG] Matched 0 unique hooks for query "Explore" (0 before deduplication)
+2025-12-06T11:35:36.669Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2025-12-06T11:35:36.669Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2025-12-06T11:35:36.669Z [DEBUG] Hooks: Found 0 total hooks in registry
+2025-12-06T11:35:36.669Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2025-12-06T11:35:36.670Z [DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+2025-12-06T11:35:36.670Z [DEBUG] Found 0 hook matchers in settings
+2025-12-06T11:35:36.670Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2025-12-06T11:35:36.805Z [DEBUG] Writing to temp file: /Users/seanburdges/.claude.json.tmp.92118.1765020936805
+2025-12-06T11:35:36.805Z [DEBUG] Preserving file permissions: 100600
+2025-12-06T11:35:36.806Z [DEBUG] Temp file written successfully, size: 51970 bytes
+2025-12-06T11:35:36.806Z [DEBUG] Applied original permissions to temp file
+2025-12-06T11:35:36.806Z [DEBUG] Renaming /Users/seanburdges/.claude.json.tmp.92118.1765020936805 to /Users/seanburdges/.claude.json
+2025-12-06T11:35:36.806Z [DEBUG] File /Users/seanburdges/.claude.json written atomically
+2025-12-06T11:35:36.807Z [DEBUG] Writing to temp file: /Users/seanburdges/.claude.json.tmp.92118.1765020936807
+2025-12-06T11:35:36.807Z [DEBUG] Preserving file permissions: 100600
+2025-12-06T11:35:36.807Z [DEBUG] Temp file written successfully, size: 51970 bytes
+2025-12-06T11:35:36.807Z [DEBUG] Applied original permissions to temp file
+2025-12-06T11:35:36.807Z [DEBUG] Renaming /Users/seanburdges/.claude.json.tmp.92118.1765020936807 to /Users/seanburdges/.claude.json
+2025-12-06T11:35:36.807Z [DEBUG] File /Users/seanburdges/.claude.json written atomically
+2025-12-06T11:35:36.808Z [DEBUG] Writing to temp file: /Users/seanburdges/.claude.json.tmp.92118.1765020936808
+2025-12-06T11:35:36.808Z [DEBUG] Preserving file permissions: 100600
+2025-12-06T11:35:36.808Z [DEBUG] Temp file written successfully, size: 51970 bytes
+2025-12-06T11:35:36.808Z [DEBUG] Applied original permissions to temp file
+2025-12-06T11:35:36.808Z [DEBUG] Renaming /Users/seanburdges/.claude.json.tmp.92118.1765020936808 to /Users/seanburdges/.claude.json
+2025-12-06T11:35:36.808Z [DEBUG] File /Users/seanburdges/.claude.json written atomically
+2025-12-06T11:35:36.812Z [DEBUG] Slash commands included in SlashCommand tool:
+2025-12-06T11:35:36.813Z [DEBUG] Skills and commands included in Skill tool:
+2025-12-06T11:35:36.862Z [DEBUG] Writing to temp file: /Users/seanburdges/.claude.json.tmp.92118.1765020936862
+2025-12-06T11:35:36.862Z [DEBUG] Preserving file permissions: 100600
+2025-12-06T11:35:36.862Z [DEBUG] Temp file written successfully, size: 52008 bytes
+2025-12-06T11:35:36.862Z [DEBUG] Applied original permissions to temp file
+2025-12-06T11:35:36.862Z [DEBUG] Renaming /Users/seanburdges/.claude.json.tmp.92118.1765020936862 to /Users/seanburdges/.claude.json
+2025-12-06T11:35:36.862Z [DEBUG] File /Users/seanburdges/.claude.json written atomically
+2025-12-06T11:35:37.268Z [DEBUG] Metrics opt-out API response: enabled=true, vcsLinking=false
+2025-12-06T11:35:37.759Z [DEBUG] Ripgrep first use test: PASSED (mode=builtin, path=/Users/seanburdges/Library/Application Support/Claude/claude-code/2.0.53/claude)
+2025-12-06T11:35:38.398Z [DEBUG] Stream started - received first chunk
+2025-12-06T11:35:38.487Z [DEBUG] Stream started - received first chunk
+2025-12-06T11:35:38.916Z [DEBUG] Stream started - received first chunk
+2025-12-06T11:35:40.135Z [DEBUG] Getting matching hook commands for SubagentStop with query: undefined
+2025-12-06T11:35:40.135Z [DEBUG] Found 0 hook matchers in settings
+2025-12-06T11:35:40.135Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2025-12-06T11:35:41.448Z [DEBUG] Stream started - received first chunk
+2025-12-06T11:35:45.832Z [DEBUG] Getting matching hook commands for SubagentStop with query: undefined
+2025-12-06T11:35:45.832Z [DEBUG] Found 0 hook matchers in settings
+2025-12-06T11:35:45.832Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2025-12-06T11:35:48.872Z [DEBUG] Getting matching hook commands for Stop with query: undefined
+2025-12-06T11:35:48.872Z [DEBUG] Found 0 hook matchers in settings
+2025-12-06T11:35:48.872Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2025-12-06T11:36:53.266Z [DEBUG] [LSP MANAGER] initializeLspServerManager() called
+2025-12-06T11:36:53.266Z [DEBUG] [LSP MANAGER] Created manager instance, state=pending
+2025-12-06T11:36:53.266Z [DEBUG] [LSP MANAGER] Starting async initialization (generation 1)
+2025-12-06T11:36:53.266Z [DEBUG] [LSP SERVER MANAGER] initialize() called
+2025-12-06T11:36:53.266Z [DEBUG] [LSP SERVER MANAGER] Calling getAllLspServers()
+2025-12-06T11:36:53.272Z [DEBUG] Found 0 plugins (0 enabled, 0 disabled)
+2025-12-06T11:36:53.274Z [DEBUG] Total LSP servers loaded: 0
+2025-12-06T11:36:53.275Z [DEBUG] [LSP SERVER MANAGER] getAllLspServers returned 0 server(s)
+2025-12-06T11:36:53.275Z [DEBUG] LSP manager initialized with 0 servers
+2025-12-06T11:36:53.276Z [DEBUG] LSP server manager initialized successfully
+2025-12-06T11:36:53.276Z [DEBUG] LSP notification handlers registered successfully for all 0 server(s)
+2025-12-06T11:36:53.278Z [DEBUG] Loading skills from directories: managed=/Library/Application Support/ClaudeCode/.claude/skills, user=/Users/seanburdges/.claude/skills, project=/Users/seanburdges/.claude-worktrees/iDAW-copilot-merge-code-assets-workflows/hungry-taussig/.claude/skills
+2025-12-06T11:36:53.278Z [DEBUG] >>>>> getPluginSkills CALLED <<<<<
+2025-12-06T11:36:53.329Z [DEBUG] Creating shell snapshot for zsh (/bin/zsh)
+2025-12-06T11:36:53.329Z [DEBUG] Looking for shell config file: /Users/seanburdges/.zshrc
+2025-12-06T11:36:53.329Z [DEBUG] Snapshots directory: /Users/seanburdges/.claude/shell-snapshots
+2025-12-06T11:36:53.330Z [DEBUG] Creating snapshot at: /Users/seanburdges/.claude/shell-snapshots/snapshot-zsh-1765021013329-abltgy.sh
+2025-12-06T11:36:53.330Z [DEBUG] Shell binary exists: true
+2025-12-06T11:36:53.330Z [DEBUG] Execution timeout: 10000ms
+2025-12-06T11:36:53.330Z [DEBUG] Writing to temp file: /Users/seanburdges/.claude/todos/c32bf290-380c-46ae-ae77-f884f7651612-agent-c32bf290-380c-46ae-ae77-f884f7651612.json.tmp.92959.1765021013330
+2025-12-06T11:36:53.330Z [DEBUG] Temp file written successfully, size: 2 bytes
+2025-12-06T11:36:53.330Z [DEBUG] Renaming /Users/seanburdges/.claude/todos/c32bf290-380c-46ae-ae77-f884f7651612-agent-c32bf290-380c-46ae-ae77-f884f7651612.json.tmp.92959.1765021013330 to /Users/seanburdges/.claude/todos/c32bf290-380c-46ae-ae77-f884f7651612-agent-c32bf290-380c-46ae-ae77-f884f7651612.json
+2025-12-06T11:36:53.330Z [DEBUG] File /Users/seanburdges/.claude/todos/c32bf290-380c-46ae-ae77-f884f7651612-agent-c32bf290-380c-46ae-ae77-f884f7651612.json written atomically
+2025-12-06T11:36:53.332Z [DEBUG] getPluginSkills: Processing 0 enabled plugins
+2025-12-06T11:36:53.332Z [DEBUG] Total plugin skills loaded: 0
+2025-12-06T11:36:53.332Z [DEBUG] Total plugin commands loaded: 0
+2025-12-06T11:36:53.332Z [DEBUG] Registered 0 hooks from 0 plugins
+2025-12-06T11:36:53.332Z [DEBUG] Loaded 0 unique skills (managed: 0, user: 0, project: 0, duplicates removed: 0)
+2025-12-06T11:36:53.332Z [DEBUG] getSkills returning: 0 skill dir commands, 0 plugin skills
+2025-12-06T11:36:53.332Z [DEBUG] Total plugin agents loaded: 0
+2025-12-06T11:36:53.365Z [DEBUG] Git remote URL: https://github.com/seanmdevelopment/lariat-bible.git
+2025-12-06T11:36:53.365Z [DEBUG] Parsed repository: seanmdevelopment/lariat-bible from https://github.com/seanmdevelopment/lariat-bible.git
+2025-12-06T11:36:53.365Z [DEBUG] Parsed repository: seanmdevelopment/lariat-bible from URL: https://github.com/seanmdevelopment/lariat-bible.git
+2025-12-06T11:36:53.365Z [DEBUG] Path /Users/seanburdges/.claude-worktrees/iDAW-copilot-merge-code-assets-workflows/hungry-taussig already tracked for repo seanmdevelopment/lariat-bible
+2025-12-06T11:36:53.369Z [DEBUG] Shell snapshot created successfully (1009 bytes)
+2025-12-06T11:36:53.378Z [DEBUG] Writing to temp file: /Users/seanburdges/.claude.json.tmp.92959.1765021013378
+2025-12-06T11:36:53.378Z [DEBUG] Preserving file permissions: 100600
+2025-12-06T11:36:53.378Z [DEBUG] Temp file written successfully, size: 52008 bytes
+2025-12-06T11:36:53.378Z [DEBUG] Applied original permissions to temp file
+2025-12-06T11:36:53.378Z [DEBUG] Renaming /Users/seanburdges/.claude.json.tmp.92959.1765021013378 to /Users/seanburdges/.claude.json
+2025-12-06T11:36:53.378Z [DEBUG] File /Users/seanburdges/.claude.json written atomically
+2025-12-06T11:36:53.389Z [DEBUG] Summarizing all 2 messages (~0 tokens)
+2025-12-06T11:36:53.400Z [DEBUG] Getting matching hook commands for SubagentStart with query: Plan
+2025-12-06T11:36:53.400Z [DEBUG] Found 0 hook matchers in settings
+2025-12-06T11:36:53.400Z [DEBUG] Matched 0 unique hooks for query "Plan" (0 before deduplication)
+2025-12-06T11:36:53.402Z [DEBUG] Getting matching hook commands for SubagentStart with query: Explore
+2025-12-06T11:36:53.402Z [DEBUG] Found 0 hook matchers in settings
+2025-12-06T11:36:53.402Z [DEBUG] Matched 0 unique hooks for query "Explore" (0 before deduplication)
+2025-12-06T11:36:53.410Z [DEBUG] Getting matching hook commands for SessionStart with query: resume
+2025-12-06T11:36:53.410Z [DEBUG] Found 0 hook matchers in settings
+2025-12-06T11:36:53.410Z [DEBUG] Matched 0 unique hooks for query "resume" (0 before deduplication)
+2025-12-06T11:36:53.466Z [DEBUG] Writing to temp file: /Users/seanburdges/.claude.json.tmp.92959.1765021013466
+2025-12-06T11:36:53.466Z [DEBUG] Preserving file permissions: 100600
+2025-12-06T11:36:53.467Z [DEBUG] Temp file written successfully, size: 51903 bytes
+2025-12-06T11:36:53.467Z [DEBUG] Applied original permissions to temp file
+2025-12-06T11:36:53.467Z [DEBUG] Renaming /Users/seanburdges/.claude.json.tmp.92959.1765021013466 to /Users/seanburdges/.claude.json
+2025-12-06T11:36:53.467Z [DEBUG] File /Users/seanburdges/.claude.json written atomically
+2025-12-06T11:36:53.469Z [DEBUG] performStartupChecks called
+2025-12-06T11:36:53.469Z [DEBUG] Starting background plugin installations
+2025-12-06T11:36:53.470Z [DEBUG] performBackgroundPluginInstallations called
+2025-12-06T11:36:53.476Z [DEBUG] AutoUpdaterWrapper: Installation type: native
+2025-12-06T11:36:53.484Z [DEBUG] Setting installation status: 0 marketplaces, 0 installable plugins, 0 uninstallable plugins
+2025-12-06T11:36:53.486Z [DEBUG] Loaded plugins - Enabled: 0, Disabled: 0, Commands: 0, Agents: 0, Errors: 0
+2025-12-06T11:36:53.490Z [DEBUG] Writing to temp file: /Users/seanburdges/.claude.json.tmp.92959.1765021013490
+2025-12-06T11:36:53.490Z [DEBUG] Preserving file permissions: 100600
+2025-12-06T11:36:53.490Z [DEBUG] Temp file written successfully, size: 51903 bytes
+2025-12-06T11:36:53.490Z [DEBUG] Applied original permissions to temp file
+2025-12-06T11:36:53.490Z [DEBUG] Renaming /Users/seanburdges/.claude.json.tmp.92959.1765021013490 to /Users/seanburdges/.claude.json
+2025-12-06T11:36:53.490Z [DEBUG] File /Users/seanburdges/.claude.json written atomically
+2025-12-06T11:36:53.492Z [DEBUG] Writing to temp file: /Users/seanburdges/.claude.json.tmp.92959.1765021013492
+2025-12-06T11:36:53.492Z [DEBUG] Preserving file permissions: 100600
+2025-12-06T11:36:53.507Z [DEBUG] Temp file written successfully, size: 51903 bytes
+2025-12-06T11:36:53.516Z [DEBUG] Applied original permissions to temp file
+2025-12-06T11:36:53.516Z [DEBUG] Renaming /Users/seanburdges/.claude.json.tmp.92959.1765021013492 to /Users/seanburdges/.claude.json
+2025-12-06T11:36:53.516Z [DEBUG] File /Users/seanburdges/.claude.json written atomically
+2025-12-06T11:36:53.517Z [DEBUG] Writing to temp file: /Users/seanburdges/.claude.json.tmp.92959.1765021013517
+2025-12-06T11:36:53.517Z [DEBUG] Preserving file permissions: 100600
+2025-12-06T11:36:53.517Z [DEBUG] Temp file written successfully, size: 52008 bytes
+2025-12-06T11:36:53.517Z [DEBUG] Applied original permissions to temp file
+2025-12-06T11:36:53.517Z [DEBUG] Renaming /Users/seanburdges/.claude.json.tmp.92959.1765021013517 to /Users/seanburdges/.claude.json
+2025-12-06T11:36:53.518Z [DEBUG] File /Users/seanburdges/.claude.json written atomically
+2025-12-06T11:36:53.639Z [DEBUG] Metrics opt-out API response: enabled=true, vcsLinking=false
+2025-12-06T11:36:53.944Z [DEBUG] Skills and commands included in Skill tool:
+2025-12-06T11:36:53.944Z [DEBUG] Slash commands included in SlashCommand tool:
+2025-12-06T11:36:54.288Z [DEBUG] Ripgrep first use test: PASSED (mode=builtin, path=/Users/seanburdges/Library/Application Support/Claude/claude-code/2.0.53/claude)
+2025-12-06T11:36:54.304Z [DEBUG] Stream started - received first chunk
+2025-12-06T11:36:55.949Z [DEBUG] Stream started - received first chunk
+2025-12-06T11:36:56.272Z [DEBUG] Stream started - received first chunk
+2025-12-06T11:36:56.679Z [DEBUG] Stream started - received first chunk
+2025-12-06T11:36:58.012Z [DEBUG] Getting matching hook commands for SubagentStop with query: undefined
+2025-12-06T11:36:58.012Z [DEBUG] Found 0 hook matchers in settings
+2025-12-06T11:36:58.012Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2025-12-06T11:37:02.505Z [DEBUG] Getting matching hook commands for SubagentStop with query: undefined
+2025-12-06T11:37:02.505Z [DEBUG] Found 0 hook matchers in settings
+2025-12-06T11:37:02.505Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2025-12-06T13:04:18.216Z [DEBUG] Writing to temp file: /Users/seanburdges/.claude.json.tmp.92959.1765026258216
+2025-12-06T13:04:18.216Z [DEBUG] Preserving file permissions: 100600
+2025-12-06T13:04:18.218Z [DEBUG] Temp file written successfully, size: 52198 bytes
+2025-12-06T13:04:18.218Z [DEBUG] Applied original permissions to temp file
+2025-12-06T13:04:18.218Z [DEBUG] Renaming /Users/seanburdges/.claude.json.tmp.92959.1765026258216 to /Users/seanburdges/.claude.json
+2025-12-06T13:04:18.218Z [DEBUG] File /Users/seanburdges/.claude.json written atomically
+2025-12-06T13:04:19.644Z [DEBUG] LSP Diagnostics: getLSPDiagnosticAttachments called
+2025-12-06T13:04:19.644Z [DEBUG] LSP Diagnostics: Checking registry - 0 pending
+2025-12-06T13:04:19.648Z [DEBUG] Hooks: Found 0 total hooks in registry
+2025-12-06T13:04:19.648Z [DEBUG] Hooks: checkForNewResponses returning 0 responses
+2025-12-06T13:04:19.673Z [DEBUG] Getting matching hook commands for UserPromptSubmit with query: undefined
+2025-12-06T13:04:19.673Z [DEBUG] Found 0 hook matchers in settings
+2025-12-06T13:04:19.673Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2025-12-06T13:04:19.675Z [DEBUG] FileHistory: Added snapshot for c307ae60-a5a6-4867-b1ec-1a1abd733587, tracking 0 files
+2025-12-06T13:04:19.697Z [DEBUG] Total plugin output styles loaded: 0
+2025-12-06T13:04:21.581Z [DEBUG] Stream started - received first chunk
+2025-12-06T13:04:23.644Z [DEBUG] Stream started - received first chunk
+2025-12-06T13:04:28.049Z [DEBUG] Getting matching hook commands for Stop with query: undefined
+2025-12-06T13:04:28.049Z [DEBUG] Found 0 hook matchers in settings
+2025-12-06T13:04:28.050Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2025-12-06T13:04:28.053Z [DEBUG] Writing to temp file: /Users/seanburdges/.claude.json.tmp.92959.1765026268053
+2025-12-06T13:04:28.053Z [DEBUG] Preserving file permissions: 100600
+2025-12-06T13:04:28.053Z [DEBUG] Temp file written successfully, size: 52225 bytes
+2025-12-06T13:04:28.053Z [DEBUG] Applied original permissions to temp file
+2025-12-06T13:04:28.053Z [DEBUG] Renaming /Users/seanburdges/.claude.json.tmp.92959.1765026268053 to /Users/seanburdges/.claude.json
+2025-12-06T13:04:28.053Z [DEBUG] File /Users/seanburdges/.claude.json written atomically
+2025-12-06T13:04:28.054Z [DEBUG] Writing to temp file: /Users/seanburdges/.claude.json.tmp.92959.1765026268054
+2025-12-06T13:04:28.054Z [DEBUG] Preserving file permissions: 100600
+2025-12-06T13:04:28.054Z [DEBUG] Temp file written successfully, size: 52225 bytes
+2025-12-06T13:04:28.054Z [DEBUG] Applied original permissions to temp file
+2025-12-06T13:04:28.054Z [DEBUG] Renaming /Users/seanburdges/.claude.json.tmp.92959.1765026268054 to /Users/seanburdges/.claude.json
+2025-12-06T13:04:28.054Z [DEBUG] File /Users/seanburdges/.claude.json written atomically
+2025-12-06T16:47:46.344Z [DEBUG] [LSP MANAGER] initializeLspServerManager() called
+2025-12-06T16:47:46.344Z [DEBUG] [LSP MANAGER] Created manager instance, state=pending
+2025-12-06T16:47:46.344Z [DEBUG] [LSP MANAGER] Starting async initialization (generation 1)
+2025-12-06T16:47:46.344Z [DEBUG] [LSP SERVER MANAGER] initialize() called
+2025-12-06T16:47:46.344Z [DEBUG] [LSP SERVER MANAGER] Calling getAllLspServers()
+2025-12-06T16:47:46.351Z [DEBUG] Found 0 plugins (0 enabled, 0 disabled)
+2025-12-06T16:47:46.354Z [DEBUG] Total LSP servers loaded: 0
+2025-12-06T16:47:46.357Z [DEBUG] [LSP SERVER MANAGER] getAllLspServers returned 0 server(s)
+2025-12-06T16:47:46.357Z [DEBUG] LSP manager initialized with 0 servers
+2025-12-06T16:47:46.357Z [DEBUG] LSP server manager initialized successfully
+2025-12-06T16:47:46.357Z [DEBUG] LSP notification handlers registered successfully for all 0 server(s)
+2025-12-06T16:47:46.359Z [DEBUG] Loading skills from directories: managed=/Library/Application Support/ClaudeCode/.claude/skills, user=/Users/seanburdges/.claude/skills, project=/Users/seanburdges/.claude-worktrees/iDAW-copilot-merge-code-assets-workflows/hungry-taussig/.claude/skills
+2025-12-06T16:47:46.359Z [DEBUG] >>>>> getPluginSkills CALLED <<<<<
+2025-12-06T16:47:46.425Z [DEBUG] Creating shell snapshot for zsh (/bin/zsh)
+2025-12-06T16:47:46.425Z [DEBUG] Looking for shell config file: /Users/seanburdges/.zshrc
+2025-12-06T16:47:46.425Z [DEBUG] Snapshots directory: /Users/seanburdges/.claude/shell-snapshots
+2025-12-06T16:47:46.426Z [DEBUG] Creating snapshot at: /Users/seanburdges/.claude/shell-snapshots/snapshot-zsh-1765039666425-65fbac.sh
+2025-12-06T16:47:46.426Z [DEBUG] Shell binary exists: true
+2025-12-06T16:47:46.426Z [DEBUG] Execution timeout: 10000ms
+2025-12-06T16:47:46.427Z [DEBUG] Writing to temp file: /Users/seanburdges/.claude/todos/f8082866-4547-4a14-97f0-f27209236849-agent-f8082866-4547-4a14-97f0-f27209236849.json.tmp.15129.1765039666427
+2025-12-06T16:47:46.427Z [DEBUG] Temp file written successfully, size: 2 bytes
+2025-12-06T16:47:46.427Z [DEBUG] Renaming /Users/seanburdges/.claude/todos/f8082866-4547-4a14-97f0-f27209236849-agent-f8082866-4547-4a14-97f0-f27209236849.json.tmp.15129.1765039666427 to /Users/seanburdges/.claude/todos/f8082866-4547-4a14-97f0-f27209236849-agent-f8082866-4547-4a14-97f0-f27209236849.json
+2025-12-06T16:47:46.427Z [DEBUG] File /Users/seanburdges/.claude/todos/f8082866-4547-4a14-97f0-f27209236849-agent-f8082866-4547-4a14-97f0-f27209236849.json written atomically
+2025-12-06T16:47:46.429Z [DEBUG] getPluginSkills: Processing 0 enabled plugins
+2025-12-06T16:47:46.429Z [DEBUG] Total plugin skills loaded: 0
+2025-12-06T16:47:46.429Z [DEBUG] Total plugin commands loaded: 0
+2025-12-06T16:47:46.429Z [DEBUG] Registered 0 hooks from 0 plugins
+2025-12-06T16:47:46.429Z [DEBUG] Loaded 0 unique skills (managed: 0, user: 0, project: 0, duplicates removed: 0)
+2025-12-06T16:47:46.429Z [DEBUG] getSkills returning: 0 skill dir commands, 0 plugin skills
+2025-12-06T16:47:46.429Z [DEBUG] Total plugin agents loaded: 0
+2025-12-06T16:47:46.468Z [DEBUG] Git remote URL: https://github.com/seanmdevelopment/lariat-bible.git
+2025-12-06T16:47:46.468Z [DEBUG] Parsed repository: seanmdevelopment/lariat-bible from https://github.com/seanmdevelopment/lariat-bible.git
+2025-12-06T16:47:46.468Z [DEBUG] Parsed repository: seanmdevelopment/lariat-bible from URL: https://github.com/seanmdevelopment/lariat-bible.git
+2025-12-06T16:47:46.468Z [DEBUG] Path /Users/seanburdges/.claude-worktrees/iDAW-copilot-merge-code-assets-workflows/hungry-taussig already tracked for repo seanmdevelopment/lariat-bible
+2025-12-06T16:47:46.477Z [DEBUG] Shell snapshot created successfully (1009 bytes)
+2025-12-06T16:47:46.490Z [DEBUG] Writing to temp file: /Users/seanburdges/.claude.json.tmp.15129.1765039666490
+2025-12-06T16:47:46.490Z [DEBUG] Preserving file permissions: 100600
+2025-12-06T16:47:46.490Z [DEBUG] Temp file written successfully, size: 52225 bytes
+2025-12-06T16:47:46.491Z [DEBUG] Applied original permissions to temp file
+2025-12-06T16:47:46.491Z [DEBUG] Renaming /Users/seanburdges/.claude.json.tmp.15129.1765039666490 to /Users/seanburdges/.claude.json
+2025-12-06T16:47:46.491Z [DEBUG] File /Users/seanburdges/.claude.json written atomically
+2025-12-06T16:47:46.498Z [DEBUG] Summarizing all 4 messages (~1005 tokens)
+2025-12-06T16:47:46.510Z [DEBUG] Getting matching hook commands for SubagentStart with query: Explore
+2025-12-06T16:47:46.510Z [DEBUG] Found 0 hook matchers in settings
+2025-12-06T16:47:46.510Z [DEBUG] Matched 0 unique hooks for query "Explore" (0 before deduplication)
+2025-12-06T16:47:46.510Z [DEBUG] Getting matching hook commands for SubagentStart with query: Plan
+2025-12-06T16:47:46.510Z [DEBUG] Found 0 hook matchers in settings
+2025-12-06T16:47:46.510Z [DEBUG] Matched 0 unique hooks for query "Plan" (0 before deduplication)
+2025-12-06T16:47:46.518Z [DEBUG] Getting matching hook commands for SessionStart with query: resume
+2025-12-06T16:47:46.518Z [DEBUG] Found 0 hook matchers in settings
+2025-12-06T16:47:46.518Z [DEBUG] Matched 0 unique hooks for query "resume" (0 before deduplication)
+2025-12-06T16:47:46.581Z [DEBUG] Writing to temp file: /Users/seanburdges/.claude.json.tmp.15129.1765039666581
+2025-12-06T16:47:46.581Z [DEBUG] Preserving file permissions: 100600
+2025-12-06T16:47:46.582Z [DEBUG] Temp file written successfully, size: 52120 bytes
+2025-12-06T16:47:46.582Z [DEBUG] Applied original permissions to temp file
+2025-12-06T16:47:46.582Z [DEBUG] Renaming /Users/seanburdges/.claude.json.tmp.15129.1765039666581 to /Users/seanburdges/.claude.json
+2025-12-06T16:47:46.582Z [DEBUG] File /Users/seanburdges/.claude.json written atomically
+2025-12-06T16:47:46.585Z [DEBUG] performStartupChecks called
+2025-12-06T16:47:46.585Z [DEBUG] Starting background plugin installations
+2025-12-06T16:47:46.585Z [DEBUG] performBackgroundPluginInstallations called
+2025-12-06T16:47:46.594Z [DEBUG] AutoUpdaterWrapper: Installation type: native
+2025-12-06T16:47:46.608Z [DEBUG] Setting installation status: 0 marketplaces, 0 installable plugins, 0 uninstallable plugins
+2025-12-06T16:47:46.610Z [DEBUG] Loaded plugins - Enabled: 0, Disabled: 0, Commands: 0, Agents: 0, Errors: 0
+2025-12-06T16:47:46.616Z [DEBUG] Writing to temp file: /Users/seanburdges/.claude.json.tmp.15129.1765039666616
+2025-12-06T16:47:46.616Z [DEBUG] Preserving file permissions: 100600
+2025-12-06T16:47:46.618Z [DEBUG] Temp file written successfully, size: 52120 bytes
+2025-12-06T16:47:46.618Z [DEBUG] Applied original permissions to temp file
+2025-12-06T16:47:46.618Z [DEBUG] Renaming /Users/seanburdges/.claude.json.tmp.15129.1765039666616 to /Users/seanburdges/.claude.json
+2025-12-06T16:47:46.618Z [DEBUG] File /Users/seanburdges/.claude.json written atomically
+2025-12-06T16:47:46.625Z [DEBUG] Writing to temp file: /Users/seanburdges/.claude.json.tmp.15129.1765039666625
+2025-12-06T16:47:46.625Z [DEBUG] Preserving file permissions: 100600
+2025-12-06T16:47:46.631Z [DEBUG] Temp file written successfully, size: 52120 bytes
+2025-12-06T16:47:46.631Z [DEBUG] Applied original permissions to temp file
+2025-12-06T16:47:46.631Z [DEBUG] Renaming /Users/seanburdges/.claude.json.tmp.15129.1765039666625 to /Users/seanburdges/.claude.json
+2025-12-06T16:47:46.633Z [DEBUG] File /Users/seanburdges/.claude.json written atomically
+2025-12-06T16:47:46.640Z [DEBUG] Writing to temp file: /Users/seanburdges/.claude.json.tmp.15129.1765039666640
+2025-12-06T16:47:46.640Z [DEBUG] Preserving file permissions: 100600
+2025-12-06T16:47:46.642Z [DEBUG] Temp file written successfully, size: 52225 bytes
+2025-12-06T16:47:46.643Z [DEBUG] Applied original permissions to temp file
+2025-12-06T16:47:46.643Z [DEBUG] Renaming /Users/seanburdges/.claude.json.tmp.15129.1765039666640 to /Users/seanburdges/.claude.json
+2025-12-06T16:47:46.645Z [DEBUG] File /Users/seanburdges/.claude.json written atomically
+2025-12-06T16:47:46.731Z [DEBUG] Writing to temp file: /Users/seanburdges/.claude.json.tmp.15129.1765039666731
+2025-12-06T16:47:46.731Z [DEBUG] Preserving file permissions: 100600
+2025-12-06T16:47:46.731Z [DEBUG] Temp file written successfully, size: 52225 bytes
+2025-12-06T16:47:46.731Z [DEBUG] Applied original permissions to temp file
+2025-12-06T16:47:46.731Z [DEBUG] Renaming /Users/seanburdges/.claude.json.tmp.15129.1765039666731 to /Users/seanburdges/.claude.json
+2025-12-06T16:47:46.731Z [DEBUG] File /Users/seanburdges/.claude.json written atomically
+2025-12-06T16:47:46.748Z [DEBUG] Metrics opt-out API response: enabled=true, vcsLinking=false
+2025-12-06T16:47:47.000Z [DEBUG] Ripgrep first use test: PASSED (mode=builtin, path=/Users/seanburdges/Library/Application Support/Claude/claude-code/2.0.53/claude)
+2025-12-06T16:47:47.248Z [DEBUG] Skills and commands included in Skill tool:
+2025-12-06T16:47:47.248Z [DEBUG] Slash commands included in SlashCommand tool:
+2025-12-06T16:47:47.467Z [DEBUG] Stream started - received first chunk
+2025-12-06T16:47:48.475Z [DEBUG] Stream started - received first chunk
+2025-12-06T16:47:48.709Z [DEBUG] Stream started - received first chunk
+2025-12-06T16:47:49.651Z [DEBUG] Writing to temp file: /Users/seanburdges/.claude.json.tmp.15129.1765039669651
+2025-12-06T16:47:49.651Z [DEBUG] Preserving file permissions: 100600
+2025-12-06T16:47:49.652Z [DEBUG] Temp file written successfully, size: 52861 bytes
+2025-12-06T16:47:49.652Z [DEBUG] Applied original permissions to temp file
+2025-12-06T16:47:49.652Z [DEBUG] Renaming /Users/seanburdges/.claude.json.tmp.15129.1765039669651 to /Users/seanburdges/.claude.json
+2025-12-06T16:47:49.652Z [DEBUG] File /Users/seanburdges/.claude.json written atomically
+2025-12-06T16:47:50.244Z [DEBUG] Getting matching hook commands for SubagentStop with query: undefined
+2025-12-06T16:47:50.244Z [DEBUG] Found 0 hook matchers in settings
+2025-12-06T16:47:50.244Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2025-12-06T16:47:50.934Z [DEBUG] Stream started - received first chunk
+2025-12-06T16:48:05.231Z [DEBUG] Getting matching hook commands for SubagentStop with query: undefined
+2025-12-06T16:48:05.231Z [DEBUG] Found 0 hook matchers in settings
+2025-12-06T16:48:05.231Z [DEBUG] Matched 0 unique hooks for query "no match query" (0 before deduplication)
+2025-12-06T18:39:48.461Z [ERROR] AxiosError: Error
+    at <anonymous> (/$bunfs/root/claude:32:10636)
+    at emit (node:events:92:22)
+    at <anonymous> (/$bunfs/root/claude:31:3314)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-06T20:49:49.506Z [ERROR] AxiosError: Error
+    at <anonymous> (/$bunfs/root/claude:32:10636)
+    at emit (node:events:92:22)
+    at <anonymous> (/$bunfs/root/claude:31:3314)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-06T20:57:00.450Z [ERROR] Error: Error
+    at <anonymous> (/$bunfs/root/claude:14:14648)
+    at <anonymous> (/$bunfs/root/claude:32:10217)
+    at emitError (node:events:43:23)
+    at <anonymous> (/$bunfs/root/claude:31:1146)
+    at emitError (node:events:43:23)
+    at <anonymous> (node:_http_client:248:22)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-06T22:41:45.227Z [ERROR] AxiosError: Error
+    at <anonymous> (/$bunfs/root/claude:32:10636)
+    at emit (node:events:92:22)
+    at <anonymous> (/$bunfs/root/claude:31:3314)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-06T22:58:27.340Z [ERROR] AxiosError: Error
+    at <anonymous> (/$bunfs/root/claude:32:10636)
+    at emit (node:events:92:22)
+    at <anonymous> (/$bunfs/root/claude:31:3314)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-06T23:06:46.258Z [ERROR] AxiosError: Error
+    at <anonymous> (/$bunfs/root/claude:32:10636)
+    at emit (node:events:92:22)
+    at <anonymous> (/$bunfs/root/claude:31:3314)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-06T23:28:12.280Z [ERROR] AxiosError: Error
+    at <anonymous> (/$bunfs/root/claude:32:10636)
+    at emit (node:events:92:22)
+    at <anonymous> (/$bunfs/root/claude:31:3314)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-06T23:42:45.213Z [ERROR] AxiosError: Error
+    at <anonymous> (/$bunfs/root/claude:32:10636)
+    at emit (node:events:92:22)
+    at <anonymous> (/$bunfs/root/claude:31:3314)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T00:21:53.259Z [ERROR] AxiosError: Error
+    at <anonymous> (/$bunfs/root/claude:32:10636)
+    at emit (node:events:92:22)
+    at <anonymous> (/$bunfs/root/claude:31:3314)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T00:43:15.289Z [ERROR] AxiosError: Error
+    at <anonymous> (/$bunfs/root/claude:32:10636)
+    at emit (node:events:92:22)
+    at <anonymous> (/$bunfs/root/claude:31:3314)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T00:48:13.373Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T01:04:01.033Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T01:10:16.084Z [ERROR] AxiosError: Error
+    at <anonymous> (/$bunfs/root/claude:32:10636)
+    at emit (node:events:92:22)
+    at <anonymous> (/$bunfs/root/claude:31:3314)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T01:18:37.968Z [ERROR] Error: Error
+    at <anonymous> (/$bunfs/root/claude:14:14648)
+    at <anonymous> (/$bunfs/root/claude:32:10217)
+    at emitError (node:events:43:23)
+    at <anonymous> (/$bunfs/root/claude:31:1146)
+    at emitError (node:events:43:23)
+    at <anonymous> (node:_http_client:248:22)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T01:36:04.218Z [ERROR] Error: Error
+    at <anonymous> (/$bunfs/root/claude:14:14648)
+    at <anonymous> (/$bunfs/root/claude:32:10217)
+    at emitError (node:events:43:23)
+    at <anonymous> (/$bunfs/root/claude:31:1146)
+    at emitError (node:events:43:23)
+    at <anonymous> (node:_http_client:248:22)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T01:44:10.195Z [ERROR] Error: Error
+    at <anonymous> (/$bunfs/root/claude:14:14648)
+    at <anonymous> (/$bunfs/root/claude:32:10217)
+    at emitError (node:events:43:23)
+    at <anonymous> (/$bunfs/root/claude:31:1146)
+    at emitError (node:events:43:23)
+    at <anonymous> (node:_http_client:248:22)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T02:01:23.257Z [ERROR] Error: Error
+    at <anonymous> (/$bunfs/root/claude:14:14648)
+    at <anonymous> (/$bunfs/root/claude:32:10217)
+    at emitError (node:events:43:23)
+    at <anonymous> (/$bunfs/root/claude:31:1146)
+    at emitError (node:events:43:23)
+    at <anonymous> (node:_http_client:248:22)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T02:16:49.628Z [ERROR] Error: Error
+    at <anonymous> (/$bunfs/root/claude:14:14648)
+    at <anonymous> (/$bunfs/root/claude:32:10217)
+    at emitError (node:events:43:23)
+    at <anonymous> (/$bunfs/root/claude:31:1146)
+    at emitError (node:events:43:23)
+    at <anonymous> (node:_http_client:248:22)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T02:21:49.779Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T02:26:49.726Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T02:31:49.740Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T02:36:49.854Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T02:41:49.802Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T02:46:49.797Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T02:51:49.723Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T02:56:49.822Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T03:01:49.846Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T03:06:49.874Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T03:11:49.830Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T03:16:49.949Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T03:21:49.842Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T03:26:50.465Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T03:31:49.849Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T03:36:49.899Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T03:41:49.924Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T03:46:50.024Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T03:51:49.924Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T03:56:49.885Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T04:01:50.070Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T04:06:49.918Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T04:11:50.076Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T04:16:49.905Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T04:21:49.932Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T04:26:49.922Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T04:31:49.988Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T04:36:49.931Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T04:41:50.048Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T05:01:45.741Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T05:14:13.093Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T05:32:10.296Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T05:47:40.298Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T06:03:58.302Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T06:21:33.143Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T06:37:11.461Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T06:46:09.244Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T07:04:22.419Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T07:22:20.188Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T07:38:20.334Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T07:47:10.043Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T08:05:00.280Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T08:22:44.495Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T08:39:33.284Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T08:48:09.098Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T09:05:35.441Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T09:22:57.451Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T15:33:31.293Z [ERROR] AxiosError: Error
+    at <anonymous> (/$bunfs/root/claude:32:10636)
+    at emit (node:events:92:22)
+    at <anonymous> (/$bunfs/root/claude:31:3314)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T15:38:26.482Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T15:43:26.457Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T15:48:26.322Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T15:56:29.624Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T16:12:15.210Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T16:17:14.553Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T16:22:14.575Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T16:27:14.520Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T16:32:14.549Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T16:37:14.490Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T16:42:14.562Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T16:47:14.869Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T16:52:14.742Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T16:57:14.534Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T17:06:45.861Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T17:12:13.452Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T17:19:02.172Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T17:24:01.620Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T17:29:01.744Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T17:34:01.537Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T17:39:01.664Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T17:44:01.579Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T17:49:01.798Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T17:54:01.629Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T17:59:01.748Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T18:04:01.800Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T18:09:01.746Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T18:14:01.677Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T18:19:01.843Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T18:24:01.673Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T18:29:01.703Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T18:34:01.906Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T18:39:01.815Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T18:44:01.658Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T18:49:01.683Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T18:54:01.725Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T18:59:01.728Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T19:04:01.846Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T19:09:01.897Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T19:14:01.747Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T19:19:01.840Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T19:24:01.660Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T19:29:01.925Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T19:34:01.714Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T19:39:01.771Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T19:44:01.795Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T19:49:01.813Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T19:54:01.752Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T19:59:01.885Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T20:04:01.747Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T20:09:01.833Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T20:14:11.118Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T20:19:17.754Z [ERROR] AxiosError: Error
+    at <anonymous> (/$bunfs/root/claude:32:10636)
+    at emit (node:events:92:22)
+    at <anonymous> (/$bunfs/root/claude:31:3314)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T20:26:30.283Z [ERROR] Error: Error
+    at <anonymous> (/$bunfs/root/claude:14:14648)
+    at <anonymous> (/$bunfs/root/claude:32:10217)
+    at emitError (node:events:43:23)
+    at <anonymous> (/$bunfs/root/claude:31:1146)
+    at emitError (node:events:43:23)
+    at <anonymous> (node:_http_client:248:22)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T20:32:20.525Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T20:39:24.095Z [ERROR] AxiosError: Error
+    at <anonymous> (/$bunfs/root/claude:32:10636)
+    at emit (node:events:92:22)
+    at <anonymous> (/$bunfs/root/claude:31:3314)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T20:56:27.303Z [ERROR] Error: Error
+    at <anonymous> (/$bunfs/root/claude:14:14648)
+    at <anonymous> (/$bunfs/root/claude:32:10217)
+    at emitError (node:events:43:23)
+    at <anonymous> (/$bunfs/root/claude:31:1146)
+    at emitError (node:events:43:23)
+    at <anonymous> (node:_http_client:248:22)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T21:14:46.288Z [ERROR] Error: Error
+    at <anonymous> (/$bunfs/root/claude:14:14648)
+    at <anonymous> (/$bunfs/root/claude:32:10217)
+    at emitError (node:events:43:23)
+    at <anonymous> (/$bunfs/root/claude:31:1146)
+    at emitError (node:events:43:23)
+    at <anonymous> (node:_http_client:248:22)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T21:19:46.786Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T21:24:46.459Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T21:29:46.456Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T21:48:53.346Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T21:53:52.616Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T21:58:52.759Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T22:03:52.646Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T22:08:52.659Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T22:13:52.709Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T22:18:52.812Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T22:23:52.720Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T22:28:52.755Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T22:33:52.704Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T22:38:53.098Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T22:43:52.914Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T22:48:53.151Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T22:53:52.735Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T22:58:52.748Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T23:03:52.696Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T23:08:53.198Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T23:13:52.737Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T23:18:52.776Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T23:23:52.738Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T23:28:52.780Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T23:33:52.770Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T23:38:52.826Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T23:43:52.782Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T23:48:52.858Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T23:53:52.777Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-07T23:58:52.866Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T00:03:52.793Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T00:08:52.884Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T00:13:52.795Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T00:18:52.879Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T00:23:52.845Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T00:28:52.799Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T00:33:52.787Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T00:38:52.815Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T00:43:52.763Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T00:48:52.616Z [ERROR] Error: Error
+    at <anonymous> (/$bunfs/root/claude:14:14648)
+    at <anonymous> (/$bunfs/root/claude:32:10217)
+    at emitError (node:events:43:23)
+    at <anonymous> (/$bunfs/root/claude:31:1146)
+    at emitError (node:events:43:23)
+    at <anonymous> (node:_http_client:248:22)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T00:53:52.942Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T00:58:55.617Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T01:03:53.018Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T01:08:52.839Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T01:13:52.915Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T01:18:53.040Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T01:23:52.981Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T01:28:52.848Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T01:33:53.016Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T01:38:53.052Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T01:43:53.317Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T01:48:53.305Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T01:53:54.183Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T01:58:52.989Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T02:03:53.035Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T02:08:53.022Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T02:13:53.068Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T02:18:52.964Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T02:23:57.619Z [ERROR] AxiosError: Error
+    at <anonymous> (/$bunfs/root/claude:32:10636)
+    at emit (node:events:92:22)
+    at <anonymous> (/$bunfs/root/claude:31:3314)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T02:40:16.540Z [ERROR] Error: Error
+    at <anonymous> (/$bunfs/root/claude:14:14648)
+    at <anonymous> (/$bunfs/root/claude:32:10217)
+    at emitError (node:events:43:23)
+    at <anonymous> (/$bunfs/root/claude:31:1146)
+    at emitError (node:events:43:23)
+    at <anonymous> (node:_http_client:248:22)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T02:58:55.454Z [ERROR] Error: Error
+    at <anonymous> (/$bunfs/root/claude:14:14648)
+    at <anonymous> (/$bunfs/root/claude:32:10217)
+    at emitError (node:events:43:23)
+    at <anonymous> (/$bunfs/root/claude:31:1146)
+    at emitError (node:events:43:23)
+    at <anonymous> (node:_http_client:248:22)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T03:03:55.437Z [ERROR] Error: Error
+    at <anonymous> (/$bunfs/root/claude:14:14648)
+    at <anonymous> (/$bunfs/root/claude:32:10217)
+    at emitError (node:events:43:23)
+    at <anonymous> (/$bunfs/root/claude:31:1146)
+    at emitError (node:events:43:23)
+    at <anonymous> (node:_http_client:248:22)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T03:08:55.648Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T03:13:55.614Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T03:18:55.778Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T03:23:55.664Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T03:28:55.831Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T03:33:55.665Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T03:38:55.684Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T03:43:55.662Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T03:48:55.746Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T03:53:55.664Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T03:58:55.849Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T04:03:55.676Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T04:08:55.814Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T04:13:55.753Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T04:18:55.731Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T04:23:55.750Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T04:28:55.801Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T04:33:55.688Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T04:38:55.844Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T04:43:55.720Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T04:48:55.711Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T04:53:55.687Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T04:58:55.737Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T05:03:55.663Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T05:08:55.968Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T05:13:55.744Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T05:18:55.793Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T05:23:55.961Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T05:28:55.684Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T05:33:55.681Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T05:38:56.107Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T05:43:55.693Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T05:48:55.770Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T05:53:55.769Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T05:58:56.014Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T06:03:55.709Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T06:08:55.810Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T06:13:55.690Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T06:18:55.805Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T06:23:55.868Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T06:28:55.774Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T06:33:56.012Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)
+2025-12-08T06:38:56.142Z [ERROR] AxiosError: Error
+    at NU (/$bunfs/root/claude:27:1143)
+    at <anonymous> (/$bunfs/root/claude:32:10054)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at request (/$bunfs/root/claude:34:2147)
+    at processTicksAndRejections (native:7:39)

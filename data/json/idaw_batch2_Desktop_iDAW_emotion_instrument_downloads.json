@@ -1,0 +1,2980 @@
+{
+  "created": "2025-11-28T00:48:56.530375",
+  "combinations": {
+    "HAPPY_piano": {
+      "emotion": "HAPPY",
+      "instrument": "piano",
+      "level": "base",
+      "total_size_bytes": 1311930,
+      "files": [
+        {
+          "id": 523719,
+          "name": "best_piano.wav",
+          "filename": "523719_best_piano.wav.mp3",
+          "size_bytes": 449046,
+          "downloaded": "2025-11-28T00:49:01.999881"
+        },
+        {
+          "id": 128548,
+          "name": "PianoMoodHappy5.wav",
+          "filename": "128548_PianoMoodHappy5.wav.mp3",
+          "size_bytes": 194341,
+          "downloaded": "2025-11-28T00:49:05.692792"
+        },
+        {
+          "id": 128547,
+          "name": "PianoMoodHappy6.wav",
+          "filename": "128547_PianoMoodHappy6.wav.mp3",
+          "size_bytes": 200998,
+          "downloaded": "2025-11-28T00:49:09.862073"
+        },
+        {
+          "id": 745361,
+          "name": "Intro",
+          "filename": "745361_Intro.mp3",
+          "size_bytes": 162816,
+          "downloaded": "2025-11-28T00:49:13.531472"
+        },
+        {
+          "id": 654028,
+          "name": "Back to School Loop",
+          "filename": "654028_Back to School Loop.mp3",
+          "size_bytes": 304729,
+          "downloaded": "2025-11-28T00:49:17.418699"
+        }
+      ],
+      "last_updated": "2025-11-28T00:49:17.418710"
+    },
+    "HAPPY_guitar": {
+      "emotion": "HAPPY",
+      "instrument": "guitar",
+      "level": "base",
+      "total_size_bytes": 1884036,
+      "files": [
+        {
+          "id": 523719,
+          "name": "best_piano.wav",
+          "filename": "523719_best_piano.wav.mp3",
+          "size_bytes": 449046,
+          "downloaded": "2025-11-28T00:49:21.925305"
+        },
+        {
+          "id": 738791,
+          "name": "Comedy Upbeat (short ver.)",
+          "filename": "738791_Comedy Upbeat short ver..mp3",
+          "size_bytes": 746007,
+          "downloaded": "2025-11-28T00:49:26.245227"
+        },
+        {
+          "id": 514280,
+          "name": "Eletro Hit #4",
+          "filename": "514280_Eletro Hit 4.mp3",
+          "size_bytes": 175323,
+          "downloaded": "2025-11-28T00:49:29.867887"
+        },
+        {
+          "id": 661907,
+          "name": "Happy guitar audio logo (artxmpl-al-02) high",
+          "filename": "661907_Happy guitar audio logo artxmpl-al-02 .mp3",
+          "size_bytes": 66986,
+          "downloaded": "2025-11-28T00:49:33.301867"
+        },
+        {
+          "id": 760970,
+          "name": "Magical Christmas Holidays (loop ver.3)",
+          "filename": "760970_Magical Christmas Holidays loop ver.3.mp3",
+          "size_bytes": 446674,
+          "downloaded": "2025-11-28T00:49:39.747875"
+        }
+      ],
+      "last_updated": "2025-11-28T00:49:39.747893"
+    },
+    "HAPPY_drums": {
+      "emotion": "HAPPY",
+      "instrument": "drums",
+      "level": "base",
+      "total_size_bytes": 916115,
+      "files": [
+        {
+          "id": 690682,
+          "name": "Full Chill Lofi Beat.wav",
+          "filename": "690682_Full Chill Lofi Beat.wav.mp3",
+          "size_bytes": 258091,
+          "downloaded": "2025-11-28T00:49:44.285911"
+        },
+        {
+          "id": 514280,
+          "name": "Eletro Hit #4",
+          "filename": "514280_Eletro Hit 4.mp3",
+          "size_bytes": 175323,
+          "downloaded": "2025-11-28T00:49:47.614035"
+        },
+        {
+          "id": 99968,
+          "name": "light happy beat 122 bpm.wav",
+          "filename": "99968_light happy beat 122 bpm.wav.mp3",
+          "size_bytes": 97689,
+          "downloaded": "2025-11-28T00:49:50.759130"
+        },
+        {
+          "id": 511923,
+          "name": "094-Drumbit.wav",
+          "filename": "511923_094-Drumbit.wav.mp3",
+          "size_bytes": 247968,
+          "downloaded": "2025-11-28T00:49:55.353390"
+        },
+        {
+          "id": 511918,
+          "name": "088-DrumbitX.wav",
+          "filename": "511918_088-DrumbitX.wav.mp3",
+          "size_bytes": 137044,
+          "downloaded": "2025-11-28T00:49:59.335730"
+        }
+      ],
+      "last_updated": "2025-11-28T00:49:59.335750"
+    },
+    "HAPPY_vocals": {
+      "emotion": "HAPPY",
+      "instrument": "vocals",
+      "level": "base",
+      "total_size_bytes": 457991,
+      "files": [
+        {
+          "id": 645367,
+          "name": "Vocal one-shot rap  - never surrender to to di evil one.wav",
+          "filename": "645367_Vocal one-shot rap  - never surrender to.mp3",
+          "size_bytes": 39024,
+          "downloaded": "2025-11-28T00:50:02.949792"
+        },
+        {
+          "id": 428668,
+          "name": "Angry Goliath Yelling Come On",
+          "filename": "428668_Angry Goliath Yelling Come On.mp3",
+          "size_bytes": 24525,
+          "downloaded": "2025-11-28T00:50:05.793433"
+        },
+        {
+          "id": 136777,
+          "name": "Voice: Xmas & New Year",
+          "filename": "136777_Voice Xmas  New Year.mp3",
+          "size_bytes": 63875,
+          "downloaded": "2025-11-28T00:50:08.968295"
+        },
+        {
+          "id": 475065,
+          "name": "\"Wow\" - Vocal Expression (Group 1)",
+          "filename": "475065_Wow - Vocal Expression Group 1.mp3",
+          "size_bytes": 129239,
+          "downloaded": "2025-11-28T00:50:12.132322"
+        },
+        {
+          "id": 521900,
+          "name": "Voice_Child_WowCelebration.wav",
+          "filename": "521900_Voice_Child_WowCelebration.wav.mp3",
+          "size_bytes": 201328,
+          "downloaded": "2025-11-28T00:50:15.610749"
+        }
+      ],
+      "last_updated": "2025-11-28T00:50:15.610770"
+    },
+    "SAD_piano": {
+      "emotion": "SAD",
+      "instrument": "piano",
+      "level": "base",
+      "total_size_bytes": 1673940,
+      "files": [
+        {
+          "id": 654730,
+          "name": "Fusion",
+          "filename": "654730_Fusion.mp3",
+          "size_bytes": 583058,
+          "downloaded": "2025-11-28T00:50:21.689733"
+        },
+        {
+          "id": 238328,
+          "name": "A Minor Progression Piano.wav",
+          "filename": "238328_A Minor Progression Piano.wav.mp3",
+          "size_bytes": 228384,
+          "downloaded": "2025-11-28T00:50:25.594293"
+        },
+        {
+          "id": 518641,
+          "name": "Lofi Tape Piano Chords - 145bpm - C#min.wav",
+          "filename": "518641_Lofi Tape Piano Chords - 145bpm - Cmin..mp3",
+          "size_bytes": 296704,
+          "downloaded": "2025-11-28T00:50:30.081785"
+        },
+        {
+          "id": 423879,
+          "name": "Biggsmoove - Piano sad - The Secession Studios AETrim1521656734527 - (Erokia Remix 1)",
+          "filename": "423879_Biggsmoove - Piano sad - The Secession S.mp3",
+          "size_bytes": 162217,
+          "downloaded": "2025-11-28T00:50:33.638269"
+        },
+        {
+          "id": 128554,
+          "name": "PianoMoodSad1.wav",
+          "filename": "128554_PianoMoodSad1.wav.mp3",
+          "size_bytes": 403577,
+          "downloaded": "2025-11-28T00:50:39.061970"
+        }
+      ],
+      "last_updated": "2025-11-28T00:50:39.061993"
+    },
+    "SAD_guitar": {
+      "emotion": "SAD",
+      "instrument": "guitar",
+      "level": "base",
+      "total_size_bytes": 1658689,
+      "files": [
+        {
+          "id": 654730,
+          "name": "Fusion",
+          "filename": "654730_Fusion.mp3",
+          "size_bytes": 583058,
+          "downloaded": "2025-11-28T00:50:44.384716"
+        },
+        {
+          "id": 706901,
+          "name": "lovescene 76BPM Emin.wav",
+          "filename": "706901_lovescene 76BPM Emin.wav.mp3",
+          "size_bytes": 294852,
+          "downloaded": "2025-11-28T00:50:48.498173"
+        },
+        {
+          "id": 55083,
+          "name": "guitarfx.wav",
+          "filename": "55083_guitarfx.wav.mp3",
+          "size_bytes": 133152,
+          "downloaded": "2025-11-28T00:50:52.188305"
+        },
+        {
+          "id": 175198,
+          "name": "chill-harmonics.wav",
+          "filename": "175198_chill-harmonics.wav.mp3",
+          "size_bytes": 392342,
+          "downloaded": "2025-11-28T00:50:56.561122"
+        },
+        {
+          "id": 175200,
+          "name": "chill-harmonics-04.wav",
+          "filename": "175200_chill-harmonics-04.wav.mp3",
+          "size_bytes": 255285,
+          "downloaded": "2025-11-28T00:51:01.640779"
+        }
+      ],
+      "last_updated": "2025-11-28T00:51:01.640787"
+    },
+    "SAD_drums": {
+      "emotion": "SAD",
+      "instrument": "drums",
+      "level": "base",
+      "total_size_bytes": 2657207,
+      "files": [
+        {
+          "id": 654730,
+          "name": "Fusion",
+          "filename": "654730_Fusion.mp3",
+          "size_bytes": 583058,
+          "downloaded": "2025-11-28T00:51:05.829653"
+        },
+        {
+          "id": 570891,
+          "name": "bird noisy.wav",
+          "filename": "570891_bird noisy.wav.mp3",
+          "size_bytes": 32854,
+          "downloaded": "2025-11-28T00:51:08.569772"
+        },
+        {
+          "id": 580234,
+          "name": "Lucas569895.wav",
+          "filename": "580234_Lucas569895.wav.mp3",
+          "size_bytes": 679542,
+          "downloaded": "2025-11-28T00:51:12.920906"
+        },
+        {
+          "id": 410539,
+          "name": "Sad Metal Solo",
+          "filename": "410539_Sad Metal Solo.mp3",
+          "size_bytes": 614462,
+          "downloaded": "2025-11-28T00:51:17.405399"
+        },
+        {
+          "id": 240157,
+          "name": "charming loop.wav",
+          "filename": "240157_charming loop.wav.mp3",
+          "size_bytes": 747291,
+          "downloaded": "2025-11-28T00:51:28.354389"
+        }
+      ],
+      "last_updated": "2025-11-28T00:51:28.354397"
+    },
+    "SAD_vocals": {
+      "emotion": "SAD",
+      "instrument": "vocals",
+      "level": "base",
+      "total_size_bytes": 1218065,
+      "files": [
+        {
+          "id": 654730,
+          "name": "Fusion",
+          "filename": "654730_Fusion.mp3",
+          "size_bytes": 583058,
+          "downloaded": "2025-11-28T00:51:33.224327"
+        },
+        {
+          "id": 790476,
+          "name": "French Accent Woman Vocal - Therapy Session",
+          "filename": "790476_French Accent Woman Vocal - Therapy Sess.mp3",
+          "size_bytes": 290112,
+          "downloaded": "2025-11-28T00:51:37.239677"
+        },
+        {
+          "id": 246310,
+          "name": "Meh - vocal",
+          "filename": "246310_Meh - vocal.mp3",
+          "size_bytes": 102065,
+          "downloaded": "2025-11-28T00:51:40.560991"
+        },
+        {
+          "id": 180305,
+          "name": "Sad cry 1",
+          "filename": "180305_Sad cry 1.mp3",
+          "size_bytes": 111134,
+          "downloaded": "2025-11-28T00:51:43.867062"
+        },
+        {
+          "id": 180307,
+          "name": "Sad cry 2",
+          "filename": "180307_Sad cry 2.mp3",
+          "size_bytes": 131696,
+          "downloaded": "2025-11-28T00:51:47.225609"
+        }
+      ],
+      "last_updated": "2025-11-28T00:51:47.225637"
+    },
+    "ANGRY_piano": {
+      "emotion": "ANGRY",
+      "instrument": "piano",
+      "level": "base",
+      "total_size_bytes": 316705,
+      "files": [
+        {
+          "id": 621386,
+          "name": "Screaming No - WITH reverb.wav",
+          "filename": "621386_Screaming No - WITH reverb.wav.mp3",
+          "size_bytes": 192573,
+          "downloaded": "2025-11-28T00:51:51.545846"
+        },
+        {
+          "id": 621385,
+          "name": "Screaming No - WITHOUT reverb.wav",
+          "filename": "621385_Screaming No - WITHOUT reverb.wav.mp3",
+          "size_bytes": 124132,
+          "downloaded": "2025-11-28T00:51:55.172977"
+        }
+      ],
+      "last_updated": "2025-11-28T00:51:55.173020"
+    },
+    "ANGRY_guitar": {
+      "emotion": "ANGRY",
+      "instrument": "guitar",
+      "level": "base",
+      "total_size_bytes": 1716424,
+      "files": [
+        {
+          "id": 701154,
+          "name": "Breakbeat Loop",
+          "filename": "701154_Breakbeat Loop.mp3",
+          "size_bytes": 401517,
+          "downloaded": "2025-11-28T00:52:00.789258"
+        },
+        {
+          "id": 5612,
+          "name": "peace and anarchy2.wav",
+          "filename": "5612_peace and anarchy2.wav.mp3",
+          "size_bytes": 521246,
+          "downloaded": "2025-11-28T00:52:05.683957"
+        },
+        {
+          "id": 87083,
+          "name": "stress.wav",
+          "filename": "87083_stress.wav.mp3",
+          "size_bytes": 37620,
+          "downloaded": "2025-11-28T00:52:08.847114"
+        },
+        {
+          "id": 433865,
+          "name": "angry bees.wav",
+          "filename": "433865_angry bees.wav.mp3",
+          "size_bytes": 723898,
+          "downloaded": "2025-11-28T00:52:13.443760"
+        },
+        {
+          "id": 557693,
+          "name": "zzzbeats guitar noodling + fretting.wav",
+          "filename": "557693_zzzbeats guitar noodling  fretting.wav.mp3",
+          "size_bytes": 32143,
+          "downloaded": "2025-11-28T00:52:16.242918"
+        }
+      ],
+      "last_updated": "2025-11-28T00:52:16.242963"
+    },
+    "ANGRY_drums": {
+      "emotion": "ANGRY",
+      "instrument": "drums",
+      "level": "base",
+      "total_size_bytes": 2226493,
+      "files": [
+        {
+          "id": 394820,
+          "name": "Distorted Wah Growl 1.wav",
+          "filename": "394820_Distorted Wah Growl 1.wav.mp3",
+          "size_bytes": 701806,
+          "downloaded": "2025-11-28T00:52:22.285086"
+        },
+        {
+          "id": 701154,
+          "name": "Breakbeat Loop",
+          "filename": "701154_Breakbeat Loop.mp3",
+          "size_bytes": 401517,
+          "downloaded": "2025-11-28T00:52:26.242293"
+        },
+        {
+          "id": 421830,
+          "name": "Cinematic Angry Astronef (Ultimatum)",
+          "filename": "421830_Cinematic Angry Astronef Ultimatum.mp3",
+          "size_bytes": 343392,
+          "downloaded": "2025-11-28T00:52:30.673073"
+        },
+        {
+          "id": 394821,
+          "name": "Distorted Wah Growl 2.wav",
+          "filename": "394821_Distorted Wah Growl 2.wav.mp3",
+          "size_bytes": 702959,
+          "downloaded": "2025-11-28T00:52:35.408155"
+        },
+        {
+          "id": 27836,
+          "name": "InduMetal_Drums002_hearted.wav",
+          "filename": "27836_InduMetal_Drums002_hearted.wav.mp3",
+          "size_bytes": 76819,
+          "downloaded": "2025-11-28T00:52:38.810174"
+        }
+      ],
+      "last_updated": "2025-11-28T00:52:38.810190"
+    },
+    "ANGRY_vocals": {
+      "emotion": "ANGRY",
+      "instrument": "vocals",
+      "level": "base",
+      "total_size_bytes": 1726865,
+      "files": [
+        {
+          "id": 428668,
+          "name": "Angry Goliath Yelling Come On",
+          "filename": "428668_Angry Goliath Yelling Come On.mp3",
+          "size_bytes": 24525,
+          "downloaded": "2025-11-28T00:52:42.068895"
+        },
+        {
+          "id": 573323,
+          "name": "Shut Up!.wav",
+          "filename": "573323_Shut Up.wav.mp3",
+          "size_bytes": 312096,
+          "downloaded": "2025-11-28T00:52:46.814815"
+        },
+        {
+          "id": 700963,
+          "name": "Demon Witch Laughter, Ch and Rev.wav",
+          "filename": "700963_Demon Witch Laughter Ch and Rev.wav.mp3",
+          "size_bytes": 370176,
+          "downloaded": "2025-11-28T00:52:54.264608"
+        },
+        {
+          "id": 464541,
+          "name": "Voices_Collection.wav",
+          "filename": "464541_Voices_Collection.wav.mp3",
+          "size_bytes": 410084,
+          "downloaded": "2025-11-28T00:52:58.356740"
+        },
+        {
+          "id": 718967,
+          "name": "ShoutingPunches_Male",
+          "filename": "718967_ShoutingPunches_Male.mp3",
+          "size_bytes": 609984,
+          "downloaded": "2025-11-28T00:53:03.442433"
+        }
+      ],
+      "last_updated": "2025-11-28T00:53:03.442443"
+    },
+    "FEAR_piano": {
+      "emotion": "FEAR",
+      "instrument": "piano",
+      "level": "base",
+      "total_size_bytes": 855400,
+      "files": [
+        {
+          "id": 563916,
+          "name": "Bad Omen",
+          "filename": "563916_Bad Omen.mp3",
+          "size_bytes": 107136,
+          "downloaded": "2025-11-28T00:53:08.130108"
+        },
+        {
+          "id": 706754,
+          "name": "You've been trapped (short sting)",
+          "filename": "706754_Youve been trapped short sting.mp3",
+          "size_bytes": 141768,
+          "downloaded": "2025-11-28T00:53:12.850901"
+        },
+        {
+          "id": 587012,
+          "name": "Something creepy",
+          "filename": "587012_Something creepy.mp3",
+          "size_bytes": 172171,
+          "downloaded": "2025-11-28T00:53:16.356526"
+        },
+        {
+          "id": 814056,
+          "name": "Vibrating Jumpscare",
+          "filename": "814056_Vibrating Jumpscare.mp3",
+          "size_bytes": 198898,
+          "downloaded": "2025-11-28T00:53:20.017301"
+        },
+        {
+          "id": 814048,
+          "name": "Horror Surprise",
+          "filename": "814048_Horror Surprise.mp3",
+          "size_bytes": 235427,
+          "downloaded": "2025-11-28T00:53:25.305183"
+        }
+      ],
+      "last_updated": "2025-11-28T00:53:25.305202"
+    },
+    "FEAR_guitar": {
+      "emotion": "FEAR",
+      "instrument": "guitar",
+      "level": "base",
+      "total_size_bytes": 1605305,
+      "files": [
+        {
+          "id": 795914,
+          "name": "Sci-Fi Horror scary mechanical transition Infernal Machine",
+          "filename": "795914_Sci-Fi Horror scary mechanical transitio.mp3",
+          "size_bytes": 346544,
+          "downloaded": "2025-11-28T00:53:30.307661"
+        },
+        {
+          "id": 58305,
+          "name": "tk9 RIFF 5E  REVRS.WAV",
+          "filename": "58305_tk9 RIFF 5E  REVRS.WAV.mp3",
+          "size_bytes": 162163,
+          "downloaded": "2025-11-28T00:53:33.986842"
+        },
+        {
+          "id": 652266,
+          "name": "No Fear Loop",
+          "filename": "652266_No Fear Loop.mp3",
+          "size_bytes": 309540,
+          "downloaded": "2025-11-28T00:53:38.831116"
+        },
+        {
+          "id": 719677,
+          "name": "Dark Ambient Guitar Drone E + C",
+          "filename": "719677_Dark Ambient Guitar Drone E  C.mp3",
+          "size_bytes": 461162,
+          "downloaded": "2025-11-28T00:53:42.907489"
+        },
+        {
+          "id": 57863,
+          "name": "DADGAD tk89 RIFF 21FE.wav",
+          "filename": "57863_DADGAD tk89 RIFF 21FE.wav.mp3",
+          "size_bytes": 325896,
+          "downloaded": "2025-11-28T00:53:47.221534"
+        }
+      ],
+      "last_updated": "2025-11-28T00:53:47.221561"
+    },
+    "FEAR_drums": {
+      "emotion": "FEAR",
+      "instrument": "drums",
+      "level": "base",
+      "total_size_bytes": 1124681,
+      "files": [
+        {
+          "id": 753457,
+          "name": "grito-diabolik",
+          "filename": "753457_grito-diabolik.mp3",
+          "size_bytes": 72649,
+          "downloaded": "2025-11-28T00:53:50.894973"
+        },
+        {
+          "id": 123886,
+          "name": "FMJ.wav",
+          "filename": "123886_FMJ.wav.mp3",
+          "size_bytes": 322779,
+          "downloaded": "2025-11-28T00:53:55.860802"
+        },
+        {
+          "id": 652266,
+          "name": "No Fear Loop",
+          "filename": "652266_No Fear Loop.mp3",
+          "size_bytes": 309540,
+          "downloaded": "2025-11-28T00:53:59.655896"
+        },
+        {
+          "id": 648779,
+          "name": "Epic SuperHero Loop1",
+          "filename": "648779_Epic SuperHero Loop1.mp3",
+          "size_bytes": 220815,
+          "downloaded": "2025-11-28T00:54:03.480198"
+        },
+        {
+          "id": 814056,
+          "name": "Vibrating Jumpscare",
+          "filename": "814056_Vibrating Jumpscare.mp3",
+          "size_bytes": 198898,
+          "downloaded": "2025-11-28T00:54:07.143384"
+        }
+      ],
+      "last_updated": "2025-11-28T00:54:07.143396"
+    },
+    "FEAR_vocals": {
+      "emotion": "FEAR",
+      "instrument": "vocals",
+      "level": "base",
+      "total_size_bytes": 1376614,
+      "files": [
+        {
+          "id": 179317,
+          "name": "Male Scream 13",
+          "filename": "179317_Male Scream 13.mp3",
+          "size_bytes": 174276,
+          "downloaded": "2025-11-28T00:54:11.337660"
+        },
+        {
+          "id": 582488,
+          "name": "Whisper swoosh_8(mltprcssng).wav",
+          "filename": "582488_Whisper swoosh_8mltprcssng.wav.mp3",
+          "size_bytes": 231960,
+          "downloaded": "2025-11-28T00:54:15.198099"
+        },
+        {
+          "id": 179326,
+          "name": "Male screams \"Hey!\"",
+          "filename": "179326_Male screams Hey.mp3",
+          "size_bytes": 65329,
+          "downloaded": "2025-11-28T00:54:18.419046"
+        },
+        {
+          "id": 581837,
+          "name": "Male creepy blowing.Fade in reverb_1(dns,Eq,MS,rvrb) .wav",
+          "filename": "581837_Male creepy blowing.Fade in reverb_1dns.mp3",
+          "size_bytes": 452784,
+          "downloaded": "2025-11-28T00:54:23.702217"
+        },
+        {
+          "id": 794240,
+          "name": "Ghost Crossing - The Beyond",
+          "filename": "794240_Ghost Crossing - The Beyond.mp3",
+          "size_bytes": 452265,
+          "downloaded": "2025-11-28T00:54:27.952645"
+        }
+      ],
+      "last_updated": "2025-11-28T00:54:27.952659"
+    },
+    "SURPRISE_piano": {
+      "emotion": "SURPRISE",
+      "instrument": "piano",
+      "level": "base",
+      "total_size_bytes": 871934,
+      "files": [
+        {
+          "id": 814053,
+          "name": "Shockwave",
+          "filename": "814053_Shockwave.mp3",
+          "size_bytes": 177199,
+          "downloaded": "2025-11-28T00:54:31.823959"
+        },
+        {
+          "id": 563916,
+          "name": "Bad Omen",
+          "filename": "563916_Bad Omen.mp3",
+          "size_bytes": 107136,
+          "downloaded": "2025-11-28T00:54:35.457115"
+        },
+        {
+          "id": 814044,
+          "name": "Creation Magic Blast",
+          "filename": "814044_Creation Magic Blast.mp3",
+          "size_bytes": 170606,
+          "downloaded": "2025-11-28T00:54:40.364445"
+        },
+        {
+          "id": 814045,
+          "name": "Dark Sci-Fi Signal",
+          "filename": "814045_Dark Sci-Fi Signal.mp3",
+          "size_bytes": 203012,
+          "downloaded": "2025-11-28T00:54:45.417247"
+        },
+        {
+          "id": 814057,
+          "name": "World Ender Explosion",
+          "filename": "814057_World Ender Explosion.mp3",
+          "size_bytes": 213981,
+          "downloaded": "2025-11-28T00:54:49.279242"
+        }
+      ],
+      "last_updated": "2025-11-28T00:54:49.279250"
+    },
+    "SURPRISE_guitar": {
+      "emotion": "SURPRISE",
+      "instrument": "guitar",
+      "level": "base",
+      "total_size_bytes": 1125728,
+      "files": [
+        {
+          "id": 652272,
+          "name": "Wild West Loop1",
+          "filename": "652272_Wild West Loop1.mp3",
+          "size_bytes": 265580,
+          "downloaded": "2025-11-28T00:54:53.368881"
+        },
+        {
+          "id": 817421,
+          "name": "Lucky Guitar Sound",
+          "filename": "817421_Lucky Guitar Sound.mp3",
+          "size_bytes": 68253,
+          "downloaded": "2025-11-28T00:54:56.723709"
+        },
+        {
+          "id": 218887,
+          "name": "Super shock",
+          "filename": "218887_Super shock.mp3",
+          "size_bytes": 163834,
+          "downloaded": "2025-11-28T00:55:00.704193"
+        },
+        {
+          "id": 652271,
+          "name": "Wild West Loop2",
+          "filename": "652271_Wild West Loop2.mp3",
+          "size_bytes": 263343,
+          "downloaded": "2025-11-28T00:55:04.817711"
+        },
+        {
+          "id": 30813,
+          "name": "S0L0.wav",
+          "filename": "30813_S0L0.wav.mp3",
+          "size_bytes": 364718,
+          "downloaded": "2025-11-28T00:55:09.291206"
+        }
+      ],
+      "last_updated": "2025-11-28T00:55:09.291235"
+    },
+    "SURPRISE_drums": {
+      "emotion": "SURPRISE",
+      "instrument": "drums",
+      "level": "base",
+      "total_size_bytes": 1050374,
+      "files": [
+        {
+          "id": 814053,
+          "name": "Shockwave",
+          "filename": "814053_Shockwave.mp3",
+          "size_bytes": 177199,
+          "downloaded": "2025-11-28T00:55:13.539030"
+        },
+        {
+          "id": 814044,
+          "name": "Creation Magic Blast",
+          "filename": "814044_Creation Magic Blast.mp3",
+          "size_bytes": 170606,
+          "downloaded": "2025-11-28T00:55:19.495243"
+        },
+        {
+          "id": 814045,
+          "name": "Dark Sci-Fi Signal",
+          "filename": "814045_Dark Sci-Fi Signal.mp3",
+          "size_bytes": 203012,
+          "downloaded": "2025-11-28T00:55:23.584587"
+        },
+        {
+          "id": 652406,
+          "name": "Hellish Fuzz Bass",
+          "filename": "652406_Hellish Fuzz Bass.mp3",
+          "size_bytes": 285576,
+          "downloaded": "2025-11-28T00:55:27.916412"
+        },
+        {
+          "id": 814057,
+          "name": "World Ender Explosion",
+          "filename": "814057_World Ender Explosion.mp3",
+          "size_bytes": 213981,
+          "downloaded": "2025-11-28T00:55:32.645838"
+        }
+      ],
+      "last_updated": "2025-11-28T00:55:32.645889"
+    },
+    "SURPRISE_vocals": {
+      "emotion": "SURPRISE",
+      "instrument": "vocals",
+      "level": "base",
+      "total_size_bytes": 752765,
+      "files": [
+        {
+          "id": 77024,
+          "name": "SPOT surprize, crowd gasp.wav",
+          "filename": "77024_SPOT surprize crowd gasp.wav.mp3",
+          "size_bytes": 199680,
+          "downloaded": "2025-11-28T00:55:36.506312"
+        },
+        {
+          "id": 712113,
+          "name": "Cartoon-like male emotions vocal sfx",
+          "filename": "712113_Cartoon-like male emotions vocal sfx.mp3",
+          "size_bytes": 339840,
+          "downloaded": "2025-11-28T00:55:40.465271"
+        },
+        {
+          "id": 643309,
+          "name": "no no no dont do that - dramatic vocal build-up",
+          "filename": "643309_no no no dont do that - dramatic vocal b.mp3",
+          "size_bytes": 74088,
+          "downloaded": "2025-11-28T00:55:43.466538"
+        },
+        {
+          "id": 530119,
+          "name": "Oh My God! Vocals with Echo",
+          "filename": "530119_Oh My God Vocals with Echo.mp3",
+          "size_bytes": 109157,
+          "downloaded": "2025-11-28T00:55:47.281310"
+        },
+        {
+          "id": 643290,
+          "name": "No really - surprised vocal one shot",
+          "filename": "643290_No really - surprised vocal one shot.mp3",
+          "size_bytes": 30000,
+          "downloaded": "2025-11-28T00:55:50.952731"
+        }
+      ],
+      "last_updated": "2025-11-28T00:55:50.952752"
+    },
+    "DISGUST_piano": {
+      "emotion": "DISGUST",
+      "instrument": "piano",
+      "level": "base",
+      "total_size_bytes": 0,
+      "files": [],
+      "last_updated": "2025-11-28T00:55:51.957555"
+    },
+    "DISGUST_guitar": {
+      "emotion": "DISGUST",
+      "instrument": "guitar",
+      "level": "base",
+      "total_size_bytes": 110171,
+      "files": [
+        {
+          "id": 660996,
+          "name": "scratchy2.wav",
+          "filename": "660996_scratchy2.wav.mp3",
+          "size_bytes": 52034,
+          "downloaded": "2025-11-28T00:55:55.464856"
+        },
+        {
+          "id": 660993,
+          "name": "scratchy.wav",
+          "filename": "660993_scratchy.wav.mp3",
+          "size_bytes": 58137,
+          "downloaded": "2025-11-28T00:55:58.703428"
+        }
+      ],
+      "last_updated": "2025-11-28T00:55:58.703447"
+    },
+    "DISGUST_drums": {
+      "emotion": "DISGUST",
+      "instrument": "drums",
+      "level": "base",
+      "total_size_bytes": 0,
+      "files": [],
+      "last_updated": "2025-11-28T00:55:59.710161"
+    },
+    "DISGUST_vocals": {
+      "emotion": "DISGUST",
+      "instrument": "vocals",
+      "level": "base",
+      "total_size_bytes": 287160,
+      "files": [
+        {
+          "id": 643000,
+          "name": "Eel disgust - vocal one shot.wav",
+          "filename": "643000_Eel disgust - vocal one shot.wav.mp3",
+          "size_bytes": 20496,
+          "downloaded": "2025-11-28T00:56:02.351465"
+        },
+        {
+          "id": 642988,
+          "name": "eeww thats disgusting - vocal",
+          "filename": "642988_eeww thats disgusting - vocal.mp3",
+          "size_bytes": 70536,
+          "downloaded": "2025-11-28T00:56:06.222595"
+        },
+        {
+          "id": 643012,
+          "name": "Eww a spider - scared vocal",
+          "filename": "643012_Eww a spider - scared vocal.mp3",
+          "size_bytes": 48480,
+          "downloaded": "2025-11-28T00:56:09.466104"
+        },
+        {
+          "id": 642989,
+          "name": "Eewww - vocal dirty one shot 3",
+          "filename": "642989_Eewww - vocal dirty one shot 3.mp3",
+          "size_bytes": 22704,
+          "downloaded": "2025-11-28T00:56:12.447431"
+        },
+        {
+          "id": 643291,
+          "name": "Nasty disgusting - vocal",
+          "filename": "643291_Nasty disgusting - vocal.mp3",
+          "size_bytes": 124944,
+          "downloaded": "2025-11-28T00:56:16.118344"
+        }
+      ],
+      "last_updated": "2025-11-28T00:56:16.118377"
+    },
+    "CONTENTMENT_piano": {
+      "emotion": "CONTENTMENT",
+      "instrument": "piano",
+      "level": "sub",
+      "total_size_bytes": 1370693,
+      "files": [
+        {
+          "id": 477124,
+          "name": "Ambient Piano Loop 4 (Ambiance)-(90 Bpm)",
+          "filename": "477124_Ambient Piano Loop 4 Ambiance-90 Bpm.mp3",
+          "size_bytes": 635000,
+          "downloaded": "2025-11-28T00:56:20.884287"
+        },
+        {
+          "id": 477116,
+          "name": "Ambient Piano Loop 59_3 (Ambiance)-(170 BPM)",
+          "filename": "477116_Ambient Piano Loop 59_3 Ambiance-170 .mp3",
+          "size_bytes": 137683,
+          "downloaded": "2025-11-28T00:56:24.257798"
+        },
+        {
+          "id": 477094,
+          "name": "Ambient Piano Loop 65 (Ambiance)-(90 BPM)",
+          "filename": "477094_Ambient Piano Loop 65 Ambiance-90 BPM.mp3",
+          "size_bytes": 250224,
+          "downloaded": "2025-11-28T00:56:29.319510"
+        },
+        {
+          "id": 407236,
+          "name": "Ambient Piano Loop 9_16 (SideChained-Ambiance)-(140 Bpm)",
+          "filename": "407236_Ambient Piano Loop 9_16 SideChained-Amb.mp3",
+          "size_bytes": 160394,
+          "downloaded": "2025-11-28T00:56:33.608299"
+        },
+        {
+          "id": 387588,
+          "name": "Piano Ambiance 4 (120bpm)[CC0] - Ambient Piano Loop 37 (Ambiance)-(120 BPM)",
+          "filename": "387588_Piano Ambiance 4 120bpmCC0 - Ambient.mp3",
+          "size_bytes": 187392,
+          "downloaded": "2025-11-28T00:56:37.139592"
+        }
+      ],
+      "last_updated": "2025-11-28T00:56:37.139625"
+    },
+    "CONTENTMENT_guitar": {
+      "emotion": "CONTENTMENT",
+      "instrument": "guitar",
+      "level": "sub",
+      "total_size_bytes": 1016068,
+      "files": [
+        {
+          "id": 645430,
+          "name": "Cheerful Intro",
+          "filename": "645430_Cheerful Intro.mp3",
+          "size_bytes": 234852,
+          "downloaded": "2025-11-28T00:56:42.433604"
+        },
+        {
+          "id": 587782,
+          "name": "Short Metal Intro / Fill",
+          "filename": "587782_Short Metal Intro  Fill.mp3",
+          "size_bytes": 52777,
+          "downloaded": "2025-11-28T00:56:45.647190"
+        },
+        {
+          "id": 299025,
+          "name": "Korg Z1 - Z1 Guitar - C8 (Z1 Guitar-108-127.wav)",
+          "filename": "299025_Korg Z1 - Z1 Guitar - C8 Z1 Guitar-108-.mp3",
+          "size_bytes": 241123,
+          "downloaded": "2025-11-28T00:56:49.152038"
+        },
+        {
+          "id": 298995,
+          "name": "Korg Z1 - Z1 Guitar - F5 (Z1 Guitar-78-127.wav)",
+          "filename": "298995_Korg Z1 - Z1 Guitar - F5 Z1 Guitar-78-1.mp3",
+          "size_bytes": 244432,
+          "downloaded": "2025-11-28T00:56:53.096443"
+        },
+        {
+          "id": 299024,
+          "name": "Korg Z1 - Z1 Guitar - B7 (Z1 Guitar-107-127.wav)",
+          "filename": "299024_Korg Z1 - Z1 Guitar - B7 Z1 Guitar-107-.mp3",
+          "size_bytes": 242884,
+          "downloaded": "2025-11-28T00:56:56.819369"
+        }
+      ],
+      "last_updated": "2025-11-28T00:56:56.819400"
+    },
+    "CONTENTMENT_drums": {
+      "emotion": "CONTENTMENT",
+      "instrument": "drums",
+      "level": "sub",
+      "total_size_bytes": 420419,
+      "files": [
+        {
+          "id": 546247,
+          "name": "[Drumloop] 110 BPM Drums 001",
+          "filename": "546247_Drumloop 110 BPM Drums 001.mp3",
+          "size_bytes": 113131,
+          "downloaded": "2025-11-28T00:57:00.686009"
+        },
+        {
+          "id": 351917,
+          "name": "House Kick 5 (Less Deep Sub)",
+          "filename": "351917_House Kick 5 Less Deep Sub.mp3",
+          "size_bytes": 13031,
+          "downloaded": "2025-11-28T00:57:03.442503"
+        },
+        {
+          "id": 785798,
+          "name": "Pressure Kick by Alien I Trust (125_Bpm)  (6)",
+          "filename": "785798_Pressure Kick by Alien I Trust 125_Bpm.mp3",
+          "size_bytes": 66289,
+          "downloaded": "2025-11-28T00:57:06.146878"
+        },
+        {
+          "id": 785800,
+          "name": "Pressure Kick by Alien I Trust (125_Bpm)  (3)",
+          "filename": "785800_Pressure Kick by Alien I Trust 125_Bpm.mp3",
+          "size_bytes": 67574,
+          "downloaded": "2025-11-28T00:57:09.265438"
+        },
+        {
+          "id": 407236,
+          "name": "Ambient Piano Loop 9_16 (SideChained-Ambiance)-(140 Bpm)",
+          "filename": "407236_Ambient Piano Loop 9_16 SideChained-Amb.mp3",
+          "size_bytes": 160394,
+          "downloaded": "2025-11-28T00:57:13.267901"
+        }
+      ],
+      "last_updated": "2025-11-28T00:57:13.267929"
+    },
+    "CONTENTMENT_vocals": {
+      "emotion": "CONTENTMENT",
+      "instrument": "vocals",
+      "level": "sub",
+      "total_size_bytes": 1070976,
+      "files": [
+        {
+          "id": 371934,
+          "name": "m-train-dpa.wav",
+          "filename": "371934_m-train-dpa.wav.mp3",
+          "size_bytes": 193456,
+          "downloaded": "2025-11-28T00:57:17.528310"
+        },
+        {
+          "id": 427942,
+          "name": "419331__thescarlettwitch89__female-ooh-singing-voice22_2.wav",
+          "filename": "427942_419331__thescarlettwitch89__female-ooh-s.mp3",
+          "size_bytes": 122325,
+          "downloaded": "2025-11-28T00:57:21.133637"
+        },
+        {
+          "id": 2678,
+          "name": "TAPE36.WAV",
+          "filename": "2678_TAPE36.WAV.mp3",
+          "size_bytes": 73371,
+          "downloaded": "2025-11-28T00:57:25.201744"
+        },
+        {
+          "id": 267166,
+          "name": "Seascraper - Equation of Love Sophie + Jay (Straight) (C#) (Calm, Clean, Canada, Chimera, Clear, Celebrity, Clutch, Capitalist, Corporations, Classic).WAV",
+          "filename": "267166_Seascraper - Equation of Love Sophie  J.mp3",
+          "size_bytes": 656883,
+          "downloaded": "2025-11-28T00:57:29.539642"
+        },
+        {
+          "id": 2671,
+          "name": "TAPE29.WAV",
+          "filename": "2671_TAPE29.WAV.mp3",
+          "size_bytes": 24941,
+          "downloaded": "2025-11-28T00:57:32.169828"
+        }
+      ],
+      "last_updated": "2025-11-28T00:57:32.169837"
+    },
+    "JOY_piano": {
+      "emotion": "JOY",
+      "instrument": "piano",
+      "level": "sub",
+      "total_size_bytes": 1492579,
+      "files": [
+        {
+          "id": 654028,
+          "name": "Back to School Loop",
+          "filename": "654028_Back to School Loop.mp3",
+          "size_bytes": 304729,
+          "downloaded": "2025-11-28T00:57:37.403953"
+        },
+        {
+          "id": 455039,
+          "name": "Ode to Joy Piano",
+          "filename": "455039_Ode to Joy Piano.mp3",
+          "size_bytes": 489546,
+          "downloaded": "2025-11-28T00:57:41.580544"
+        },
+        {
+          "id": 645038,
+          "name": "XP Paino Intermission.wav",
+          "filename": "645038_XP Paino Intermission.wav.mp3",
+          "size_bytes": 381216,
+          "downloaded": "2025-11-28T00:57:45.909321"
+        },
+        {
+          "id": 654034,
+          "name": "Summer Upbeat Loop",
+          "filename": "654034_Summer Upbeat Loop.mp3",
+          "size_bytes": 263568,
+          "downloaded": "2025-11-28T00:57:50.643024"
+        },
+        {
+          "id": 745362,
+          "name": "Level up",
+          "filename": "745362_Level up.mp3",
+          "size_bytes": 53520,
+          "downloaded": "2025-11-28T00:58:01.806072"
+        }
+      ],
+      "last_updated": "2025-11-28T00:58:01.806095"
+    },
+    "JOY_guitar": {
+      "emotion": "JOY",
+      "instrument": "guitar",
+      "level": "sub",
+      "total_size_bytes": 2369397,
+      "files": [
+        {
+          "id": 738791,
+          "name": "Comedy Upbeat (short ver.)",
+          "filename": "738791_Comedy Upbeat short ver..mp3",
+          "size_bytes": 746007,
+          "downloaded": "2025-11-28T00:58:06.746641"
+        },
+        {
+          "id": 514280,
+          "name": "Eletro Hit #4",
+          "filename": "514280_Eletro Hit 4.mp3",
+          "size_bytes": 175323,
+          "downloaded": "2025-11-28T00:58:10.256623"
+        },
+        {
+          "id": 760970,
+          "name": "Magical Christmas Holidays (loop ver.3)",
+          "filename": "760970_Magical Christmas Holidays loop ver.3.mp3",
+          "size_bytes": 446674,
+          "downloaded": "2025-11-28T00:58:15.423521"
+        },
+        {
+          "id": 561030,
+          "name": "Quick, bouncy, happy, bright melody",
+          "filename": "561030_Quick bouncy happy bright melody.mp3",
+          "size_bytes": 503390,
+          "downloaded": "2025-11-28T00:58:21.009818"
+        },
+        {
+          "id": 710556,
+          "name": "Born To Drive (loop ver.3)",
+          "filename": "710556_Born To Drive loop ver.3.mp3",
+          "size_bytes": 498003,
+          "downloaded": "2025-11-28T00:58:25.097343"
+        }
+      ],
+      "last_updated": "2025-11-28T00:58:25.097378"
+    },
+    "JOY_drums": {
+      "emotion": "JOY",
+      "instrument": "drums",
+      "level": "sub",
+      "total_size_bytes": 925690,
+      "files": [
+        {
+          "id": 514280,
+          "name": "Eletro Hit #4",
+          "filename": "514280_Eletro Hit 4.mp3",
+          "size_bytes": 175323,
+          "downloaded": "2025-11-28T00:58:28.508673"
+        },
+        {
+          "id": 477359,
+          "name": "Whistling Song Loop.wav",
+          "filename": "477359_Whistling Song Loop.wav.mp3",
+          "size_bytes": 448276,
+          "downloaded": "2025-11-28T00:58:32.163290"
+        },
+        {
+          "id": 232190,
+          "name": "drum loop #001 (078 BPM).wav",
+          "filename": "232190_drum loop 001 078 BPM.wav.mp3",
+          "size_bytes": 78389,
+          "downloaded": "2025-11-28T00:58:35.105510"
+        },
+        {
+          "id": 106370,
+          "name": "1 bar 111.3 fill.wav",
+          "filename": "106370_1 bar 111.3 fill.wav.mp3",
+          "size_bytes": 47955,
+          "downloaded": "2025-11-28T00:58:38.075663"
+        },
+        {
+          "id": 568376,
+          "name": "Eletro Hit #8",
+          "filename": "568376_Eletro Hit 8.mp3",
+          "size_bytes": 175747,
+          "downloaded": "2025-11-28T00:58:41.610936"
+        }
+      ],
+      "last_updated": "2025-11-28T00:58:41.610961"
+    },
+    "JOY_vocals": {
+      "emotion": "JOY",
+      "instrument": "vocals",
+      "level": "sub",
+      "total_size_bytes": 603289,
+      "files": [
+        {
+          "id": 254289,
+          "name": "Male Laugh  - Laughter",
+          "filename": "254289_Male Laugh  - Laughter.mp3",
+          "size_bytes": 31008,
+          "downloaded": "2025-11-28T00:58:44.878142"
+        },
+        {
+          "id": 254328,
+          "name": "Male Laugh  - Laughter",
+          "filename": "254328_Male Laugh  - Laughter.mp3",
+          "size_bytes": 73728,
+          "downloaded": "2025-11-28T00:58:47.638671"
+        },
+        {
+          "id": 408421,
+          "name": "Female Laugh (Hysterical & Comical)",
+          "filename": "408421_Female Laugh Hysterical  Comical.mp3",
+          "size_bytes": 314880,
+          "downloaded": "2025-11-28T00:58:51.440543"
+        },
+        {
+          "id": 528140,
+          "name": "wind 2.wav",
+          "filename": "528140_wind 2.wav.mp3",
+          "size_bytes": 84169,
+          "downloaded": "2025-11-28T00:58:55.582808"
+        },
+        {
+          "id": 254288,
+          "name": "Male Laugh  - Laughter",
+          "filename": "254288_Male Laugh  - Laughter.mp3",
+          "size_bytes": 99504,
+          "downloaded": "2025-11-28T00:58:59.249556"
+        }
+      ],
+      "last_updated": "2025-11-28T00:58:59.249576"
+    },
+    "EXCITEMENT_piano": {
+      "emotion": "EXCITEMENT",
+      "instrument": "piano",
+      "level": "sub",
+      "total_size_bytes": 692224,
+      "files": [
+        {
+          "id": 608394,
+          "name": "Ghosts",
+          "filename": "608394_Ghosts.mp3",
+          "size_bytes": 608823,
+          "downloaded": "2025-11-28T00:59:05.991335"
+        },
+        {
+          "id": 666790,
+          "name": "The Circle Is Complete",
+          "filename": "666790_The Circle Is Complete.mp3",
+          "size_bytes": 83401,
+          "downloaded": "2025-11-28T00:59:09.136784"
+        }
+      ],
+      "last_updated": "2025-11-28T00:59:09.136802"
+    },
+    "EXCITEMENT_guitar": {
+      "emotion": "EXCITEMENT",
+      "instrument": "guitar",
+      "level": "sub",
+      "total_size_bytes": 1673966,
+      "files": [
+        {
+          "id": 533891,
+          "name": "Exciter Rock Loop.wav",
+          "filename": "533891_Exciter Rock Loop.wav.mp3",
+          "size_bytes": 471911,
+          "downloaded": "2025-11-28T00:59:14.378234"
+        },
+        {
+          "id": 797741,
+          "name": "Snakebot Loop",
+          "filename": "797741_Snakebot Loop.mp3",
+          "size_bytes": 519610,
+          "downloaded": "2025-11-28T00:59:21.237847"
+        },
+        {
+          "id": 102818,
+          "name": "remix of 41967__REVEREND.BLACK__REV_LOOPS_METAL_GUITAR_12_brighter_buzzier-old1.wav",
+          "filename": "102818_remix of 41967__REVEREND.BLACK__REV_LOOP.mp3",
+          "size_bytes": 226655,
+          "downloaded": "2025-11-28T00:59:25.389934"
+        },
+        {
+          "id": 205620,
+          "name": "1-sample impulse @ 48kHz (WAV)",
+          "filename": "205620_1-sample impulse  48kHz WAV.mp3",
+          "size_bytes": 48912,
+          "downloaded": "2025-11-28T00:59:29.206287"
+        },
+        {
+          "id": 58330,
+          "name": "ambienta-soundtrack_arppe2600va-upinthespace.wav",
+          "filename": "58330_ambienta-soundtrack_arppe2600va-upinthes.mp3",
+          "size_bytes": 406878,
+          "downloaded": "2025-11-28T00:59:34.142916"
+        }
+      ],
+      "last_updated": "2025-11-28T00:59:34.142942"
+    },
+    "EXCITEMENT_drums": {
+      "emotion": "EXCITEMENT",
+      "instrument": "drums",
+      "level": "sub",
+      "total_size_bytes": 698541,
+      "files": [
+        {
+          "id": 459875,
+          "name": "Warrior bass T.wav",
+          "filename": "459875_Warrior bass T.wav.mp3",
+          "size_bytes": 43783,
+          "downloaded": "2025-11-28T00:59:37.971713"
+        },
+        {
+          "id": 30985,
+          "name": "Kick3.wav",
+          "filename": "30985_Kick3.wav.mp3",
+          "size_bytes": 76869,
+          "downloaded": "2025-11-28T00:59:41.451952"
+        },
+        {
+          "id": 666788,
+          "name": "So Convenient 2 Be A Robot",
+          "filename": "666788_So Convenient 2 Be A Robot.mp3",
+          "size_bytes": 82673,
+          "downloaded": "2025-11-28T00:59:44.880447"
+        },
+        {
+          "id": 440829,
+          "name": "Sting, rimshot, drum roll (smooth)",
+          "filename": "440829_Sting rimshot drum roll smooth.mp3",
+          "size_bytes": 126624,
+          "downloaded": "2025-11-28T00:59:48.458196"
+        },
+        {
+          "id": 744675,
+          "name": "145 hat loop t9xj5",
+          "filename": "744675_145 hat loop t9xj5.mp3",
+          "size_bytes": 368592,
+          "downloaded": "2025-11-28T00:59:52.696692"
+        }
+      ],
+      "last_updated": "2025-11-28T00:59:52.696719"
+    },
+    "EXCITEMENT_vocals": {
+      "emotion": "EXCITEMENT",
+      "instrument": "vocals",
+      "level": "sub",
+      "total_size_bytes": 1760638,
+      "files": [
+        {
+          "id": 169336,
+          "name": "OOh Female Various",
+          "filename": "169336_OOh Female Various.mp3",
+          "size_bytes": 442266,
+          "downloaded": "2025-11-28T00:59:59.898165"
+        },
+        {
+          "id": 479672,
+          "name": "R12-60-Horses Snort and Vocalize.wav",
+          "filename": "479672_R12-60-Horses Snort and Vocalize.wav.mp3",
+          "size_bytes": 399312,
+          "downloaded": "2025-11-28T01:00:04.224470"
+        },
+        {
+          "id": 395570,
+          "name": "Four Talons.wav",
+          "filename": "395570_Four Talons.wav.mp3",
+          "size_bytes": 466636,
+          "downloaded": "2025-11-28T01:00:09.509964"
+        },
+        {
+          "id": 560253,
+          "name": "I Have To Tell You Something.wav",
+          "filename": "560253_I Have To Tell You Something.wav.mp3",
+          "size_bytes": 339168,
+          "downloaded": "2025-11-28T01:00:14.144888"
+        },
+        {
+          "id": 584924,
+          "name": "Shark Scream Riser 001.wav",
+          "filename": "584924_Shark Scream Riser 001.wav.mp3",
+          "size_bytes": 113256,
+          "downloaded": "2025-11-28T01:00:18.118161"
+        }
+      ],
+      "last_updated": "2025-11-28T01:00:18.118188"
+    },
+    "PRIDE_piano": {
+      "emotion": "PRIDE",
+      "instrument": "piano",
+      "level": "sub",
+      "total_size_bytes": 0,
+      "files": [],
+      "last_updated": "2025-11-28T01:00:19.124811"
+    },
+    "PRIDE_guitar": {
+      "emotion": "PRIDE",
+      "instrument": "guitar",
+      "level": "sub",
+      "total_size_bytes": 0,
+      "files": [],
+      "last_updated": "2025-11-28T01:00:19.587995"
+    },
+    "PRIDE_drums": {
+      "emotion": "PRIDE",
+      "instrument": "drums",
+      "level": "sub",
+      "total_size_bytes": 631066,
+      "files": [
+        {
+          "id": 501749,
+          "name": "James Brown - Soul Pride (Drum Loop - Amplified).wav",
+          "filename": "501749_James Brown - Soul Pride Drum Loop - Am.mp3",
+          "size_bytes": 631066,
+          "downloaded": "2025-11-28T01:00:24.254387"
+        }
+      ],
+      "last_updated": "2025-11-28T01:00:24.254412"
+    },
+    "PRIDE_vocals": {
+      "emotion": "PRIDE",
+      "instrument": "vocals",
+      "level": "sub",
+      "total_size_bytes": 757491,
+      "files": [
+        {
+          "id": 267166,
+          "name": "Seascraper - Equation of Love Sophie + Jay (Straight) (C#) (Calm, Clean, Canada, Chimera, Clear, Celebrity, Clutch, Capitalist, Corporations, Classic).WAV",
+          "filename": "267166_Seascraper - Equation of Love Sophie  J.mp3",
+          "size_bytes": 656883,
+          "downloaded": "2025-11-28T01:00:29.366580"
+        },
+        {
+          "id": 267107,
+          "name": "Seascraper - Nanobots For Women - Pleasure Augmention - Win Romance - Sophie + Jay [Happiness Boost] - (F) (Freedom, Feeling, Fascinating, Friction, Faith, Farther, Fitness).WAV",
+          "filename": "267107_Seascraper - Nanobots For Women - Pleasu.mp3",
+          "size_bytes": 100608,
+          "downloaded": "2025-11-28T01:00:33.709487"
+        }
+      ],
+      "last_updated": "2025-11-28T01:00:33.709517"
+    },
+    "LOVE_piano": {
+      "emotion": "LOVE",
+      "instrument": "piano",
+      "level": "sub",
+      "total_size_bytes": 2204703,
+      "files": [
+        {
+          "id": 370745,
+          "name": "Piano Ambiance 2 (90bpm).wav",
+          "filename": "370745_Piano Ambiance 2 90bpm.wav.mp3",
+          "size_bytes": 623616,
+          "downloaded": "2025-11-28T01:00:39.083925"
+        },
+        {
+          "id": 428292,
+          "name": "DSV1_SuspensfulRhodes02_C#_70bpm.wav",
+          "filename": "428292_DSV1_SuspensfulRhodes02_C_70bpm.wav.mp3",
+          "size_bytes": 295175,
+          "downloaded": "2025-11-28T01:00:43.676434"
+        },
+        {
+          "id": 428249,
+          "name": "DSV1_SuspensfulRhodes01_C#_70bpm.wav",
+          "filename": "428249_DSV1_SuspensfulRhodes01_C_70bpm.wav.mp3",
+          "size_bytes": 291843,
+          "downloaded": "2025-11-28T01:00:47.703741"
+        },
+        {
+          "id": 407340,
+          "name": "Rhodes Loop 2 (140bpm)",
+          "filename": "407340_Rhodes Loop 2 140bpm.mp3",
+          "size_bytes": 323391,
+          "downloaded": "2025-11-28T01:00:51.899991"
+        },
+        {
+          "id": 784063,
+          "name": "Music loop NA 69 bpm",
+          "filename": "784063_Music loop NA 69 bpm.mp3",
+          "size_bytes": 670678,
+          "downloaded": "2025-11-28T01:00:57.865675"
+        }
+      ],
+      "last_updated": "2025-11-28T01:00:57.865683"
+    },
+    "LOVE_guitar": {
+      "emotion": "LOVE",
+      "instrument": "guitar",
+      "level": "sub",
+      "total_size_bytes": 1913834,
+      "files": [
+        {
+          "id": 175227,
+          "name": "creatures-scuttle-02.wav",
+          "filename": "175227_creatures-scuttle-02.wav.mp3",
+          "size_bytes": 174542,
+          "downloaded": "2025-11-28T01:01:05.241576"
+        },
+        {
+          "id": 784063,
+          "name": "Music loop NA 69 bpm",
+          "filename": "784063_Music loop NA 69 bpm.mp3",
+          "size_bytes": 670678,
+          "downloaded": "2025-11-28T01:01:10.337347"
+        },
+        {
+          "id": 711192,
+          "name": "yunggoth sample [1lovewav]",
+          "filename": "711192_yunggoth sample 1lovewav.mp3",
+          "size_bytes": 188992,
+          "downloaded": "2025-11-28T01:01:14.289398"
+        },
+        {
+          "id": 175154,
+          "name": "western-chord-02.wav",
+          "filename": "175154_western-chord-02.wav.mp3",
+          "size_bytes": 224095,
+          "downloaded": "2025-11-28T01:01:17.823889"
+        },
+        {
+          "id": 784188,
+          "name": "Music loop NA guitar jaguar flanger deesser 69 bpm",
+          "filename": "784188_Music loop NA guitar jaguar flanger dees.mp3",
+          "size_bytes": 655527,
+          "downloaded": "2025-11-28T01:01:21.541335"
+        }
+      ],
+      "last_updated": "2025-11-28T01:01:21.541364"
+    },
+    "LOVE_drums": {
+      "emotion": "LOVE",
+      "instrument": "drums",
+      "level": "sub",
+      "total_size_bytes": 1432559,
+      "files": [
+        {
+          "id": 629140,
+          "name": "Lofi Drum Loop 70 BPM.wav",
+          "filename": "629140_Lofi Drum Loop 70 BPM.wav.mp3",
+          "size_bytes": 325080,
+          "downloaded": "2025-11-28T01:01:27.072788"
+        },
+        {
+          "id": 629141,
+          "name": "Lofi - Kick+Snare+Vinyl Static 95 BPM.wav",
+          "filename": "629141_Lofi - KickSnareVinyl Static 95 BPM.wa.mp3",
+          "size_bytes": 241434,
+          "downloaded": "2025-11-28T01:01:31.297203"
+        },
+        {
+          "id": 743006,
+          "name": "Massive Laser (charge-up, more bass)",
+          "filename": "743006_Massive Laser charge-up more bass.mp3",
+          "size_bytes": 258806,
+          "downloaded": "2025-11-28T01:01:35.187067"
+        },
+        {
+          "id": 407340,
+          "name": "Rhodes Loop 2 (140bpm)",
+          "filename": "407340_Rhodes Loop 2 140bpm.mp3",
+          "size_bytes": 323391,
+          "downloaded": "2025-11-28T01:01:39.163848"
+        },
+        {
+          "id": 669324,
+          "name": "Victory Fanfare (Light Wills Ever)",
+          "filename": "669324_Victory Fanfare Light Wills Ever.mp3",
+          "size_bytes": 283848,
+          "downloaded": "2025-11-28T01:01:42.799364"
+        }
+      ],
+      "last_updated": "2025-11-28T01:01:42.799372"
+    },
+    "LOVE_vocals": {
+      "emotion": "LOVE",
+      "instrument": "vocals",
+      "level": "sub",
+      "total_size_bytes": 984154,
+      "files": [
+        {
+          "id": 500658,
+          "name": "Vocal Bit.wav",
+          "filename": "500658_Vocal Bit.wav.mp3",
+          "size_bytes": 418309,
+          "downloaded": "2025-11-28T01:01:48.591306"
+        },
+        {
+          "id": 645755,
+          "name": "\ud83e\udde1 Spread the love y'all- vocal.wav",
+          "filename": "645755_ Spread the love yall- vocal.wav.mp3",
+          "size_bytes": 31296,
+          "downloaded": "2025-11-28T01:01:51.395762"
+        },
+        {
+          "id": 428668,
+          "name": "Angry Goliath Yelling Come On",
+          "filename": "428668_Angry Goliath Yelling Come On.mp3",
+          "size_bytes": 24525,
+          "downloaded": "2025-11-28T01:01:54.424699"
+        },
+        {
+          "id": 644026,
+          "name": "My intention is love - vocal",
+          "filename": "644026_My intention is love - vocal.mp3",
+          "size_bytes": 76488,
+          "downloaded": "2025-11-28T01:01:57.625399"
+        },
+        {
+          "id": 642495,
+          "name": "I love you variations",
+          "filename": "642495_I love you variations.mp3",
+          "size_bytes": 433536,
+          "downloaded": "2025-11-28T01:02:02.676547"
+        }
+      ],
+      "last_updated": "2025-11-28T01:02:02.676574"
+    },
+    "HOPE_piano": {
+      "emotion": "HOPE",
+      "instrument": "piano",
+      "level": "sub",
+      "total_size_bytes": 1498738,
+      "files": [
+        {
+          "id": 428292,
+          "name": "DSV1_SuspensfulRhodes02_C#_70bpm.wav",
+          "filename": "428292_DSV1_SuspensfulRhodes02_C_70bpm.wav.mp3",
+          "size_bytes": 295175,
+          "downloaded": "2025-11-28T01:02:06.711804"
+        },
+        {
+          "id": 515089,
+          "name": "piano background 4.wav",
+          "filename": "515089_piano background 4.wav.mp3",
+          "size_bytes": 311798,
+          "downloaded": "2025-11-28T01:02:10.669190"
+        },
+        {
+          "id": 428249,
+          "name": "DSV1_SuspensfulRhodes01_C#_70bpm.wav",
+          "filename": "428249_DSV1_SuspensfulRhodes01_C_70bpm.wav.mp3",
+          "size_bytes": 291843,
+          "downloaded": "2025-11-28T01:02:14.774603"
+        },
+        {
+          "id": 428299,
+          "name": "DSV1_SuspensfulRhodes05_G_77bpm.wav",
+          "filename": "428299_DSV1_SuspensfulRhodes05_G_77bpm.wav.mp3",
+          "size_bytes": 266211,
+          "downloaded": "2025-11-28T01:02:21.026678"
+        },
+        {
+          "id": 539218,
+          "name": "Dirty Deeds Trippy Piano - 123bpm - Fmin",
+          "filename": "539218_Dirty Deeds Trippy Piano - 123bpm - Fmin.mp3",
+          "size_bytes": 333711,
+          "downloaded": "2025-11-28T01:02:25.749197"
+        }
+      ],
+      "last_updated": "2025-11-28T01:02:25.749223"
+    },
+    "HOPE_guitar": {
+      "emotion": "HOPE",
+      "instrument": "guitar",
+      "level": "sub",
+      "total_size_bytes": 2032414,
+      "files": [
+        {
+          "id": 483130,
+          "name": "Electric bass guitar loop 2 bpm 110.wav",
+          "filename": "483130_Electric bass guitar loop 2 bpm 110.wav.mp3",
+          "size_bytes": 162714,
+          "downloaded": "2025-11-28T01:02:30.140226"
+        },
+        {
+          "id": 782938,
+          "name": "Three Days Out - Intro",
+          "filename": "782938_Three Days Out - Intro.mp3",
+          "size_bytes": 399233,
+          "downloaded": "2025-11-28T01:02:40.213305"
+        },
+        {
+          "id": 642542,
+          "name": "Aggressive Rhythm Guitar",
+          "filename": "642542_Aggressive Rhythm Guitar.mp3",
+          "size_bytes": 271104,
+          "downloaded": "2025-11-28T01:02:44.423038"
+        },
+        {
+          "id": 528767,
+          "name": "New Beginning (30) Ambient Guitar Soundtrack",
+          "filename": "528767_New Beginning 30 Ambient Guitar Soundt.mp3",
+          "size_bytes": 656794,
+          "downloaded": "2025-11-28T01:02:49.436777"
+        },
+        {
+          "id": 633807,
+          "name": "Rock_Short_24.wav",
+          "filename": "633807_Rock_Short_24.wav.mp3",
+          "size_bytes": 542569,
+          "downloaded": "2025-11-28T01:02:54.269067"
+        }
+      ],
+      "last_updated": "2025-11-28T01:02:54.269093"
+    },
+    "HOPE_drums": {
+      "emotion": "HOPE",
+      "instrument": "drums",
+      "level": "sub",
+      "total_size_bytes": 1840050,
+      "files": [
+        {
+          "id": 335688,
+          "name": "credits4.wav",
+          "filename": "335688_credits4.wav.mp3",
+          "size_bytes": 370306,
+          "downloaded": "2025-11-28T01:02:58.556640"
+        },
+        {
+          "id": 275334,
+          "name": "Trust.wav",
+          "filename": "275334_Trust.wav.mp3",
+          "size_bytes": 277298,
+          "downloaded": "2025-11-28T01:03:04.258389"
+        },
+        {
+          "id": 339245,
+          "name": "Edge_drumloop_pondotek2015.wav",
+          "filename": "339245_Edge_drumloop_pondotek2015.wav.mp3",
+          "size_bytes": 480864,
+          "downloaded": "2025-11-28T01:03:10.311064"
+        },
+        {
+          "id": 621846,
+          "name": "Orchestral Score - Viola Solo.wav",
+          "filename": "621846_Orchestral Score - Viola Solo.wav.mp3",
+          "size_bytes": 492270,
+          "downloaded": "2025-11-28T01:03:14.767126"
+        },
+        {
+          "id": 564404,
+          "name": "Ta-daa fanfare.wav",
+          "filename": "564404_Ta-daa fanfare.wav.mp3",
+          "size_bytes": 219312,
+          "downloaded": "2025-11-28T01:03:18.518191"
+        }
+      ],
+      "last_updated": "2025-11-28T01:03:18.518217"
+    },
+    "HOPE_vocals": {
+      "emotion": "HOPE",
+      "instrument": "vocals",
+      "level": "sub",
+      "total_size_bytes": 1649801,
+      "files": [
+        {
+          "id": 673072,
+          "name": "Fear itself",
+          "filename": "673072_Fear itself.mp3",
+          "size_bytes": 377566,
+          "downloaded": "2025-11-28T01:03:23.418843"
+        },
+        {
+          "id": 624131,
+          "name": "Distorted Electric Sexy Female Vocal (Weaknd) - Gmin - 108bpm",
+          "filename": "624131_Distorted Electric Sexy Female Vocal We.mp3",
+          "size_bytes": 405369,
+          "downloaded": "2025-11-28T01:03:28.831994"
+        },
+        {
+          "id": 203977,
+          "name": "Matt's Beatbox Harmonies Loop (100 bpm)",
+          "filename": "203977_Matts Beatbox Harmonies Loop 100 bpm.mp3",
+          "size_bytes": 228193,
+          "downloaded": "2025-11-28T01:03:32.975368"
+        },
+        {
+          "id": 203532,
+          "name": "Matt's Beatbox Loop (100bpm)",
+          "filename": "203532_Matts Beatbox Loop 100bpm.mp3",
+          "size_bytes": 243162,
+          "downloaded": "2025-11-28T01:03:36.943495"
+        },
+        {
+          "id": 624132,
+          "name": "Dark Medieval Female Background Vocal - Bbmin - 110bpm",
+          "filename": "624132_Dark Medieval Female Background Vocal - .mp3",
+          "size_bytes": 395511,
+          "downloaded": "2025-11-28T01:03:45.148349"
+        }
+      ],
+      "last_updated": "2025-11-28T01:03:45.148357"
+    },
+    "GRIEF_piano": {
+      "emotion": "GRIEF",
+      "instrument": "piano",
+      "level": "sub",
+      "total_size_bytes": 1034787,
+      "files": [
+        {
+          "id": 555803,
+          "name": "Sunset Loop",
+          "filename": "555803_Sunset Loop.mp3",
+          "size_bytes": 517543,
+          "downloaded": "2025-11-28T01:03:50.734106"
+        },
+        {
+          "id": 555804,
+          "name": "Romantic Lounge Loop",
+          "filename": "555804_Romantic Lounge Loop.mp3",
+          "size_bytes": 517244,
+          "downloaded": "2025-11-28T01:03:55.138901"
+        }
+      ],
+      "last_updated": "2025-11-28T01:03:55.138929"
+    },
+    "GRIEF_guitar": {
+      "emotion": "GRIEF",
+      "instrument": "guitar",
+      "level": "sub",
+      "total_size_bytes": 0,
+      "files": [],
+      "last_updated": "2025-11-28T01:03:56.147020"
+    },
+    "GRIEF_drums": {
+      "emotion": "GRIEF",
+      "instrument": "drums",
+      "level": "sub",
+      "total_size_bytes": 49487,
+      "files": [
+        {
+          "id": 334460,
+          "name": "Industrial Music Snare (two variations)",
+          "filename": "334460_Industrial Music Snare two variations.mp3",
+          "size_bytes": 49487,
+          "downloaded": "2025-11-28T01:03:58.885915"
+        }
+      ],
+      "last_updated": "2025-11-28T01:03:58.885951"
+    },
+    "GRIEF_vocals": {
+      "emotion": "GRIEF",
+      "instrument": "vocals",
+      "level": "sub",
+      "total_size_bytes": 525265,
+      "files": [
+        {
+          "id": 180305,
+          "name": "Sad cry 1",
+          "filename": "180305_Sad cry 1.mp3",
+          "size_bytes": 111134,
+          "downloaded": "2025-11-28T01:04:02.741706"
+        },
+        {
+          "id": 180307,
+          "name": "Sad cry 2",
+          "filename": "180307_Sad cry 2.mp3",
+          "size_bytes": 131696,
+          "downloaded": "2025-11-28T01:04:06.074289"
+        },
+        {
+          "id": 180312,
+          "name": "Sad cry 9",
+          "filename": "180312_Sad cry 9.mp3",
+          "size_bytes": 83121,
+          "downloaded": "2025-11-28T01:04:09.555526"
+        },
+        {
+          "id": 180313,
+          "name": "Sad cry 8",
+          "filename": "180313_Sad cry 8.mp3",
+          "size_bytes": 98716,
+          "downloaded": "2025-11-28T01:04:13.060433"
+        },
+        {
+          "id": 180315,
+          "name": "Sad cry 6",
+          "filename": "180315_Sad cry 6.mp3",
+          "size_bytes": 100598,
+          "downloaded": "2025-11-28T01:04:20.186760"
+        }
+      ],
+      "last_updated": "2025-11-28T01:04:20.186768"
+    },
+    "DESPAIR_piano": {
+      "emotion": "DESPAIR",
+      "instrument": "piano",
+      "level": "sub",
+      "total_size_bytes": 0,
+      "files": [],
+      "last_updated": "2025-11-28T01:04:21.193160"
+    },
+    "DESPAIR_guitar": {
+      "emotion": "DESPAIR",
+      "instrument": "guitar",
+      "level": "sub",
+      "total_size_bytes": 472216,
+      "files": [
+        {
+          "id": 128061,
+          "name": "despair s53mc",
+          "filename": "128061_despair s53mc.mp3",
+          "size_bytes": 472216,
+          "downloaded": "2025-11-28T01:04:25.570027"
+        }
+      ],
+      "last_updated": "2025-11-28T01:04:25.570050"
+    },
+    "DESPAIR_drums": {
+      "emotion": "DESPAIR",
+      "instrument": "drums",
+      "level": "sub",
+      "total_size_bytes": 849823,
+      "files": [
+        {
+          "id": 128061,
+          "name": "despair s53mc",
+          "filename": "128061_despair s53mc.mp3",
+          "size_bytes": 472216,
+          "downloaded": "2025-11-28T01:04:31.250790"
+        },
+        {
+          "id": 135379,
+          "name": "desperate s47g2",
+          "filename": "135379_desperate s47g2.mp3",
+          "size_bytes": 377607,
+          "downloaded": "2025-11-28T01:04:36.091405"
+        }
+      ],
+      "last_updated": "2025-11-28T01:04:36.091430"
+    },
+    "DESPAIR_vocals": {
+      "emotion": "DESPAIR",
+      "instrument": "vocals",
+      "level": "sub",
+      "total_size_bytes": 0,
+      "files": [],
+      "last_updated": "2025-11-28T01:04:37.100048"
+    },
+    "LONELINESS_piano": {
+      "emotion": "LONELINESS",
+      "instrument": "piano",
+      "level": "sub",
+      "total_size_bytes": 1481197,
+      "files": [
+        {
+          "id": 727437,
+          "name": "Minimal Piano Background",
+          "filename": "727437_Minimal Piano Background.mp3",
+          "size_bytes": 639349,
+          "downloaded": "2025-11-28T01:04:42.589076"
+        },
+        {
+          "id": 511415,
+          "name": "Laid Back Loop",
+          "filename": "511415_Laid Back Loop.mp3",
+          "size_bytes": 389882,
+          "downloaded": "2025-11-28T01:04:47.093556"
+        },
+        {
+          "id": 152508,
+          "name": "lonely piano 0M_30p7h",
+          "filename": "152508_lonely piano 0M_30p7h.mp3",
+          "size_bytes": 451966,
+          "downloaded": "2025-11-28T01:04:51.718458"
+        }
+      ],
+      "last_updated": "2025-11-28T01:04:51.718484"
+    },
+    "LONELINESS_guitar": {
+      "emotion": "LONELINESS",
+      "instrument": "guitar",
+      "level": "sub",
+      "total_size_bytes": 0,
+      "files": [],
+      "last_updated": "2025-11-28T01:04:52.724091"
+    },
+    "LONELINESS_drums": {
+      "emotion": "LONELINESS",
+      "instrument": "drums",
+      "level": "sub",
+      "total_size_bytes": 0,
+      "files": [],
+      "last_updated": "2025-11-28T01:04:53.070630"
+    },
+    "LONELINESS_vocals": {
+      "emotion": "LONELINESS",
+      "instrument": "vocals",
+      "level": "sub",
+      "total_size_bytes": 0,
+      "files": [],
+      "last_updated": "2025-11-28T01:04:53.403928"
+    },
+    "DISAPPOINTMENT_piano": {
+      "emotion": "DISAPPOINTMENT",
+      "instrument": "piano",
+      "level": "sub",
+      "total_size_bytes": 0,
+      "files": [],
+      "last_updated": "2025-11-28T01:04:53.737271"
+    },
+    "DISAPPOINTMENT_guitar": {
+      "emotion": "DISAPPOINTMENT",
+      "instrument": "guitar",
+      "level": "sub",
+      "total_size_bytes": 0,
+      "files": [],
+      "last_updated": "2025-11-28T01:04:54.119229"
+    },
+    "DISAPPOINTMENT_drums": {
+      "emotion": "DISAPPOINTMENT",
+      "instrument": "drums",
+      "level": "sub",
+      "total_size_bytes": 0,
+      "files": [],
+      "last_updated": "2025-11-28T01:04:54.417223"
+    },
+    "DISAPPOINTMENT_vocals": {
+      "emotion": "DISAPPOINTMENT",
+      "instrument": "vocals",
+      "level": "sub",
+      "total_size_bytes": 0,
+      "files": [],
+      "last_updated": "2025-11-28T01:04:54.708219"
+    },
+    "MELANCHOLY_piano": {
+      "emotion": "MELANCHOLY",
+      "instrument": "piano",
+      "level": "sub",
+      "total_size_bytes": 1516829,
+      "files": [
+        {
+          "id": 128563,
+          "name": "PianoMoodMelancholy10.wav",
+          "filename": "128563_PianoMoodMelancholy10.wav.mp3",
+          "size_bytes": 474108,
+          "downloaded": "2025-11-28T01:04:58.529569"
+        },
+        {
+          "id": 128548,
+          "name": "PianoMoodHappy5.wav",
+          "filename": "128548_PianoMoodHappy5.wav.mp3",
+          "size_bytes": 194341,
+          "downloaded": "2025-11-28T01:05:01.667889"
+        },
+        {
+          "id": 128560,
+          "name": "PianoMoodMelancholy3.wav",
+          "filename": "128560_PianoMoodMelancholy3.wav.mp3",
+          "size_bytes": 369606,
+          "downloaded": "2025-11-28T01:05:05.342313"
+        },
+        {
+          "id": 128556,
+          "name": "PianoMoodMelancholy1.wav",
+          "filename": "128556_PianoMoodMelancholy1.wav.mp3",
+          "size_bytes": 301155,
+          "downloaded": "2025-11-28T01:05:09.017636"
+        },
+        {
+          "id": 688747,
+          "name": "melancholy piano arpeggio.wav",
+          "filename": "688747_melancholy piano arpeggio.wav.mp3",
+          "size_bytes": 177619,
+          "downloaded": "2025-11-28T01:05:12.742745"
+        }
+      ],
+      "last_updated": "2025-11-28T01:05:12.742760"
+    },
+    "MELANCHOLY_guitar": {
+      "emotion": "MELANCHOLY",
+      "instrument": "guitar",
+      "level": "sub",
+      "total_size_bytes": 1917070,
+      "files": [
+        {
+          "id": 532154,
+          "name": "midnight ride.wav",
+          "filename": "532154_midnight ride.wav.mp3",
+          "size_bytes": 664080,
+          "downloaded": "2025-11-28T01:05:17.941500"
+        },
+        {
+          "id": 663484,
+          "name": "Touching Acoustic Spot",
+          "filename": "663484_Touching Acoustic Spot.mp3",
+          "size_bytes": 671411,
+          "downloaded": "2025-11-28T01:05:22.957274"
+        },
+        {
+          "id": 51245,
+          "name": "Atmospheric Ambient Short Piano and Bass.wav",
+          "filename": "51245_Atmospheric Ambient Short Piano and Bass.mp3",
+          "size_bytes": 67270,
+          "downloaded": "2025-11-28T01:05:25.579231"
+        },
+        {
+          "id": 221812,
+          "name": "[Synth seq] mellow bass guitar melody 90 bpm",
+          "filename": "221812_Synth seq mellow bass guitar melody 90.mp3",
+          "size_bytes": 451998,
+          "downloaded": "2025-11-28T01:05:29.614221"
+        },
+        {
+          "id": 12697,
+          "name": "burzGuit3.wav",
+          "filename": "12697_burzGuit3.wav.mp3",
+          "size_bytes": 62311,
+          "downloaded": "2025-11-28T01:05:32.203946"
+        }
+      ],
+      "last_updated": "2025-11-28T01:05:32.203984"
+    },
+    "MELANCHOLY_drums": {
+      "emotion": "MELANCHOLY",
+      "instrument": "drums",
+      "level": "sub",
+      "total_size_bytes": 224362,
+      "files": [
+        {
+          "id": 179532,
+          "name": "clinthammermusic-keys-melancholy.wav",
+          "filename": "179532_clinthammermusic-keys-melancholy.wav.mp3",
+          "size_bytes": 224362,
+          "downloaded": "2025-11-28T01:05:36.205596"
+        }
+      ],
+      "last_updated": "2025-11-28T01:05:36.205608"
+    },
+    "MELANCHOLY_vocals": {
+      "emotion": "MELANCHOLY",
+      "instrument": "vocals",
+      "level": "sub",
+      "total_size_bytes": 628184,
+      "files": [
+        {
+          "id": 54620,
+          "name": "Melancholy Choir.wav",
+          "filename": "54620_Melancholy Choir.wav.mp3",
+          "size_bytes": 230624,
+          "downloaded": "2025-11-28T01:05:39.735211"
+        },
+        {
+          "id": 643462,
+          "name": "Please begging voice - vocal",
+          "filename": "643462_Please begging voice - vocal.mp3",
+          "size_bytes": 24072,
+          "downloaded": "2025-11-28T01:05:42.103531"
+        },
+        {
+          "id": 643461,
+          "name": "Sad weeping crying talking - relationship vocal",
+          "filename": "643461_Sad weeping crying talking - relationshi.mp3",
+          "size_bytes": 347112,
+          "downloaded": "2025-11-28T01:05:46.272717"
+        },
+        {
+          "id": 643463,
+          "name": "Yes mommy - vocal by 29 year old male",
+          "filename": "643463_Yes mommy - vocal by 29 year old male.mp3",
+          "size_bytes": 26376,
+          "downloaded": "2025-11-28T01:05:49.037776"
+        }
+      ],
+      "last_updated": "2025-11-28T01:05:49.037801"
+    },
+    "HURT_piano": {
+      "emotion": "HURT",
+      "instrument": "piano",
+      "level": "sub",
+      "total_size_bytes": 0,
+      "files": [],
+      "last_updated": "2025-11-28T01:05:50.047258"
+    },
+    "HURT_guitar": {
+      "emotion": "HURT",
+      "instrument": "guitar",
+      "level": "sub",
+      "total_size_bytes": 1187716,
+      "files": [
+        {
+          "id": 175210,
+          "name": "creatures-loud-buzz.wav",
+          "filename": "175210_creatures-loud-buzz.wav.mp3",
+          "size_bytes": 160919,
+          "downloaded": "2025-11-28T01:05:53.167240"
+        },
+        {
+          "id": 395486,
+          "name": "Extreme machine malfunction.wav",
+          "filename": "395486_Extreme machine malfunction.wav.mp3",
+          "size_bytes": 160039,
+          "downloaded": "2025-11-28T01:05:56.695583"
+        },
+        {
+          "id": 651866,
+          "name": "Supafuzz",
+          "filename": "651866_Supafuzz.mp3",
+          "size_bytes": 371520,
+          "downloaded": "2025-11-28T01:06:02.400709"
+        },
+        {
+          "id": 713365,
+          "name": "Guitar Cable Feedback",
+          "filename": "713365_Guitar Cable Feedback.mp3",
+          "size_bytes": 495238,
+          "downloaded": "2025-11-28T01:06:07.067306"
+        }
+      ],
+      "last_updated": "2025-11-28T01:06:07.067343"
+    },
+    "HURT_drums": {
+      "emotion": "HURT",
+      "instrument": "drums",
+      "level": "sub",
+      "total_size_bytes": 270990,
+      "files": [
+        {
+          "id": 266342,
+          "name": "Lo fi clap",
+          "filename": "266342_Lo fi clap.mp3",
+          "size_bytes": 31506,
+          "downloaded": "2025-11-28T01:06:10.406197"
+        },
+        {
+          "id": 21902,
+          "name": "Djembe_low_2_loud.wav",
+          "filename": "21902_Djembe_low_2_loud.wav.mp3",
+          "size_bytes": 6408,
+          "downloaded": "2025-11-28T01:06:12.764732"
+        },
+        {
+          "id": 21900,
+          "name": "Djembe_fingers_1.wav",
+          "filename": "21900_Djembe_fingers_1.wav.mp3",
+          "size_bytes": 10440,
+          "downloaded": "2025-11-28T01:06:15.672206"
+        },
+        {
+          "id": 21906,
+          "name": "Djembe_mid_quiet_2.wav",
+          "filename": "21906_Djembe_mid_quiet_2.wav.mp3",
+          "size_bytes": 6696,
+          "downloaded": "2025-11-28T01:06:18.353152"
+        },
+        {
+          "id": 507610,
+          "name": "Similar to Glitch (stage 1) 110bpm - variation 2",
+          "filename": "507610_Similar to Glitch stage 1 110bpm - var.mp3",
+          "size_bytes": 215940,
+          "downloaded": "2025-11-28T01:06:21.900794"
+        }
+      ],
+      "last_updated": "2025-11-28T01:06:21.900827"
+    },
+    "HURT_vocals": {
+      "emotion": "HURT",
+      "instrument": "vocals",
+      "level": "sub",
+      "total_size_bytes": 943838,
+      "files": [
+        {
+          "id": 614072,
+          "name": "Male Zombie Groan 9.wav",
+          "filename": "614072_Male Zombie Groan 9.wav.mp3",
+          "size_bytes": 61724,
+          "downloaded": "2025-11-28T01:06:25.439281"
+        },
+        {
+          "id": 166124,
+          "name": "Groan_male.wav",
+          "filename": "166124_Groan_male.wav.mp3",
+          "size_bytes": 103680,
+          "downloaded": "2025-11-28T01:06:29.121607"
+        },
+        {
+          "id": 394608,
+          "name": "Female horror cries: Omg",
+          "filename": "394608_Female horror cries Omg.mp3",
+          "size_bytes": 412294,
+          "downloaded": "2025-11-28T01:06:33.569773"
+        },
+        {
+          "id": 638896,
+          "name": "Alien Growls",
+          "filename": "638896_Alien Growls.mp3",
+          "size_bytes": 262076,
+          "downloaded": "2025-11-28T01:06:37.947169"
+        },
+        {
+          "id": 171758,
+          "name": "Groan_male_normalised.wav",
+          "filename": "171758_Groan_male_normalised.wav.mp3",
+          "size_bytes": 104064,
+          "downloaded": "2025-11-28T01:06:41.077488"
+        }
+      ],
+      "last_updated": "2025-11-28T01:06:41.077518"
+    },
+    "IRRITATION_piano": {
+      "emotion": "IRRITATION",
+      "instrument": "piano",
+      "level": "sub",
+      "total_size_bytes": 448293,
+      "files": [
+        {
+          "id": 232242,
+          "name": "Irritation 1E35",
+          "filename": "232242_Irritation 1E35.mp3",
+          "size_bytes": 448293,
+          "downloaded": "2025-11-28T01:06:46.563400"
+        }
+      ],
+      "last_updated": "2025-11-28T01:06:46.563407"
+    },
+    "IRRITATION_guitar": {
+      "emotion": "IRRITATION",
+      "instrument": "guitar",
+      "level": "sub",
+      "total_size_bytes": 0,
+      "files": [],
+      "last_updated": "2025-11-28T01:06:47.565118"
+    },
+    "IRRITATION_drums": {
+      "emotion": "IRRITATION",
+      "instrument": "drums",
+      "level": "sub",
+      "total_size_bytes": 448293,
+      "files": [
+        {
+          "id": 232242,
+          "name": "Irritation 1E35",
+          "filename": "232242_Irritation 1E35.mp3",
+          "size_bytes": 448293,
+          "downloaded": "2025-11-28T01:06:52.156986"
+        }
+      ],
+      "last_updated": "2025-11-28T01:06:52.157025"
+    },
+    "IRRITATION_vocals": {
+      "emotion": "IRRITATION",
+      "instrument": "vocals",
+      "level": "sub",
+      "total_size_bytes": 247013,
+      "files": [
+        {
+          "id": 180342,
+          "name": "Screams of frustration 2",
+          "filename": "180342_Screams of frustration 2.mp3",
+          "size_bytes": 247013,
+          "downloaded": "2025-11-28T01:06:56.809446"
+        }
+      ],
+      "last_updated": "2025-11-28T01:06:56.809473"
+    },
+    "HOSTILITY_piano": {
+      "emotion": "HOSTILITY",
+      "instrument": "piano",
+      "level": "sub",
+      "total_size_bytes": 0,
+      "files": [],
+      "last_updated": "2025-11-28T01:06:57.819509"
+    },
+    "HOSTILITY_guitar": {
+      "emotion": "HOSTILITY",
+      "instrument": "guitar",
+      "level": "sub",
+      "total_size_bytes": 0,
+      "files": [],
+      "last_updated": "2025-11-28T01:06:58.903514"
+    },
+    "HOSTILITY_drums": {
+      "emotion": "HOSTILITY",
+      "instrument": "drums",
+      "level": "sub",
+      "total_size_bytes": 0,
+      "files": [],
+      "last_updated": "2025-11-28T01:06:59.290004"
+    },
+    "HOSTILITY_vocals": {
+      "emotion": "HOSTILITY",
+      "instrument": "vocals",
+      "level": "sub",
+      "total_size_bytes": 0,
+      "files": [],
+      "last_updated": "2025-11-28T01:06:59.674730"
+    },
+    "RAGE_piano": {
+      "emotion": "RAGE",
+      "instrument": "piano",
+      "level": "sub",
+      "total_size_bytes": 577506,
+      "files": [
+        {
+          "id": 815497,
+          "name": "Creepy dramatic piano sound effect",
+          "filename": "815497_Creepy dramatic piano sound effect.mp3",
+          "size_bytes": 577506,
+          "downloaded": "2025-11-28T01:07:03.671604"
+        }
+      ],
+      "last_updated": "2025-11-28T01:07:03.671613"
+    },
+    "RAGE_guitar": {
+      "emotion": "RAGE",
+      "instrument": "guitar",
+      "level": "sub",
+      "total_size_bytes": 2629516,
+      "files": [
+        {
+          "id": 676750,
+          "name": "Ash Wednesday",
+          "filename": "676750_Ash Wednesday.mp3",
+          "size_bytes": 637082,
+          "downloaded": "2025-11-28T01:07:11.718510"
+        },
+        {
+          "id": 782938,
+          "name": "Three Days Out - Intro",
+          "filename": "782938_Three Days Out - Intro.mp3",
+          "size_bytes": 399233,
+          "downloaded": "2025-11-28T01:07:16.229406"
+        },
+        {
+          "id": 703345,
+          "name": "Fish Fry Lullaby",
+          "filename": "703345_Fish Fry Lullaby.mp3",
+          "size_bytes": 580659,
+          "downloaded": "2025-11-28T01:07:20.617886"
+        },
+        {
+          "id": 788679,
+          "name": "WindTryst Boogie",
+          "filename": "788679_WindTryst Boogie.mp3",
+          "size_bytes": 401152,
+          "downloaded": "2025-11-28T01:07:25.018202"
+        },
+        {
+          "id": 700440,
+          "name": "Like the Other Day",
+          "filename": "700440_Like the Other Day.mp3",
+          "size_bytes": 611390,
+          "downloaded": "2025-11-28T01:07:29.339494"
+        }
+      ],
+      "last_updated": "2025-11-28T01:07:29.339502"
+    },
+    "RAGE_drums": {
+      "emotion": "RAGE",
+      "instrument": "drums",
+      "level": "sub",
+      "total_size_bytes": 2306511,
+      "files": [
+        {
+          "id": 703345,
+          "name": "Fish Fry Lullaby",
+          "filename": "703345_Fish Fry Lullaby.mp3",
+          "size_bytes": 580659,
+          "downloaded": "2025-11-28T01:07:35.155359"
+        },
+        {
+          "id": 735579,
+          "name": "Disconnected",
+          "filename": "735579_Disconnected.mp3",
+          "size_bytes": 672119,
+          "downloaded": "2025-11-28T01:07:40.057128"
+        },
+        {
+          "id": 39262,
+          "name": "Noisebeat 100.012bpm.wav",
+          "filename": "39262_Noisebeat 100.012bpm.wav.mp3",
+          "size_bytes": 221174,
+          "downloaded": "2025-11-28T01:07:43.882426"
+        },
+        {
+          "id": 211191,
+          "name": "Pitbull loop.wav",
+          "filename": "211191_Pitbull loop.wav.mp3",
+          "size_bytes": 342673,
+          "downloaded": "2025-11-28T01:07:47.382175"
+        },
+        {
+          "id": 676038,
+          "name": "The Open Sidewalk",
+          "filename": "676038_The Open Sidewalk.mp3",
+          "size_bytes": 489886,
+          "downloaded": "2025-11-28T01:07:51.915431"
+        }
+      ],
+      "last_updated": "2025-11-28T01:07:51.915457"
+    },
+    "RAGE_vocals": {
+      "emotion": "RAGE",
+      "instrument": "vocals",
+      "level": "sub",
+      "total_size_bytes": 342673,
+      "files": [
+        {
+          "id": 211191,
+          "name": "Pitbull loop.wav",
+          "filename": "211191_Pitbull loop.wav.mp3",
+          "size_bytes": 342673,
+          "downloaded": "2025-11-28T01:07:57.107171"
+        }
+      ],
+      "last_updated": "2025-11-28T01:07:57.107199"
+    },
+    "JEALOUSY_piano": {
+      "emotion": "JEALOUSY",
+      "instrument": "piano",
+      "level": "sub",
+      "total_size_bytes": 0,
+      "files": [],
+      "last_updated": "2025-11-28T01:07:58.116667"
+    },
+    "JEALOUSY_guitar": {
+      "emotion": "JEALOUSY",
+      "instrument": "guitar",
+      "level": "sub",
+      "total_size_bytes": 0,
+      "files": [],
+      "last_updated": "2025-11-28T01:07:58.432741"
+    },
+    "JEALOUSY_drums": {
+      "emotion": "JEALOUSY",
+      "instrument": "drums",
+      "level": "sub",
+      "total_size_bytes": 0,
+      "files": [],
+      "last_updated": "2025-11-28T01:07:58.871027"
+    },
+    "JEALOUSY_vocals": {
+      "emotion": "JEALOUSY",
+      "instrument": "vocals",
+      "level": "sub",
+      "total_size_bytes": 0,
+      "files": [],
+      "last_updated": "2025-11-28T01:07:59.349703"
+    },
+    "INDIGNATION_piano": {
+      "emotion": "INDIGNATION",
+      "instrument": "piano",
+      "level": "sub",
+      "total_size_bytes": 0,
+      "files": [],
+      "last_updated": "2025-11-28T01:07:59.841617"
+    },
+    "INDIGNATION_guitar": {
+      "emotion": "INDIGNATION",
+      "instrument": "guitar",
+      "level": "sub",
+      "total_size_bytes": 0,
+      "files": [],
+      "last_updated": "2025-11-28T01:08:00.302785"
+    },
+    "INDIGNATION_drums": {
+      "emotion": "INDIGNATION",
+      "instrument": "drums",
+      "level": "sub",
+      "total_size_bytes": 0,
+      "files": [],
+      "last_updated": "2025-11-28T01:08:00.771682"
+    },
+    "INDIGNATION_vocals": {
+      "emotion": "INDIGNATION",
+      "instrument": "vocals",
+      "level": "sub",
+      "total_size_bytes": 0,
+      "files": [],
+      "last_updated": "2025-11-28T01:08:01.296352"
+    },
+    "VENGEANCE_piano": {
+      "emotion": "VENGEANCE",
+      "instrument": "piano",
+      "level": "sub",
+      "total_size_bytes": 159239,
+      "files": [
+        {
+          "id": 46415,
+          "name": "Dramatic piano 2.wav",
+          "filename": "46415_Dramatic piano 2.wav.mp3",
+          "size_bytes": 159239,
+          "downloaded": "2025-11-28T01:08:06.435598"
+        }
+      ],
+      "last_updated": "2025-11-28T01:08:06.435622"
+    },
+    "VENGEANCE_guitar": {
+      "emotion": "VENGEANCE",
+      "instrument": "guitar",
+      "level": "sub",
+      "total_size_bytes": 0,
+      "files": [],
+      "last_updated": "2025-11-28T01:08:07.441924"
+    },
+    "VENGEANCE_drums": {
+      "emotion": "VENGEANCE",
+      "instrument": "drums",
+      "level": "sub",
+      "total_size_bytes": 106728,
+      "files": [
+        {
+          "id": 276439,
+          "name": "Dubstep Drums",
+          "filename": "276439_Dubstep Drums.mp3",
+          "size_bytes": 74170,
+          "downloaded": "2025-11-28T01:08:17.620846"
+        },
+        {
+          "id": 650703,
+          "name": "Alan Walker - Fade/Faded Pre-Drop Drum Fill (90 BPM).wav",
+          "filename": "650703_Alan Walker - FadeFaded Pre-Drop Drum F.mp3",
+          "size_bytes": 32558,
+          "downloaded": "2025-11-28T01:08:20.819431"
+        }
+      ],
+      "last_updated": "2025-11-28T01:08:20.819460"
+    },
+    "VENGEANCE_vocals": {
+      "emotion": "VENGEANCE",
+      "instrument": "vocals",
+      "level": "sub",
+      "total_size_bytes": 0,
+      "files": [],
+      "last_updated": "2025-11-28T01:08:21.827896"
+    },
+    "ANXIETY_piano": {
+      "emotion": "ANXIETY",
+      "instrument": "piano",
+      "level": "sub",
+      "total_size_bytes": 1553942,
+      "files": [
+        {
+          "id": 249985,
+          "name": "Eerie Dark Drone Soundscape",
+          "filename": "249985_Eerie Dark Drone Soundscape.mp3",
+          "size_bytes": 656418,
+          "downloaded": "2025-11-28T01:08:33.654479"
+        },
+        {
+          "id": 730869,
+          "name": "PIANO anxiety",
+          "filename": "730869_PIANO anxiety.mp3",
+          "size_bytes": 411476,
+          "downloaded": "2025-11-28T01:08:37.563585"
+        },
+        {
+          "id": 485829,
+          "name": "LECLERC_Mathilde_2019_He's coming.wav",
+          "filename": "485829_LECLERC_Mathilde_2019_Hes coming.wav.mp3",
+          "size_bytes": 486048,
+          "downloaded": "2025-11-28T01:08:41.671413"
+        }
+      ],
+      "last_updated": "2025-11-28T01:08:41.671445"
+    },
+    "ANXIETY_guitar": {
+      "emotion": "ANXIETY",
+      "instrument": "guitar",
+      "level": "sub",
+      "total_size_bytes": 376593,
+      "files": [
+        {
+          "id": 615695,
+          "name": "Windtryst And Wednesday 3",
+          "filename": "615695_Windtryst And Wednesday 3.mp3",
+          "size_bytes": 376593,
+          "downloaded": "2025-11-28T01:08:45.864884"
+        }
+      ],
+      "last_updated": "2025-11-28T01:08:45.864918"
+    },
+    "ANXIETY_drums": {
+      "emotion": "ANXIETY",
+      "instrument": "drums",
+      "level": "sub",
+      "total_size_bytes": 864225,
+      "files": [
+        {
+          "id": 567859,
+          "name": "BRASSEUR_Justine_2020_2021_Heart.wav",
+          "filename": "567859_BRASSEUR_Justine_2020_2021_Heart.wav.mp3",
+          "size_bytes": 299381,
+          "downloaded": "2025-11-28T01:08:50.629670"
+        },
+        {
+          "id": 244576,
+          "name": "drum open air.wav",
+          "filename": "244576_drum open air.wav.mp3",
+          "size_bytes": 366604,
+          "downloaded": "2025-11-28T01:08:54.597032"
+        },
+        {
+          "id": 640838,
+          "name": "HOME SET 6 Anxiety.wav",
+          "filename": "640838_HOME SET 6 Anxiety.wav.mp3",
+          "size_bytes": 50363,
+          "downloaded": "2025-11-28T01:08:57.446759"
+        },
+        {
+          "id": 390134,
+          "name": "RAMELET_Charline_2016_2017_drumBass.wav",
+          "filename": "390134_RAMELET_Charline_2016_2017_drumBass.wav.mp3",
+          "size_bytes": 147877,
+          "downloaded": "2025-11-28T01:09:01.477139"
+        }
+      ],
+      "last_updated": "2025-11-28T01:09:01.477171"
+    },
+    "ANXIETY_vocals": {
+      "emotion": "ANXIETY",
+      "instrument": "vocals",
+      "level": "sub",
+      "total_size_bytes": 332616,
+      "files": [
+        {
+          "id": 789880,
+          "name": "\"Those things aren't human. We gotta get outta here\" - Female Voice",
+          "filename": "789880_Those things arent human. We gotta get.mp3",
+          "size_bytes": 138768,
+          "downloaded": "2025-11-28T01:09:06.176305"
+        },
+        {
+          "id": 790148,
+          "name": "\"If you go inside, you'll DIE\" - Male Voice",
+          "filename": "790148_If you go inside youll DIE - Male Vo.mp3",
+          "size_bytes": 193848,
+          "downloaded": "2025-11-28T01:09:10.505752"
+        }
+      ],
+      "last_updated": "2025-11-28T01:09:10.505792"
+    },
+    "TERROR_piano": {
+      "emotion": "TERROR",
+      "instrument": "piano",
+      "level": "sub",
+      "total_size_bytes": 1349255,
+      "files": [
+        {
+          "id": 613151,
+          "name": "Big bad boss",
+          "filename": "613151_Big bad boss.mp3",
+          "size_bytes": 677292,
+          "downloaded": "2025-11-28T01:09:15.965111"
+        },
+        {
+          "id": 563916,
+          "name": "Bad Omen",
+          "filename": "563916_Bad Omen.mp3",
+          "size_bytes": 107136,
+          "downloaded": "2025-11-28T01:09:19.669374"
+        },
+        {
+          "id": 587012,
+          "name": "Something creepy",
+          "filename": "587012_Something creepy.mp3",
+          "size_bytes": 172171,
+          "downloaded": "2025-11-28T01:09:23.349660"
+        },
+        {
+          "id": 570651,
+          "name": "Scary Piano Music.wav",
+          "filename": "570651_Scary Piano Music.wav.mp3",
+          "size_bytes": 140354,
+          "downloaded": "2025-11-28T01:09:26.758523"
+        },
+        {
+          "id": 773935,
+          "name": "Toy Piano Eerie Wooden Spooky Horror Keys",
+          "filename": "773935_Toy Piano Eerie Wooden Spooky Horror Key.mp3",
+          "size_bytes": 252302,
+          "downloaded": "2025-11-28T01:09:30.457368"
+        }
+      ],
+      "last_updated": "2025-11-28T01:09:30.457395"
+    },
+    "TERROR_guitar": {
+      "emotion": "TERROR",
+      "instrument": "guitar",
+      "level": "sub",
+      "total_size_bytes": 2044814,
+      "files": [
+        {
+          "id": 345645,
+          "name": "Octaving horns",
+          "filename": "345645_Octaving horns.mp3",
+          "size_bytes": 356160,
+          "downloaded": "2025-11-28T01:09:36.077962"
+        },
+        {
+          "id": 680069,
+          "name": "Sci-fi creepy knocking sfx",
+          "filename": "680069_Sci-fi creepy knocking sfx.mp3",
+          "size_bytes": 602880,
+          "downloaded": "2025-11-28T01:09:41.438694"
+        },
+        {
+          "id": 345638,
+          "name": "Double horn",
+          "filename": "345638_Double horn.mp3",
+          "size_bytes": 456960,
+          "downloaded": "2025-11-28T01:09:46.810386"
+        },
+        {
+          "id": 345641,
+          "name": "Dark horn",
+          "filename": "345641_Dark horn.mp3",
+          "size_bytes": 454272,
+          "downloaded": "2025-11-28T01:09:51.250164"
+        },
+        {
+          "id": 175227,
+          "name": "creatures-scuttle-02.wav",
+          "filename": "175227_creatures-scuttle-02.wav.mp3",
+          "size_bytes": 174542,
+          "downloaded": "2025-11-28T01:09:54.750850"
+        }
+      ],
+      "last_updated": "2025-11-28T01:09:54.750883"
+    },
+    "TERROR_drums": {
+      "emotion": "TERROR",
+      "instrument": "drums",
+      "level": "sub",
+      "total_size_bytes": 1740200,
+      "files": [
+        {
+          "id": 775206,
+          "name": "Sparse Glitch-Hop Drum Eerie Organ Perc Loop 4-Bar 96 BPM",
+          "filename": "775206_Sparse Glitch-Hop Drum Eerie Organ Perc .mp3",
+          "size_bytes": 250891,
+          "downloaded": "2025-11-28T01:10:00.055462"
+        },
+        {
+          "id": 776023,
+          "name": "Glitch-Hop Horror Drum Loop 12-Bar Eerie Organ Percussion 96 BPM",
+          "filename": "776023_Glitch-Hop Horror Drum Loop 12-Bar Eerie.mp3",
+          "size_bytes": 741601,
+          "downloaded": "2025-11-28T01:10:05.856138"
+        },
+        {
+          "id": 814055,
+          "name": "Surprise",
+          "filename": "814055_Surprise.mp3",
+          "size_bytes": 183240,
+          "downloaded": "2025-11-28T01:10:09.801975"
+        },
+        {
+          "id": 234347,
+          "name": "Terrie_TrailerEnd_2.wav",
+          "filename": "234347_Terrie_TrailerEnd_2.wav.mp3",
+          "size_bytes": 239813,
+          "downloaded": "2025-11-28T01:10:13.515854"
+        },
+        {
+          "id": 234348,
+          "name": "Terrie_TrailerEnd_1.wav",
+          "filename": "234348_Terrie_TrailerEnd_1.wav.mp3",
+          "size_bytes": 324655,
+          "downloaded": "2025-11-28T01:10:19.021059"
+        }
+      ],
+      "last_updated": "2025-11-28T01:10:19.021087"
+    },
+    "TERROR_vocals": {
+      "emotion": "TERROR",
+      "instrument": "vocals",
+      "level": "sub",
+      "total_size_bytes": 1661634,
+      "files": [
+        {
+          "id": 794240,
+          "name": "Ghost Crossing - The Beyond",
+          "filename": "794240_Ghost Crossing - The Beyond.mp3",
+          "size_bytes": 452265,
+          "downloaded": "2025-11-28T01:10:23.751027"
+        },
+        {
+          "id": 794239,
+          "name": "Ghost Scream - Ghost 05",
+          "filename": "794239_Ghost Scream - Ghost 05.mp3",
+          "size_bytes": 288386,
+          "downloaded": "2025-11-28T01:10:27.877036"
+        },
+        {
+          "id": 267633,
+          "name": "Dreadful prayer 1",
+          "filename": "267633_Dreadful prayer 1.mp3",
+          "size_bytes": 264203,
+          "downloaded": "2025-11-28T01:10:31.434887"
+        },
+        {
+          "id": 579773,
+          "name": "Demon Cry.wav",
+          "filename": "579773_Demon Cry.wav.mp3",
+          "size_bytes": 397588,
+          "downloaded": "2025-11-28T01:10:36.513733"
+        },
+        {
+          "id": 267632,
+          "name": "Dreadful prayer 2",
+          "filename": "267632_Dreadful prayer 2.mp3",
+          "size_bytes": 259192,
+          "downloaded": "2025-11-28T01:10:40.035043"
+        }
+      ],
+      "last_updated": "2025-11-28T01:10:40.035071"
+    }
+  },
+  "total_size_mb": 0,
+  "total_files": 0,
+  "last_emotion": "TERROR",
+  "last_instrument": "vocals"
+}

@@ -1,0 +1,33 @@
+---
+pid: -1
+cwd: 
+last_command: cd /Users/seanburdges/kelly-consolidation/1DAW1 && python3 -c "
+last_exit_code: 0
+---
+$ cd /Users/seanburdges/kelly-consolidation/1DAW1 && python3 -m py_compile music_brain/session/generator.py
+
+$ cd /Users/seanburdges/kelly-consolidation/1DAW1 && python3 -c "
+Generated song: Empty Rooms
+✓ MIDI file created: /var/folders/m4/s3t91xw12qj2qqfshdklf8140000gn/T/tmp_7exiqr8.mid (644 bytes)
+✓ Method returned: /var/folders/m4/s3t91xw12qj2qqfshdklf8140000gn/T/tmp_7exiqr8.mid
+
+$ cd /Users/seanburdges/kelly-consolidation/1DAW1 && python3 -c "
+
+$ cd /Users/seanburdges/kelly-consolidation/1DAW1 && python3 -m py_compile music_brain/session/generator.py && echo "✓ File compiles successfully"
+✓ Only one export_to_midi method found at line 210
+✓ File compiles successfully
+
+$ cd /Users/seanburdges/kelly-consolidation/1DAW1 && python3 -c "
+Found 1 export_to_midi definition(s):
+  Line 210: def export_to_midi(self, output_path: str, base_octave: int = 4) -> str:
+
+$ cd /Users/seanburdges/kelly-consolidation/1DAW1 && python3 -c "
+✓ Only one export_to_midi method found at line 210
+
+$ cd /Users/seanburdges/kelly-consolidation/1DAW1 && python3 -m py_compile music_brain/session/generator.py && echo "✓ File compiles successfully"
+✓ File compiles successfully
+
+$ cd /Users/seanburdges/kelly-consolidation/1DAW1 && python3 -c "
+Generated song: Winter Light
+✓ MIDI file created: /var/folders/m4/s3t91xw12qj2qqfshdklf8140000gn/T/tmpl3rvj0ka.mid (603 bytes)
+✓ Method returned: /var/folders/m4/s3t91xw12qj2qqfshdklf8140000gn/T/tmpl3rvj0ka.mid

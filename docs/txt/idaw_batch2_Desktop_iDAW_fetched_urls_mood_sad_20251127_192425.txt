@@ -1,0 +1,25 @@
+# iDAW Musical Fetch - Mood: sad
+# Keywords: melancholy, somber, dark, minor, emotional, slow
+# Suggested keys: Am, Dm, Em, Gm, Cm
+# iDAW emotion: grief
+#
+# Search these sites manually:
+#
+
+# --- MELANCHOLY ---
+# Freesound: https://freesound.org/search/?q=melancholy
+# Looperman: https://www.looperman.com/loops?q=melancholy
+# BBC: http://bbcsfx.acropolis.org.uk/?q=melancholy
+
+# --- SOMBER ---
+# Freesound: https://freesound.org/search/?q=somber
+# Looperman: https://www.looperman.com/loops?q=somber
+# BBC: http://bbcsfx.acropolis.org.uk/?q=somber
+
+# --- DARK ---
+# Freesound: https://freesound.org/search/?q=dark
+# Looperman: https://www.looperman.com/loops?q=dark
+# BBC: http://bbcsfx.acropolis.org.uk/?q=dark
+
+# Paste download URLs below:
+

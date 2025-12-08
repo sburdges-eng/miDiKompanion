@@ -1,0 +1,247 @@
+{
+	"name": "mypy-type-checker",
+	"displayName": "Mypy Type Checker",
+	"description": "%extension.description%",
+	"version": "2025.2.0",
+	"preview": true,
+	"serverInfo": {
+		"name": "Mypy",
+		"module": "mypy"
+	},
+	"publisher": "ms-python",
+	"license": "MIT",
+	"icon": "icon.png",
+	"homepage": "https://github.com/microsoft/vscode-mypy",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/microsoft/vscode-mypy.git"
+	},
+	"bugs": {
+		"url": "https://github.com/microsoft/vscode-mypy/issues"
+	},
+	"galleryBanner": {
+		"color": "#1e415e",
+		"theme": "dark"
+	},
+	"keywords": [
+		"python",
+		"mypy"
+	],
+	"engines": {
+		"vscode": "^1.75.0"
+	},
+	"categories": [
+		"Programming Languages",
+		"Linters",
+		"Formatters"
+	],
+	"extensionDependencies": [
+		"ms-python.python"
+	],
+	"capabilities": {
+		"virtualWorkspaces": {
+			"supported": false,
+			"description": "Virtual Workspaces are not supported with mypy."
+		}
+	},
+	"activationEvents": [
+		"onLanguage:python",
+		"workspaceContains:mypy.ini"
+	],
+	"main": "./dist/extension.js",
+	"scripts": {
+		"vscode:prepublish": "npm run package",
+		"compile": "webpack",
+		"watch": "webpack --watch",
+		"package": "webpack --mode production --devtool source-map --config ./webpack.config.js",
+		"compile-tests": "tsc -p . --outDir out",
+		"watch-tests": "tsc -p . -w --outDir out",
+		"pretest": "npm run compile-tests && npm run compile",
+		"lint": "eslint src --ext ts",
+		"format-check": "prettier --check 'src/**/*.ts' 'build/**/*.yml' '.github/**/*.yml'",
+		"tests": "node ./out/test/ts_tests/runTest.js",
+		"vsce-package": "vsce package -o mypy.vsix"
+	},
+	"contributes": {
+		"configuration": {
+			"properties": {
+				"mypy-type-checker.args": {
+					"default": [],
+					"markdownDescription": "%settings.args.description%",
+					"items": {
+						"type": "string"
+					},
+					"scope": "resource",
+					"type": "array"
+				},
+				"mypy-type-checker.cwd": {
+					"default": "${workspaceFolder}",
+					"markdownDescription": "%settings.cwd.description%",
+					"scope": "resource",
+					"type": "string",
+					"examples": [
+						"${workspaceFolder}/src",
+						"${fileDirname}"
+					]
+				},
+				"mypy-type-checker.path": {
+					"default": [],
+					"markdownDescription": "%settings.path.description%",
+					"scope": "resource",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				},
+				"mypy-type-checker.ignorePatterns": {
+					"default": [],
+					"markdownDescription": "%settings.ignorePatterns.description%",
+					"items": {
+						"type": "string"
+					},
+					"scope": "resource",
+					"type": "array",
+					"uniqueItems": true,
+					"examples": [
+						[
+							"**/site-packages/**/*.py",
+							".vscode/*.py"
+						]
+					]
+				},
+				"mypy-type-checker.importStrategy": {
+					"default": "useBundled",
+					"markdownDescription": "%settings.importStrategy.description%",
+					"enum": [
+						"useBundled",
+						"fromEnvironment"
+					],
+					"markdownEnumDescriptions": [
+						"%settings.importStrategy.useBundled.description%",
+						"%settings.importStrategy.fromEnvironment.description%"
+					],
+					"scope": "window",
+					"type": "string"
+				},
+				"mypy-type-checker.interpreter": {
+					"default": [],
+					"markdownDescription": "%settings.interpreter.description%",
+					"scope": "resource",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				},
+				"mypy-type-checker.preferDaemon": {
+					"default": false,
+					"markdownDescription": "%settings.preferDaemon.description%",
+					"scope": "resource",
+					"type": "boolean"
+				},
+				"mypy-type-checker.daemonStatusFile": {
+					"default": "",
+					"markdownDescription": "%settings.daemonStatusFile.description%",
+					"scope": "resource",
+					"type": "string",
+					"tags": [
+						"experimental"
+					]
+				},
+				"mypy-type-checker.reportingScope": {
+					"default": "file",
+					"markdownDescription": "%settings.reportingScope.description%",
+					"enum": [
+						"file",
+						"workspace"
+					],
+					"markdownEnumDescriptions": [
+						"%settings.reportingScope.file.description%",
+						"%settings.reportingScope.workspace.description%"
+					],
+					"scope": "resource",
+					"type": "string",
+					"tags": [
+						"experimental"
+					]
+				},
+				"mypy-type-checker.severity": {
+					"default": {
+						"error": "Error",
+						"note": "Information"
+					},
+					"additionalProperties": {
+						"type": "string",
+						"enum": [
+							"Error",
+							"Hint",
+							"Information",
+							"Warning"
+						]
+					},
+					"markdownDescription": "%settings.severity.description%",
+					"scope": "resource",
+					"type": "object"
+				},
+				"mypy-type-checker.showNotifications": {
+					"default": "off",
+					"markdownDescription": "%settings.showNotifications.description%",
+					"enum": [
+						"off",
+						"onError",
+						"onWarning",
+						"always"
+					],
+					"markdownEnumDescriptions": [
+						"%settings.showNotifications.off.description%",
+						"%settings.showNotifications.onError.description%",
+						"%settings.showNotifications.onWarning.description%",
+						"%settings.showNotifications.always.description%"
+					],
+					"scope": "machine",
+					"type": "string"
+				}
+			}
+		},
+		"commands": [
+			{
+				"title": "%command.restartServer%",
+				"category": "Mypy",
+				"command": "mypy-type-checker.restart"
+			}
+		]
+	},
+	"dependencies": {
+		"@vscode/python-extension": "^1.0.5",
+		"fs-extra": "^11.2.0",
+		"vscode-languageclient": "^8.1.0"
+	},
+	"devDependencies": {
+		"@types/chai": "^4.3.11",
+		"@types/fs-extra": "^11.0.4",
+		"@types/glob": "^8.1.0",
+		"@types/mocha": "^10.0.6",
+		"@types/node": "16.x",
+		"@types/sinon": "^17.0.3",
+		"@types/vscode": "^1.74.0",
+		"@typescript-eslint/eslint-plugin": "^6.19.0",
+		"@typescript-eslint/parser": "^6.19.0",
+		"@vscode/test-electron": "^2.3.8",
+		"@vscode/vsce": "^2.22.0",
+		"chai": "^4.3.10",
+		"eslint": "^8.56.0",
+		"glob": "^10.3.10",
+		"mocha": "^10.2.0",
+		"prettier": "^3.2.4",
+		"sinon": "^17.0.1",
+		"ts-loader": "^9.5.1",
+		"typemoq": "^2.1.0",
+		"typescript": "^5.3.3",
+		"webpack": "^5.89.0",
+		"webpack-cli": "^5.1.4"
+	},
+	"__metadata": {
+		"installedTimestamp": 1765015144293,
+		"targetPlatform": "universal",
+		"size": 12384670
+	}
+}

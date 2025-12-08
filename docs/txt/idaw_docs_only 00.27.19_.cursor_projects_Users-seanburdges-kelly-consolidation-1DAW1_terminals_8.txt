@@ -1,0 +1,21 @@
+---
+pid: -1
+cwd: 
+last_command: cd /Users/seanburdges/kelly-consolidation/1DAW1 && python3 -m py_compile music_brain/session/generator.py && echo "✓ Python file compiles successfully"
+last_exit_code: 0
+---
+$ cd /Users/seanburdges/kelly-consolidation/1DAW1 && python3 -m py_compile music_brain/session/generator.py
+
+$ cd /Users/seanburdges/kelly-consolidation/1DAW1 && python3 -c "from music_brain.session.generator import GeneratedSong; import inspect; methods = [m for m in inspect.getmembers(GeneratedSong, predicate=inspect.isfunction) if m[0] == 'export_to_midi']; print(f'Found {len(methods)} export_to_midi method(s)')"
+Found 1 export_to_midi method(s)
+
+$ cd /Users/seanburdges/kelly-consolidation/1DAW1 && grep -n "export_to_midi\|```python" music_brain/session/generator.py | head -20
+(eval):1: unmatched "
+
+$ cd /Users/seanburdges/kelly-consolidation/1DAW1 && python3 -c "import ast; ast.parse(open('music_brain/session/generator.py').read())" 2>&1
+
+$ cd /Users/seanburdges/kelly-consolidation/1DAW1 && grep -c "def export_to_midi" music_brain/session/generator.py
+1
+
+$ cd /Users/seanburdges/kelly-consolidation/1DAW1 && python3 -m py_compile music_brain/session/generator.py && echo "✓ Python file compiles successfully"
+✓ Python file compiles successfully

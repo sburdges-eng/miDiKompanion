@@ -1,0 +1,79 @@
+=== APP INFORMATION ===
+App Name: Claude
+App Version: 1.0.1307
+Electron Version: 37.10.0
+Chrome Version: 138.0.7204.251
+Node Version: 22.21.1
+V8 Version: 13.8.258.32-electron.0
+App Path: /Applications/Claude.app/Contents/Resources/app.asar
+User Data Path: /Users/seanburdges/Library/Application Support/Claude
+Logs Path: /Users/seanburdges/Library/Logs/Claude
+Temp Path: /var/folders/m4/s3t91xw12qj2qqfshdklf8140000gn/T/
+Is Packaged: true
+
+=== SYSTEM INFORMATION ===
+Platform: darwin
+Architecture: arm64
+OS Type: Darwin
+OS Release: 25.1.0
+OS Version: Darwin Kernel Version 25.1.0: Mon Oct 20 19:32:56 PDT 2025; root:xnu-12377.41.6~2/RELEASE_ARM64_T8132
+Hostname: Seans-MacBook-Pro.local
+Locale: en-US
+System Locale: en-US
+
+=== HARDWARE INFORMATION ===
+CPUs: 10 cores
+CPU Model: Apple M4
+Total Memory: 16.00 GB
+Free Memory: 0.16 GB
+Memory Usage: 99.0%
+
+=== PROCESS INFORMATION ===
+Process ID: 1052
+Process Type: browser
+Process Memory (Private): 104.97 MB
+Process Memory (Shared): 0.52 MB
+Process Memory (Residentset): NaN MB
+CPU Usage (User): 0.00%
+Uptime: 15.46 minutes
+
+=== DISPLAY INFORMATION ===
+Display 1:
+  Resolution: 1280x800
+  Scale Factor: 2
+  Primary: Yes
+
+=== WINDOW INFORMATION ===
+Total Windows: 1
+Window 1:
+  ID: 1
+  Title: Claude
+  Position: 62, 31
+  Size: 995x769
+  Visible: true
+  Focused: true
+
+=== WEBCONTENTS INFORMATION ===
+Total WebContents: 3
+WebContents 1:
+  ID: 3
+  Type: window
+  URL: file:///Applications/Claude.app/Contents/Resources/app.asar/.vite/renderer/find_in_page/find-in-page.html
+  Loading: false
+WebContents 2:
+  ID: 2
+  Type: window
+  URL: https://claude.ai/new
+  Loading: false
+WebContents 3:
+  ID: 1
+  Type: window
+  URL: file:///Applications/Claude.app/Contents/Resources/app.asar/.vite/renderer/main_window/index.html
+  Loading: false
+
+=== NETWORK INFORMATION ===
+en0: 172.20.10.5
+
+=== DEBUG INFO GENERATED ===
+Timestamp: 2025-11-29T12:43:43.532Z
+Local Time: 11/29/2025, 5:43:43 AM

@@ -1,0 +1,23 @@
+{
+  "nativeQuickEntry": {
+    "status": "supported"
+  },
+  "quickEntryDictation": {
+    "status": "supported"
+  },
+  "customQuickEntryDictationShortcut": {
+    "status": "supported"
+  },
+  "plushRaccoon": {
+    "status": "unavailable"
+  },
+  "chillingSlothFeat": {
+    "status": "supported"
+  },
+  "chillingSlothLocal": {
+    "status": "supported"
+  },
+  "chillingSlothEnterprise": {
+    "status": "supported"
+  }
+}

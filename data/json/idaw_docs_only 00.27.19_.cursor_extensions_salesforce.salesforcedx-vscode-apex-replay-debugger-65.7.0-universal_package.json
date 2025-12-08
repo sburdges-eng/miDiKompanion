@@ -1,0 +1,238 @@
+{
+	"name": "salesforcedx-vscode-apex-replay-debugger",
+	"displayName": "Apex Replay Debugger",
+	"description": "Replay Apex execution from Apex Debug Log",
+	"qna": "https://github.com/forcedotcom/salesforcedx-vscode/issues",
+	"bugs": {
+		"url": "https://github.com/forcedotcom/salesforcedx-vscode/issues"
+	},
+	"repository": {
+		"url": "https://github.com/forcedotcom/salesforcedx-vscode"
+	},
+	"icon": "images/VSCodeApexReplayDebugger.png",
+	"galleryBanner": {
+		"color": "#ECECEC",
+		"theme": "light"
+	},
+	"version": "65.7.0",
+	"publisher": "salesforce",
+	"license": "BSD-3-Clause",
+	"engines": {
+		"vscode": "^1.90.0"
+	},
+	"categories": [
+		"Debuggers"
+	],
+	"dependencies": {
+		"@salesforce/apex-node": "^8.3.7",
+		"@salesforce/salesforcedx-apex-replay-debugger": "65.7.0",
+		"@salesforce/salesforcedx-utils": "65.7.0",
+		"@salesforce/salesforcedx-utils-vscode": "65.7.0",
+		"@salesforce/vscode-i18n": "65.7.0",
+		"effect": "^3.18.4",
+		"vscode-uri": "^3.1.0"
+	},
+	"devDependencies": {
+		"@salesforce/core": "^8.23.2",
+		"esbuild": "0.25.10",
+		"salesforcedx-vscode-apex": "65.7.0",
+		"salesforcedx-vscode-core": "65.7.0"
+	},
+	"extensionDependencies": [
+		"salesforce.salesforcedx-vscode-apex",
+		"salesforce.salesforcedx-vscode-core"
+	],
+	"scripts": {
+		"bundle:extension": "node ./esbuild.config.mjs",
+		"vscode:package": "vsce package --allow-package-all-secrets",
+		"vscode:sha256": "node ../../scripts/generate-sha256.js >> ../../SHA256",
+		"vscode:publish": "node ../../scripts/publish-vsix.js",
+		"compile": "tsc -p ./",
+		"lint": "eslint .",
+		"lint:fix": "npm run lint -- --fix",
+		"watch": "tsc -watch -p .",
+		"clean": "shx rm -rf node_modules && shx rm -rf out && shx rm -rf coverage && shx rm -rf .nyc_output",
+		"test": "jest --coverage"
+	},
+	"activationEvents": [
+		"onDebugResolve:apex",
+		"onCommand:extension.replay-debugger.getLogFileName",
+		"onCommand:sf.launch.replay.debugger.logfile",
+		"onCommand:sf.launch.replay.debugger.logfile.path"
+	],
+	"main": "./dist/index.js",
+	"contributes": {
+		"breakpoints": [
+			{
+				"language": "apex"
+			}
+		],
+		"languages": [
+			{
+				"id": "apexlog",
+				"aliases": [
+					"ApexLog",
+					"DebugLog"
+				],
+				"extensions": [
+					".log"
+				],
+				"firstLine": "^\\d{2}.*APEX_CODE,FINEST;.*VISUALFORCE,(FINER|FINEST);.*"
+			}
+		],
+		"grammars": [
+			{
+				"language": "apexlog",
+				"scopeName": "text.log",
+				"path": "./syntaxes/apexlog.tmLanguage.json"
+			}
+		],
+		"menus": {
+			"commandPalette": [
+				{
+					"command": "sf.create.checkpoints",
+					"when": "sf:project_opened && sf:has_target_org"
+				},
+				{
+					"command": "sf.toggle.checkpoint",
+					"when": "sf:project_opened && editorLangId == 'apex'"
+				},
+				{
+					"command": "sf.launch.replay.debugger.last.logfile",
+					"when": "sf:project_opened && !inDebugMode"
+				},
+				{
+					"command": "sf.test.view.debugTests",
+					"when": "false"
+				},
+				{
+					"command": "sf.test.view.debugSingleTest",
+					"when": "false"
+				}
+			],
+			"view/title": [
+				{
+					"command": "sf.create.checkpoints",
+					"when": "view == sf.view.checkpoint && sf:project_opened",
+					"group": "navigation"
+				}
+			],
+			"view/item/context": [
+				{
+					"command": "sf.test.view.debugTests",
+					"when": "view == sf.test.view && viewItem =~ /apexTestGroup/",
+					"group": "inline"
+				},
+				{
+					"command": "sf.test.view.debugSingleTest",
+					"when": "view == sf.test.view && viewItem =~ /(apexTest)(_.*|\\b)/",
+					"group": "inline"
+				}
+			]
+		},
+		"commands": [
+			{
+				"command": "sf.toggle.checkpoint",
+				"title": "%sf_toggle_checkpoint%"
+			},
+			{
+				"command": "sf.create.checkpoints",
+				"title": "%sf_update_checkpoints_in_org%",
+				"icon": {
+					"light": "images/light/cloud-upload.svg",
+					"dark": "images/dark/cloud-upload.svg"
+				},
+				"when": "sf:project_opened"
+			},
+			{
+				"command": "sf.launch.replay.debugger.last.logfile",
+				"title": "%launch_from_last_log_file%"
+			},
+			{
+				"command": "sf.test.view.debugTests",
+				"title": "%run_tests_and_debug%",
+				"icon": {
+					"light": "resources/light/debug.svg",
+					"dark": "resources/dark/debug.svg"
+				}
+			},
+			{
+				"command": "sf.test.view.debugSingleTest",
+				"title": "%run_single_test_and_debug%",
+				"icon": {
+					"light": "resources/light/debug.svg",
+					"dark": "resources/dark/debug.svg"
+				}
+			}
+		],
+		"views": {
+			"debug": [
+				{
+					"id": "sf.view.checkpoint",
+					"name": "%view_checkpoints%",
+					"when": "sf:project_opened"
+				}
+			]
+		},
+		"debuggers": [
+			{
+				"type": "apex-replay",
+				"label": "Apex Replay Debugger",
+				"program": "./dist/apexReplayDebug.js",
+				"runtime": "node",
+				"languages": [
+					"apex"
+				],
+				"variables": {
+					"AskForLogFileName": "extension.replay-debugger.getLogFileName"
+				},
+				"configurationSnippets": [
+					{
+						"label": "%launch_snippet_label_text%",
+						"description": "%launch_snippet_description_text%",
+						"body": {
+							"name": "%launch_snippet_name%",
+							"type": "apex-replay",
+							"request": "launch",
+							"logFile": "^\"\\${command:AskForLogFileName}\"",
+							"stopOnEntry": true,
+							"trace": true
+						}
+					}
+				],
+				"configurationAttributes": {
+					"launch": {
+						"properties": {
+							"required": [
+								"logFile"
+							],
+							"logFile": {
+								"type": "string",
+								"description": "%logfile_text%",
+								"default": "${command:AskForLogFileName}"
+							},
+							"stopOnEntry": {
+								"type": "boolean",
+								"description": "%stop_on_entry_text%",
+								"default": true
+							},
+							"trace": {
+								"type": [
+									"boolean",
+									"string"
+								],
+								"description": "%trace_text%",
+								"default": false
+							}
+						}
+					}
+				}
+			}
+		]
+	},
+	"__metadata": {
+		"installedTimestamp": 1764831112020,
+		"targetPlatform": "universal",
+		"size": 8110133
+	}
+}

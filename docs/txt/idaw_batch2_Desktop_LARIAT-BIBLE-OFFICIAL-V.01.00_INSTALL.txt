@@ -1,0 +1,216 @@
+╔════════════════════════════════════════════════════════════════╗
+║         LARIAT BIBLE - OFFICIAL RELEASE v1.0                   ║
+║              INSTALLATION INSTRUCTIONS                         ║
+╚════════════════════════════════════════════════════════════════╝
+
+📦 PACKAGE INFORMATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Location: /Users/seanburdges/Desktop/LARIAT-BIBLE-OFFICIAL-V.01.00
+Size: 544 KB
+Files: 32 total files
+Version: 1.0.0
+Release Date: November 18, 2025
+
+🚀 QUICK START (60 SECONDS)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. INSTALL DEPENDENCIES (one-time setup)
+   Open Terminal and run:
+
+   cd "/Users/seanburdges/Desktop/LARIAT-BIBLE-OFFICIAL-V.01.00"
+   pip3 install -r REQUIREMENTS.txt
+
+   ✓ This installs: openpyxl, python-docx
+
+2. LAUNCH APPLICATION
+   Double-click: START_LARIAT_BIBLE.command
+
+   ✓ The app will open automatically!
+
+📋 DETAILED INSTALLATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+STEP 1: Check Python Installation
+──────────────────────────────────
+Open Terminal and run:
+
+  python3 --version
+
+✓ Should show Python 3.7 or higher
+✓ Tested with Python 3.13
+
+If Python not installed, download from: python.org
+
+
+STEP 2: Install Required Libraries
+───────────────────────────────────
+In Terminal:
+
+  cd "/Users/seanburdges/Desktop/LARIAT-BIBLE-OFFICIAL-V.01.00"
+  pip3 install -r REQUIREMENTS.txt
+
+This will install:
+  • openpyxl (Excel file handling)
+  • python-docx (Word document parsing)
+
+
+STEP 3: Verify Data Files Exist
+────────────────────────────────
+The app requires these files on your system:
+
+1. Recipe Book:
+   /Users/seanburdges/Desktop/LARIAT/Lariat Recipe Book.docx
+
+2. Order Guide:
+   /Users/seanburdges/Desktop/LARIAT ORDER GUIDE OFFICIAL 8-28-25 (1).xlsx
+
+To verify:
+  ls "/Users/seanburdges/Desktop/LARIAT/Lariat Recipe Book.docx"
+  ls "/Users/seanburdges/Desktop/LARIAT ORDER GUIDE OFFICIAL 8-28-25 (1).xlsx"
+
+✓ Both should exist
+
+
+STEP 4: Launch the Application
+───────────────────────────────
+Option A: Double-click launcher
+  ➜ Double-click: START_LARIAT_BIBLE.command
+
+Option B: Terminal
+  cd "/Users/seanburdges/Desktop/LARIAT-BIBLE-OFFICIAL-V.01.00"
+  python3 lariat_bible_app.py
+
+✓ Application window should appear
+
+🔧 TROUBLESHOOTING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Problem: "command not found: python3"
+Solution: Install Python from python.org
+
+Problem: "No module named 'openpyxl'"
+Solution: Run: pip3 install openpyxl python-docx
+
+Problem: "File not found: Lariat Recipe Book.docx"
+Solution:
+  1. Locate the file on your system
+  2. Update path in lariat_bible_app.py (line 33)
+  3. Or move file to: /Users/seanburdges/Desktop/LARIAT/
+
+Problem: App won't launch
+Solution:
+  1. Check Terminal for error messages
+  2. Verify Python version: python3 --version
+  3. Reinstall dependencies: pip3 install -r REQUIREMENTS.txt
+
+Problem: Data not loading
+Solution:
+  1. Check File paths in error message
+  2. Verify files exist at expected locations
+  3. Use File → Load Order Guide to manually load
+
+📊 WHAT YOU'LL SEE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+When app launches successfully:
+
+Loading recipes...
+✓ Loaded 53 recipes from Word document
+✓ Loaded 139 ingredients from database
+
+Loading vendor data...
+✓ Loaded 157 Sysco products (official format)
+✓ Loaded 175 Shamrock products (official format)
+✓ Loaded 156 pre-matched pairs
+
+✓ All data loaded successfully!
+
+Ready - 53 recipes, 332 products, 156 matched pairs
+
+🎯 FIRST STEPS AFTER INSTALLATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. EXPLORE THE DASHBOARD
+   ➜ See system statistics and status
+
+2. BROWSE RECIPES
+   ➜ Click "📖 Recipes" tab
+   ➜ Select any recipe to view details
+
+3. VIEW VENDOR PRODUCTS
+   ➜ Click "🏪 Vendors" tab
+   ➜ Browse 332 products
+
+4. TRY PRODUCT MATCHING
+   ➜ In Vendors tab, click "Match Products"
+   ➜ See 156 pre-matched pairs
+
+5. GENERATE AN ORDER
+   ➜ Click "📋 Orders" tab
+   ➜ Select 2-3 recipes
+   ➜ Click "Generate Order"
+
+📚 DOCUMENTATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+README.md
+  ➜ Complete package overview
+
+documentation/README_APP.md
+  ➜ Full user guide with examples
+
+documentation/OFFICIAL_ORDER_GUIDE_UPDATE.md
+  ➜ Details about official format integration
+
+documentation/VENDOR_MANAGEMENT_COMPLETE.md
+  ➜ System architecture and features
+
+VERSION.txt
+  ➜ Version information and changelog
+
+🎓 LEARNING RESOURCES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Quick Start: documentation/QUICK_START_VENDOR_SYSTEM.md
+User Guide: documentation/README_APP.md
+All Docs: documentation/ folder (13 files)
+
+⚠️ IMPORTANT NOTES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+• Keep data files in their original locations
+• Don't move SMART COSTING 1/ folder
+• Launcher script must stay with main app file
+• Python 3.7+ required (tested with 3.13)
+• macOS optimized (may work on other platforms)
+
+✅ VERIFICATION CHECKLIST
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+□ Python 3.7+ installed
+□ Dependencies installed (openpyxl, python-docx)
+□ Recipe Book exists at specified path
+□ Order Guide exists at specified path
+□ App launches without errors
+□ Dashboard shows: 53 recipes, 332 products
+□ All 5 tabs accessible
+□ Can generate test order
+
+🆘 GETTING HELP
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Check README.md troubleshooting section
+2. Review documentation/ folder
+3. Check Terminal error messages
+4. Verify all data files exist
+
+🎉 READY TO USE!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Your Lariat Bible system is ready for production use!
+
+Double-click START_LARIAT_BIBLE.command to begin.
+
+═══════════════════════════════════════════════════════════════════
+                  Lariat Bible v1.0.0 - November 2025
+═══════════════════════════════════════════════════════════════════

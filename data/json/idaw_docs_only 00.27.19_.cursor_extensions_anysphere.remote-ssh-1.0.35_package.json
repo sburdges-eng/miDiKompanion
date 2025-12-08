@@ -1,0 +1,565 @@
+{
+	"name": "remote-ssh",
+	"displayName": "Remote - SSH",
+	"description": "Open any folder on a remote machine using SSH and take advantage of Cursor's full feature set.",
+	"version": "1.0.35",
+	"publisher": "anysphere",
+	"icon": "resources/icon.png",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/getcursor/cursor.git"
+	},
+	"engines": {
+		"vscode": "^1.75.0"
+	},
+	"extensionKind": [
+		"ui"
+	],
+	"enabledApiProposals": [
+		"resolvers",
+		"contribViewsRemote",
+		"terminalDataWriteEvent",
+		"cursorTracing"
+	],
+	"keywords": [
+		"remote development",
+		"remote",
+		"ssh"
+	],
+	"api": "none",
+	"extensionId": "73a45d83-83c7-4b22-bebf-c9130b0ab3f3",
+	"activationEvents": [
+		"onStartupFinished",
+		"onResolveRemoteAuthority:ssh-remote"
+	],
+	"main": "./dist/main.js",
+	"contributes": {
+		"configuration": {
+			"title": "Remote - SSH",
+			"properties": {
+				"remote.SSH.path": {
+					"type": "string",
+					"description": "The path to the SSH executable.",
+					"default": "ssh",
+					"scope": "application"
+				},
+				"remote.SSH.configFile": {
+					"type": "string",
+					"description": "The absolute file path to a custom SSH config file.",
+					"default": "",
+					"scope": "application"
+				},
+				"remote.SSH.connectTimeout": {
+					"type": "number",
+					"description": "Specifies the timeout in seconds used for the SSH command that connects to the remote.",
+					"default": 30,
+					"scope": "application",
+					"minimum": 1
+				},
+				"remote.SSH.defaultExtensions": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"description": "List of extensions that should be installed automatically on all SSH hosts.",
+					"scope": "application"
+				},
+				"remote.SSH.enableAgentForwarding": {
+					"type": "boolean",
+					"markdownDescription": "Enable fixing the remote environment so that the SSH config option `ForwardAgent` will take effect as expected from VS Code's remote extension host.",
+					"scope": "application",
+					"default": true
+				},
+				"remote.SSH.enableRemoteCommand": {
+					"type": "boolean",
+					"markdownDescription": "Enable remote command execution. When disabled (default), the SSH connection will use `-o RemoteCommand=none` to prevent any RemoteCommand configuration from executing.\n\nThe RemoteCommand is only supported on remote hosts where the server can be directly downloaded. **The remote command must start a `bash` shell (for Linux/macOS remote hosts) or `powershell` (for Windows remote hosts).**",
+					"scope": "application",
+					"default": false
+				},
+				"remote.SSH.remotePlatform": {
+					"type": "object",
+					"description": "A map of the remote hostname to the platform for that remote. Valid values: linux, macOS, windows.",
+					"scope": "application",
+					"default": {},
+					"additionalProperties": {
+						"type": "string",
+						"enum": [
+							"linux",
+							"macOS",
+							"windows"
+						]
+					}
+				},
+				"remote.SSH.serverInstallPath": {
+					"type": "object",
+					"description": "A map of remote host to absolute path of the parent directory where the Cursor server will be installed. By default the server is installed in ~/.cursor-remote of every remote. **Note**: By changing this setting you may need to clean up other installations of `.cursor-server` on your remote that isn't in the path you've configured.",
+					"scope": "application",
+					"default": {},
+					"additionalProperties": {
+						"type": "string"
+					}
+				},
+				"remote.SSH.httpProxy": {
+					"scope": "application",
+					"markdownDescription": "HTTP proxy to use when downloading the Cursor server. Can be specified as a single string applied to all hosts, or as an object mapping hostnames to proxy URLs.",
+					"anyOf": [
+						{
+							"type": "string",
+							"default": ""
+						},
+						{
+							"type": "object",
+							"additionalProperties": {
+								"type": "string"
+							},
+							"default": {}
+						}
+					]
+				},
+				"remote.SSH.httpsProxy": {
+					"scope": "application",
+					"markdownDescription": "HTTPS proxy to use when downloading the Cursor server. Can be specified as a single string applied to all hosts, or as an object mapping hostnames to proxy URLs.",
+					"anyOf": [
+						{
+							"type": "string",
+							"default": ""
+						},
+						{
+							"type": "object",
+							"additionalProperties": {
+								"type": "string"
+							},
+							"default": {}
+						}
+					]
+				},
+				"remote.SSH.noProxy": {
+					"scope": "application",
+					"markdownDescription": "The comma-separated list of hosts that should not be proxied. Can be specified as a single string applied to all SSH hosts, or as an object mapping SSH hostnames to a comma-separated lists of no-proxy hosts.",
+					"anyOf": [
+						{
+							"type": "string",
+							"default": ""
+						},
+						{
+							"type": "object",
+							"additionalProperties": {
+								"type": "string"
+							},
+							"default": {}
+						}
+					]
+				},
+				"remote.SSH.localServerDownload": {
+					"scope": "application",
+					"type": "string",
+					"enum": [
+						"auto",
+						"always",
+						"off"
+					],
+					"description": "Whether to download the Cursor server locally and copy it over to the remote machine. If set to 'auto', it will attempt to download the server locally if the remote download fails.",
+					"default": "auto"
+				},
+				"remote.SSH.serverShutdownTimeout": {
+					"type": "number",
+					"description": "The timeout in seconds for the Cursor server to shutdown after the last client disconnects. By default, this timeout is 300 (5 minutes).",
+					"default": 300,
+					"scope": "application",
+					"minimum": 1,
+					"maximum": 86400
+				},
+				"remote.SSH.defaultForwardedPorts": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"remotePort"
+						],
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"remotePort": {
+								"type": "number"
+							},
+							"localPort": {
+								"type": "number"
+							}
+						}
+					},
+					"description": "List of ports to automatically forward when connecting to SSH hosts. Each item should specify a remotePort and optionally a name and localPort.",
+					"default": [],
+					"scope": "window"
+				},
+				"remote.SSH.showLoginTerminal": {
+					"type": "boolean",
+					"description": "Show the login terminal when connecting to a remote SSH host.",
+					"default": false,
+					"scope": "application"
+				},
+				"remote.SSH.logLevel": {
+					"type": "string",
+					"enum": [
+						"debug",
+						"trace"
+					],
+					"default": "debug",
+					"description": "The log level to use for the extension. Set to 'trace' to see all the logs.",
+					"scope": "application"
+				},
+				"remote.SSH.showTrafficMonitor": {
+					"type": "boolean",
+					"default": true,
+					"description": "Show SSH traffic monitoring in the status bar. When enabled, displays upload/download speeds for SSH connections.",
+					"scope": "application"
+				},
+				"remote.SSH.serverPickPortsFromRange": {
+					"type": "object",
+					"description": "A map of the remote hostname to a range of ports you'd prefer the server to connect to on launch on the remote machine. If no free port is found in range, an error will be thrown. Valid ranges of the form number-number such as 4000-5000; it's expected the first number will be lower than the next.",
+					"scope": "application",
+					"default": {},
+					"additionalProperties": {
+						"type": "string",
+						"pattern": "^\\d+-\\d+$"
+					}
+				},
+				"remote.SSH.preconnect": {
+					"type": [
+						"string",
+						"object"
+					],
+					"markdownDescription": "Before attempting the connection, execute a script on your local machine. This setting can be a single string (to be used with all hosts) or an object with per-host configuration. On Windows, the script should be a .ps1 script. On macOS/linux, the script should be an executable .sh script.",
+					"additionalProperties": {
+						"type": "string"
+					},
+					"default": "",
+					"scope": "application",
+					"examples": [
+						{
+							"myhost": "~/preconnect_script.sh",
+							"myhost2": "C:\\Users\\user\\preconnect_script.ps1"
+						},
+						"~/preconnect_script.sh"
+					]
+				}
+			}
+		},
+		"views": {
+			"remote": [
+				{
+					"id": "sshHosts",
+					"name": "SSH Targets",
+					"group": "targets@1",
+					"remoteName": "ssh-remote"
+				}
+			]
+		},
+		"commands": [
+			{
+				"command": "opensshremotes.openEmptyWindow",
+				"title": "Connect to Host...",
+				"category": "Remote-SSH"
+			},
+			{
+				"command": "opensshremotes.openEmptyWindowInCurrentWindow",
+				"title": "Connect Current Window to Host...",
+				"category": "Remote-SSH"
+			},
+			{
+				"command": "opensshremotes.openConfigFile",
+				"title": "Open SSH Configuration File...",
+				"icon": "$(gear)",
+				"category": "Remote-SSH"
+			},
+			{
+				"command": "opensshremotes.showLog",
+				"title": "Show Log",
+				"category": "Remote-SSH"
+			},
+			{
+				"command": "opensshremotes.explorer.emptyWindowInNewWindow",
+				"title": "Connect to Host in New Window",
+				"icon": "$(empty-window)",
+				"category": "Remote-SSH"
+			},
+			{
+				"command": "opensshremotes.explorer.emptyWindowInCurrentWindow",
+				"title": "Connect to Host in Current Window",
+				"category": "Remote-SSH"
+			},
+			{
+				"command": "opensshremotes.explorer.reopenFolderInCurrentWindow",
+				"title": "Open on SSH Host in Current Window",
+				"category": "Remote-SSH"
+			},
+			{
+				"command": "opensshremotes.explorer.reopenFolderInNewWindow",
+				"title": "Open on SSH Host in New Window",
+				"category": "Remote-SSH",
+				"icon": "$(folder-opened)"
+			},
+			{
+				"command": "opensshremotes.explorer.deleteFolderHistoryItem",
+				"title": "Remove From Recent List",
+				"category": "Remote-SSH",
+				"icon": "$(x)"
+			},
+			{
+				"command": "opensshremotes.explorer.refresh",
+				"title": "Refresh",
+				"category": "Remote-SSH",
+				"icon": "$(refresh)"
+			},
+			{
+				"command": "opensshremotes.addNewSshHost",
+				"title": "Add New",
+				"category": "Remote-SSH",
+				"icon": "$(plus)"
+			},
+			{
+				"command": "opensshremotes.killServerAndReload",
+				"title": "Kill Remote Server and Reload Window",
+				"category": "Remote-SSH",
+				"icon": "$(reload)"
+			},
+			{
+				"command": "opensshremotes.reinstallServerAndReload",
+				"title": "Reinstall Remote Server and Reload Window",
+				"category": "Remote-SSH",
+				"icon": "$(trash)"
+			},
+			{
+				"command": "opensshremotes.triggerReconnect",
+				"title": "Trigger Reconnect",
+				"category": "Remote-SSH",
+				"icon": "$(refresh)"
+			},
+			{
+				"command": "opensshremotes.generateConnectionReport",
+				"title": "Generate Connection Report",
+				"category": "Remote-SSH",
+				"icon": "$(report)"
+			},
+			{
+				"command": "opensshremotes.showTrafficGraph",
+				"title": "Show Traffic Graph",
+				"category": "Remote-SSH",
+				"icon": "$(graph)"
+			}
+		],
+		"resourceLabelFormatters": [
+			{
+				"scheme": "vscode-remote",
+				"authority": "ssh-remote+*",
+				"formatting": {
+					"label": "${path}",
+					"separator": "/",
+					"tildify": true,
+					"workspaceSuffix": "SSH"
+				}
+			}
+		],
+		"menus": {
+			"statusBar/remoteIndicator": [
+				{
+					"command": "opensshremotes.openEmptyWindow",
+					"when": "remoteName =~ /^ssh-remote$/ && remoteConnectionState == connected",
+					"group": "remote_20_ssh_1general@1"
+				},
+				{
+					"command": "opensshremotes.openEmptyWindowInCurrentWindow",
+					"when": "remoteName =~ /^ssh-remote$/ && remoteConnectionState == connected",
+					"group": "remote_20_ssh_1general@2"
+				},
+				{
+					"command": "opensshremotes.openConfigFile",
+					"when": "remoteName =~ /^ssh-remote$/ && remoteConnectionState == connected",
+					"group": "remote_20_ssh_1general@3"
+				},
+				{
+					"command": "opensshremotes.showLog",
+					"when": "remoteName =~ /^ssh-remote$/ && remoteConnectionState == connected",
+					"group": "remote_20_ssh_1general@4"
+				},
+				{
+					"command": "opensshremotes.openEmptyWindow",
+					"when": "remoteConnectionState == disconnected",
+					"group": "remote_20_ssh_3local@1"
+				},
+				{
+					"command": "opensshremotes.openEmptyWindowInCurrentWindow",
+					"when": "remoteConnectionState == disconnected",
+					"group": "remote_20_ssh_3local@2"
+				},
+				{
+					"command": "opensshremotes.openConfigFile",
+					"when": "remoteConnectionState == disconnected",
+					"group": "remote_20_ssh_3local@3"
+				},
+				{
+					"command": "opensshremotes.openEmptyWindow",
+					"when": "!remoteName && !virtualWorkspace",
+					"group": "remote_20_ssh_3local@5"
+				},
+				{
+					"command": "opensshremotes.openEmptyWindowInCurrentWindow",
+					"when": "!remoteName && !virtualWorkspace",
+					"group": "remote_20_ssh_3local@6"
+				},
+				{
+					"command": "opensshremotes.openConfigFile",
+					"when": "!remoteName && !virtualWorkspace",
+					"group": "remote_20_ssh_3local@7"
+				}
+			],
+			"commandPalette": [
+				{
+					"command": "opensshremotes.explorer.refresh",
+					"when": "false"
+				},
+				{
+					"command": "opensshremotes.showTrafficGraph",
+					"when": "remoteName =~ /^ssh-remote$/"
+				},
+				{
+					"command": "opensshremotes.generateConnectionReport",
+					"when": "true"
+				},
+				{
+					"command": "opensshremotes.killServerAndReload",
+					"when": "remoteName =~ /^ssh-remote$/"
+				},
+				{
+					"command": "opensshremotes.reinstallServerAndReload",
+					"when": "remoteName =~ /^ssh-remote$/"
+				},
+				{
+					"command": "opensshremotes.triggerReconnect",
+					"when": "remoteName =~ /^ssh-remote$/"
+				},
+				{
+					"command": "opensshremotes.addNewSshHost",
+					"when": "false"
+				},
+				{
+					"command": "opensshremotes.explorer.emptyWindowInNewWindow",
+					"when": "false"
+				},
+				{
+					"command": "opensshremotes.explorer.emptyWindowInCurrentWindow",
+					"when": "false"
+				},
+				{
+					"command": "opensshremotes.explorer.reopenFolderInCurrentWindow",
+					"when": "false"
+				},
+				{
+					"command": "opensshremotes.explorer.reopenFolderInNewWindow",
+					"when": "false"
+				},
+				{
+					"command": "opensshremotes.explorer.deleteFolderHistoryItem",
+					"when": "false"
+				}
+			],
+			"view/title": [
+				{
+					"command": "opensshremotes.addNewSshHost",
+					"when": "view == sshHosts",
+					"group": "navigation"
+				},
+				{
+					"command": "opensshremotes.openConfigFile",
+					"when": "view == sshHosts",
+					"group": "navigation"
+				},
+				{
+					"command": "opensshremotes.explorer.refresh",
+					"when": "view == sshHosts",
+					"group": "navigation"
+				}
+			],
+			"view/item/context": [
+				{
+					"command": "opensshremotes.explorer.emptyWindowInNewWindow",
+					"when": "viewItem =~ /^opensshremotes.explorer.host$/",
+					"group": "inline@1"
+				},
+				{
+					"command": "opensshremotes.explorer.emptyWindowInNewWindow",
+					"when": "viewItem =~ /^opensshremotes.explorer.host$/",
+					"group": "navigation@2"
+				},
+				{
+					"command": "opensshremotes.explorer.emptyWindowInCurrentWindow",
+					"when": "viewItem =~ /^opensshremotes.explorer.host$/",
+					"group": "navigation@1"
+				},
+				{
+					"command": "opensshremotes.explorer.reopenFolderInNewWindow",
+					"when": "viewItem == opensshremotes.explorer.folder",
+					"group": "inline@1"
+				},
+				{
+					"command": "opensshremotes.explorer.reopenFolderInNewWindow",
+					"when": "viewItem == opensshremotes.explorer.folder",
+					"group": "navigation@2"
+				},
+				{
+					"command": "opensshremotes.explorer.reopenFolderInCurrentWindow",
+					"when": "viewItem == opensshremotes.explorer.folder",
+					"group": "navigation@1"
+				},
+				{
+					"command": "opensshremotes.explorer.deleteFolderHistoryItem",
+					"when": "viewItem =~ /^opensshremotes.explorer.folder/",
+					"group": "navigation@3"
+				},
+				{
+					"command": "opensshremotes.explorer.deleteFolderHistoryItem",
+					"when": "viewItem =~ /^opensshremotes.explorer.folder/",
+					"group": "inline@2"
+				}
+			]
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm-run-all build:scripts webpack",
+		"webpack": "webpack --mode production",
+		"compile": "npx gulp compile-extension:cursor-remote-ssh",
+		"watch": "npx gulp watch-extension:cursor-remote-ssh",
+		"package": "npx vsce package",
+		"build:scripts": "npm-run-all --parallel build:remoteServer build:askClient",
+		"build:askClient": "tsc --outDir scripts scripts/sshAskClient.ts && npx terser scripts/sshAskClient.js -o scripts/sshAskClient.js --compress --mangle",
+		"build:remoteServer": "tsc --outDir scripts scripts/remoteServer.ts && npx terser scripts/remoteServer.js -o scripts/remoteServer.js --compress --mangle"
+	},
+	"devDependencies": {
+		"@types/node": "^16.11.0",
+		"@types/split2": "^4.2.3",
+		"@types/webpack": "^5.28.5",
+		"@typescript-eslint/eslint-plugin": "^5.19.0",
+		"@typescript-eslint/parser": "^5.19.0",
+		"copy-webpack-plugin": "^13.0.0",
+		"cross-env": "^7.0.3",
+		"npm-run-all": "^4.1.5",
+		"terser": "^5.39.0",
+		"ts-loader": "^9.2.7",
+		"typescript": "^5.8.3",
+		"webpack": "^5.99.5",
+		"webpack-cli": "^6.0.1"
+	},
+	"dependencies": {
+		"@cursor/metrics-provider": "file:../metrics-provider/",
+		"glob": "^9.3.1",
+		"semver": "^7.7.2",
+		"socks": "^2.5.0",
+		"split2": "^4.2.0",
+		"ssh-config": "^4.3.1"
+	},
+	"__metadata": {
+		"installedTimestamp": 1764822733358,
+		"targetPlatform": "undefined",
+		"size": 1128578
+	}
+}

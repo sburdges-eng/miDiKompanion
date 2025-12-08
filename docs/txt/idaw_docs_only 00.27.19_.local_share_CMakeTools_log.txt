@@ -1,0 +1,93 @@
+2025-12-06T18:20:20.715Z [debug] [main] Safe constructing new CMakeProject instance
+2025-12-06T18:20:20.716Z [debug] [variant] Constructing VariantManager
+2025-12-06T18:20:20.717Z [debug] [main] Constructing new CMakeProject instance
+2025-12-06T18:20:20.718Z [debug] [main] Starting CMake Tools second-phase init
+2025-12-06T18:20:20.719Z [debug] [expand] expanded ${workspaceFolder}
+2025-12-06T18:20:20.748Z [debug] [kit] Reading kits file /Users/seanburdges/.local/share/CMakeTools/cmake-tools-kits.json
+2025-12-06T18:20:20.801Z [info] [kit] Successfully loaded 1 kits from /Users/seanburdges/.local/share/CMakeTools/cmake-tools-kits.json
+2025-12-06T18:20:20.864Z [debug] [kit] Not reading non-existent kits file: /Users/seanburdges/kelly-consolidation/1DAW1/.vscode/cmake-kits.json
+2025-12-06T18:20:20.893Z [debug] [main] Injecting new Kit into CMake driver
+2025-12-06T18:20:21.291Z [info] [variant] Loaded new set of variants
+2025-12-06T18:20:21.292Z [debug] [main] CMakeProject instance initialization complete.
+2025-12-06T18:20:22.107Z [debug] [extension] Configuring workspace on open /Users/seanburdges/kelly-consolidation/1DAW1
+2025-12-06T18:20:22.232Z [info] [main] Configuring project: 1DAW1 
+2025-12-06T18:20:22.232Z [debug] [main] Saving open files before configure/build
+2025-12-07T03:37:43.832Z [debug] [extension] Deactivate CMakeTools
+ot starting CMake driver: no kit selected
+2025-12-06T15:36:51.702Z [debug] [main] Not starting CMake driver: no kit selected
+2025-12-06T15:36:54.016Z [debug] [main] Not starting CMake driver: no kit selected
+2025-12-06T15:38:15.260Z [debug] [main] Not starting CMake driver: no kit selected
+2025-12-06T16:03:57.825Z [debug] [main] Not starting CMake driver: no kit selected
+2025-12-06T16:25:57.277Z [debug] [main] Not starting CMake driver: no kit selected
+2025-12-06T18:12:31.749Z [debug] [main] Not starting CMake driver: no kit selected
+2025-12-06T18:12:45.917Z [debug] [extension] [4618] cmake.build started
+2025-12-06T18:12:45.926Z [debug] [kitsController] Start selection of kits. Found 4 kits.
+2025-12-06T18:12:45.926Z [debug] [kitsController] Opening kit selection QuickPick
+2025-12-06T18:12:55.862Z [debug] [kitsController] User selected kit {"label":"Clang 17.0.0 arm64-apple-darwin25.1.0","description":"Using compilers: C = /usr/bin/clang, CXX = /usr/bin/clang++","kit":{"name":"Clang 17.0.0 arm64-apple-darwin25.1.0","compilers":{"C":"/usr/bin/clang","CXX":"/usr/bin/clang++"},"isTrusted":true}}
+2025-12-06T18:12:55.862Z [debug] [main] Injecting new Kit into CMake driver
+2025-12-06T18:12:55.882Z [info] [main] Configuring project: 1DAW1 
+2025-12-06T18:12:55.882Z [debug] [main] Saving open files before configure/build
+2025-12-06T18:12:55.886Z [info] [main] Building folder: 1DAW1 
+2025-12-06T18:12:55.887Z [fatal] [rollbar] Unhandled exception: Unhandled Promise rejection: build Error: Build failed: Unable to configure the project {}
+2025-12-06T18:13:32.600Z [debug] [extension] [2287] cmake.build started
+2025-12-06T18:13:32.602Z [info] [main] Building folder: 1DAW1 
+2025-12-06T18:13:32.603Z [fatal] [rollbar] Unhandled exception: Unhandled Promise rejection: build Error: Build failed: Unable to configure the project {}
+2025-12-06T18:14:32.307Z [debug] [extension] [1329] cmake.build started
+2025-12-06T18:14:32.309Z [info] [main] Building folder: 1DAW1 
+2025-12-06T18:14:32.310Z [fatal] [rollbar] Unhandled exception: Unhandled Promise rejection: build Error: Build failed: Unable to configure the project {}
+2025-12-06T18:14:45.535Z [debug] [extension] [9412] cmake.build started
+2025-12-06T18:14:45.538Z [info] [main] Building folder: 1DAW1 
+2025-12-06T18:14:45.539Z [fatal] [rollbar] Unhandled exception: Unhandled Promise rejection: build Error: Build failed: Unable to configure the project {}
+2025-12-06T18:15:53.989Z [debug] [extension] [4360] cmake.build started
+2025-12-06T18:15:53.991Z [info] [main] Building folder: 1DAW1 
+2025-12-06T18:15:53.992Z [fatal] [rollbar] Unhandled exception: Unhandled Promise rejection: build Error: Build failed: Unable to configure the project {}
+2025-12-06T18:16:24.063Z [debug] [extension] [1242] cmake.build started
+2025-12-06T18:16:24.065Z [info] [main] Building folder: 1DAW1 
+2025-12-06T18:16:24.067Z [fatal] [rollbar] Unhandled exception: Unhandled Promise rejection: build Error: Build failed: Unable to configure the project {}
+2025-12-06T18:16:42.095Z [debug] [extension] [8958] cmake.build started
+2025-12-06T18:16:42.096Z [info] [main] Building folder: 1DAW1 
+2025-12-06T18:16:42.097Z [fatal] [rollbar] Unhandled exception: Unhandled Promise rejection: build Error: Build failed: Unable to configure the project {}
+2025-12-06T18:16:56.975Z [debug] [extension] [4561] cmake.build started
+2025-12-06T18:16:56.979Z [info] [main] Building folder: 1DAW1 
+2025-12-06T18:16:56.982Z [fatal] [rollbar] Unhandled exception: Unhandled Promise rejection: build Error: Build failed: Unable to configure the project {}
+2025-12-06T18:17:31.360Z [debug] [extension] [1433] cmake.build started
+2025-12-06T18:17:31.364Z [info] [main] Building folder: 1DAW1 
+2025-12-06T18:17:31.365Z [fatal] [rollbar] Unhandled exception: Unhandled Promise rejection: build Error: Build failed: Unable to configure the project {}
+2025-12-06T18:17:32.393Z [debug] [extension] [6743] cmake.build started
+2025-12-06T18:17:32.395Z [info] [main] Building folder: 1DAW1 
+2025-12-06T18:17:32.397Z [fatal] [rollbar] Unhandled exception: Unhandled Promise rejection: build Error: Build failed: Unable to configure the project {}
+2025-12-06T18:20:16.788Z [debug] [extension] Deactivate CMakeTools
+in] Not starting CMake driver: no kit selected
+2025-12-06T14:26:57.864Z [debug] [main] Not starting CMake driver: no kit selected
+2025-12-06T14:27:09.328Z [debug] [main] Not starting CMake driver: no kit selected
+2025-12-06T14:27:20.859Z [debug] [main] Not starting CMake driver: no kit selected
+2025-12-06T14:28:36.777Z [debug] [main] Not starting CMake driver: no kit selected
+2025-12-06T14:39:55.411Z [debug] [main] Not starting CMake driver: no kit selected
+2025-12-06T14:45:49.877Z [debug] [main] Not starting CMake driver: no kit selected
+2025-12-06T14:45:49.890Z [debug] [main] Not starting CMake driver: no kit selected
+2025-12-06T14:45:53.458Z [debug] [main] Not starting CMake driver: no kit selected
+2025-12-06T14:45:53.495Z [debug] [main] Not starting CMake driver: no kit selected
+2025-12-06T14:55:16.262Z [debug] [main] Not starting CMake driver: no kit selected
+2025-12-06T14:55:16.278Z [debug] [main] Not starting CMake driver: no kit selected
+2025-12-06T15:11:57.766Z [debug] [main] Not starting CMake driver: no kit selected
+2025-12-06T15:11:57.767Z [debug] [main] Not starting CMake driver: no kit selected
+2025-12-06T15:12:22.618Z [debug] [main] Not starting CMake driver: no kit selected
+2025-12-06T15:21:33.031Z [debug] [extension] Deactivate CMakeTools
+4Z [debug] [main] Not starting CMake driver: no kit selected
+2025-11-28T12:26:06.776Z [debug] [main] Not starting CMake driver: no kit selected
+2025-11-28T12:30:33.409Z [debug] [main] Not starting CMake driver: no kit selected
+2025-11-28T12:30:38.493Z [debug] [main] Not starting CMake driver: no kit selected
+2025-11-28T12:30:42.588Z [debug] [main] Not starting CMake driver: no kit selected
+2025-11-28T12:31:26.958Z [debug] [main] Not starting CMake driver: no kit selected
+2025-11-28T12:31:34.336Z [debug] [main] Not starting CMake driver: no kit selected
+2025-11-28T12:32:17.722Z [debug] [main] Not starting CMake driver: no kit selected
+2025-11-28T12:33:49.554Z [debug] [main] Not starting CMake driver: no kit selected
+2025-11-28T12:36:09.440Z [debug] [main] Not starting CMake driver: no kit selected
+2025-11-28T12:36:17.085Z [debug] [main] Not starting CMake driver: no kit selected
+2025-11-28T12:36:24.270Z [debug] [main] Not starting CMake driver: no kit selected
+2025-11-28T12:39:26.360Z [debug] [main] Not starting CMake driver: no kit selected
+2025-11-28T12:40:10.295Z [debug] [main] Not starting CMake driver: no kit selected
+2025-11-28T12:41:48.971Z [debug] [main] Not starting CMake driver: no kit selected
+2025-11-28T12:41:53.417Z [debug] [main] Not starting CMake driver: no kit selected
+2025-11-28T12:41:55.806Z [debug] [main] Not starting CMake driver: no kit selected
+2025-11-28T12:51:02.316Z [debug] [extension] Deactivate CMakeTools

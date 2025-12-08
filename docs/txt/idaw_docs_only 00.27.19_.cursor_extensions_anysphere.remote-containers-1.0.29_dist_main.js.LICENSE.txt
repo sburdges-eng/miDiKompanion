@@ -1,0 +1,14 @@
+/*!
+ * NevWare21 Solutions LLC - ts-async, 0.5.4
+ * https://github.com/nevware21/ts-async
+ * Copyright (c) NevWare21 Solutions LLC and contributors. All rights reserved.
+ * Licensed under the MIT license.
+ */
+
+/*! formdata-polyfill. MIT License. Jimmy Wärting <https://jimmy.warting.se/opensource> */
+
+/*! https://github.com/nevware21/ts-utils v0.11.8 */
+
+/*! https://mths.be/he v1.2.0 by @mathias | MIT license */
+
+/*! ws. MIT License. Einar Otto Stangvik <einaros@gmail.com> */

@@ -1,0 +1,60 @@
+{
+  "cursor.chat.enableAutoScrollToBottom": true,
+  "cursor.chat.showSuggestedFiles": true,
+  "cursor.composer.enabled": true,
+  "cursor.cpp.inlayHints.enabled": true,
+  "cursor.general.enableAI": true,
+
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": null,
+
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    }
+  },
+
+  "[cpp]": {
+    "editor.defaultFormatter": "ms-vscode.cpptools"
+  },
+
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  "python.analysis.typeCheckingMode": "basic",
+  "python.analysis.autoImportCompletions": true,
+  "python.testing.pytestEnabled": true,
+  "python.testing.pytestArgs": [
+    "tests_music-brain/",
+    "-v"
+  ],
+
+  "C_Cpp.default.cppStandard": "c++17",
+  "C_Cpp.default.compileCommands": "${workspaceFolder}/build/compile_commands.json",
+
+  "files.exclude": {
+    "**/__pycache__": true,
+    "**/*.pyc": true,
+    "**/build": false,
+    "**/.pytest_cache": true,
+    "**/*.egg-info": true,
+    "**/node_modules": true
+  },
+
+  "files.associations": {
+    "*.h": "cpp",
+    "*.hpp": "cpp",
+    "*.cpp": "cpp",
+    "*.cursorrules": "markdown"
+  },
+
+  "search.exclude": {
+    "**/build": true,
+    "**/__pycache__": true,
+    "**/node_modules": true,
+    "**/*.egg-info": true
+  }
+}

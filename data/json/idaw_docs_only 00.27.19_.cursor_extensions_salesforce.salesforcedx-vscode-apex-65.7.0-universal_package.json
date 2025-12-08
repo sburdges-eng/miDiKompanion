@@ -1,0 +1,451 @@
+{
+	"name": "salesforcedx-vscode-apex",
+	"displayName": "Apex",
+	"description": "Provides code-editing features for the Apex programming language",
+	"qna": "https://github.com/forcedotcom/salesforcedx-vscode/issues",
+	"bugs": {
+		"url": "https://github.com/forcedotcom/salesforcedx-vscode/issues"
+	},
+	"repository": {
+		"url": "https://github.com/forcedotcom/salesforcedx-vscode"
+	},
+	"icon": "images/VSCodeApex.png",
+	"galleryBanner": {
+		"color": "#ECECEC",
+		"theme": "light"
+	},
+	"version": "65.7.0",
+	"publisher": "salesforce",
+	"o11yUploadEndpoint": "https://794testsite.my.site.com/byolwr/webruntime/log/metrics",
+	"enableO11y": "true",
+	"license": "BSD-3-Clause",
+	"engines": {
+		"vscode": "^1.90.0"
+	},
+	"categories": [
+		"Programming Languages"
+	],
+	"dependencies": {
+		"@salesforce/apex-node": "^8.3.7",
+		"@salesforce/apex-tmlanguage": "^1.8.3",
+		"@salesforce/salesforcedx-utils": "65.7.0",
+		"@salesforce/salesforcedx-utils-vscode": "65.7.0",
+		"@salesforce/vscode-i18n": "65.7.0",
+		"find-java-home": "1.2.2",
+		"vscode-languageclient": "^9.0.1",
+		"vscode-uri": "^3.1.0"
+	},
+	"devDependencies": {
+		"@salesforce/core": "^8.23.2",
+		"esbuild": "0.25.10",
+		"salesforcedx-vscode-core": "65.7.0"
+	},
+	"extensionDependencies": [
+		"salesforce.salesforcedx-vscode-core"
+	],
+	"scripts": {
+		"bundle:extension": "node ./esbuild.config.mjs",
+		"vscode:package": "vsce package --allow-package-all-secrets",
+		"vscode:sha256": "node ../../scripts/generate-sha256.js >> ../../SHA256",
+		"vscode:publish": "node ../../scripts/publish-vsix.js",
+		"compile": "tsc -p ./ && shx mkdir -p out && shx cp jars/apex-jorje-lsp.jar out/",
+		"lint": "eslint .",
+		"lint:fix": "npm run lint -- --fix",
+		"watch": "tsc -watch -p .",
+		"clean": "shx rm -rf node_modules && cd out && node ../../../scripts/clean-all-but-jar.js && shx rm -rf coverage && shx rm -rf .nyc_output",
+		"copy:files": "shx mkdir -p grammars && shx cp ../../node_modules/@salesforce/apex-tmlanguage/grammars/*.tmLanguage ./grammars/",
+		"test": "jest --coverage"
+	},
+	"activationEvents": [
+		"workspaceContains:sfdx-project.json"
+	],
+	"main": "./dist/index.js",
+	"types": "./out/src/index.d.ts",
+	"languageServerDir": "dist",
+	"contributes": {
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "test",
+					"title": "%test_view_container_title%",
+					"icon": "media/dep.svg"
+				}
+			]
+		},
+		"views": {
+			"test": [
+				{
+					"id": "sf.test.view",
+					"name": "%test_view_name%",
+					"when": "sf:project_opened"
+				}
+			]
+		},
+		"menus": {
+			"editor/context": [],
+			"explorer/context": [],
+			"view/title": [
+				{
+					"command": "sf.test.view.run",
+					"when": "view == sf.test.view",
+					"group": "navigation@1"
+				},
+				{
+					"command": "sf.test.view.refresh",
+					"when": "view == sf.test.view",
+					"group": "navigation@2"
+				},
+				{
+					"command": "sf.test.view.collapseAll",
+					"when": "view == sf.test.view",
+					"group": "navigation@3"
+				}
+			],
+			"view/item/context": [
+				{
+					"command": "sf.test.view.showError",
+					"when": "view == sf.test.view && viewItem =~ /(apexTest|apexTestGroup)_Fail/"
+				},
+				{
+					"command": "sf.test.view.goToDefinition",
+					"when": "view == sf.test.view && viewItem =~ /(apexTest|apexTestGroup)(_Pass|_Skip|\\b)/"
+				},
+				{
+					"command": "sf.test.view.runClassTests",
+					"when": "view == sf.test.view && viewItem =~ /apexTestGroup/",
+					"group": "inline"
+				},
+				{
+					"command": "sf.test.view.runSingleTest",
+					"when": "view == sf.test.view && viewItem =~ /(apexTest)(_.*|\\b)/",
+					"group": "inline"
+				}
+			],
+			"commandPalette": [
+				{
+					"command": "sf.apex.languageServer.restart",
+					"when": "sf:project_opened"
+				},
+				{
+					"command": "sf.anon.apex.execute.selection",
+					"when": "sf:project_opened && editorHasSelection && sf:has_target_org"
+				},
+				{
+					"command": "sf.anon.apex.execute.document",
+					"when": "sf:project_opened && !editorHasSelection && sf:has_target_org"
+				},
+				{
+					"command": "sf.apex.log.get",
+					"when": "sf:project_opened && sf:has_target_org"
+				},
+				{
+					"command": "sf.apex.test.last.class.run",
+					"when": "sf:project_opened && sf:has_cached_test_class && sf:has_target_org"
+				},
+				{
+					"command": "sf.apex.test.class.run",
+					"when": "false"
+				},
+				{
+					"command": "sf.apex.test.method.run",
+					"when": "false"
+				},
+				{
+					"command": "sf.apex.test.last.method.run",
+					"when": "sf:project_opened && sf:has_cached_test_method && sf:has_target_org"
+				},
+				{
+					"command": "sf.apex.test.run",
+					"when": "sf:project_opened && sf:has_target_org"
+				},
+				{
+					"command": "sf.apex.test.suite.run",
+					"when": "sf:project_opened && sf:has_target_org"
+				},
+				{
+					"command": "sf.apex.test.suite.create",
+					"when": "sf:project_opened && sf:has_target_org"
+				},
+				{
+					"command": "sf.apex.test.suite.add",
+					"when": "sf:project_opened && sf:has_target_org"
+				},
+				{
+					"command": "sf.test.view.runClassTests",
+					"when": "false"
+				},
+				{
+					"command": "sf.test.view.runSingleTest",
+					"when": "false"
+				},
+				{
+					"command": "sf.test.view.goToDefinition",
+					"when": "false"
+				},
+				{
+					"command": "sf.test.view.showError",
+					"when": "false"
+				},
+				{
+					"command": "sf.test.view.run",
+					"when": "false"
+				},
+				{
+					"command": "sf.test.view.refresh",
+					"when": "false"
+				},
+				{
+					"command": "sf.test.view.collapseAll",
+					"when": "sf:project_opened"
+				}
+			]
+		},
+		"commands": [
+			{
+				"command": "sf.anon.apex.execute.document",
+				"title": "%anon_apex_execute_document_text%"
+			},
+			{
+				"command": "sf.anon.apex.execute.selection",
+				"title": "%anon_apex_execute_selection_text%"
+			},
+			{
+				"command": "sf.apex.languageServer.restart",
+				"title": "%apex_language_server_restart%"
+			},
+			{
+				"command": "sf.apex.log.get",
+				"title": "%apex_log_get_text%"
+			},
+			{
+				"command": "sf.apex.test.run",
+				"title": "%apex_test_run_text%"
+			},
+			{
+				"command": "sf.apex.test.suite.run",
+				"title": "%apex_test_suite_run_text%"
+			},
+			{
+				"command": "sf.apex.test.suite.create",
+				"title": "%apex_test_suite_create_text%"
+			},
+			{
+				"command": "sf.apex.test.suite.add",
+				"title": "%apex_test_suite_build_text%"
+			},
+			{
+				"command": "sf.test.view.run",
+				"title": "%run_tests_title%",
+				"icon": {
+					"light": "resources/light/play-button.svg",
+					"dark": "resources/dark/play-button.svg"
+				}
+			},
+			{
+				"command": "sf.test.view.collapseAll",
+				"title": "%collapse_tests_title%",
+				"icon": {
+					"light": "resources/light/collapse-all.svg",
+					"dark": "resources/dark/collapse-all.svg"
+				}
+			},
+			{
+				"command": "sf.test.view.refresh",
+				"title": "%refresh_test_title%",
+				"icon": {
+					"light": "resources/light/refresh.svg",
+					"dark": "resources/dark/refresh.svg"
+				}
+			},
+			{
+				"command": "sf.test.view.showError",
+				"title": "%show_error_title%",
+				"icon": {
+					"light": "resources/light/document/notRun.svg",
+					"dark": "resources/dark/document/notRun.svg"
+				}
+			},
+			{
+				"command": "sf.test.view.goToDefinition",
+				"title": "%go_to_definition_title%",
+				"icon": {
+					"light": "resources/light/document/notRun.svg",
+					"dark": "resources/dark/document/notRun.svg"
+				}
+			},
+			{
+				"command": "sf.test.view.runClassTests",
+				"title": "%run_tests_title%",
+				"icon": {
+					"light": "resources/light/play-button.svg",
+					"dark": "resources/dark/play-button.svg"
+				}
+			},
+			{
+				"command": "sf.test.view.runSingleTest",
+				"title": "%run_single_test_title%",
+				"icon": {
+					"light": "resources/light/play-button.svg",
+					"dark": "resources/dark/play-button.svg"
+				}
+			},
+			{
+				"command": "sf.apex.test.last.class.run",
+				"title": "%apex_test_last_class_run_text%"
+			},
+			{
+				"command": "sf.apex.test.class.run",
+				"title": "%apex_test_class_run_text%"
+			},
+			{
+				"command": "sf.apex.test.method.run",
+				"title": "%apex_test_method_run_text%"
+			},
+			{
+				"command": "sf.apex.test.last.method.run",
+				"title": "%apex_test_last_method_run_text%"
+			}
+		],
+		"configuration": {
+			"type": "object",
+			"title": "%configuration_title%",
+			"properties": {
+				"salesforcedx-vscode-apex.java.home": {
+					"type": "string",
+					"default": null,
+					"markdownDescription": "%java_home_description%"
+				},
+				"salesforcedx-vscode-apex.java.memory": {
+					"type": [
+						"integer",
+						"null"
+					],
+					"minimum": 0,
+					"default": null,
+					"description": "%java_memory_description%"
+				},
+				"salesforcedx-vscode-apex.enable-semantic-errors": {
+					"type": "boolean",
+					"default": false,
+					"description": "%apex_semantic_errors_description%"
+				},
+				"salesforcedx-vscode-apex.advanced.enable-completion-statistics": {
+					"type": "boolean",
+					"default": false,
+					"description": "%apex_code_completion_stats_description%"
+				},
+				"salesforcedx-vscode-apex.advanced.lspParityCapabilities": {
+					"type": "boolean",
+					"default": true,
+					"description": "%apex_lsp_parity_capabilities_description%"
+				},
+				"salesforcedx-vscode-apex.testing.discoverySource": {
+					"type": "string",
+					"enum": [
+						"ls",
+						"api"
+					],
+					"default": "ls",
+					"description": "%apex_testing_discovery_source_description%",
+					"enumDescriptions": [
+						"%apex_testing_discovery_source_ls_description%",
+						"%apex_testing_discovery_source_api_description%"
+					]
+				},
+				"apex.trace.server": {
+					"type": "string",
+					"enum": [
+						"verbose",
+						"messages",
+						"off"
+					],
+					"default": "off",
+					"description": "%apex_trace_server_description%",
+					"enumDescriptions": [
+						"%apex_verbose_level_trace_description%",
+						"%apex_messages_level_trace_description%",
+						"%apex_off_level_trace_description%"
+					]
+				},
+				"salesforcedx-vscode-apex.disable-warnings-for-missing-coverage": {
+					"type": "boolean",
+					"default": false,
+					"description": "%apex_code_disable-warnings-for-missing-coverage%"
+				},
+				"salesforcedx-vscode-apex.enable-apex-ls-error-to-telemetry": {
+					"type": "boolean",
+					"default": false,
+					"description": "%enable-apex-ls-error-to-telemetry%"
+				},
+				"salesforcedx-vscode-apex.test-run-concise": {
+					"type": "boolean",
+					"default": false,
+					"description": "%apex_test_run_concise%"
+				},
+				"salesforcedx-vscode-apex.languageServer.restartBehavior": {
+					"type": "string",
+					"enum": [
+						"prompt",
+						"restart",
+						"reset"
+					],
+					"default": "prompt",
+					"description": "%apex_language_server_restart_behavior_description%",
+					"enumDescriptions": [
+						"%apex_language_server_restart_behavior_prompt_description%",
+						"%apex_language_server_restart_behavior_restart_description%",
+						"%apex_language_server_restart_behavior_reset_description%"
+					]
+				}
+			}
+		},
+		"languages": [
+			{
+				"id": "apex",
+				"aliases": [
+					"Apex",
+					"apex"
+				],
+				"extensions": [
+					".cls",
+					".trigger",
+					".soql"
+				],
+				"configuration": "./syntaxes/apex.configuration.json"
+			},
+			{
+				"id": "apex-anon",
+				"aliases": [
+					"Anonymous Apex"
+				],
+				"extensions": [
+					".apex"
+				],
+				"configuration": "./syntaxes/apex.configuration.json"
+			}
+		],
+		"grammars": [
+			{
+				"language": "apex",
+				"scopeName": "source.apex",
+				"path": "./grammars/apex.tmLanguage"
+			},
+			{
+				"language": "apex-anon",
+				"scopeName": "source.apex",
+				"path": "./grammars/apex.tmLanguage"
+			}
+		],
+		"snippets": [
+			{
+				"language": "apex",
+				"path": "./snippets/apex.json"
+			}
+		]
+	},
+	"__metadata": {
+		"installedTimestamp": 1764831130489,
+		"targetPlatform": "universal",
+		"size": 30161246
+	}
+}

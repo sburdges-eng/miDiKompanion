@@ -1,0 +1,15 @@
+---
+pid: 63620
+cwd: /Users/seanburdges/kelly-consolidation/1DAW1
+last_command: source /Users/seanburdges/kelly-consolidation/1DAW1/venv/bin/activate
+last_exit_code: 0
+---
+seanburdges@Seans-MacBook-Pro 1DAW1 % source /Users/seanburdges/kell
+y-consolidation/1DAW1/venv/bin/activate
+(venv) seanburdges@Seans-MacBook-Pro 1DAW1 % 
+ *  History restored 
+
+seanburdges@Seans-MacBook-Pro 1DAW1 % source /Users/seanburdges/kelly-consolidat
+ion/1DAW1/venv/bin/activate
+(venv) seanburdges@Seans-MacBook-Pro 1DAW1 %
+(venv) seanburdges@Seans-MacBook-Pro 1DAW1 %

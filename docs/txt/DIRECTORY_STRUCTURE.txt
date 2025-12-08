@@ -1,0 +1,19 @@
+lariat-bible/
+├── 01_VENDOR_MANAGEMENT/   (19 files)  - price comparisons, vendor matching
+├── 02_ORDER_GUIDES/        (33 files)  - ordering systems & par levels
+├── 03_INVOICES/            (98 files)  - invoices + Invoice_Images/ (86 images)
+├── 04_RECIPE_COSTING/      (22 files)  - recipe books and costing tools
+├── 05_INVENTORY/           (3 files)   - stock tracking
+├── 06_KITCHEN_OPERATIONS/  (23 files)  - station procedures & checklists
+├── 07_STAFF_SCHEDULING/    (10 files)  - staff schedules
+├── 08_MENU_ANALYTICS/      (9 files)   - sales & product mix
+├── 09_PURCHASE_HISTORY/    (3 files)   - historical vendor data
+├── 10_TEMPLATES/           (11 files)  - CSV & form templates
+├── 11_DOCUMENTS/           (9 files)   - SOPs and training
+├── 12_WORKING_FILES/       (32 files)  - active WIP
+├── 13_SCRIPTS/             (2 files)   - automation scripts (update paths)
+└── _ARCHIVE/               (34 files)  - duplicates / unrelated files
+
+# Cleanup actions
+- Review _ARCHIVE/Duplicates_To_Delete/ and remove after confirmation.
+- Delete _ARCHIVE/Unrelated_Files/ (safe to remove).

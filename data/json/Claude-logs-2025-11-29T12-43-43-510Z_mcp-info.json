@@ -1,0 +1,30 @@
+{
+  "installedServers": [
+    "Filesystem",
+    "Control your Mac"
+  ],
+  "activeServers": [
+    "Filesystem",
+    "Control your Mac"
+  ],
+  "configurations": {
+    "Filesystem": {
+      "command": "node",
+      "args": [
+        "/Users/seanburdges/Library/Application Support/Claude/Claude Extensions/ant.dir.ant.anthropic.filesystem/server/index.js",
+        "/Users/seanburdges"
+      ],
+      "extensionId": "ant.dir.ant.anthropic.filesystem",
+      "status": "running"
+    },
+    "Control your Mac": {
+      "command": "node",
+      "args": [
+        "/Users/seanburdges/Library/Application Support/Claude/Claude Extensions/ant.dir.gh.k6l3.osascript/server/index.js"
+      ],
+      "env": {},
+      "extensionId": "ant.dir.gh.k6l3.osascript",
+      "status": "running"
+    }
+  }
+}

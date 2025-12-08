@@ -1,0 +1,1235 @@
+{
+	"name": "debugger-for-mainframe",
+	"displayName": "Debugger for Mainframe",
+	"description": "Code4z debugging extension for CICS and Batch applications written in COBOL and High-Level Assembler Language",
+	"version": "1.13.2",
+	"author": {
+		"name": "Broadcom"
+	},
+	"license": "Broadcom",
+	"publisher": "BroadcomMFD",
+	"engines": {
+		"vscode": "^1.38.1"
+	},
+	"categories": [
+		"Debuggers"
+	],
+	"keywords": [
+		"intertest",
+		"cics",
+		"batch",
+		"cobol",
+		"assembler",
+		"debug",
+		"code4z",
+		"zowe",
+		"intertest-cics",
+		"intertest-batch"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/BroadcomMFD/debugger-for-mainframe"
+	},
+	"bugs": {
+		"url": "https://github.com/BroadcomMFD/debugger-for-mainframe/issues"
+	},
+	"activationEvents": [
+		"onView:statementTrace",
+		"onCommand:intertest-debug-dap.fetch-extended-source",
+		"onCommand:intertest-debug-dap.list-composite",
+		"onCommand:intertest-debug-dap.batch-convert-jcl",
+		"onCommand:intertest-debug-dap.help-command",
+		"onDebug"
+	],
+	"icon": "resources/logo.png",
+	"main": "./out/main/extension",
+	"contributes": {
+		"configuration": [
+			{
+				"title": "Debugger for Mainframe",
+				"properties": {
+					"debuggerForMainframe.nativeCertificateStoreForWindows": {
+						"type": "string",
+						"enum": [
+							"Java internal certificate",
+							"Windows-ROOT"
+						],
+						"default": "Java internal certificate",
+						"scope": "machine",
+						"description": "Trust store path specific to Windows instead of using internal Java certificate store path",
+						"order": 0
+					},
+					"debuggerForMainframe.nativeCertificateStoreForMacOS.trustStoreType": {
+						"type": "string",
+						"default": "Java internal certificate",
+						"scope": "machine",
+						"description": "Trust store type specific to Mac OS instead of using internal Java certificate store type",
+						"order": 1
+					},
+					"debuggerForMainframe.nativeCertificateStoreForMacOS.trustStore": {
+						"type": "string",
+						"default": "Java internal certificate",
+						"scope": "machine",
+						"description": "Trust store path specific to Mac OS instead of using internal Java certificate store path",
+						"order": 2
+					}
+				}
+			}
+		],
+		"menus": {
+			"view/title": [
+				{
+					"command": "statementTrace.prev",
+					"when": "view == statementTrace",
+					"group": "navigation@1"
+				},
+				{
+					"command": "statementTrace.next",
+					"when": "view == statementTrace",
+					"group": "navigation@2"
+				},
+				{
+					"command": "intertest-debug-dap.filter",
+					"when": "!filtered && inDebugMode && (debugType == 'intertest-batch' || debugType== 'intertest-cics') && view == workbench.debug.variablesView",
+					"group": "navigation@1"
+				},
+				{
+					"command": "intertest-debug-dap.clearFilter",
+					"when": "filtered && inDebugMode && (debugType == 'intertest-batch' || debugType== 'intertest-cics') && view == workbench.debug.variablesView",
+					"group": "navigation@1"
+				}
+			],
+			"view/item/context": [
+				{
+					"command": "statementTrace.copyStatemenTrace",
+					"when": "view == statementTrace",
+					"group": "navigation@1"
+				}
+			],
+			"editor/context": [
+				{
+					"command": "intertest-debug-dap.setVariable",
+					"when": "inDebugMode && (debugType == 'intertest-batch' || debugType== 'intertest-cics')",
+					"group": "debug"
+				},
+				{
+					"command": "intertest-debug-dap.gotoVariable",
+					"when": "inDebugMode && (debugType == 'intertest-batch' || debugType== 'intertest-cics')",
+					"group": "debug"
+				}
+			],
+			"debug/variables/context": [
+				{
+					"command": "intertest-debug-dap.sort-definiton",
+					"when": "inDebugMode && isAlphabetic && (debugType == 'intertest-batch' || debugType== 'intertest-cics')"
+				},
+				{
+					"command": "intertest-debug-dap.sort-ascending",
+					"when": "inDebugMode && !isAlphabetic  && (debugType == 'intertest-batch' || debugType== 'intertest-cics')"
+				}
+			]
+		},
+		"views": {
+			"debug": [
+				{
+					"id": "statementTrace",
+					"name": "Statement Trace"
+				}
+			]
+		},
+		"walkthroughs": [
+			{
+				"id": "batchDemo",
+				"title": "Basic Batch Demo Session",
+				"description": "This walkthrough takes you step-by-step through a basic batch demo debugging session in Debugger for Mainframe.",
+				"steps": [
+					{
+						"id": "openlaunch",
+						"title": "Open Debug Configuration",
+						"description": "This step opens the launch.json file in your workspace. You use launch.json to configure your debugging session. \nIf no launch.json file exists in your workspace, a prompt will display at the top of the screen. Select Debugger for Mainframe: INTERTEST™ FOR BATCH - demo session from the list of possible configurations. \nIf you already have a launch.json file with existing debug configurations, click the Add Configuration... button in the bottom right corner to add a new one. \n[Open launch.json file](command:workbench.action.debug.configure)",
+						"media": {
+							"image": "media/app-icon.png",
+							"altText": "Default image"
+						},
+						"completionEvents": [
+							"onCommand:workbench.action.debug.configure"
+						]
+					},
+					{
+						"id": "populatelaunch",
+						"title": "Populate Debug Configuration",
+						"description": "Populate all fields in the launch.json file. \nConsult the \"Debugging Demo Sessions\" page of the Code4z documentation for parameter descriptions. \n[Documentation (opens in new window)](https://techdocs.broadcom.com/code4z)",
+						"media": {
+							"image": "media/b3-launch.png",
+							"altText": "launch.json file with originalJCL element added"
+						},
+						"completionEvents": []
+					},
+					{
+						"id": "convert",
+						"title": "Convert JCL",
+						"description": "Use the button below to convert your original JCL to the member you specified in the convertedJCL field. Enter your password if prompted. \n[Convert JCL](command:intertest-debug-dap.batch-convert-jcl)",
+						"media": {
+							"image": "media/b4-convert.png",
+							"altText": "Convert JCL command in the F1 menu"
+						},
+						"completionEvents": [
+							"onCommand:intertest-debug-dap.batch-convert-jcl"
+						]
+					},
+					{
+						"id": "fetchextended",
+						"title": "Fetch your source code",
+						"description": "Use the button below to open a list of debug configurations. Select your debug configuration from the list to fetch your source code. Enter your password if prompted. \n[Fetch Extended Sources](command:intertest-debug-dap.fetch-extended-source)",
+						"media": {
+							"image": "media/b5-fetch.png",
+							"altText": "Fetch Extended Sources command in the F1 menu"
+						},
+						"completionEvents": [
+							"onCommand:intertest-debug-dap.fetch-extended-source"
+						]
+					},
+					{
+						"id": "startsession",
+						"title": "Start your debug session",
+						"description": "Use the button below to start your debug session. Enter your password if prompted. \n[Run debug session](command:workbench.action.debug.start)",
+						"media": {
+							"image": "media/b6-start.png",
+							"altText": "Start Debug Session button in the Run and Debug panel"
+						},
+						"completionEvents": [
+							"onCommand:workbench.action.debug.start"
+						]
+					},
+					{
+						"id": "continue",
+						"title": "Continue at START PROGRAM",
+						"description": "The debug session stops at the START PROGRAM instruction. Use the Continue button to resume the session.",
+						"media": {
+							"image": "media/b7-startprogram.png",
+							"altText": "Automatic breakpoint at the START PROGRAM instruction"
+						}
+					},
+					{
+						"id": "abend",
+						"title": "Resolve abend at ADD 1 TO TASKNUM",
+						"description": "The debug session stops at an abend on the instruction ADD 1 TO TASKNUM. This is because the variable TASKNUM has an invalid format. \nRight-click TASKNUM to set a new value, which must be a valid packed integer. You can also find TASKNUM under TASK-STRUCTURE in the variable tree.",
+						"media": {
+							"image": "media/b8-tasknum.png",
+							"altText": "TASKNUM in the variables tree, under TASK-STRUCTURE"
+						}
+					},
+					{
+						"id": "breakpoint",
+						"title": "Set an unconditional breakpoint at RETURN TO OPSYS",
+						"description": "Click in the margin next to the line RETURN TO OPSYS to set an unconditional breakpoint at that line.",
+						"media": {
+							"image": "media/b9-breakpoint.png",
+							"altText": "Unconditional breakpoint at RETURN TO OPSYS"
+						}
+					},
+					{
+						"id": "trace",
+						"title": "Continue and view trace",
+						"description": "Continue the debug session. It will stop at the breakpoint you just set. View the statement trace in the bottom left hand corner of the interface to see the path back to the abend.",
+						"media": {
+							"image": "media/b10-viewtrace.png",
+							"altText": "Statement trace from RETURN TO OPSYS back to ADD 1 TO TASKNUM"
+						}
+					},
+					{
+						"id": "complete",
+						"title": "Run the program to completion",
+						"description": "Continue the debug session again to run it to completion. \nCongratulations on completing the Basic Batch Demo. Refer to the documentation to learn more batch debugging features available with Debugger for Mainframe. [Documentation (opens in new window)](https://marketplace.visualstudio.com/items?itemName=broadcomMFD.debugger-for-mainframe)",
+						"media": {
+							"image": "media/b11-continuecomplete.png",
+							"altText": "Continue button in the Debug Toolbar"
+						}
+					}
+				]
+			},
+			{
+				"id": "sampleCICS",
+				"title": "Basic CICS Demo Session",
+				"description": "This walkthrough takes you step-by-step through a basic CICS demo debugging session in Debugger for Mainframe.",
+				"steps": [
+					{
+						"id": "openlaunch",
+						"title": "Open Debug Configuration",
+						"description": "This step opens the launch.json file in your workspace. You use launch.json to configure your debugging session. \nIf no launch.json file exists in your workspace, a prompt will display at the top of the screen. Select Debugger for Mainframe: INTERTEST™ FOR CICS - demo session from the list of possible configurations. \n[Open launch.json file](command:workbench.action.debug.configure)",
+						"media": {
+							"image": "media/launchjson.PNG",
+							"altText": "launch.json CICS configuration template"
+						},
+						"completionEvents": [
+							"onCommand:workbench.action.debug.configure"
+						]
+					},
+					{
+						"id": "populatelaunch",
+						"title": "Populate Debug Configuration",
+						"description": "Populate all fields in the launch.json file. \nConsult the \"Debugging Demo Sessions\" page of the Code4z documentation for parameter descriptions. \n[Documentation (opens in new window)](https://techdocs.broadcom.com/code4z)",
+						"media": {
+							"image": "media/PROGRAMNAME.PNG",
+							"altText": "Program name example"
+						},
+						"completionEvents": []
+					},
+					{
+						"id": "credentials1",
+						"title": "Enter Connection Information",
+						"description": "In the host and port fields, enter the URL and port of your Testing Tools Server or API Mediation Layer Gateway. \nIf you connect via the API Mediation Layer, add the optional parameter \"path\" under port, and specify your API Mediation Layer Path.",
+						"media": {
+							"image": "media/connection.PNG",
+							"altText": "Connection details example"
+						},
+						"completionEvents": []
+					},
+					{
+						"id": "credentials2",
+						"title": "Enter Credentials",
+						"description": "In the interTestUserName field, specify your mainframe username. \nSet the interTestSecure field to false if you are not using a secure connection.",
+						"media": {
+							"image": "media/connection.PNG",
+							"altText": "Connection details example"
+						},
+						"completionEvents": []
+					},
+					{
+						"id": "applid",
+						"title": "Enter CICS ApplID",
+						"description": "In the cicsApplID field, enter the ApplID of your CICS region.",
+						"media": {
+							"image": "media/applid.PNG",
+							"altText": "ApplID example"
+						},
+						"completionEvents": []
+					},
+					{
+						"id": "fetchsource",
+						"title": "Fetch your source code",
+						"description": "Save your launch.json file, and press F1 to open the interface. Select the option Fetch extended sources, and select the required source, e.g. INTERTEST™ FOR CICS - demo session. Enter your mainframe password when prompted. The source is displayed.",
+						"media": {
+							"image": "media/fetchextended.PNG",
+							"altText": "Fetch extended sources command"
+						}
+					},
+					{
+						"id": "setbreakpoints",
+						"title": "Set Breakpoints",
+						"description": "Set breakpoints in your source code.",
+						"media": {
+							"image": "media/breakpoints.PNG",
+							"altText": "Breakpoints"
+						}
+					},
+					{
+						"id": "startdebug",
+						"title": "Start Debug Session",
+						"description": "Click the button below, or the Play button in the top left corner of the debug panel, to start the debug session. If a list of configurations displays, choose your program name. \n[Run debug session](command:workbench.action.debug.start)",
+						"media": {
+							"image": "media/startdebug.PNG",
+							"altText": "Start debug session"
+						},
+						"completionEvents": [
+							"onCommand:workbench.action.debug.start"
+						]
+					},
+					{
+						"id": "cicsstart",
+						"title": "Run Program",
+						"description": "Run your program on your CICS region.",
+						"media": {
+							"image": "media/app-icon.png",
+							"altText": "Empty image"
+						}
+					}
+				]
+			}
+		],
+		"commands": [
+			{
+				"command": "statementTrace.copyStatemenTrace",
+				"title": "Copy Statement Trace"
+			},
+			{
+				"command": "statementTrace.locate",
+				"title": "Statement trace"
+			},
+			{
+				"command": "statementTrace.next",
+				"title": "Next statement",
+				"icon": "$(chevron-right)",
+				"category": "Statement trace"
+			},
+			{
+				"command": "statementTrace.prev",
+				"title": "Previous statement",
+				"icon": "$(chevron-left)",
+				"category": "Statement trace"
+			},
+			{
+				"command": "statementTrace.up",
+				"title": "Move up statement trace",
+				"category": "Statement trace"
+			},
+			{
+				"command": "statementTrace.down",
+				"title": "Move down statement trace",
+				"category": "Statement trace"
+			},
+			{
+				"command": "statementTrace.refreshView",
+				"title": "Refresh Statement Trace View"
+			},
+			{
+				"command": "intertest-debug-dap.fetch-extended-source",
+				"title": "Fetch Extended Sources"
+			},
+			{
+				"command": "intertest-debug-dap.list-composite",
+				"title": "List Composites"
+			},
+			{
+				"command": "intertest-debug-dap.batch-convert-jcl",
+				"title": "Batch: Convert JCL"
+			},
+			{
+				"command": "intertest-debug-dap.setVariable",
+				"title": "Set Variable"
+			},
+			{
+				"command": "intertest-debug-dap.filter",
+				"title": "Filter Variables",
+				"icon": "$(filter)"
+			},
+			{
+				"command": "intertest-debug-dap.gotoVariable",
+				"title": "Filter Variable"
+			},
+			{
+				"command": "intertest-debug-dap.clearFilter",
+				"title": "Clear Filter",
+				"icon": "$(filter-filled)"
+			},
+			{
+				"command": "intertest-debug.show-schedule-table",
+				"title": "Batch: Show Scheduling Table"
+			},
+			{
+				"command": "intertest-debug-dap.sort-ascending",
+				"title": "Sort A to Z"
+			},
+			{
+				"command": "intertest-debug-dap.sort-definiton",
+				"title": "Sort by definition"
+			},
+			{
+				"command": "intertest-debug-dap.help-command",
+				"title": "/help"
+			}
+		],
+		"breakpoints": [
+			{
+				"language": "COBOL"
+			},
+			{
+				"language": "cobol"
+			},
+			{
+				"language": "hlasmListing"
+			},
+			{
+				"language": "plaintext"
+			}
+		],
+		"debuggers": [
+			{
+				"type": "intertest-cics",
+				"label": "Debugger for Mainframe: INTERTEST™ FOR CICS",
+				"runtime": "java",
+				"runtimeArgs": [
+					"-jar"
+				],
+				"program": "./bin/idas.jar",
+				"configurationAttributes": {
+					"launch": {
+						"required": [
+							"programName",
+							"cicsApplId"
+						],
+						"anyOf": [
+							{
+								"required": [
+									"host",
+									"port",
+									"interTestUserName"
+								]
+							},
+							{
+								"required": [
+									"path",
+									"apimlProfile"
+								]
+							}
+						],
+						"properties": {
+							"cicsApplId": {
+								"type": "string",
+								"description": "CICS Application Id.",
+								"minLength": 1,
+								"maxLength": 8,
+								"pattern": "^\\S+$",
+								"patternErrorMessage": "No spaces allowed in cicsApplId."
+							},
+							"cicsUserId": {
+								"type": "string",
+								"description": "Specifies a value if you want to debug a CICS program or transaction as it executes for a specific CICS user logon ID. You cannot modify this value during an active debugging session.",
+								"default": ".ANY",
+								"minLength": 1,
+								"maxLength": 8,
+								"pattern": "^\\S+$",
+								"patternErrorMessage": "No spaces allowed in cicsUserId."
+							},
+							"testMode": {
+								"type": "boolean",
+								"description": "Used only for internal testing.",
+								"default": false
+							},
+							"programName": {
+								"type": "array",
+								"description": "CICS Program.",
+								"minItems": 1,
+								"maxItems": 30,
+								"uniqueItems": true,
+								"items": {
+									"type": "string",
+									"minLength": 1,
+									"maxLength": 17,
+									"pattern": "^[^_]\\S+$",
+									"patternErrorMessage": "No spaces allowed in program name, program name cannot start with underscore."
+								}
+							},
+							"host": {
+								"type": "string",
+								"description": "Intertest Server Host Name.",
+								"minLength": 1,
+								"pattern": "^\\S+$",
+								"patternErrorMessage": "No spaces allowed in host."
+							},
+							"port": {
+								"type": "integer",
+								"description": "Intertest Server Port Number.",
+								"minimum": 0,
+								"maximum": 65535
+							},
+							"interTestUserName": {
+								"type": "string",
+								"description": "Intertest Server User Name.",
+								"minLength": "1",
+								"maxLength": "8",
+								"pattern": "^\\S+$",
+								"patternErrorMessage": "No spaces allowed in interTestUserName."
+							},
+							"interTestSecure": {
+								"type": "boolean",
+								"description": "Intertest Server Secure.",
+								"default": false
+							},
+							"apimlProfile": {
+								"type": "string",
+								"description": "APIML Profile used for SSO"
+							},
+							"interTestCharset": {
+								"type": "string",
+								"description": "Intertest Server Charset for Listings.",
+								"default": "UTF-8",
+								"minLength": 1
+							},
+							"transactionId": {
+								"type": "string",
+								"description": "Name of CICS transaction",
+								"minLength": 1,
+								"pattern": "^\\S+$",
+								"patternErrorMessage": "No spaces allowed in transactionId."
+							},
+							"variableOrder": {
+								"type": "string",
+								"description": "Variables are ordered according to the position of their definition in the source code or alphabetically.",
+								"enum": [
+									"definition",
+									"alphabetical"
+								],
+								"default": "definition"
+							},
+							"debugServer": {
+								"type": "integer",
+								"description": "DA port to connect (localhost).",
+								"default": 4712
+							},
+							"paragraphBreakpoints": {
+								"type": "boolean",
+								"description": "Stop at paragraphs",
+								"default": false
+							},
+							"logOutput": {
+								"type": "string",
+								"description": "Loggging destination preference",
+								"enum": [
+									"file",
+									"console"
+								]
+							},
+							"logLevel": {
+								"type": "string",
+								"description": "Loggging level preference",
+								"enum": [
+									"SEVERE",
+									"WARNING",
+									"INFO",
+									"CONFIG",
+									"FINE",
+									"FINER",
+									"FINEST",
+									"ALL"
+								]
+							},
+							"terminalId": {
+								"type": "string",
+								"description": "Allows you to specify a CICS terminal to the debug session. You cannot modify this value during an active debugging session.",
+								"default": ".ANY",
+								"minLength": 1
+							},
+							"callTrace": {
+								"type": "boolean",
+								"description": "Allows Calltrace data retrieval for the debug session, in order to populate Call Stack View.",
+								"default": false
+							},
+							"statementTrace": {
+								"type": "boolean",
+								"description": "Enable fetching of statement trace.",
+								"default": true
+							},
+							"path": {
+								"type": "string",
+								"description": "APIML path",
+								"minLength": 1,
+								"pattern": "^\\S+$",
+								"patternErrorMessage": "No spaces allowed in service ID."
+							},
+							"ZoweProfileName": {
+								"type": "string",
+								"description": "Zowe Profile name",
+								"minLength": 1,
+								"pattern": "^\\S+$",
+								"patternErrorMessage": "No spaces allowed in Zowe Profile name."
+							}
+						}
+					}
+				},
+				"initialConfigurations": [
+					{
+						"name": "Debugger for Mainframe: INTERTEST™ FOR CICS",
+						"type": "intertest-cics",
+						"request": "launch",
+						"programName": [
+							"PROGRAMNM"
+						],
+						"host": "host_name",
+						"port": 0,
+						"interTestUserName": "USERNAME",
+						"interTestSecure": true,
+						"cicsApplId": "cicsId"
+					}
+				],
+				"configurationSnippets": [
+					{
+						"label": "INTERTEST™ FOR CICS",
+						"description": "A new configuration for 'debugging' an extended source code file.",
+						"body": {
+							"name": "Debugger for Mainframe: INTERTEST™ FOR CICS",
+							"type": "intertest-cics",
+							"request": "launch",
+							"programName": [
+								"PROGRAM"
+							],
+							"host": "HOST",
+							"port": 0,
+							"interTestUserName": "USER",
+							"interTestSecure": true,
+							"cicsApplId": "ABC"
+						}
+					},
+					{
+						"label": "INTERTEST™ FOR CICS - demo session",
+						"description": "A preset configuration for running the InterTest for CICS COBOL basic demo session.",
+						"body": {
+							"name": "Debugger for Mainframe: CICS Demo Session",
+							"type": "intertest-cics",
+							"request": "launch",
+							"programName": [
+								"COBDEMO"
+							],
+							"protsym": [
+								"PROTSYM"
+							],
+							"host": "HOST",
+							"port": 0,
+							"path": "",
+							"interTestUserName": "USER",
+							"interTestSecure": true,
+							"cicsApplId": ""
+						}
+					}
+				]
+			},
+			{
+				"type": "intertest-batch",
+				"label": "Debugger for Mainframe: INTERTEST™ FOR BATCH",
+				"runtime": "java",
+				"program": "./bin/idas.jar",
+				"configurationAttributes": {
+					"launch": {
+						"required": [
+							"programName",
+							"convertedJCL"
+						],
+						"anyOf": [
+							{
+								"required": [
+									"protsym",
+									"host",
+									"port",
+									"interTestUserName"
+								]
+							},
+							{
+								"required": [
+									"protsym",
+									"path",
+									"apimlProfile"
+								]
+							},
+							{
+								"required": [
+									"DSS",
+									"path",
+									"apimlProfile"
+								]
+							},
+							{
+								"required": [
+									"DSS",
+									"host",
+									"port",
+									"interTestUserName"
+								]
+							}
+						],
+						"properties": {
+							"convertedJCL": {
+								"type": "string",
+								"description": "converted JCL",
+								"minLength": 1
+							},
+							"originalJCL": {
+								"type": "object",
+								"properties": {
+									"inDSN": {
+										"type": "string",
+										"minLength": 1
+									},
+									"stepName": {
+										"type": "string",
+										"minLength": 1
+									},
+									"procLibs": {
+										"type": "array",
+										"uniqueItems": true,
+										"minItems": 1
+									}
+								}
+							},
+							"programName": {
+								"type": "array",
+								"description": "Batch Programs to monitor.",
+								"minItems": 1,
+								"maxItems": 30,
+								"uniqueItems": true,
+								"items": {
+									"type": "string",
+									"minLength": 1,
+									"maxLength": 8,
+									"description": "Program Name",
+									"pattern": "^\\S+$",
+									"patternErrorMessage": "No spaces allowed in Program Name."
+								}
+							},
+							"protsym": {
+								"type": "array",
+								"description": "List of protsyms",
+								"minItems": 1,
+								"maxItems": 8,
+								"uniqueItems": true,
+								"items": {
+									"type": "string",
+									"minLength": 1,
+									"pattern": "^\\S+$",
+									"patternErrorMessage": "No spaces allowed in protsym.",
+									"description": "Protsym Name",
+									"maxLength": 44
+								}
+							},
+							"DSS": {
+								"type": "string",
+								"description": "DSS support",
+								"pattern": "^\\S+$",
+								"patternErrorMessage": "No spaces allowed in DSS."
+							},
+							"host": {
+								"type": "string",
+								"description": "Intertest Server Host Name.",
+								"minLength": 1,
+								"pattern": "^\\S+$",
+								"patternErrorMessage": "No spaces allowed in host."
+							},
+							"port": {
+								"type": "integer",
+								"description": "Intertest Server Port Number.",
+								"minimum": 0,
+								"maximum": 65535
+							},
+							"interTestUserName": {
+								"type": "string",
+								"description": "Intertest Server User Name.",
+								"pattern": "^\\S+$",
+								"patternErrorMessage": "No spaces allowed in interTestUserName.",
+								"minLength": 1,
+								"maxLength": 8
+							},
+							"interTestSecure": {
+								"type": "boolean",
+								"description": "Intertest Server Secure.",
+								"default": false
+							},
+							"apimlProfile": {
+								"type": "string",
+								"description": "APIML Profile used for SSO."
+							},
+							"interTestCharset": {
+								"type": "string",
+								"description": "Intertest Server Charset for Listings.",
+								"default": "UTF-8"
+							},
+							"variableOrder": {
+								"type": "string",
+								"description": "Variables are ordered according to the position of their definition in the source code or alphabetically.",
+								"enum": [
+									"definition",
+									"alphabetical"
+								],
+								"default": "definition"
+							},
+							"debugServer": {
+								"type": "integer",
+								"description": "DA port to connect (localhost).",
+								"default": 4712
+							},
+							"paragraphBreakpoints": {
+								"type": "boolean",
+								"description": "Stop at paragraphs",
+								"default": false
+							},
+							"statementTrace": {
+								"type": "boolean",
+								"description": "Enable fetching of statement trace.",
+								"default": true
+							},
+							"executionCounts": {
+								"type": "boolean",
+								"description": "Allows Execution counts retrieval for the debug session.",
+								"default": false
+							},
+							"logOutput": {
+								"type": "string",
+								"description": "Loggging destination preference",
+								"enum": [
+									"file",
+									"console"
+								]
+							},
+							"logLevel": {
+								"type": "string",
+								"description": "Loggging level preference",
+								"enum": [
+									"SEVERE",
+									"WARNING",
+									"INFO",
+									"CONFIG",
+									"FINE",
+									"FINER",
+									"FINEST",
+									"ALL"
+								]
+							},
+							"path": {
+								"type": "string",
+								"description": "APIML service ID",
+								"minLength": 1,
+								"pattern": "^\\S+$",
+								"patternErrorMessage": "No spaces allowed in service ID."
+							},
+							"ZoweProfileName": {
+								"type": "string",
+								"description": "Zowe Profile name",
+								"minLength": 1,
+								"pattern": "^\\S+$",
+								"patternErrorMessage": "No spaces allowed in Zowe Profile name."
+							},
+							"symbols": {
+								"type": "object",
+								"additionalProperties": {
+									"type": "string"
+								}
+							}
+						}
+					},
+					"attach": {
+						"anyOf": [
+							{
+								"required": [
+									"host",
+									"port",
+									"interTestUserName"
+								]
+							},
+							{
+								"required": [
+									"path",
+									"apimlProfile"
+								]
+							}
+						],
+						"properties": {
+							"programName": {
+								"type": "array",
+								"description": "BATCH Program.",
+								"uniqueItems": true,
+								"maxItems": 30,
+								"items": {
+									"type": "string",
+									"minLength": 1,
+									"maxLength": 8,
+									"pattern": "^\\S+$",
+									"patternErrorMessage": "No spaces allowed in program name"
+								}
+							},
+							"host": {
+								"type": "string",
+								"description": "Intertest Server Host Name.",
+								"minLength": 1,
+								"pattern": "^\\S+$",
+								"patternErrorMessage": "No spaces allowed in host."
+							},
+							"port": {
+								"type": "integer",
+								"description": "Intertest Server Port Number.",
+								"minimum": 0,
+								"maximum": 65535
+							},
+							"interTestUserName": {
+								"type": "string",
+								"description": "Intertest Server User Name.",
+								"minLength": "1",
+								"maxLength": "8",
+								"pattern": "^\\S+$",
+								"patternErrorMessage": "No spaces allowed in interTestUserName."
+							},
+							"interTestSecure": {
+								"type": "boolean",
+								"description": "Intertest Server Secure.",
+								"default": false
+							},
+							"apimlProfile": {
+								"type": "string",
+								"description": "APIML Profile used for SSO"
+							},
+							"interTestCharset": {
+								"type": "string",
+								"description": "Intertest Server Charset for Listings.",
+								"default": "UTF-8",
+								"minLength": 1
+							},
+							"protsym": {
+								"type": "array",
+								"description": "List of protsyms",
+								"uniqueItems": true,
+								"maxItems": 8,
+								"items": {
+									"type": "string",
+									"minLength": 1,
+									"pattern": "^\\S+$",
+									"patternErrorMessage": "No spaces allowed in protsym.",
+									"description": "Protsym Name",
+									"maxLength": 44
+								}
+							},
+							"DSS": {
+								"type": "string",
+								"description": "DSS support",
+								"pattern": "^\\S+$",
+								"patternErrorMessage": "No spaces allowed in DSS."
+							},
+							"filters": {
+								"type": "object",
+								"properties": {
+									"jobname": {
+										"type": "string",
+										"minLength": 0
+									},
+									"stepname": {
+										"type": "string",
+										"minLength": 0
+									},
+									"programname": {
+										"type": "string",
+										"uniqueItems": true,
+										"minItems": 0
+									},
+									"user": {
+										"type": "string",
+										"uniqueItems": true,
+										"minItems": 0
+									}
+								}
+							},
+							"variableOrder": {
+								"type": "string",
+								"description": "Variables are ordered according to the position of their definition in the source code or alphabetically.",
+								"enum": [
+									"definition",
+									"alphabetical"
+								],
+								"default": "definition"
+							},
+							"debugServer": {
+								"type": "integer",
+								"description": "DA port to connect (localhost).",
+								"default": 4712
+							},
+							"paragraphBreakpoints": {
+								"type": "boolean",
+								"description": "Stop at paragraphs",
+								"default": false
+							},
+							"statementTrace": {
+								"type": "boolean",
+								"description": "Enable fetching of statement trace.",
+								"default": true
+							},
+							"executionCounts": {
+								"type": "boolean",
+								"description": "Allows Execution counts retrieval for the debug session.",
+								"default": false
+							},
+							"logOutput": {
+								"type": "string",
+								"description": "Loggging destination preference",
+								"enum": [
+									"file",
+									"console"
+								]
+							},
+							"logLevel": {
+								"type": "string",
+								"description": "Loggging level preference",
+								"enum": [
+									"SEVERE",
+									"WARNING",
+									"INFO",
+									"CONFIG",
+									"FINE",
+									"FINER",
+									"FINEST",
+									"ALL"
+								]
+							},
+							"path": {
+								"type": "string",
+								"description": "APIML path",
+								"minLength": 1,
+								"pattern": "^\\S+$",
+								"patternErrorMessage": "No spaces allowed in service ID."
+							},
+							"ZoweProfileName": {
+								"type": "string",
+								"description": "Zowe Profile name",
+								"minLength": 1,
+								"pattern": "^\\S+$",
+								"patternErrorMessage": "No spaces allowed in Zowe Profile name."
+							}
+						}
+					}
+				},
+				"initialConfigurations": [
+					{
+						"name": "Debugger for Mainframe: INTERTEST™ FOR BATCH",
+						"type": "intertest-batch",
+						"request": "launch",
+						"programName": [
+							"PROGRAMNM"
+						],
+						"protsym": [
+							"PROTSYM"
+						],
+						"host": "HOST",
+						"port": 0,
+						"interTestUserName": "USER",
+						"interTestSecure": true,
+						"convertedJCL": "CONV.JCL(RUNME)"
+					}
+				],
+				"configurationSnippets": [
+					{
+						"label": "INTERTEST™ FOR BATCH",
+						"description": "A new configuration for 'debugging' an extended source code file.",
+						"body": {
+							"name": "Debugger for Mainframe: INTERTEST™ FOR BATCH",
+							"type": "intertest-batch",
+							"request": "launch",
+							"programName": [
+								"PROGNAME"
+							],
+							"protsym": [
+								"PROTSYM"
+							],
+							"host": "HOST",
+							"port": 0,
+							"interTestUserName": "USER",
+							"interTestSecure": true,
+							"convertedJCL": ""
+						}
+					},
+					{
+						"label": "INTERTEST™ FOR BATCH - attach",
+						"description": "A new configuration for 'debugging' an extended source code file.",
+						"body": {
+							"name": "INTERTEST™ FOR BATCH - attach",
+							"type": "intertest-batch",
+							"request": "attach",
+							"host": "HOST",
+							"port": 0,
+							"interTestUserName": "USER"
+						}
+					},
+					{
+						"label": "INTERTEST™ FOR BATCH - demo session",
+						"description": "A preset configuration for running the InterTest Batch COBOL demo session.",
+						"body": {
+							"name": "Debugger for Mainframe: Batch Demo Session",
+							"type": "intertest-batch",
+							"request": "launch",
+							"programName": [
+								"CAMRCOBB"
+							],
+							"protsym": [
+								"PROTSYM"
+							],
+							"host": "HOST",
+							"port": 0,
+							"path": "",
+							"interTestUserName": "USER",
+							"interTestSecure": true,
+							"originalJCL": {
+								"inDSN": "",
+								"stepName": ""
+							},
+							"convertedJCL": ""
+						}
+					}
+				]
+			}
+		],
+		"keybindings": [
+			{
+				"command": "statementTrace.up",
+				"key": "Shift+Up",
+				"when": "focusedView == 'statementTrace'"
+			},
+			{
+				"command": "statementTrace.down",
+				"key": "Shift+Down",
+				"when": "focusedView == 'statementTrace'"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run lint && npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"lint": "eslint . --ext .ts",
+		"test": "jest -w 1",
+		"test:integration": "npm run compile && node ./out/test/runTest.js --retries=2",
+		"test:integration+coverage": "c8 --allowExternal true --include='**/main/**' -o coverage-vsc-integration -r html npm run test:integration",
+		"test:cicd": "npm run compile && /usr/bin/xvfb-run -a node ./out/test/runTest.js --retries=2",
+		"test:cicd+coverage": "c8 --allowExternal true --exclude='**/test/**' -o coverage-integration -r html npm run test:cicd",
+		"test:extended": "npm run compile && node ./out/test/runTest.js --extendedTests --retries=2",
+		"test:extended-linux": "npm run compile && /usr/bin/xvfb-run -a node ./out/test/runTest.js --extendedTests",
+		"ui-test": "npm run compile && node ./out/test/runUITest.js",
+		"prettier:check": "npx prettier --check ."
+	},
+	"devDependencies": {
+		"@types/chai": "^4.3.4",
+		"@types/fs-extra": "^9.0.13",
+		"@types/glob": "^7.2.0",
+		"@types/hjson": "2.4.1",
+		"@types/jest": "24.0.23",
+		"@types/mocha": "^9.1.1",
+		"@types/mochawesome": "^6.2.4",
+		"@types/node": "10.17.6",
+		"@types/vscode": "^1.38.1",
+		"@types/winston": "^2.4.4",
+		"@typescript-eslint/eslint-plugin": "^5.54.1",
+		"@typescript-eslint/parser": "^5.54.1",
+		"@vscode/test-electron": "^2.3.0",
+		"@zowe/imperative": "5.18.0",
+		"@zowe/zos-console-for-zowe-sdk": "7.16.5",
+		"@zowe/zos-jobs-for-zowe-sdk": "7.16.6",
+		"c8": "^7.13.0",
+		"chai": "^4.3.7",
+		"chai-sorted": "^0.2.0",
+		"dotenv": "^16.0.3",
+		"eslint": "^7.32.0",
+		"eslint-plugin-sonarjs": "^0.18.0",
+		"fs-extra": "^10.1.0",
+		"glob": "^8.1.0",
+		"jest": "^26.6.3",
+		"mocha": "^11.1.0",
+		"mocha-multi-reporters": "^1.5.1",
+		"mochawesome": "^7.1.3",
+		"prettier": "^2.8.3",
+		"process": "0.11.10",
+		"request": "^2.88.2",
+		"ts-jest": "^26.5.6",
+		"typescript": "^4.9.5",
+		"vscode-extension-tester": "^8.0.0",
+		"winston": "^3.17.0"
+	},
+	"dependencies": {
+		"@vscode/extension-telemetry": "^0.9.7"
+	},
+	"overrides": {
+		"@opentelemetry/instrumentation": {
+			"semver": "7.5.4",
+			"import-in-the-middle": "1.5.0"
+		},
+		"diagnostic-channel": {
+			"semver": "5.7.2"
+		}
+	},
+	"__metadata": {
+		"installedTimestamp": 1764862599943,
+		"targetPlatform": "universal",
+		"size": 112311416
+	}
+}

@@ -1,0 +1,99 @@
+[DEBUG] Watching for changes in setting files /Users/seanburdges/.claude/settings.local.json...
+[DEBUG] Applying permission update: Adding 38 allow rule(s) to destination 'localSettings': ["Bash(auval:*)","Bash(while read type subtype manu rest)","Bash(do echo \"=== Testing: $rest ($type $subtype $manu) ===\" auval -v \"$type\" \"$subtype\" \"$manu\")","Bash(while IFS=' ' read -r type subtype manu dash name)","Bash(do echo \"=== Testing: $name ($type $subtype $manu) ===\" auval -v \"$type\" \"$subtype\" \"$manu\")","Bash(/bin/bash -c 'auval -a 2>&1 | grep -E \"\"^au[a-z]{2}\"\" | while read type subtype manu dash name; do echo \"\"=== Testing: $name ($type $subtype $manu) ===\"\"; auval -v \"\"$type\"\" \"\"$subtype\"\" \"\"$manu\"\" 2>&1 | tail -3; echo \"\"\"\"; done')","Bash(system_profiler:*)","Bash(ioreg:*)","Bash(cat:*)","Bash(open \"/System/Applications/Utilities/Audio MIDI Setup.app\")","Bash(defaults read:*)","Bash(mdfind:*)","Bash(codesign:*)","Bash(mdls:*)","Bash(plutil:*)","WebSearch","WebFetch(domain:www.guitarcommand.com)","Bash(open:*)","Bash(osascript:*)","Bash(mkdir:*)","Bash(mv:*)","Bash(sort:*)","Bash(for f in \"/Users/seanburdges/Desktop/files\"*.zip)","Bash(do echo \"=== $f ===\")","Bash(unzip:*)","Bash(done)","Bash(find:*)","Bash(awk:*)","Bash(md5:*)","Bash(for zip in /Users/seanburdges/Desktop/Music-Brain-Vault*.zip)","Bash(cp:*)","Bash(chmod:*)","Bash(python3:*)","Bash(tree:*)","Bash(./fetch_musical scale show:*)","Bash(./fetch_musical scale:*)","Bash(git log:*)","Bash(git checkout:*)"]
+[DEBUG] Found 0 plugins (0 enabled, 0 disabled)
+[DEBUG] Total LSP servers loaded: 0
+[DEBUG] LSP manager initialized with 0 servers
+[DEBUG] LSP server manager initialized successfully
+[DEBUG] Loading skills from directories: managed=/Library/Application Support/ClaudeCode/.claude/skills, user=/Users/seanburdges/.claude/skills, project=/Users/seanburdges/.claude/skills
+[DEBUG] >>>>> getPluginSkills CALLED <<<<<
+[DEBUG] getPluginSkills: Processing 0 enabled plugins
+[DEBUG] Total plugin skills loaded: 0
+[DEBUG] Total plugin commands loaded: 0
+[DEBUG] Loaded 0 unique skills (managed: 0, user: 0, project: 0, duplicates removed: 0)
+[DEBUG] getSkillsIfEnabled returning: 0 skill dir commands, 0 plugin skills
+[DEBUG] Registered 0 hooks from 0 plugins
+[DEBUG] Creating shell snapshot for zsh (/bin/zsh)
+[DEBUG] Looking for shell config file: /Users/seanburdges/.zshrc
+[DEBUG] Snapshots directory: /Users/seanburdges/.claude/shell-snapshots
+[DEBUG] Creating snapshot at: /Users/seanburdges/.claude/shell-snapshots/snapshot-zsh-1764823946208-vyd5f0.sh
+[DEBUG] Shell binary exists: true
+[DEBUG] Execution timeout: 10000ms
+[DEBUG] Writing to temp file: /Users/seanburdges/.claude/todos/b4323a8b-04c0-42ab-b5e1-1f57bf7931e4-agent-b4323a8b-04c0-42ab-b5e1-1f57bf7931e4.json.tmp.81167.1764823946209
+[DEBUG] Temp file written successfully, size: 2 bytes
+[DEBUG] Renaming /Users/seanburdges/.claude/todos/b4323a8b-04c0-42ab-b5e1-1f57bf7931e4-agent-b4323a8b-04c0-42ab-b5e1-1f57bf7931e4.json.tmp.81167.1764823946209 to /Users/seanburdges/.claude/todos/b4323a8b-04c0-42ab-b5e1-1f57bf7931e4-agent-b4323a8b-04c0-42ab-b5e1-1f57bf7931e4.json
+[DEBUG] File /Users/seanburdges/.claude/todos/b4323a8b-04c0-42ab-b5e1-1f57bf7931e4-agent-b4323a8b-04c0-42ab-b5e1-1f57bf7931e4.json written atomically
+[DEBUG] Shell snapshot created successfully (955 bytes)
+[DEBUG] Total plugin agents loaded: 0
+[DEBUG] Writing to temp file: /Users/seanburdges/.claude.json.tmp.81167.1764823946433
+[DEBUG] Preserving file permissions: 100600
+[DEBUG] Temp file written successfully, size: 43143 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/seanburdges/.claude.json.tmp.81167.1764823946433 to /Users/seanburdges/.claude.json
+[DEBUG] File /Users/seanburdges/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/seanburdges/.claude.json.tmp.81167.1764823946435
+[DEBUG] Preserving file permissions: 100600
+[DEBUG] Temp file written successfully, size: 43143 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/seanburdges/.claude.json.tmp.81167.1764823946435 to /Users/seanburdges/.claude.json
+[DEBUG] File /Users/seanburdges/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/seanburdges/.claude.json.tmp.81167.1764823946437
+[DEBUG] Preserving file permissions: 100600
+[DEBUG] Temp file written successfully, size: 43143 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/seanburdges/.claude.json.tmp.81167.1764823946437 to /Users/seanburdges/.claude.json
+[DEBUG] File /Users/seanburdges/.claude.json written atomically
+[ERROR] AxiosError: Error
+    at Jh (/$bunfs/root/claude:53:1142)
+    at <anonymous> (/$bunfs/root/claude:58:9841)
+    at emit (node:events:92:22)
+    at endReadableNT (internal:streams/readable:861:50)
+    at processTicksAndRejections (native:7:39)
+    at spawnSync (unknown)
+    at spawnSync (node:child_process:226:22)
+    at dHR (/$bunfs/root/claude:88:1337)
+    at ZG (/$bunfs/root/claude:88:3436)
+    at read (/$bunfs/root/claude:762:3027)
+    at request (/$bunfs/root/claude:60:2146)
+    at processTicksAndRejections (native:7:39)
+    at spawnSync (unknown)
+    at spawnSync (node:child_process:226:22)
+    at dHR (/$bunfs/root/claude:88:1337)
+    at ZG (/$bunfs/root/claude:88:3436)
+    at read (/$bunfs/root/claude:762:3027)
+    at read (/$bunfs/root/claude:762:2154)
+    at <anonymous> (/$bunfs/root/claude:3607:14527)
+    at A (/$bunfs/root/claude:11:15095)
+[DEBUG] Failed to fetch Grove notice config: AxiosError: Request failed with status code 401
+[DEBUG] Writing to temp file: /Users/seanburdges/.claude.json.tmp.81167.1764823947110
+[DEBUG] Preserving file permissions: 100600
+[DEBUG] Temp file written successfully, size: 43143 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/seanburdges/.claude.json.tmp.81167.1764823947110 to /Users/seanburdges/.claude.json
+[DEBUG] File /Users/seanburdges/.claude.json written atomically
+[DEBUG] Stream started - received first chunk
+[DEBUG] Stream started - received first chunk
+[DEBUG] Writing to temp file: /Users/seanburdges/.claude.json.tmp.81167.1764823950667
+[DEBUG] Preserving file permissions: 100600
+[DEBUG] Temp file written successfully, size: 43143 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/seanburdges/.claude.json.tmp.81167.1764823950667 to /Users/seanburdges/.claude.json
+[DEBUG] File /Users/seanburdges/.claude.json written atomically
+[DEBUG] Skipping SubagentStop hook execution - workspace trust not accepted
+[DEBUG] Skipping SubagentStop hook execution - workspace trust not accepted
+[DEBUG] Writing to temp file: /Users/seanburdges/.claude.json.tmp.81167.1764823956735
+[DEBUG] Preserving file permissions: 100600
+[DEBUG] Temp file written successfully, size: 43143 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/seanburdges/.claude.json.tmp.81167.1764823956735 to /Users/seanburdges/.claude.json
+[DEBUG] File /Users/seanburdges/.claude.json written atomically
+[DEBUG] Skills and commands included in Skill tool:
+[DEBUG] Slash commands included in SlashCommand tool:
+[DEBUG] Resuming code session ID: session_013qNxvESEdjaZfFzVSXyE8w
+[DEBUG] Using Sessions API for resume
+[DEBUG] Git remote URL: null
+[DEBUG] No git remote URL found
+[DEBUG] Not in git repo, fetching session metadata to provide guidance: https://api.anthropic.com/v1/sessions/session_013qNxvESEdjaZfFzVSXyE8w
+[DEBUG] Parsed repository: sburdges-eng/Pentagon-core-100-things from https://github.com/sburdges-eng/Pentagon-core-100-things
+[DEBUG] Skipping SessionEnd:other hook execution - workspace trust not accepted
+[DEBUG] Cleaned up session snapshot: /Users/seanburdges/.claude/shell-snapshots/snapshot-zsh-1764823946208-vyd5f0.sh
+[DEBUG] LSP server manager shut down successfully

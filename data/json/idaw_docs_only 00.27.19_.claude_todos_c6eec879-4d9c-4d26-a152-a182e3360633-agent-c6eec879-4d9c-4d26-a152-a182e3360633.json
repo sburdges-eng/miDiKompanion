@@ -1,0 +1,42 @@
+[
+  {
+    "content": "Create macOS app project structure",
+    "status": "completed",
+    "activeForm": "Creating macOS app project structure"
+  },
+  {
+    "content": "Set up SwiftUI app with main views",
+    "status": "completed",
+    "activeForm": "Setting up SwiftUI app with main views"
+  },
+  {
+    "content": "Implement vendor comparison view",
+    "status": "completed",
+    "activeForm": "Implementing vendor comparison view"
+  },
+  {
+    "content": "Implement recipe management view",
+    "status": "completed",
+    "activeForm": "Implementing recipe management view"
+  },
+  {
+    "content": "Implement menu management view",
+    "status": "completed",
+    "activeForm": "Implementing menu management view"
+  },
+  {
+    "content": "Implement equipment manager view",
+    "status": "completed",
+    "activeForm": "Implementing equipment manager view"
+  },
+  {
+    "content": "Create data models matching Python modules",
+    "status": "completed",
+    "activeForm": "Creating data models matching Python modules"
+  },
+  {
+    "content": "Add Python backend integration",
+    "status": "in_progress",
+    "activeForm": "Adding Python backend integration"
+  }
+]

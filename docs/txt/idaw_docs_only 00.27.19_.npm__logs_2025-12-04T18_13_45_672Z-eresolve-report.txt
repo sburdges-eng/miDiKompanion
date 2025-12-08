@@ -1,0 +1,150 @@
+'Log files:
+/Users/seanburdges/.npm/_logs/2025-12-04T18_13_45_672Z-debug-0.log
+
+# npm resolution error report
+
+While resolving: react-scripts@5.0.1
+Found: typescript@5.9.3
+node_modules/typescript
+  dev typescript@"^5.3.3" from the root project
+  peer typescript@">= 2.7" from fork-ts-checker-webpack-plugin@6.5.3
+  node_modules/fork-ts-checker-webpack-plugin
+    fork-ts-checker-webpack-plugin@"^6.5.0" from react-dev-utils@12.0.1
+    node_modules/react-dev-utils
+      react-dev-utils@"^12.0.1" from react-scripts@5.0.1
+      node_modules/react-scripts
+        react-scripts@"5.0.1" from the root project
+  peer typescript@">=2.8.0 || >= 3.2.0-dev || >= 3.3.0-dev || >= 3.4.0-dev || >= 3.5.0-dev || >= 3.6.0-dev || >= 3.6.0-beta || >= 3.7.0-dev || >= 3.7.0-beta" from tsutils@3.21.0
+  node_modules/tsutils
+    tsutils@"^3.21.0" from @typescript-eslint/eslint-plugin@5.62.0
+    node_modules/@typescript-eslint/eslint-plugin
+      @typescript-eslint/eslint-plugin@"^5.5.0" from eslint-config-react-app@7.0.1
+      node_modules/eslint-config-react-app
+        eslint-config-react-app@"^7.0.1" from react-scripts@5.0.1
+        node_modules/react-scripts
+          react-scripts@"5.0.1" from the root project
+      peerOptional @typescript-eslint/eslint-plugin@"^4.0.0 || ^5.0.0" from eslint-plugin-jest@25.7.0
+      node_modules/eslint-plugin-jest
+        eslint-plugin-jest@"^25.3.0" from eslint-config-react-app@7.0.1
+        node_modules/eslint-config-react-app
+          eslint-config-react-app@"^7.0.1" from react-scripts@5.0.1
+          node_modules/react-scripts
+            react-scripts@"5.0.1" from the root project
+    tsutils@"^3.21.0" from @typescript-eslint/type-utils@5.62.0
+    node_modules/@typescript-eslint/type-utils
+      @typescript-eslint/type-utils@"5.62.0" from @typescript-eslint/eslint-plugin@5.62.0
+      node_modules/@typescript-eslint/eslint-plugin
+        @typescript-eslint/eslint-plugin@"^5.5.0" from eslint-config-react-app@7.0.1
+        node_modules/eslint-config-react-app
+          eslint-config-react-app@"^7.0.1" from react-scripts@5.0.1
+          node_modules/react-scripts
+            react-scripts@"5.0.1" from the root project
+        peerOptional @typescript-eslint/eslint-plugin@"^4.0.0 || ^5.0.0" from eslint-plugin-jest@25.7.0
+        node_modules/eslint-plugin-jest
+          eslint-plugin-jest@"^25.3.0" from eslint-config-react-app@7.0.1
+          node_modules/eslint-config-react-app
+            eslint-config-react-app@"^7.0.1" from react-scripts@5.0.1
+            node_modules/react-scripts
+              react-scripts@"5.0.1" from the root project
+    tsutils@"^3.21.0" from @typescript-eslint/typescript-estree@5.62.0
+    node_modules/@typescript-eslint/typescript-estree
+      @typescript-eslint/typescript-estree@"5.62.0" from @typescript-eslint/parser@5.62.0
+      node_modules/@typescript-eslint/parser
+        peer @typescript-eslint/parser@"^5.0.0" from @typescript-eslint/eslint-plugin@5.62.0
+        node_modules/@typescript-eslint/eslint-plugin
+          @typescript-eslint/eslint-plugin@"^5.5.0" from eslint-config-react-app@7.0.1
+          node_modules/eslint-config-react-app
+            eslint-config-react-app@"^7.0.1" from react-scripts@5.0.1
+            node_modules/react-scripts
+              react-scripts@"5.0.1" from the root project
+          peerOptional @typescript-eslint/eslint-plugin@"^4.0.0 || ^5.0.0" from eslint-plugin-jest@25.7.0
+          node_modules/eslint-plugin-jest
+            eslint-plugin-jest@"^25.3.0" from eslint-config-react-app@7.0.1
+            node_modules/eslint-config-react-app
+              eslint-config-react-app@"^7.0.1" from react-scripts@5.0.1
+              node_modules/react-scripts
+                react-scripts@"5.0.1" from the root project
+        @typescript-eslint/parser@"^5.5.0" from eslint-config-react-app@7.0.1
+        node_modules/eslint-config-react-app
+          eslint-config-react-app@"^7.0.1" from react-scripts@5.0.1
+          node_modules/react-scripts
+            react-scripts@"5.0.1" from the root project
+      @typescript-eslint/typescript-estree@"5.62.0" from @typescript-eslint/type-utils@5.62.0
+      node_modules/@typescript-eslint/type-utils
+        @typescript-eslint/type-utils@"5.62.0" from @typescript-eslint/eslint-plugin@5.62.0
+        node_modules/@typescript-eslint/eslint-plugin
+          @typescript-eslint/eslint-plugin@"^5.5.0" from eslint-config-react-app@7.0.1
+          node_modules/eslint-config-react-app
+            eslint-config-react-app@"^7.0.1" from react-scripts@5.0.1
+            node_modules/react-scripts
+              react-scripts@"5.0.1" from the root project
+          peerOptional @typescript-eslint/eslint-plugin@"^4.0.0 || ^5.0.0" from eslint-plugin-jest@25.7.0
+          node_modules/eslint-plugin-jest
+            eslint-plugin-jest@"^25.3.0" from eslint-config-react-app@7.0.1
+            node_modules/eslint-config-react-app
+              eslint-config-react-app@"^7.0.1" from react-scripts@5.0.1
+              node_modules/react-scripts
+                react-scripts@"5.0.1" from the root project
+      @typescript-eslint/typescript-estree@"5.62.0" from @typescript-eslint/utils@5.62.0
+      node_modules/@typescript-eslint/utils
+        @typescript-eslint/utils@"5.62.0" from @typescript-eslint/eslint-plugin@5.62.0
+        node_modules/@typescript-eslint/eslint-plugin
+          @typescript-eslint/eslint-plugin@"^5.5.0" from eslint-config-react-app@7.0.1
+          node_modules/eslint-config-react-app
+            eslint-config-react-app@"^7.0.1" from react-scripts@5.0.1
+            node_modules/react-scripts
+              react-scripts@"5.0.1" from the root project
+          peerOptional @typescript-eslint/eslint-plugin@"^4.0.0 || ^5.0.0" from eslint-plugin-jest@25.7.0
+          node_modules/eslint-plugin-jest
+            eslint-plugin-jest@"^25.3.0" from eslint-config-react-app@7.0.1
+            node_modules/eslint-config-react-app
+              eslint-config-react-app@"^7.0.1" from react-scripts@5.0.1
+              node_modules/react-scripts
+                react-scripts@"5.0.1" from the root project
+        @typescript-eslint/utils@"5.62.0" from @typescript-eslint/experimental-utils@5.62.0
+        node_modules/@typescript-eslint/experimental-utils
+          @typescript-eslint/experimental-utils@"^5.0.0" from eslint-plugin-jest@25.7.0
+          node_modules/eslint-plugin-jest
+            eslint-plugin-jest@"^25.3.0" from eslint-config-react-app@7.0.1
+            node_modules/eslint-config-react-app
+              eslint-config-react-app@"^7.0.1" from react-scripts@5.0.1
+              node_modules/react-scripts
+                react-scripts@"5.0.1" from the root project
+        @typescript-eslint/utils@"5.62.0" from @typescript-eslint/type-utils@5.62.0
+        node_modules/@typescript-eslint/type-utils
+          @typescript-eslint/type-utils@"5.62.0" from @typescript-eslint/eslint-plugin@5.62.0
+          node_modules/@typescript-eslint/eslint-plugin
+            @typescript-eslint/eslint-plugin@"^5.5.0" from eslint-config-react-app@7.0.1
+            node_modules/eslint-config-react-app
+              eslint-config-react-app@"^7.0.1" from react-scripts@5.0.1
+              node_modules/react-scripts
+                react-scripts@"5.0.1" from the root project
+            peerOptional @typescript-eslint/eslint-plugin@"^4.0.0 || ^5.0.0" from eslint-plugin-jest@25.7.0
+            node_modules/eslint-plugin-jest
+              eslint-plugin-jest@"^25.3.0" from eslint-config-react-app@7.0.1
+              node_modules/eslint-config-react-app
+                eslint-config-react-app@"^7.0.1" from react-scripts@5.0.1
+                node_modules/react-scripts
+                  react-scripts@"5.0.1" from the root project
+        @typescript-eslint/utils@"^5.58.0" from eslint-plugin-testing-library@5.11.1
+        node_modules/eslint-plugin-testing-library
+          eslint-plugin-testing-library@"^5.0.1" from eslint-config-react-app@7.0.1
+          node_modules/eslint-config-react-app
+            eslint-config-react-app@"^7.0.1" from react-scripts@5.0.1
+            node_modules/react-scripts
+              react-scripts@"5.0.1" from the root project
+
+Could not resolve dependency:
+peerOptional typescript@"^3.2.1 || ^4" from react-scripts@5.0.1
+node_modules/react-scripts
+  react-scripts@"5.0.1" from the root project
+
+Conflicting peer dependency: typescript@4.9.5
+node_modules/typescript
+  peerOptional typescript@"^3.2.1 || ^4" from react-scripts@5.0.1
+  node_modules/react-scripts
+    react-scripts@"5.0.1" from the root project
+
+Fix the upstream dependency conflict, or retry
+this command with --force or --legacy-peer-deps
+to accept an incorrect (and potentially broken) dependency resolution.

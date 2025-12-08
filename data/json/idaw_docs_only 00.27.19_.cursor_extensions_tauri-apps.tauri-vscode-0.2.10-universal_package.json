@@ -1,0 +1,106 @@
+{
+	"name": "tauri-vscode",
+	"publisher": "tauri-apps",
+	"displayName": "Tauri",
+	"version": "0.2.10",
+	"description": "Enhances the experience of Tauri apps development",
+	"license": "MIT OR Apache-2.0",
+	"icon": "assets/icon.png",
+	"bugs": {
+		"url": "https://github.com/tauri-apps/tauri-vscode/issues",
+		"email": "smcbreen@microsoft.com"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/tauri-apps/tauri-vscode.git"
+	},
+	"engines": {
+		"vscode": "^1.75.0"
+	},
+	"categories": [
+		"Snippets",
+		"Linters",
+		"Other"
+	],
+	"keywords": [
+		"tauri",
+		"desktop",
+		"gui",
+		"development",
+		"rust",
+		"javascript",
+		"framework"
+	],
+	"activationEvents": [
+		"workspaceContains:**/tauri.conf.json",
+		"workspaceContains:**/tauri.*.conf.json",
+		"workspaceContains:**/tauri.conf.json5",
+		"workspaceContains:**/tauri.*.conf.json5",
+		"onFileSystem:tauri"
+	],
+	"main": "./dist/extension.js",
+	"contributes": {
+		"jsonValidation": [
+			{
+				"fileMatch": [
+					"tauri.conf.json",
+					"tauri.conf.json5",
+					"tauri.*.conf.json",
+					"tauri.*.conf.json5"
+				],
+				"url": "tauri://schemas/config.json"
+			}
+		],
+		"commands": [
+			{
+				"command": "tauri.init",
+				"title": "Init",
+				"category": "Tauri"
+			},
+			{
+				"command": "tauri.dev",
+				"title": "Dev",
+				"category": "Tauri"
+			},
+			{
+				"command": "tauri.build",
+				"title": "Build",
+				"category": "Tauri"
+			},
+			{
+				"command": "tauri.build-debug",
+				"title": "Build with debug",
+				"category": "Tauri"
+			}
+		],
+		"snippets": [
+			{
+				"language": "rust",
+				"path": "./snippets/rust.json"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "pnpm run compile",
+		"compile": "tsup src/extension.ts --clean --format cjs --external vscode",
+		"watch": "pnpm run compile --watch",
+		"format": "prettier ./**/*.{json,ts,js} -w --ignore-path .gitignore"
+	},
+	"devDependencies": {
+		"axios": "1.7.7",
+		"glob": "11.0.0",
+		"run-in-terminal": "0.0.3",
+		"strip-ansi": "7.1.0",
+		"@types/node": "18.19.48",
+		"@types/vscode": "1.75.0",
+		"prettier": "3.3.3",
+		"tsup": "^8.2.4",
+		"typescript": "5.6.2"
+	},
+	"packageManager": "pnpm@9.9.0",
+	"__metadata": {
+		"installedTimestamp": 1765014942327,
+		"targetPlatform": "universal",
+		"size": 1066710
+	}
+}

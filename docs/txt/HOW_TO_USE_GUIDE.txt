@@ -1,0 +1,176 @@
+╔════════════════════════════════════════════════════════════════════╗
+║    LARIAT SMART COSTING - INTERACTIVE RECIPE COST CALCULATOR      ║
+║                         USER GUIDE                                  ║
+╚════════════════════════════════════════════════════════════════════╝
+
+📊 WHAT YOU GOT:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✓ 45 FULLY COSTED RECIPE SHEETS including:
+   • Soup Base
+   • Mesa Melt Beer Cheese  
+   • Buttermilk Brine
+   • Lariat Rub
+   • Green Chile
+   • Blackened Salsa
+   • Chicken Flour
+   • Nashville Hot Rub
+   • Aji Verde
+   • Bacon Jam
+   • And 35 more!
+
+✓ 139 PRE-LOADED INGREDIENTS with Shamrock & Sysco pricing
+
+✓ SMART FEATURES:
+   • Interactive dropdowns
+   • Auto-calculating formulas
+   • Unit conversions
+   • Vendor tracking
+   • Cost per serving calculator
+
+
+📖 HOW TO USE IN 6 EASY STEPS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+STEP 1: Open the file "LARIAT_SMART_COSTING_COMPLETE.xlsx"
+
+STEP 2: Click on any recipe sheet tab at the bottom
+        (Example: Click "Mesa Melt" or "Lariat Rub")
+
+STEP 3: Click on a cell in Column A (Ingredient column)
+        ↓
+        You'll see a DROPDOWN ARROW appear!
+        ↓
+        Click the arrow to see all 139 ingredients
+
+STEP 4: Select your ingredient from the dropdown
+
+STEP 5: Type the quantity in Column B
+
+STEP 6: Click Column C and select the unit from dropdown
+        (lb, oz, g, gal, qt, cup, tbsp, tsp, each)
+
+💰 BOOM! Costs calculate automatically!
+
+
+🎯 LIVE EXAMPLE:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Let's cost out Mesa Melt Beer Cheese:
+
+┌────────────┬──────┬──────┬────────────┬─────────────┐
+│ INGREDIENT │ QTY  │ UNIT │ COST/UNIT  │ TOTAL COST  │
+├────────────┼──────┼──────┼────────────┼─────────────┤
+│ Butter ▼   │  2   │tbsp▼ │   $0.37    │   $0.74     │
+│ AP Flour ▼ │  2   │tbsp▼ │   $0.01    │   $0.02     │
+│ Beer ▼     │  1   │cup▼  │   $0.25    │   $0.25     │
+│ Cheddar ▼  │ 0.5  │ lb▼  │   $4.50    │   $2.25     │
+└────────────┴──────┴──────┴────────────┴─────────────┘
+                              TOTAL: $3.26
+
+The ▼ shows where dropdowns are!
+
+
+✨ SMART FEATURES EXPLAINED:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. AUTO-CALCULATION
+   When you select an ingredient and unit, the cost automatically
+   pulls from the Ingredient Database and calculates your total!
+
+2. UNIT CONVERSION
+   The system knows that:
+   • 1 lb = 16 oz = 453.6 g
+   • 1 gal = 4 qt = 16 cups
+   • 1 cup = 16 tbsp = 48 tsp
+   So costs adjust automatically for any unit!
+
+3. VENDOR TRACKING
+   Column G automatically shows which vendor (Shamrock/Sysco)
+
+4. COST PER SERVING
+   At the bottom of each sheet:
+   • Enter number of servings
+   • Cost per serving calculates automatically
+   • Use this for menu pricing!
+
+
+🔧 CUSTOMIZATION:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ADD NEW INGREDIENTS:
+1. Go to "Ingredient Database" sheet
+2. Add new row with:
+   - Ingredient name
+   - Category
+   - Purchase unit
+   - Package size
+   - Cost per package
+   - Vendor name
+3. Formulas auto-calculate other units!
+4. New ingredient appears in ALL dropdowns!
+
+UPDATE PRICES:
+1. Go to "Ingredient Database" sheet
+2. Find the ingredient
+3. Update the "Cost per Package" column
+4. All recipes update automatically!
+
+CREATE NEW RECIPES:
+1. Right-click "SMART TEMPLATE" sheet
+2. Select "Move or Copy"
+3. Check "Create a copy"
+4. Rename to your recipe name
+5. Fill in your ingredients using dropdowns!
+
+
+💡 PRO TIPS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✓ Dropdowns only appear when you CLICK the cell
+✓ You can type to search in dropdowns (type "but" for butter)
+✓ Ingredients are alphabetically sorted in dropdowns
+✓ All formulas are protected but you can edit quantities anytime
+✓ Use Ctrl+F to find specific ingredients across all sheets
+✓ Save different versions for seasonal pricing updates
+✓ Print individual sheets for kitchen reference
+
+
+🎯 TROUBLESHOOTING:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+PROBLEM: "I don't see the dropdown arrow"
+SOLUTION: Click DIRECTLY on the cell in Column A or C
+
+PROBLEM: "Cost shows $0.00"
+SOLUTION: Ingredient might not be in database. Check spelling
+          or add it to Ingredient Database sheet
+
+PROBLEM: "Wrong unit selected"
+SOLUTION: Click Column C, select correct unit from dropdown
+
+PROBLEM: "Ingredient not in dropdown"
+SOLUTION: Add it to the Ingredient Database sheet (row 141+)
+
+PROBLEM: "Total not calculating"
+SOLUTION: Make sure there's a quantity in Column B
+
+
+📞 NEED HELP?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Refer to the "🚀 START HERE" sheet in your workbook for
+detailed information about the system.
+
+
+✅ YOU'RE ALL SET!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Your interactive recipe costing system is ready to use!
+
+Start with any recipe sheet, use the dropdowns, and watch
+the magic happen as costs calculate automatically.
+
+Happy costing! 🎉
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

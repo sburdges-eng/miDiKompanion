@@ -1,0 +1,214 @@
+[ERROR] Failed to save config with lock: Error: ENOENT: no such file or directory, lstat '/Users/seanburdges/.claude.json'
+[DEBUG] Writing to temp file: /Users/seanburdges/.claude.json.tmp.22715.1761930740771
+[DEBUG] Setting permissions for new file: 600
+[DEBUG] Temp file written successfully, size: 103 bytes
+[DEBUG] Renaming /Users/seanburdges/.claude.json.tmp.22715.1761930740771 to /Users/seanburdges/.claude.json
+[DEBUG] File /Users/seanburdges/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/seanburdges/.claude.json.tmp.22715.1761930740773
+[DEBUG] Preserving file permissions: 100600
+[DEBUG] Temp file written successfully, size: 183 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/seanburdges/.claude.json.tmp.22715.1761930740773 to /Users/seanburdges/.claude.json
+[DEBUG] File /Users/seanburdges/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/seanburdges/.claude.json.tmp.22715.1761930740776
+[DEBUG] Preserving file permissions: 100600
+[DEBUG] Temp file written successfully, size: 220 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/seanburdges/.claude.json.tmp.22715.1761930740776 to /Users/seanburdges/.claude.json
+[DEBUG] File /Users/seanburdges/.claude.json written atomically
+[DEBUG] Found 0 plugins (0 enabled, 0 disabled)
+[DEBUG] Total LSP servers loaded: 0
+[DEBUG] LSP manager initialized with 0 servers
+[DEBUG] LSP server manager initialized successfully
+[DEBUG] Loading skills from directories: managed=/Library/Application Support/ClaudeCode/.claude/skills, user=/Users/seanburdges/.claude/skills, project=/Users/seanburdges/.claude/skills
+[DEBUG] >>>>> getPluginSkills CALLED <<<<<
+[DEBUG] getPluginSkills: Processing 0 enabled plugins
+[DEBUG] Total plugin skills loaded: 0
+[DEBUG] Total plugin commands loaded: 0
+[DEBUG] Loaded 0 unique skills (managed: 0, user: 0, project: 0, duplicates removed: 0)
+[DEBUG] getSkillsIfEnabled returning: 0 skill dir commands, 0 plugin skills
+[DEBUG] Registered 0 hooks from 0 plugins
+[DEBUG] Creating shell snapshot for zsh (/bin/zsh)
+[DEBUG] Looking for shell config file: /Users/seanburdges/.zshrc
+[DEBUG] Snapshots directory: /Users/seanburdges/.claude/shell-snapshots
+[DEBUG] Creating snapshot at: /Users/seanburdges/.claude/shell-snapshots/snapshot-zsh-1761930740879-chv0lt.sh
+[DEBUG] Shell binary exists: true
+[DEBUG] Execution timeout: 10000ms
+[DEBUG] Writing to temp file: /Users/seanburdges/.claude/todos/61607d77-abce-43c6-a2c9-51568d129ec5-agent-61607d77-abce-43c6-a2c9-51568d129ec5.json.tmp.22715.1761930740880
+[DEBUG] Temp file written successfully, size: 2 bytes
+[DEBUG] Renaming /Users/seanburdges/.claude/todos/61607d77-abce-43c6-a2c9-51568d129ec5-agent-61607d77-abce-43c6-a2c9-51568d129ec5.json.tmp.22715.1761930740880 to /Users/seanburdges/.claude/todos/61607d77-abce-43c6-a2c9-51568d129ec5-agent-61607d77-abce-43c6-a2c9-51568d129ec5.json
+[DEBUG] File /Users/seanburdges/.claude/todos/61607d77-abce-43c6-a2c9-51568d129ec5-agent-61607d77-abce-43c6-a2c9-51568d129ec5.json written atomically
+[DEBUG] Total plugin agents loaded: 0
+[DEBUG] Shell snapshot created successfully (888 bytes)
+[DEBUG] Writing to temp file: /Users/seanburdges/.claude.json.tmp.22715.1761930741255
+[DEBUG] Preserving file permissions: 100600
+[DEBUG] Temp file written successfully, size: 294 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/seanburdges/.claude.json.tmp.22715.1761930741255 to /Users/seanburdges/.claude.json
+[DEBUG] File /Users/seanburdges/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/seanburdges/.claude.json.tmp.22715.1761930741257
+[DEBUG] Preserving file permissions: 100600
+[DEBUG] Temp file written successfully, size: 346 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/seanburdges/.claude.json.tmp.22715.1761930741257 to /Users/seanburdges/.claude.json
+[DEBUG] File /Users/seanburdges/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/seanburdges/.claude.json.tmp.22715.1761930741258
+[DEBUG] Preserving file permissions: 100600
+[DEBUG] Temp file written successfully, size: 376 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/seanburdges/.claude.json.tmp.22715.1761930741258 to /Users/seanburdges/.claude.json
+[DEBUG] File /Users/seanburdges/.claude.json written atomically
+[ERROR] Error streaming, falling back to non-streaming mode: Could not resolve authentication method. Expected either apiKey or authToken to be set. Or for one of the "X-Api-Key" or "Authorization" headers to be explicitly omitted
+[ERROR] Error streaming, falling back to non-streaming mode: Could not resolve authentication method. Expected either apiKey or authToken to be set. Or for one of the "X-Api-Key" or "Authorization" headers to be explicitly omitted
+[ERROR] Error in non-streaming fallback: Could not resolve authentication method. Expected either apiKey or authToken to be set. Or for one of the "X-Api-Key" or "Authorization" headers to be explicitly omitted
+[ERROR] Error: Error: Could not resolve authentication method. Expected either apiKey or authToken to be set. Or for one of the "X-Api-Key" or "Authorization" headers to be explicitly omitted
+    at validateHeaders (/$bunfs/root/claude:525:935)
+    at buildHeaders (/$bunfs/root/claude:525:8427)
+    at async buildRequest (/$bunfs/root/claude:525:7493)
+    at async makeRequest (/$bunfs/root/claude:525:3332)
+    at processTicksAndRejections (native:7:39)
+[ERROR] Error in non-streaming fallback: Could not resolve authentication method. Expected either apiKey or authToken to be set. Or for one of the "X-Api-Key" or "Authorization" headers to be explicitly omitted
+[ERROR] Error: Error: Could not resolve authentication method. Expected either apiKey or authToken to be set. Or for one of the "X-Api-Key" or "Authorization" headers to be explicitly omitted
+    at validateHeaders (/$bunfs/root/claude:525:935)
+    at buildHeaders (/$bunfs/root/claude:525:8427)
+    at async buildRequest (/$bunfs/root/claude:525:7493)
+    at async makeRequest (/$bunfs/root/claude:525:3332)
+    at processTicksAndRejections (native:7:39)
+[DEBUG] Skipping SubagentStop hook execution - workspace trust not accepted
+[DEBUG] Skipping SubagentStop hook execution - workspace trust not accepted
+[DEBUG] Writing to temp file: /Users/seanburdges/.claude.json.tmp.22715.1761930741337
+[DEBUG] Preserving file permissions: 100600
+[DEBUG] Temp file written successfully, size: 34691 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/seanburdges/.claude.json.tmp.22715.1761930741337 to /Users/seanburdges/.claude.json
+[DEBUG] File /Users/seanburdges/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/seanburdges/.claude.json.tmp.22715.1761930757066
+[DEBUG] Preserving file permissions: 100600
+[DEBUG] Temp file written successfully, size: 34691 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/seanburdges/.claude.json.tmp.22715.1761930757066 to /Users/seanburdges/.claude.json
+[DEBUG] File /Users/seanburdges/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/seanburdges/.claude.json.tmp.22715.1761930757069
+[DEBUG] Preserving file permissions: 100600
+[DEBUG] Temp file written successfully, size: 34691 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/seanburdges/.claude.json.tmp.22715.1761930757069 to /Users/seanburdges/.claude.json
+[DEBUG] File /Users/seanburdges/.claude.json written atomically
+[DEBUG] BigQuery metrics exporter flush complete
+[DEBUG] Telemetry flushed successfully
+[DEBUG] Writing to temp file: /Users/seanburdges/.claude.json.tmp.22715.1761930814118
+[DEBUG] Preserving file permissions: 100600
+[DEBUG] Temp file written successfully, size: 34691 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/seanburdges/.claude.json.tmp.22715.1761930814118 to /Users/seanburdges/.claude.json
+[DEBUG] File /Users/seanburdges/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/seanburdges/.claude.json.tmp.22715.1761930814134
+[DEBUG] Preserving file permissions: 100600
+[DEBUG] Temp file written successfully, size: 34691 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/seanburdges/.claude.json.tmp.22715.1761930814134 to /Users/seanburdges/.claude.json
+[DEBUG] File /Users/seanburdges/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/seanburdges/.claude.json.tmp.22715.1761930814342
+[DEBUG] Preserving file permissions: 100600
+[DEBUG] Temp file written successfully, size: 34964 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/seanburdges/.claude.json.tmp.22715.1761930814342 to /Users/seanburdges/.claude.json
+[DEBUG] File /Users/seanburdges/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/seanburdges/.claude.json.tmp.22715.1761930814833
+[DEBUG] Preserving file permissions: 100600
+[DEBUG] Temp file written successfully, size: 35088 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/seanburdges/.claude.json.tmp.22715.1761930814833 to /Users/seanburdges/.claude.json
+[DEBUG] File /Users/seanburdges/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/seanburdges/.claude.json.tmp.22715.1761930815225
+[DEBUG] Preserving file permissions: 100600
+[DEBUG] Temp file written successfully, size: 35149 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/seanburdges/.claude.json.tmp.22715.1761930815225 to /Users/seanburdges/.claude.json
+[DEBUG] File /Users/seanburdges/.claude.json written atomically
+[DEBUG] Skipping Notification hook execution - workspace trust not accepted
+[DEBUG] Writing to temp file: /Users/seanburdges/.claude.json.tmp.22715.1761930848732
+[DEBUG] Preserving file permissions: 100600
+[DEBUG] Temp file written successfully, size: 35289 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/seanburdges/.claude.json.tmp.22715.1761930848732 to /Users/seanburdges/.claude.json
+[DEBUG] File /Users/seanburdges/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/seanburdges/.claude.json.tmp.22715.1761930848760
+[DEBUG] Preserving file permissions: 100600
+[DEBUG] Temp file written successfully, size: 35290 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/seanburdges/.claude.json.tmp.22715.1761930848760 to /Users/seanburdges/.claude.json
+[DEBUG] File /Users/seanburdges/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/seanburdges/.claude.json.tmp.22715.1761930848761
+[DEBUG] Preserving file permissions: 100600
+[DEBUG] Temp file written successfully, size: 35326 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/seanburdges/.claude.json.tmp.22715.1761930848761 to /Users/seanburdges/.claude.json
+[DEBUG] File /Users/seanburdges/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/seanburdges/.claude.json.tmp.22715.1761930848762
+[DEBUG] Preserving file permissions: 100600
+[DEBUG] Temp file written successfully, size: 35397 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/seanburdges/.claude.json.tmp.22715.1761930848762 to /Users/seanburdges/.claude.json
+[DEBUG] File /Users/seanburdges/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/seanburdges/.claude.json.tmp.22715.1761930857717
+[DEBUG] Preserving file permissions: 100600
+[DEBUG] Temp file written successfully, size: 35428 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/seanburdges/.claude.json.tmp.22715.1761930857717 to /Users/seanburdges/.claude.json
+[DEBUG] File /Users/seanburdges/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/seanburdges/.claude.json.tmp.22715.1761930857721
+[DEBUG] Preserving file permissions: 100600
+[DEBUG] Temp file written successfully, size: 35448 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/seanburdges/.claude.json.tmp.22715.1761930857721 to /Users/seanburdges/.claude.json
+[DEBUG] File /Users/seanburdges/.claude.json written atomically
+[DEBUG] Skipping SessionStart:startup hook execution - workspace trust not accepted
+[DEBUG] Skills and commands included in Skill tool:
+[DEBUG] Slash commands included in SlashCommand tool:
+[DEBUG] Writing to temp file: /Users/seanburdges/.claude.json.tmp.22715.1761930857739
+[DEBUG] Preserving file permissions: 100600
+[DEBUG] Temp file written successfully, size: 35477 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/seanburdges/.claude.json.tmp.22715.1761930857739 to /Users/seanburdges/.claude.json
+[DEBUG] File /Users/seanburdges/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/seanburdges/.claude.json.tmp.22715.1761930857740
+[DEBUG] Preserving file permissions: 100600
+[DEBUG] Temp file written successfully, size: 35582 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/seanburdges/.claude.json.tmp.22715.1761930857740 to /Users/seanburdges/.claude.json
+[DEBUG] File /Users/seanburdges/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/seanburdges/.claude.json.tmp.22715.1761930857751
+[DEBUG] Preserving file permissions: 100600
+[DEBUG] Temp file written successfully, size: 35477 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/seanburdges/.claude.json.tmp.22715.1761930857751 to /Users/seanburdges/.claude.json
+[DEBUG] File /Users/seanburdges/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/seanburdges/.claude.json.tmp.22715.1761930857752
+[DEBUG] Preserving file permissions: 100600
+[DEBUG] Temp file written successfully, size: 35513 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/seanburdges/.claude.json.tmp.22715.1761930857752 to /Users/seanburdges/.claude.json
+[DEBUG] File /Users/seanburdges/.claude.json written atomically
+[DEBUG] Writing to temp file: /Users/seanburdges/.claude.json.tmp.22715.1761930857753
+[DEBUG] Preserving file permissions: 100600
+[DEBUG] Temp file written successfully, size: 35956 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/seanburdges/.claude.json.tmp.22715.1761930857753 to /Users/seanburdges/.claude.json
+[DEBUG] File /Users/seanburdges/.claude.json written atomically
+[DEBUG] AutoUpdaterWrapper: Installation type: native, using native: true
+[DEBUG] performStartupChecks called
+[DEBUG] Trust not accepted for current directory - skipping plugin installations
+[DEBUG] Loaded plugins - Enabled: 0, Disabled: 0, Commands: 0, Agents: 0, Errors: 0
+[DEBUG] Writing to temp file: /Users/seanburdges/.claude.json.tmp.22715.1761930857882
+[DEBUG] Preserving file permissions: 100600
+[DEBUG] Temp file written successfully, size: 35956 bytes
+[DEBUG] Applied original permissions to temp file
+[DEBUG] Renaming /Users/seanburdges/.claude.json.tmp.22715.1761930857882 to /Users/seanburdges/.claude.json
+[DEBUG] File /Users/seanburdges/.claude.json written atomically
+[DEBUG] Metrics opt-out API response: enabled=true
+[DEBUG] BigQuery metrics exported successfully
+[DEBUG] API Response: {
+  "accepted_count": 2,
+  "rejected_count": 0
+}

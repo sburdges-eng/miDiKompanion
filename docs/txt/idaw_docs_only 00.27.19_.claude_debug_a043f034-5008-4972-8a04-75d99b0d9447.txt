@@ -1,0 +1,6 @@
+2025-12-04T04:56:07.990Z [DEBUG] [Query.streamInput] Starting to process input stream
+2025-12-04T04:56:07.990Z [DEBUG] [Query.streamInput] this.sdkMcpTransports.size = 0
+2025-12-04T04:56:07.991Z [DEBUG] [Query.streamInput] Processing message 1: user
+2025-12-04T04:56:49.017Z [DEBUG] [Query.streamInput] Finished processing 1 messages from input stream
+2025-12-04T04:56:49.017Z [DEBUG] [Query.streamInput] About to check MCP servers. this.sdkMcpTransports.size = 0
+2025-12-04T04:56:49.017Z [DEBUG] [Query] Calling transport.endInput() to close stdin to CLI process

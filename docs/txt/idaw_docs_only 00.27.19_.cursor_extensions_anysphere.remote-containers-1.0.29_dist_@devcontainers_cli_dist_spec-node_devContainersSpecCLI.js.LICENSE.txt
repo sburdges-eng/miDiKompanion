@@ -1,0 +1,25 @@
+/*! Bundled license information:
+
+yargs-parser/build/lib/string-utils.js:
+yargs-parser/build/lib/tokenize-arg-string.js:
+yargs-parser/build/lib/yargs-parser-types.js:
+yargs-parser/build/lib/yargs-parser.js:
+  (**
+   * @license
+   * Copyright (c) 2016, Contributors
+   * SPDX-License-Identifier: ISC
+   *)
+
+yargs-parser/build/lib/index.js:
+  (**
+   * @fileoverview Main entrypoint for libraries using yargs-parser in Node.js
+   * CJS and ESM environments.
+   *
+   * @license
+   * Copyright (c) 2016, Contributors
+   * SPDX-License-Identifier: ISC
+   *)
+
+js-yaml/dist/js-yaml.mjs:
+  (*! js-yaml 4.1.0 https://github.com/nodeca/js-yaml @license MIT *)
+*/

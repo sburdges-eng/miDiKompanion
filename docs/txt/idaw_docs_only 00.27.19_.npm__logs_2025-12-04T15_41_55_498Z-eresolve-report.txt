@@ -1,0 +1,24 @@
+'Log files:
+/Users/seanburdges/.npm/_logs/2025-12-04T15_41_55_498Z-debug-0.log
+
+# npm resolution error report
+
+While resolving: react-scripts@5.0.1
+Found: typescript@5.9.3
+node_modules/typescript
+  dev typescript@"^5.3.3" from the root project
+
+Could not resolve dependency:
+peerOptional typescript@"^3.2.1 || ^4" from react-scripts@5.0.1
+node_modules/react-scripts
+  react-scripts@"5.0.1" from the root project
+
+Conflicting peer dependency: typescript@4.9.5
+node_modules/typescript
+  peerOptional typescript@"^3.2.1 || ^4" from react-scripts@5.0.1
+  node_modules/react-scripts
+    react-scripts@"5.0.1" from the root project
+
+Fix the upstream dependency conflict, or retry
+this command with --force or --legacy-peer-deps
+to accept an incorrect (and potentially broken) dependency resolution.

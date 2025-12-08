@@ -1,0 +1,20 @@
+---
+pid: 63621
+cwd: /Users/seanburdges/kelly-consolidation/1DAW1
+last_command: source /Users/seanburdges/kelly-consolidation/1DAW1/venv/bin/activate
+last_exit_code: 0
+---
+seanburdges@Seans-MacBook-Pro 1DAW1 % source /Users/seanburdges/kelly-consolidat
+ion/1DAW1/venv/bin/activate
+(venv) seanburdges@Seans-MacBook-Pro 1DAW1 % /Users/seanburdges/kelly-consolidat
+ion/1DAW1/venv/bin/python /Users/seanburdges/kelly-consolidation/1DAW1/music_bra
+in/api.py
+  File "/Users/seanburdges/kelly-consolidation/1DAW1/music_brain/api.py", line 217
+    <<<<<<< Current (Your changes)
+IndentationError: expected an indented block after 'try' statement on line 216
+seanburdges@Seans-MacBook-Pro 1DAW1 % 
+ *  History restored 
+
+seanburdges@Seans-MacBook-Pro 1DAW1 % source /Users/seanburdges/kelly-consolidat
+ion/1DAW1/venv/bin/activate
+(venv) seanburdges@Seans-MacBook-Pro 1DAW1 %

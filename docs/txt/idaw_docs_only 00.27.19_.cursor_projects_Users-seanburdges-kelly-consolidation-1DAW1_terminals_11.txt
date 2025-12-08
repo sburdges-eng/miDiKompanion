@@ -1,0 +1,88 @@
+---
+pid: -1
+cwd: 
+last_command: cd /Users/seanburdges/kelly-consolidation/1DAW1 && python3 - <<'PY'
+last_exit_code: 0
+---
+$ cd /Users/seanburdges/kelly-consolidation/1DAW1 && git status --short
+
+$ cd /Users/seanburdges/kelly-consolidation/1DAW1 && python - <<'PY'
+(eval):1: command not found: python
+
+$ cd /Users/seanburdges/kelly-consolidation/1DAW1 && python3 - <<'PY'
+count 4553
+('./Guitar Recording Workflow.md', 5, '### Option 1: Direct (DI)', '```')
+('./Guitar Recording Workflow.md', 13, "### Option 2: Mic'd Amp", '```')
+('./Guitar Recording Workflow.md', 21, '### Option 3: Amp + DI (Best of both)', '```')
+('./Guitar Recording Workflow.md', 34, '### Direct Input', '```')
+('./Guitar Recording Workflow.md', 42, "### Mic'd Amp", '```')
+('./Guitar Recording Workflow.md', 54, '### Track Setup', '1. Create Audio Track (mono for DI, stereo for stereo mics)')
+('./Guitar Recording Workflow.md', 60, '### Recommended Monitoring Chain (DI)', '- Pedalboard or Amp Designer (for tone while playing)')
+('./Guitar Recording Workflow.md', 114, '## Related', '- [[Gear/PreSonus AudioBox iTwo]]')
+('./DAiW_Task_Board.md', 110, '### Core Principles', '1. **Interrogate Before Generate** — Ask about mood, intent, imagery first')
+('./DAiW_Task_Board.md', 126, '## ⭐ Critical', '- [ ] Push to GitHub')
+('./DAiW_Task_Board.md', 130, '## ⬆️ High', '- [ ] Test all modules')
+('./DAiW_Task_Board.md', 134, '## ➡️ Normal', '- [ ] Full CLI implementation')
+('./DAiW_Task_Board.md', 138, '## ✅ Done', '- [x] Repository structure')
+('./Social Media for Musicians.md', 418, '## Related', '- [[Music Release Strategy Guide]]')
+('./hybrid_development_roadmap.md', 71, '### Goals', '- Freeze the public API')
+('./hybrid_development_roadmap.md', 109, '### Checklist', '- [ ] `generate_session()` works without UI')
+('./hybrid_development_roadmap.md', 117, '### Goals', '- Create standalone brain server')
+('./hybrid_development_roadmap.md', 137, '# Import your brain', 'from music_brain import generate_session')
+('./hybrid_development_roadmap.md', 192, '### Checklist', '- [ ] `brain_server.py` starts without errors')
+('./hybrid_development_roadmap.md', 200, '### Goals', '- Prove toolchain works')
+('./hybrid_development_roadmap.md', 205, '### What the Skeleton Does', '1. **Audio:** Passes through unchanged (no processing)')
+('./hybrid_development_roadmap.md', 213, '### Verification Steps', '1. Plugin builds as AU and VST3')
+('./hybrid_development_roadmap.md', 219, '### Checklist', '- [ ] JUCE installed and Projucer works')
+('./hybrid_development_roadmap.md', 229, '### Goals', '- Connect C++ and Python')
+('./hybrid_development_roadmap.md', 264, '### The Complete Flow', '1. User types in text area, adjusts knobs')
+('./hybrid_development_roadmap.md', 273, '### Checklist', '- [ ] OSC sender/receiver work in JUCE')
+('./hybrid_development_roadmap.md', 283, '### Port if real-time needed:', '- **Groove/humanization** — For real-time humanization of live MIDI input')
+('./hybrid_development_roadmap.md', 287, '### Never port:', '- NLP / therapy logic')
+('./hybrid_development_roadmap.md', 293, '### Porting strategy:', '1. Take stable, well-tested math from Python')
+('./TEST_README.md', 37, '# Then build with Catch2 support', 'cmake -DUSE_CATCH2=ON ..')
+('./TEST_README.md', 146, '# Example GitHub Actions', '- name: Build and test')
+('./PROJECT_RULES.md', 1, '# LARIAT BANQUET SYSTEM - PROJECT RULES & GUIDELINES', '**Version 1.0** | Created: November 2025')
+('./PROJECT_RULES.md', 6, '## 🎯 **SYSTEM PURPOSE**', 'This system manages the complete lifecycle of Lariat banquet events from booking through execution, ensuring:')
+('./PROJECT_RULES.md', 74, '### 1. **SINGLE SOURCE OF TRUTH**', '- **Recipe Book** = Master for all recipes and procedures')
+('./PROJECT_RULES.md', 80, '### 2. **DATA FLOW DIRECTION**', '```')
+('./PROJECT_RULES.md', 87, '### 3. **NO DUPLICATE DATA ENTRY**', '- Use VLOOKUP/XLOOKUP for pricing (references master price list)')
+('./PROJECT_RULES.md', 92, '### 4. **FORWARD COMPATIBILITY**', '- Templates work for events of any size (20-500 guests)')
+('./PROJECT_RULES.md', 102, '### **Structure:**', '```')
+('./PROJECT_RULES.md', 189, '### **Key Features:**', '✅ Auto-pricing via VLOOKUP')
+('./PROJECT_RULES.md', 201, '### **Purpose:**', 'Translates invoice line items into actionable prep tasks with timing')
+('./PROJECT_RULES.md', 204, '### **Data Sources:**', '- Item names: FROM Invoice Sheet1, Column A')
+('./PROJECT_RULES.md', 233, '### **Standard Formula:**', '```')
+('./PROJECT_RULES.md', 238, '### **Example:**', '```')
+('./PROJECT_RULES.md', 250, '### **Batch Cooking Guidelines:**', '- Maximum batch size: Follow recipe "Max Batch" note')
+('./PROJECT_RULES.md', 260, '### **Vendor Priority:**', '```')
+('./PROJECT_RULES.md', 268, '### **Order Timing:**', '- **Thursday Delivery:** Long-lead proteins (pork butt, beef cheeks)')
+('./PROJECT_RULES.md', 273, '### **Inventory Checks:**', '- Before ordering: Check existing stock')
+('./PROJECT_RULES.md', 278, '### **PAR Levels** (Maintain minimum stock):', '```')
+('./PROJECT_RULES.md', 290, '### **Standard Pricing Structure:**', '```')
+('./PROJECT_RULES.md', 297, '### **Minimum Spend Requirements:**', '```')
+
+$ cd /Users/seanburdges/kelly-consolidation/1DAW1 && python3 - <<'PY'
+[3, 16, 27, 36, 45, 63, 70, 78, 82, 90, 94, 103, 114, 119, 127, 133, 140, 143, 150, 154]
+
+$ pwd
+/Users/seanburdges/kelly-consolidation/1DAW1
+
+$ python3 - <<'PY'
+['# iDAW - Intelligent Digital Audio Workstation', '', '> **"Interrogate Before Generate"** - A therapeutic music creation tool that helps you explore emotions and generate music that captures your feelings.']
+
+$ cd /Users/seanburdges/kelly-consolidation/1DAW1 && python3 - <<'PY'
+count 10
+('PROJECT_TIMELINE.md', 15, '### Core Philosophy', '> "Interrogate Before Generate" - Emotional intent drives technical decisions, not the other way around.')
+('node_modules/escalade/readme.md', 29, '#### "async"', '> **Node.js:** >= 8.x<br>')
+('node_modules/escalade/readme.md', 36, '#### "sync"', '> **Node.js:** >= 6.x<br>')
+('node_modules/@types/babel__template/README.md', 1, '# Installation', '> `npm install --save @types/babel__template`')
+('node_modules/@types/react-dom/README.md', 1, '# Installation', '> `npm install --save @types/react-dom`')
+('node_modules/@types/babel__generator/README.md', 1, '# Installation', '> `npm install --save @types/babel__generator`')
+('node_modules/@types/babel__traverse/README.md', 1, '# Installation', '> `npm install --save @types/babel__traverse`')
+('node_modules/@types/estree/README.md', 1, '# Installation', '> `npm install --save @types/estree`')
+('node_modules/@types/babel__core/README.md', 1, '# Installation', '> `npm install --save @types/babel__core`')
+('node_modules/@types/react/README.md', 1, '# Installation', '> `npm install --save @types/react`')
+
+$ cd /Users/seanburdges/kelly-consolidation/1DAW1 && python3 - <<'PY'
+violations 0

@@ -1,0 +1,356 @@
+{
+	"name": "remote-wsl",
+	"displayName": "Remote WSL",
+	"description": "Open any folder in the Windows Subsystem for Linux (WSL) and take advantage of Cursor's full feature set.",
+	"version": "1.0.12",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/getcursor/cursor.git"
+	},
+	"publisher": "anysphere",
+	"extensionId": "39a52826-2472-403d-8410-37905302f26a",
+	"icon": "resources/icon.png",
+	"engines": {
+		"vscode": "^1.75.0"
+	},
+	"extensionKind": [
+		"ui"
+	],
+	"enabledApiProposals": [
+		"resolvers",
+		"contribRemoteHelp",
+		"telemetry",
+		"contribViewsRemote",
+		"cursorTracing"
+	],
+	"keywords": [
+		"remote development",
+		"remote",
+		"wsl"
+	],
+	"api": "none",
+	"activationEvents": [
+		"onStartupFinished",
+		"onResolveRemoteAuthority:wsl"
+	],
+	"main": "./dist/main.js",
+	"contributes": {
+		"views": {
+			"remote": [
+				{
+					"id": "wslTargets",
+					"name": "WSL Targets",
+					"group": "targets@1",
+					"when": "(isWindows && !isWeb)",
+					"remoteName": "wsl"
+				}
+			]
+		},
+		"commands": [
+			{
+				"command": "remote-wsl.connect",
+				"title": "Connect to WSL",
+				"category": "WSL"
+			},
+			{
+				"command": "remote-wsl.connectUsingDistro",
+				"title": "Connect to WSL using Distro...",
+				"category": "WSL"
+			},
+			{
+				"command": "remote-wsl.connectInNewWindow",
+				"title": "Connect to WSL in New Window",
+				"category": "WSL"
+			},
+			{
+				"command": "remote-wsl.connectUsingDistroInNewWindow",
+				"title": "Connect to WSL using Distro in New Window...",
+				"category": "WSL"
+			},
+			{
+				"command": "remote-wsl.openFolderInWSL",
+				"title": "Open Folder in WSL",
+				"category": "WSL"
+			},
+			{
+				"command": "remote-wsl.explorer.connectInCurrentWindow",
+				"title": "Open in Current Window",
+				"category": "WSL",
+				"icon": "$(arrow-right)"
+			},
+			{
+				"command": "remote-wsl.explorer.connectInNewWindow",
+				"title": "Open in New Window",
+				"category": "WSL",
+				"icon": "$(folder-opened)"
+			},
+			{
+				"command": "remote-wsl.showLog",
+				"title": "Show Log",
+				"category": "WSL"
+			},
+			{
+				"command": "remote-wsl.explorer.emptyWindowInNewWindow",
+				"title": "Connect in New Window",
+				"icon": "$(empty-window)"
+			},
+			{
+				"command": "remote-wsl.explorer.emptyWindowInCurrentWindow",
+				"title": "Connect in Current Window"
+			},
+			{
+				"command": "remote-wsl.explorer.deleteFolderHistoryItem",
+				"title": "Remove From Recent List",
+				"icon": "$(x)"
+			},
+			{
+				"command": "remote-wsl.explorer.setDefaultDistro",
+				"title": "Set as Default Distro"
+			},
+			{
+				"command": "remote-wsl.explorer.deleteDistro",
+				"title": "Delete Distro"
+			},
+			{
+				"command": "remote-wsl.explorer.refresh",
+				"title": "Refresh",
+				"icon": "$(refresh)"
+			},
+			{
+				"command": "remote-wsl.explorer.addDistro",
+				"title": "Add a Distro",
+				"icon": "$(plus)",
+				"category": "WSL"
+			},
+			{
+				"command": "remote-wsl.killServerAndReload",
+				"title": "Kill Remote Server and Reload Window",
+				"category": "WSL",
+				"icon": "$(reload)"
+			},
+			{
+				"command": "remote-wsl.reinstallServerAndReload",
+				"title": "Reinstall Remote Server and Reload Window",
+				"category": "WSL",
+				"icon": "$(trash)"
+			},
+			{
+				"command": "remote-wsl.revealInExplorer",
+				"title": "Reveal in Explorer",
+				"category": "File"
+			}
+		],
+		"resourceLabelFormatters": [
+			{
+				"scheme": "vscode-remote",
+				"authority": "wsl+*",
+				"formatting": {
+					"label": "${path}",
+					"separator": "/",
+					"tildify": true,
+					"workspaceSuffix": "WSL"
+				}
+			}
+		],
+		"menus": {
+			"statusBar/remoteIndicator": [
+				{
+					"command": "remote-wsl.connect",
+					"when": "(isWindows && !isWeb)",
+					"group": "remote_20_wsl_1general@1"
+				},
+				{
+					"command": "remote-wsl.connectUsingDistro",
+					"when": "(isWindows && !isWeb)",
+					"group": "remote_20_wsl_1general@2"
+				},
+				{
+					"command": "remote-wsl.openFolderInWSL",
+					"when": "(isWindows && !isWeb && !remoteName)",
+					"group": "remote_20_wsl_1general@3"
+				},
+				{
+					"command": "remote-wsl.showLog",
+					"when": "remoteName =~ /^wsl$/",
+					"group": "remote_20_wsl_1general@5"
+				}
+			],
+			"explorer/context": [
+				{
+					"command": "remote-wsl.revealInExplorer",
+					"when": "!isWeb && remoteName == wsl",
+					"group": "navigation@20"
+				}
+			],
+			"editor/title/context": [
+				{
+					"command": "remote-wsl.revealInExplorer",
+					"when": "!isWeb && remoteName == wsl",
+					"group": "2_files@20"
+				}
+			],
+			"commandPalette": [
+				{
+					"command": "remote-wsl.connect",
+					"when": "(isWindows && !isWeb)"
+				},
+				{
+					"command": "remote-wsl.connectInNewWindow",
+					"when": "(isWindows && !isWeb)"
+				},
+				{
+					"command": "remote-wsl.connectUsingDistro",
+					"when": "(isWindows && !isWeb)"
+				},
+				{
+					"command": "remote-wsl.connectUsingDistroInNewWindow",
+					"when": "(isWindows && !isWeb)"
+				},
+				{
+					"command": "remote-wsl.openFolderInWSL",
+					"when": "(isWindows && !isWeb && !remoteName)"
+				},
+				{
+					"command": "remote-wsl.killServerAndReload",
+					"when": "remoteName =~ /^wsl$/"
+				},
+				{
+					"command": "remote-wsl.reinstallServerAndReload",
+					"when": "remoteName =~ /^wsl$/"
+				},
+				{
+					"command": "remote-wsl.explorer.refresh",
+					"when": "false"
+				},
+				{
+					"command": "remote-wsl.explorer.addDistro",
+					"when": "false"
+				},
+				{
+					"command": "remote-wsl.explorer.emptyWindowInNewWindow",
+					"when": "false"
+				},
+				{
+					"command": "remote-wsl.explorer.emptyWindowInCurrentWindow",
+					"when": "false"
+				},
+				{
+					"command": "remote-wsl.explorer.connectInCurrentWindow",
+					"when": "false"
+				},
+				{
+					"command": "remote-wsl.explorer.connectInNewWindow",
+					"when": "false"
+				},
+				{
+					"command": "remote-wsl.explorer.deleteFolderHistoryItem",
+					"when": "false"
+				},
+				{
+					"command": "remote-wsl.explorer.setDefaultDistro",
+					"when": "false"
+				},
+				{
+					"command": "remote-wsl.explorer.deleteDistro",
+					"when": "false"
+				},
+				{
+					"command": "remote-wsl.revealInExplorer",
+					"when": "remoteName == wsl"
+				}
+			],
+			"view/title": [
+				{
+					"command": "remote-wsl.explorer.addDistro",
+					"when": "view == wslTargets",
+					"group": "navigation"
+				},
+				{
+					"command": "remote-wsl.explorer.refresh",
+					"when": "view == wslTargets",
+					"group": "navigation"
+				}
+			],
+			"view/item/context": [
+				{
+					"command": "remote-wsl.explorer.emptyWindowInNewWindow",
+					"when": "viewItem =~ /^remote-wsl.explorer.distro$/",
+					"group": "inline@1"
+				},
+				{
+					"command": "remote-wsl.explorer.emptyWindowInNewWindow",
+					"when": "viewItem =~ /^remote-wsl.explorer.distro$/",
+					"group": "navigation@2"
+				},
+				{
+					"command": "remote-wsl.explorer.emptyWindowInCurrentWindow",
+					"when": "viewItem =~ /^remote-wsl.explorer.distro$/",
+					"group": "navigation@1"
+				},
+				{
+					"command": "remote-wsl.explorer.setDefaultDistro",
+					"when": "viewItem =~ /^remote-wsl.explorer.distro$/",
+					"group": "management@1"
+				},
+				{
+					"command": "remote-wsl.explorer.deleteDistro",
+					"when": "viewItem =~ /^remote-wsl.explorer.distro$/",
+					"group": "management@2"
+				},
+				{
+					"command": "remote-wsl.explorer.connectInNewWindow",
+					"when": "viewItem == remote-wsl.explorer.folder",
+					"group": "inline@1"
+				},
+				{
+					"command": "remote-wsl.explorer.connectInNewWindow",
+					"when": "viewItem == remote-wsl.explorer.folder",
+					"group": "navigation@2"
+				},
+				{
+					"command": "remote-wsl.explorer.connectInCurrentWindow",
+					"when": "viewItem == remote-wsl.explorer.folder",
+					"group": "navigation@1"
+				},
+				{
+					"command": "remote-wsl.explorer.deleteFolderHistoryItem",
+					"when": "viewItem =~ /^remote-wsl.explorer.folder/",
+					"group": "navigation@3"
+				},
+				{
+					"command": "remote-wsl.explorer.deleteFolderHistoryItem",
+					"when": "viewItem =~ /^remote-wsl.explorer.folder/",
+					"group": "inline@2"
+				}
+			]
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "webpack --mode production",
+		"webpack": "webpack --mode development",
+		"compile": "tsc -b",
+		"watch": "tsc -b -w",
+		"package": "npx vsce package"
+	},
+	"dependencies": {
+		"@cursor/metrics-provider": "file:../metrics-provider/"
+	},
+	"devDependencies": {
+		"@types/node": "^16.18.126",
+		"@types/webpack": "^5.28.2",
+		"@typescript-eslint/eslint-plugin": "^6.5.0",
+		"@typescript-eslint/parser": "^6.5.0",
+		"copy-webpack-plugin": "^13.0.0",
+		"eslint": "^8.48.0",
+		"eslint-plugin-jsdoc": "^46.5.1",
+		"ts-loader": "^9.4.4",
+		"typescript": "^5.2.2",
+		"webpack": "^5.88.2",
+		"webpack-cli": "^5.1.4"
+	},
+	"__metadata": {
+		"installedTimestamp": 1764822733298,
+		"targetPlatform": "undefined",
+		"size": 812598
+	}
+}

@@ -1,0 +1,31 @@
+2025-11-29T16:10:40.081Z [DEBUG] [Query.streamInput] Starting to process input stream
+2025-11-29T16:10:40.081Z [DEBUG] [Query.streamInput] this.sdkMcpTransports.size = 0
+2025-11-29T16:10:40.082Z [DEBUG] [Query.streamInput] Processing message 1: user
+2025-11-29T16:14:19.371Z [DEBUG] [Query.streamInput] Processing message 2: user
+2025-11-29T16:27:47.131Z [DEBUG] [Query.streamInput] Processing message 3: user
+2025-11-29T16:36:04.220Z [DEBUG] [Query.streamInput] Processing message 4: user
+2025-11-29T16:39:34.354Z [DEBUG] [Query.streamInput] Processing message 5: user
+2025-11-29T16:41:37.179Z [DEBUG] [Query.streamInput] Processing message 6: user
+2025-11-29T16:41:42.928Z [DEBUG] [Query.streamInput] Processing message 7: user
+2025-11-29T16:41:42.928Z [DEBUG] [Query.streamInput] Processing message 8: user
+2025-11-29T16:43:14.419Z [DEBUG] [Query.streamInput] Processing message 9: user
+2025-11-29T16:55:32.426Z [DEBUG] [Query.streamInput] Processing message 10: user
+2025-11-29T16:55:34.151Z [DEBUG] [Query.streamInput] Processing message 11: user
+2025-11-29T17:00:40.729Z [DEBUG] [Query.streamInput] Processing message 12: user
+2025-11-29T17:02:08.383Z [DEBUG] [Query.streamInput] Processing message 13: user
+2025-11-29T17:04:27.494Z [DEBUG] [Query.streamInput] Processing message 14: user
+2025-11-29T17:05:10.451Z [DEBUG] [Query.streamInput] Processing message 15: user
+2025-11-30T05:14:53.794Z [DEBUG] [Query.streamInput] Starting to process input stream
+2025-11-30T05:14:53.794Z [DEBUG] [Query.streamInput] this.sdkMcpTransports.size = 0
+2025-11-30T05:14:53.795Z [DEBUG] [Query.streamInput] Processing message 1: user
+2025-11-30T07:16:18.851Z [DEBUG] [Query.streamInput] Processing message 2: user
+2025-11-30T17:49:49.543Z [DEBUG] [Query.streamInput] Processing message 3: user
+2025-11-30T20:24:11.983Z [DEBUG] [Query.streamInput] Starting to process input stream
+2025-11-30T20:24:11.983Z [DEBUG] [Query.streamInput] this.sdkMcpTransports.size = 0
+2025-11-30T20:24:11.983Z [DEBUG] [Query.streamInput] Processing message 1: user
+2025-11-30T20:58:44.824Z [DEBUG] [Query.streamInput] Processing message 2: user
+2025-12-03T06:38:50.510Z [DEBUG] [Query.streamInput] Processing message 3: user
+2025-12-04T04:35:05.092Z [DEBUG] [Query.streamInput] Starting to process input stream
+2025-12-04T04:35:05.092Z [DEBUG] [Query.streamInput] this.sdkMcpTransports.size = 0
+2025-12-04T04:35:05.094Z [DEBUG] [Query.streamInput] Processing message 1: user
+2025-12-04T04:37:37.519Z [DEBUG] [Query.streamInput] Processing message 2: user

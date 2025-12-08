@@ -1,0 +1,49 @@
+{
+  "project": {
+    "name": "DAiW-Music-Brain",
+    "description": "Interrogate Before Generate - Musical therapy and creative companion",
+    "version": "0.5.0"
+  },
+  "environment": {
+    "python": "3.11+",
+    "required_packages": [
+      "music21",
+      "librosa",
+      "mido",
+      "midiutil",
+      "audiomentations",
+      "soundfile",
+      "numpy",
+      "pytest"
+    ]
+  },
+  "philosophy": {
+    "preserve_imperfections": true,
+    "interrogate_before_generate": true,
+    "creative_companion_not_factory": true,
+    "teach_theory_in_context": true
+  },
+  "context": {
+    "reference_song": {
+      "title": "When I Found You Sleeping",
+      "artist": "Kelly",
+      "key": "D minor",
+      "tempo": 82,
+      "progression": ["F", "C", "Am", "Dm"],
+      "genre": "lo-fi bedroom emo",
+      "technique": "misdirection (major progression → minor tonic)"
+    },
+    "production_aesthetic": {
+      "timing": "behind the beat",
+      "processing": "tape saturation, room tone",
+      "imperfections": "timing drift ±30-50ms, velocity variation",
+      "space": "natural room reverb, sparse arrangement"
+    }
+  },
+  "code_style": {
+    "max_line_length": 100,
+    "docstring_style": "google",
+    "type_hints": true,
+    "test_coverage_target": 80
+  }
+}

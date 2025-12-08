@@ -1,0 +1,55 @@
+cmake_minimum_required(VERSION 3.18)
+
+project(DAiWJuceBridge VERSION 0.1.0 LANGUAGES CXX)
+
+option(DAIW_FETCH_JUCE "Automatically fetch JUCE via FetchContent" ON)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+include(FetchContent)
+
+if(DAIW_FETCH_JUCE)
+    message(STATUS "Fetching JUCE framework...")
+    FetchContent_Declare(
+        juce
+        GIT_REPOSITORY https://github.com/juce-framework/JUCE.git
+        GIT_TAG        7.0.9
+    )
+    FetchContent_MakeAvailable(juce)
+else()
+    if(NOT DEFINED JUCE_DIR)
+        message(FATAL_ERROR "Set JUCE_DIR to a JUCE install or enable DAIW_FETCH_JUCE.")
+    endif()
+    add_subdirectory(${JUCE_DIR} JUCE)
+endif()
+
+set(SOURCE_FILES
+    Source/Main.cpp
+    Source/MainComponent.cpp
+    Source/Bridge/BridgeClient.cpp
+    Source/Voice/VoiceProcessor.cpp
+)
+
+juce_add_gui_app(DAiWJuceBridge
+    PRODUCT_NAME "DAiW Juce Bridge"
+    COMPANY_NAME "DAiW"
+    BUNDLE_ID com.daiw.jucebridge
+)
+
+target_sources(DAiWJuceBridge PRIVATE ${SOURCE_FILES})
+
+target_compile_definitions(DAiWJuceBridge
+    PRIVATE
+        JUCE_WEB_BROWSER=0
+        JUCE_USE_CURL=1
+        JUCE_VST3_CAN_REPLACE_VST2=0
+)
+
+target_link_libraries(DAiWJuceBridge
+    PRIVATE
+        juce::juce_gui_extra
+        juce::juce_audio_utils
+        juce::juce_dsp
+)
+

@@ -1,0 +1,114 @@
+# =============================================================================
+# iDAW Full Docker Compose Configuration
+# =============================================================================
+
+version: '3.8'
+
+services:
+  # ---------------------------------------------------------------------------
+  # Main iDAW API Service
+  # ---------------------------------------------------------------------------
+  idaw-api:
+    build:
+      context: .
+      dockerfile: Dockerfile.full
+      target: production
+    container_name: idaw-api
+    ports:
+      - "8000:8000"
+    environment:
+      - NODE_ENV=production
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - ./music_brain/data:/app/music_brain/data:ro
+      - ./Data_Files:/app/Data_Files:ro
+      - idaw-data:/app/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    networks:
+      - idaw-network
+
+  # ---------------------------------------------------------------------------
+  # Development Service (use with docker-compose --profile dev up)
+  # ---------------------------------------------------------------------------
+  idaw-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.full
+      target: development
+    container_name: idaw-dev
+    profiles:
+      - dev
+    ports:
+      - "8000:8000"
+      - "8501:8501"
+    environment:
+      - NODE_ENV=development
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/venv
+    restart: unless-stopped
+    networks:
+      - idaw-network
+
+  # ---------------------------------------------------------------------------
+  # Redis (for session storage - optional)
+  # ---------------------------------------------------------------------------
+  redis:
+    image: redis:7-alpine
+    container_name: idaw-redis
+    profiles:
+      - full
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    networks:
+      - idaw-network
+
+  # ---------------------------------------------------------------------------
+  # Nginx Reverse Proxy (for production - optional)
+  # ---------------------------------------------------------------------------
+  nginx:
+    image: nginx:alpine
+    container_name: idaw-nginx
+    profiles:
+      - production
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - idaw-api
+    restart: unless-stopped
+    networks:
+      - idaw-network
+
+# =============================================================================
+# Networks
+# =============================================================================
+networks:
+  idaw-network:
+    driver: bridge
+
+# =============================================================================
+# Volumes
+# =============================================================================
+volumes:
+  idaw-data:
+  redis-data:

@@ -1,0 +1,18 @@
+'Log files:
+/Users/seanburdges/.npm/_logs/2025-12-06T19_48_08_419Z-debug-0.log
+
+# npm resolution error report
+
+While resolving: idaw@0.1.0
+Found: react@19.2.1
+node_modules/react
+  react@"^19.1.0" from the root project
+
+Could not resolve dependency:
+peer react@"^18.0.0" from @testing-library/react@14.3.1
+node_modules/@testing-library/react
+  dev @testing-library/react@"^14.2.0" from the root project
+
+Fix the upstream dependency conflict, or retry
+this command with --force or --legacy-peer-deps
+to accept an incorrect (and potentially broken) dependency resolution.

@@ -1,0 +1,26 @@
+# Core dependencies
+mido>=1.2.10          # MIDI file I/O
+numpy>=1.21.0         # Numerical operations
+fastapi>=0.104.0      # API framework
+uvicorn>=0.24.0       # ASGI server
+pydantic>=2.0.0       # Data validation
+
+# Audio analysis
+librosa>=0.9.0        # Audio analysis
+soundfile>=0.10.0     # Audio file I/O
+
+# Music theory
+music21>=7.0.0        # Advanced music theory
+
+# Desktop UI dependencies
+streamlit>=1.28.0     # Web UI framework
+pywebview>=4.0.0      # Native window wrapper
+
+# Build tools for standalone executable
+pyinstaller>=6.0.0    # Executable packaging
+
+# Development dependencies
+pytest>=7.0.0
+black>=22.0.0
+flake8>=4.0.0
+mypy>=0.900

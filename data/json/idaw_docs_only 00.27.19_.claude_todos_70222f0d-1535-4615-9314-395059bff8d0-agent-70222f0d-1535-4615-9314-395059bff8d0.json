@@ -1,0 +1,22 @@
+[
+  {
+    "content": "Create temporary directory and extract zip file",
+    "status": "completed",
+    "activeForm": "Creating temporary directory and extracting zip file"
+  },
+  {
+    "content": "Initialize git repo and add remote sburdges-eng/lariat-bible",
+    "status": "completed",
+    "activeForm": "Initializing git repo and adding remote"
+  },
+  {
+    "content": "Add all files and commit",
+    "status": "completed",
+    "activeForm": "Adding files and committing"
+  },
+  {
+    "content": "Push to GitHub repository",
+    "status": "in_progress",
+    "activeForm": "Pushing to GitHub repository"
+  }
+]

@@ -1,0 +1,17 @@
+# Lariat Bible - Python Requirements
+# Version: 1.0.0
+# Install with: pip3 install -r REQUIREMENTS.txt
+
+# Excel file handling
+openpyxl>=3.0.0
+
+# Word document parsing
+python-docx>=0.8.11
+
+# Note: These standard libraries are included with Python:
+# - tkinter (GUI framework)
+# - pathlib (file path handling)
+# - json (data serialization)
+# - re (regular expressions)
+# - difflib (fuzzy string matching)
+# - logging (application logging)

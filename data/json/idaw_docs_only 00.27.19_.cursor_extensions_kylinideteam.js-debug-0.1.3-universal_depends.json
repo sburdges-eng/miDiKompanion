@@ -1,0 +1,30 @@
+{
+  "deb": {
+    "default_arch": {
+      "default_os": {
+        "nodejs": {
+          "relations": [
+            {
+              "relation": ">=",
+              "version": "10.0.0"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "rpm": {
+    "default_arch": {
+      "default_os": {
+        "nodejs": {
+          "relations": [
+            {
+              "relation": ">=",
+              "version": "1:10.0.0"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

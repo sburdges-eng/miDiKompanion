@@ -1,0 +1,235 @@
+{
+	"name": "flake8",
+	"displayName": "Flake8",
+	"description": "%extension.description%",
+	"version": "2025.2.0",
+	"preview": true,
+	"serverInfo": {
+		"name": "Flake8",
+		"module": "flake8"
+	},
+	"publisher": "ms-python",
+	"license": "MIT",
+	"homepage": "https://github.com/Microsoft/vscode-flake8",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/microsoft/vscode-flake8.git"
+	},
+	"bugs": {
+		"url": "https://github.com/Microsoft/vscode-flake8/issues"
+	},
+	"icon": "icon.png",
+	"galleryBanner": {
+		"color": "#1e415e",
+		"theme": "dark"
+	},
+	"keywords": [
+		"python",
+		"linting",
+		"flake8"
+	],
+	"engines": {
+		"vscode": "^1.74.0"
+	},
+	"categories": [
+		"Programming Languages",
+		"Linters"
+	],
+	"extensionDependencies": [
+		"ms-python.python"
+	],
+	"capabilities": {
+		"virtualWorkspaces": {
+			"supported": false,
+			"description": "Virtual Workspaces are not supported with flake8."
+		}
+	},
+	"activationEvents": [
+		"onLanguage:python",
+		"workspaceContains:.flake8",
+		"workspaceContains:*.py"
+	],
+	"main": "./dist/extension.js",
+	"scripts": {
+		"vscode:prepublish": "npm run package",
+		"compile": "webpack",
+		"watch": "webpack --watch",
+		"package": "webpack --mode production --devtool source-map --config ./webpack.config.js",
+		"compile-tests": "tsc -p . --outDir out",
+		"watch-tests": "tsc -p . -w --outDir out",
+		"pretest": "npm run compile-tests && npm run compile && npm run lint",
+		"lint": "eslint src --ext ts",
+		"format-check": "prettier --check 'src/**/*.ts' 'build/**/*.yml' '.github/**/*.yml'",
+		"test": "node ./out/test/runTest.js",
+		"vsce-package": "vsce package -o flake8.vsix"
+	},
+	"contributes": {
+		"languages": [
+			{
+				"filenames": [
+					".flake8"
+				],
+				"id": "ini"
+			}
+		],
+		"configuration": {
+			"properties": {
+				"flake8.args": {
+					"default": [],
+					"markdownDescription": "%settings.args.description%",
+					"items": {
+						"type": "string"
+					},
+					"scope": "resource",
+					"type": "array"
+				},
+				"flake8.cwd": {
+					"default": "${workspaceFolder}",
+					"markdownDescription": "%settings.cwd.description%",
+					"scope": "resource",
+					"type": "string",
+					"examples": [
+						"${workspaceFolder}/src",
+						"${fileDirname}"
+					]
+				},
+				"flake8.enabled": {
+					"default": true,
+					"markdownDescription": "%settings.enabled.description%",
+					"scope": "resource",
+					"type": "boolean"
+				},
+				"flake8.ignorePatterns": {
+					"default": [],
+					"markdownDescription": "%settings.ignorePatterns.description%",
+					"items": {
+						"type": "string"
+					},
+					"scope": "resource",
+					"type": "array",
+					"uniqueItems": true,
+					"examples": [
+						[
+							"**/site-packages/**/*.py",
+							".vscode/*.py"
+						]
+					]
+				},
+				"flake8.importStrategy": {
+					"default": "useBundled",
+					"markdownDescription": "%settings.importStrategy.description%",
+					"enum": [
+						"useBundled",
+						"fromEnvironment"
+					],
+					"enumDescriptions": [
+						"%settings.importStrategy.useBundled.description%",
+						"%settings.importStrategy.fromEnvironment.description%"
+					],
+					"scope": "window",
+					"type": "string"
+				},
+				"flake8.interpreter": {
+					"default": [],
+					"markdownDescription": "%settings.interpreter.description%",
+					"scope": "resource",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				},
+				"flake8.path": {
+					"default": [],
+					"markdownDescription": "%settings.path.description%",
+					"scope": "resource",
+					"items": {
+						"type": "string"
+					},
+					"type": "array",
+					"examples": [
+						[
+							"~/global_env/flake8"
+						],
+						[
+							"~/.env/python",
+							"-m",
+							"flake8"
+						]
+					]
+				},
+				"flake8.severity": {
+					"default": {
+						"E": "Error",
+						"F": "Error",
+						"I": "Information",
+						"W": "Warning"
+					},
+					"additionalProperties": {
+						"type": "string",
+						"enum": [
+							"Error",
+							"Hint",
+							"Information",
+							"Warning"
+						]
+					},
+					"markdownDescription": "%settings.severity.description%",
+					"scope": "resource",
+					"type": "object"
+				},
+				"flake8.showNotifications": {
+					"default": "off",
+					"markdownDescription": "%settings.showNotifications.description%",
+					"enum": [
+						"off",
+						"onError",
+						"onWarning",
+						"always"
+					],
+					"enumDescriptions": [
+						"%settings.showNotifications.off.description%",
+						"%settings.showNotifications.onError.description%",
+						"%settings.showNotifications.onWarning.description%",
+						"%settings.showNotifications.always.description%"
+					],
+					"scope": "machine",
+					"type": "string"
+				}
+			}
+		},
+		"commands": [
+			{
+				"title": "%command.restartServer%",
+				"category": "Flake8",
+				"command": "flake8.restart"
+			}
+		]
+	},
+	"dependencies": {
+		"@vscode/python-extension": "^1.0.5",
+		"fs-extra": "^11.2.0",
+		"vscode-languageclient": "^8.1.0"
+	},
+	"devDependencies": {
+		"@types/fs-extra": "^11.0.4",
+		"@types/glob": "^8.1.0",
+		"@types/node": "16.x",
+		"@types/vscode": "^1.74.0",
+		"@typescript-eslint/eslint-plugin": "^7.1.0",
+		"@typescript-eslint/parser": "^7.1.0",
+		"@vscode/test-electron": "^2.3.9",
+		"@vscode/vsce": "^2.24.0",
+		"eslint": "^8.57.0",
+		"glob": "^10.3.10",
+		"prettier": "^3.2.5",
+		"ts-loader": "^9.5.1",
+		"typescript": "^5.3.3",
+		"webpack": "^5.90.3",
+		"webpack-cli": "^5.1.4"
+	},
+	"__metadata": {
+		"installedTimestamp": 1765015147845,
+		"targetPlatform": "universal",
+		"size": 4276602
+	}
+}

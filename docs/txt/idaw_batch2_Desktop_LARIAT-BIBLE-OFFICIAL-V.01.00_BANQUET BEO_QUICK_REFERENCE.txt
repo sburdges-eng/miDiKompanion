@@ -1,0 +1,147 @@
+================================================================================
+LARIAT INVOICE AUTOMATION - QUICK REFERENCE CARD
+================================================================================
+
+📁 DOUBLE-CLICK TO RUN:
+   lariat_automation.command
+
+📋 MENU OPTIONS:
+   1. Import New Invoices         → Scan & import new files
+   2. Generate Monthly Report     → Create month-end summary
+   3. Scan for New Invoices       → Check what's new (no import)
+
+===============================================================================
+COMMAND LINE USAGE
+===============================================================================
+
+📥 IMPORT NEW INVOICES:
+   python3 lariat_invoice_automation.py import
+
+📊 GENERATE MONTHLY REPORT:
+   python3 lariat_invoice_automation.py report YYYY MM
+
+   Examples:
+   python3 lariat_invoice_automation.py report 2024 9   # September 2024
+   python3 lariat_invoice_automation.py report 2024 11  # November 2024
+
+🔍 SCAN FOR NEW INVOICES (NO IMPORT):
+   python3 lariat_invoice_automation.py scan
+
+🖥️ INTERACTIVE MENU:
+   python3 lariat_invoice_automation.py
+
+===============================================================================
+FILE LOCATIONS
+===============================================================================
+
+📂 Put new invoices here:
+   /BANQUET BEO/INVOICE SPREADSHEETS/
+
+📊 Database (auto-updated):
+   /BANQUET BEO/Lariat_BEO_Database_Analysis.xlsx
+
+📄 Monthly reports saved here:
+   /BANQUET BEO/reports/
+
+===============================================================================
+INVOICE NAMING FORMAT
+===============================================================================
+
+✅ CORRECT:
+   Lariat Invoice Jane Smith 11_20.xlsx
+   Invoice Bob Johnson 12_5.xlsx
+   Lariat Invoice Sarah Lee 10_17_25.xlsx  (with year)
+
+❌ INCORRECT:
+   Jane Smith Invoice.xlsx              (missing date)
+   invoice_11_20.xlsx                   (missing client name)
+   Lariat Invoice 11-20.xlsx            (wrong date format)
+
+Format: [Optional: "Lariat Invoice" or "Invoice"] [ClientName] [M_D_YY].xlsx
+
+===============================================================================
+TYPICAL WORKFLOW
+===============================================================================
+
+AFTER EACH EVENT:
+1. Save invoice to /INVOICE SPREADSHEETS/
+2. Double-click lariat_automation.command
+3. Choose Option 1 (Import New Invoices)
+4. Database auto-updates!
+
+END OF MONTH:
+1. Double-click lariat_automation.command
+2. Choose Option 2 (Generate Monthly Report)
+3. Enter year and month
+4. Report saved to /reports/ folder
+
+===============================================================================
+WHAT GETS EXTRACTED
+===============================================================================
+
+From each invoice:
+✓ Client name
+✓ Event date
+✓ All menu items with quantities & pricing
+✓ Subtotal, tax (8.15%), service fee (20%)
+✓ Total revenue
+✓ Guest count (if bar service ordered)
+
+Updates 7 database sheets:
+1. Event Summary
+2. All Line Items
+3. Menu Item Popularity
+4. Top Revenue Items
+5. Monthly Summary
+6. Pricing History
+7. Executive Summary
+
+===============================================================================
+TROUBLESHOOTING
+===============================================================================
+
+"No new invoices found"
+→ Check files are in /INVOICE SPREADSHEETS/
+→ Verify file name format matches pattern
+→ Delete .processed_invoices.json to reprocess
+
+"Error processing [filename]"
+→ Open file in Excel to verify it's not corrupted
+→ Check columns: A=Item, B=Cost, C=Amount, D=Total
+→ Verify totals rows exist (Sub total, Tax, Service Fee, Total)
+
+"Permission denied"
+→ Run: chmod +x lariat_automation.command
+
+===============================================================================
+MONTHLY REPORT EXAMPLE OUTPUT
+===============================================================================
+
+📊 SUMMARY
+Events:              3
+Total Revenue:       $38,976.50
+Average Event Size:  $12,992.17
+
+🍽️ TOP ITEMS THIS MONTH
+1. Carnitas Tacos Buffet (3 orders)
+2. Rope Caesar Salad Buffet (3 orders)
+3. Green Chile Mac Buffet (3 orders)
+
+📅 EVENTS
+2024-09-07: Christy Nichols ($10,892.75)
+2024-09-18: Logan and Olivia ($9,611.25)
+2024-09-27: Darrell and Anne ($18,472.50)
+
+💰 CATEGORY BREAKDOWN
+Bar Services:  $18,620.00 (60.1%)
+Taco Buffets:  $4,750.00 (15.3%)
+
+===============================================================================
+NEED HELP?
+===============================================================================
+
+📖 Full Documentation:  AUTOMATION_GUIDE.md
+📧 Questions:           Check troubleshooting section in guide
+🔄 Version:             1.0 (2024-11-19)
+
+===============================================================================

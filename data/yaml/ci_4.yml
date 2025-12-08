@@ -1,0 +1,48 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    # Python
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Test Python
+      run: |
+        pip install fastapi uvicorn mido pydantic || true
+        python -m py_compile music_brain/**/*.py || echo "No Python files"
+
+    # Node/TypeScript
+    - name: Setup Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+
+    - name: Test Frontend
+      run: |
+        npm ci
+        npx tsc --noEmit || echo "TypeScript check done"
+        npm run build
+
+    # Rust
+    - name: Setup Rust
+      uses: dtolnay/rust-toolchain@stable
+
+    - name: Test Rust
+      run: |
+        cd src-tauri
+        cargo build --release

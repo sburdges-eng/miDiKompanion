@@ -1,0 +1,14 @@
+{
+  "tests/test_bridge_integration.py::test_render_bridge_success": true,
+  "tests/test_bridge_integration.py::test_render_bridge_creates_guide_tones": true,
+  "tests/test_bridge_integration.py::test_render_bridge_no_guide_tones_when_disabled": true,
+  "tests/test_bridge_integration.py::test_render_bridge_handles_import_error": true,
+  "tests/test_bridge_integration.py::test_render_bridge_handles_empty_progression": true,
+  "tests/test_bridge_integration.py::test_harmony_plan_time_signature_parsing": true,
+  "tests/test_bridge_integration.py::test_harmony_plan_chord_symbols_default": true,
+  "tests/test_bridge_integration.py::test_harmony_plan_major_progression": true,
+  "tests/test_bridge_integration.py::test_full_therapy_to_plan_flow": true,
+  "tests/test_bridge_integration.py::test_therapy_to_plan_rage": true,
+  "tests/test_bridge_integration.py::test_therapy_to_plan_tenderness": true,
+  "tests/test_cli_flow.py::test_therapy_session_scale_bounds": true
+}

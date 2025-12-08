@@ -1,0 +1,42 @@
+import json
+from pathlib import Path
+
+TASK_DB = Path(".mcp_tasks.json")
+COMPLETED_STATUSES = ("Implemented", "Working")
+
+class TaskManager:
+    def __init__(self):
+        if TASK_DB.exists():
+            self.data = json.loads(TASK_DB.read_text())
+        else:
+            self.data = {"tasks": []}
+
+    def add_tasks(self, objectives):
+        existing = {t["title"] for t in self.data["tasks"]}
+
+        for obj in objectives:
+            if obj.title not in existing:
+                self.data["tasks"].append({
+                    "title": obj.title,
+                    "status": obj.status,
+                    "file": obj.file_path,
+                    "line": obj.line_num,
+                    "complete": obj.status in COMPLETED_STATUSES
+                })
+        self._save()
+
+    def update_task_status(self, title, status):
+        for t in self.data["tasks"]:
+            if t["title"] == title:
+                t["status"] = status
+                t["complete"] = status in COMPLETED_STATUSES
+        self._save()
+
+    def list_tasks(self):
+        return self.data["tasks"]
+
+    def incomplete(self):
+        return [t for t in self.data["tasks"] if not t["complete"]]
+
+    def _save(self):
+        TASK_DB.write_text(json.dumps(self.data, indent=2))

@@ -1,0 +1,72 @@
+0 Intro
+1 Intro
+2 Intro
+3 Intro
+4 Intro
+5 Intro
+6 Intro
+7 Intro
+8 Intro
+9 Intro
+10  Intro
+11  Intro
+12	Beat/Groove
+13	Beat/Groove
+14	Beat/Groove
+15	Beat/Groove
+16	Beat/Groove
+17	Beat/Groove
+18	Beat/Groove
+19	Beat/Groove
+20	Beat/Groove
+21	Beat/Groove
+22	Beat/Groove
+23	Beat/Groove
+24	Break
+25	Break
+26	Break
+27	Break
+28	Break
+29	Break
+30	Break
+31	Break
+32	Break
+33	Break
+34	Break
+35	Break
+36  Long break
+37  Long break
+38  Long break
+39  Long break
+40  Long break
+41  Long break
+42  Long break
+43  Long break
+44  Long break
+45  Long break
+46  Long break
+47  Long break
+48  Outro
+49  Outro
+50  Outro
+51  Outro
+52  Outro
+53  Outro
+54  Outro
+55  Outro
+56  Outro
+57  Outro
+58  Outro
+59  Outro
+60  Stop!
+61  Stop!
+62  Stop!
+63  Stop!
+64  Stop!
+65  Stop!
+66  Stop!
+67  Stop!
+68  Stop!
+69  Stop!
+70  Stop!
+71  Stop!

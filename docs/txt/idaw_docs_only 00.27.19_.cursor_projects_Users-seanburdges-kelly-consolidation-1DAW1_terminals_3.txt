@@ -1,0 +1,10 @@
+---
+pid: 64119
+cwd: /Users/seanburdges/kelly-consolidation/1DAW1
+last_command: source /Users/seanburdges/kelly-consolidation/1DAW1/venv/bin/activate
+last_exit_code: 0
+---
+source /Users/seanburdges/kelly-consolidation/1DAW1/venv/bin/activate           
+seanburdges@Seans-MacBook-Pro 1DAW1 % source /Users/seanburdges/kelly-consolidat
+ion/1DAW1/venv/bin/activate
+(venv) seanburdges@Seans-MacBook-Pro 1DAW1 %

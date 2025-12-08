@@ -1,0 +1,10 @@
+[
+  {
+    "name": "Clang 17.0.0 arm64-apple-darwin25.1.0",
+    "compilers": {
+      "C": "/usr/bin/clang",
+      "CXX": "/usr/bin/clang++"
+    },
+    "isTrusted": true
+  }
+]
