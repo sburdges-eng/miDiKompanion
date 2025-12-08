@@ -262,3 +262,4 @@ archive_*.js
 lib.dom.d.ts
 lucide-react.d.ts
 dynamicIconImports.d.ts
+code/python/
