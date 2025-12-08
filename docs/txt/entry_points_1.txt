@@ -1,5 +1,0 @@
-[console_scripts]
-daiw = music_brain.cli:main
-
-[gui_scripts]
-daiw-desktop = launcher:main

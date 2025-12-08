@@ -1,7 +1,0 @@
-{
-  "mcp-roadmap": {
-    "command": "python",
-    "args": ["-m", "mcp_roadmap.server"],
-    "cwd": "/home/user/iDAWi/iDAW"
-  }
-}
