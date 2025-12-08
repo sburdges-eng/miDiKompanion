@@ -103,7 +103,7 @@ if(BUILD_TESTS)
     )
     
     include(CTest)
-    include(Catch)
+    include(Catch2)
     catch_discover_tests(KellyTests)
 endif()
 
