@@ -246,26 +246,26 @@ class VersionManager:
             
             # Analyze changes
             has_breaking = any(
-                'breaking' in commit_msg.lower() or
-                'major' in commit_msg.lower() or
+                'breaking' in commit_msg or
+                'major' in commit_msg or
                 file.startswith('CMakeLists') or
                 file.endswith('Version.h')
                 for file in changed_files
             )
             
             has_feature = any(
-                'feat' in commit_msg.lower() or
-                'feature' in commit_msg.lower() or
-                'add' in commit_msg.lower() or
+                'feat' in commit_msg or
+                'feature' in commit_msg or
+                'add' in commit_msg or
                 file.endswith('.cpp') or
                 file.endswith('.h') or
-                file.endswith('.py') and not file.startswith('test_')
+                (file.endswith('.py') and not file.startswith('test_'))
                 for file in changed_files
             )
             
             has_fix = any(
-                'fix' in commit_msg.lower() or
-                'bug' in commit_msg.lower() or
+                'fix' in commit_msg or
+                'bug' in commit_msg or
                 file.startswith('test_')
                 for file in changed_files
             )
