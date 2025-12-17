@@ -1,0 +1,463 @@
+{
+    "folders": [
+        {
+            "name": "Root",
+            "path": "."
+        },
+        {
+            "name": "Music Brain",
+            "path": "./music_brain"
+        },
+        {
+            "name": "MCP Workstation",
+            "path": "./mcp_workstation"
+        },
+        {
+            "name": "MCP TODO",
+            "path": "./mcp_todo"
+        },
+        {
+            "name": "Penta-Core MCP",
+            "path": "./penta_core_music-brain"
+        },
+        {
+            "name": "iDAW Core (JUCE)",
+            "path": "./iDAW_Core"
+        },
+        {
+            "name": "Penta-Core C++",
+            "path": "./src_penta-core"
+        },
+        {
+            "name": "Penta-Core Headers",
+            "path": "./include/penta"
+        },
+        {
+            "name": "Penta-Core Python",
+            "path": "./python/penta_core"
+        },
+        {
+            "name": "Python Utils",
+            "path": "./python"
+        },
+        {
+            "name": "C++ Source",
+            "path": "./src"
+        },
+        {
+            "name": "C++ Headers",
+            "path": "./include"
+        },
+        {
+            "name": "Tests (C++)",
+            "path": "./tests"
+        },
+        {
+            "name": "Tests (Music Brain)",
+            "path": "./tests_music-brain"
+        },
+        {
+            "name": "Tests (Penta-Core)",
+            "path": "./tests_penta-core"
+        },
+        {
+            "name": "Examples",
+            "path": "./examples_music-brain"
+        },
+        {
+            "name": "Data Files",
+            "path": "./Data_Files"
+        },
+        {
+            "name": "Vault (Obsidian)",
+            "path": "./vault"
+        },
+        {
+            "name": "Production Workflows",
+            "path": "./Production_Workflows"
+        },
+        {
+            "name": "Songwriting Guides",
+            "path": "./Songwriting_Guides"
+        },
+        {
+            "name": "Theory Reference",
+            "path": "./Theory_Reference"
+        },
+        {
+            "name": "Documentation",
+            "path": "./docs"
+        }
+    ],
+    "settings": {
+        "files.exclude": {
+            "**/__pycache__": true,
+            "**/*.pyc": true,
+            "**/.DS_Store": true,
+            "**/.mypy_cache": true,
+            "**/.pytest_cache": true,
+            "**/build": true,
+            "**/build_*": true,
+            "**/*.zip": true,
+            "**/.claude": true,
+            "**/*.complex_backup": true,
+            "**/node_modules": true,
+            "**/.venv": true,
+            "**/venv": true
+        },
+        "search.exclude": {
+            "**/node_modules": true,
+            "**/build": true,
+            "**/build_*": true,
+            "**/.git": true,
+            "**/__pycache__": true,
+            "**/*.pyc": true,
+            "**/.mypy_cache": true,
+            "**/.pytest_cache": true,
+            "**/.claude": true,
+            "**/*.complex_backup": true,
+            "**/*.zip": true,
+            "**/lost-and-found": true,
+            "**/final kel": true
+        },
+        "files.associations": {
+            "*.h": "cpp",
+            "*.hpp": "cpp",
+            "*.cpp": "cpp",
+            "*.cmake": "cmake",
+            "CMakeLists.txt": "cmake",
+            "*.frag": "glsl",
+            "*.vert": "glsl"
+        },
+        "C_Cpp.default.cppStandard": "c++17",
+        "C_Cpp.default.compilerPath": "/usr/bin/clang++",
+        "C_Cpp.default.intelliSenseMode": "linux-clang-x64",
+        "C_Cpp.default.includePath": [
+            "${workspaceFolder:Root}/include",
+            "${workspaceFolder:Root}/include/penta",
+            "${workspaceFolder:Root}/include/penta/common",
+            "${workspaceFolder:Root}/include/penta/groove",
+            "${workspaceFolder:Root}/include/penta/harmony",
+            "${workspaceFolder:Root}/include/penta/diagnostics",
+            "${workspaceFolder:Root}/include/penta/osc",
+            "${workspaceFolder:Root}/include/penta/ml",
+            "${workspaceFolder:Root}/include/daiw",
+            "${workspaceFolder:Root}/src",
+            "${workspaceFolder:Root}/src_penta-core",
+            "${workspaceFolder:Root}/iDAW_Core",
+            "${workspaceFolder:Root}/external"
+        ],
+        "C_Cpp.default.browse": {
+            "path": [
+                "${workspaceFolder:Root}/include",
+                "${workspaceFolder:Root}/src",
+                "${workspaceFolder:Root}/src_penta-core",
+                "${workspaceFolder:Root}/iDAW_Core"
+            ],
+            "limitSymbolsToIncludedHeaders": true
+        },
+        "python.defaultInterpreterPath": "python3",
+        "python.analysis.extraPaths": [
+            "${workspaceFolder:Root}",
+            "${workspaceFolder:Music Brain}",
+            "${workspaceFolder:MCP Workstation}",
+            "${workspaceFolder:MCP TODO}",
+            "${workspaceFolder:Penta-Core MCP}",
+            "${workspaceFolder:Penta-Core Python}",
+            "${workspaceFolder:Python Utils}",
+            "${workspaceFolder:Root}/penta_core",
+            "${workspaceFolder:Root}/modules",
+            "${workspaceFolder:Root}/tools",
+            "${workspaceFolder:Root}/examples"
+        ],
+        "python.analysis.typeCheckingMode": "basic",
+        "python.linting.enabled": true,
+        "python.linting.pylintEnabled": false,
+        "python.linting.mypyEnabled": true,
+        "python.linting.flake8Enabled": true,
+        "python.formatting.provider": "black",
+        "python.formatting.blackArgs": [
+            "--line-length=100"
+        ],
+        "python.testing.pytestEnabled": true,
+        "python.testing.pytestArgs": [
+            "tests_music-brain",
+            "tests"
+        ],
+        "cmake.buildDirectory": "${workspaceFolder:Root}/build",
+        "cmake.configureOnOpen": false,
+        "cmake.sourceDirectory": "${workspaceFolder:Root}",
+        "cmake.generator": "Ninja",
+        "cmake.configureSettings": {
+            "CMAKE_BUILD_TYPE": "Release"
+        },
+        "files.trimTrailingWhitespace": true,
+        "files.insertFinalNewline": true,
+        "files.encoding": "utf8",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "explicit"
+        },
+        "editor.rulers": [
+            100
+        ],
+        "[python]": {
+            "editor.defaultFormatter": "ms-python.black-formatter",
+            "editor.formatOnSave": true,
+            "editor.tabSize": 4,
+            "editor.insertSpaces": true
+        },
+        "[cpp]": {
+            "editor.tabSize": 4,
+            "editor.insertSpaces": true,
+            "editor.defaultFormatter": "ms-vscode.cpptools"
+        },
+        "[c]": {
+            "editor.tabSize": 4,
+            "editor.insertSpaces": true
+        },
+        "[json]": {
+            "editor.defaultFormatter": "vscode.json-language-features",
+            "editor.formatOnSave": true
+        },
+        "[jsonc]": {
+            "editor.defaultFormatter": "vscode.json-language-features",
+            "editor.formatOnSave": true
+        },
+        "[markdown]": {
+            "editor.wordWrap": "on",
+            "editor.quickSuggestions": {
+                "comments": "off",
+                "strings": "off",
+                "other": "off"
+            }
+        },
+        "[yaml]": {
+            "editor.tabSize": 2,
+            "editor.insertSpaces": true
+        },
+        "[cmake]": {
+            "editor.tabSize": 2,
+            "editor.insertSpaces": true
+        }
+    },
+    "extensions": {
+        "recommendations": [
+            "ms-python.python",
+            "ms-python.vscode-pylance",
+            "ms-python.black-formatter",
+            "ms-python.mypy-type-checker",
+            "ms-vscode.cpptools",
+            "ms-vscode.cmake-tools",
+            "twxs.cmake",
+            "ms-vscode.vscode-json",
+            "redhat.vscode-yaml",
+            "DavidAnson.vscode-markdownlint",
+            "ms-python.pytest"
+        ]
+    },
+    "tasks": {
+        "version": "2.0.0",
+        "tasks": [
+            {
+                "label": "CMake: Configure",
+                "type": "shell",
+                "command": "cmake",
+                "args": [
+                    "-B",
+                    "build",
+                    "-DCMAKE_BUILD_TYPE=Release",
+                    "-G",
+                    "Ninja"
+                ],
+                "options": {
+                    "cwd": "${workspaceFolder:Root}"
+                },
+                "problemMatcher": []
+            },
+            {
+                "label": "CMake: Configure Debug",
+                "type": "shell",
+                "command": "cmake",
+                "args": [
+                    "-B",
+                    "build",
+                    "-DCMAKE_BUILD_TYPE=Debug",
+                    "-G",
+                    "Ninja"
+                ],
+                "options": {
+                    "cwd": "${workspaceFolder:Root}"
+                },
+                "problemMatcher": []
+            },
+            {
+                "label": "CMake: Build",
+                "type": "shell",
+                "command": "cmake",
+                "args": [
+                    "--build",
+                    "build",
+                    "--config",
+                    "Release"
+                ],
+                "options": {
+                    "cwd": "${workspaceFolder:Root}"
+                },
+                "problemMatcher": [
+                    "$gcc"
+                ],
+                "group": {
+                    "kind": "build",
+                    "isDefault": true
+                },
+                "dependsOn": "CMake: Configure"
+            },
+            {
+                "label": "CMake: Build Debug",
+                "type": "shell",
+                "command": "cmake",
+                "args": [
+                    "--build",
+                    "build",
+                    "--config",
+                    "Debug"
+                ],
+                "options": {
+                    "cwd": "${workspaceFolder:Root}"
+                },
+                "problemMatcher": [
+                    "$gcc"
+                ],
+                "dependsOn": "CMake: Configure Debug"
+            },
+            {
+                "label": "CMake: Build Penta-Core",
+                "type": "shell",
+                "command": "cmake",
+                "args": [
+                    "--build",
+                    "build",
+                    "--target",
+                    "penta_core"
+                ],
+                "options": {
+                    "cwd": "${workspaceFolder:Root}"
+                },
+                "problemMatcher": [
+                    "$gcc"
+                ]
+            },
+            {
+                "label": "Run C++ Tests",
+                "type": "shell",
+                "command": "cd build && ctest --output-on-failure",
+                "options": {
+                    "cwd": "${workspaceFolder:Root}"
+                },
+                "problemMatcher": []
+            },
+            {
+                "label": "Run Python Tests (Music Brain)",
+                "type": "shell",
+                "command": "pytest",
+                "args": [
+                    "tests_music-brain/",
+                    "-v"
+                ],
+                "options": {
+                    "cwd": "${workspaceFolder:Root}"
+                },
+                "problemMatcher": []
+            },
+            {
+                "label": "Run Python Tests (All)",
+                "type": "shell",
+                "command": "pytest",
+                "args": [
+                    "tests_music-brain/",
+                    "tests/",
+                    "-v"
+                ],
+                "options": {
+                    "cwd": "${workspaceFolder:Root}"
+                },
+                "problemMatcher": []
+            },
+            {
+                "label": "Install Python Dependencies",
+                "type": "shell",
+                "command": "pip",
+                "args": [
+                    "install",
+                    "-e",
+                    "."
+                ],
+                "options": {
+                    "cwd": "${workspaceFolder:Root}"
+                },
+                "problemMatcher": []
+            },
+            {
+                "label": "Format Python (Black)",
+                "type": "shell",
+                "command": "black",
+                "args": [
+                    "music_brain/",
+                    "mcp_workstation/",
+                    "mcp_todo/",
+                    "penta_core_music-brain/",
+                    "python/",
+                    "--line-length=100"
+                ],
+                "options": {
+                    "cwd": "${workspaceFolder:Root}"
+                },
+                "problemMatcher": []
+            },
+            {
+                "label": "Type Check (mypy)",
+                "type": "shell",
+                "command": "mypy",
+                "args": [
+                    "music_brain/",
+                    "mcp_workstation/",
+                    "mcp_todo/",
+                    "penta_core_music-brain/"
+                ],
+                "options": {
+                    "cwd": "${workspaceFolder:Root}"
+                },
+                "problemMatcher": []
+            },
+            {
+                "label": "MCP Workstation: Status",
+                "type": "shell",
+                "command": "python",
+                "args": [
+                    "-m",
+                    "mcp_workstation",
+                    "status"
+                ],
+                "options": {
+                    "cwd": "${workspaceFolder:Root}"
+                },
+                "problemMatcher": []
+            },
+            {
+                "label": "MCP TODO: Summary",
+                "type": "shell",
+                "command": "python",
+                "args": [
+                    "-m",
+                    "mcp_todo.cli",
+                    "summary"
+                ],
+                "options": {
+                    "cwd": "${workspaceFolder:Root}"
+                },
+                "problemMatcher": []
+            }
+        ]
+    }
+}
