@@ -28,21 +28,62 @@ from typing import List, Dict, Tuple, Optional
 import argparse
 
 # Add utils to path
-sys.path.insert(0, str(Path(__file__).parent.parent / "utils"))
+utils_path = Path(__file__).parent.parent / "utils"
+sys.path.insert(0, str(utils_path))
 
 # Import enhanced training utilities
-from enhanced_training import train_model_with_validation
-from training_utils import (
-    TrainingMetrics,
-    EarlyStopping,
-    CheckpointManager,
-    LearningRateScheduler
-)
-from dataset_utils import split_dataset, create_data_loaders
-from metrics_visualization import plot_training_curves, create_training_summary
+try:
+    from enhanced_training import train_model_with_validation
+    from training_utils import (
+        TrainingMetrics,
+        EarlyStopping,
+        CheckpointManager,
+        LearningRateScheduler
+    )
+    from dataset_utils import split_dataset, create_data_loaders
+    from metrics_visualization import plot_training_curves, create_training_summary
+except ImportError as e:
+    # Try absolute imports if relative fails
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("enhanced_training", utils_path / "enhanced_training.py")
+    enhanced_training = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(enhanced_training)
+    train_model_with_validation = enhanced_training.train_model_with_validation
+    
+    spec = importlib.util.spec_from_file_location("training_utils", utils_path / "training_utils.py")
+    training_utils = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(training_utils)
+    TrainingMetrics = training_utils.TrainingMetrics
+    EarlyStopping = training_utils.EarlyStopping
+    CheckpointManager = training_utils.CheckpointManager
+    LearningRateScheduler = training_utils.LearningRateScheduler
+    
+    spec = importlib.util.spec_from_file_location("dataset_utils", utils_path / "dataset_utils.py")
+    dataset_utils = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(dataset_utils)
+    split_dataset = dataset_utils.split_dataset
+    create_data_loaders = dataset_utils.create_data_loaders
+    
+    spec = importlib.util.spec_from_file_location("metrics_visualization", utils_path / "metrics_visualization.py")
+    metrics_visualization = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(metrics_visualization)
+    plot_training_curves = metrics_visualization.plot_training_curves
+    create_training_summary = metrics_visualization.create_training_summary
 
 # Import model definitions from original script
-sys.path.insert(0, str(Path(__file__).parent))
+script_dir = Path(__file__).parent
+sys.path.insert(0, str(script_dir))
+
+# Initialize models to None
+EmotionRecognizer = None
+MelodyTransformer = None
+HarmonyPredictor = None
+DynamicsEngine = None
+GroovePredictor = None
+SyntheticEmotionDataset = None
+SyntheticMelodyDataset = None
+export_to_rtneural = None
+
 try:
     from train_all_models import (
         EmotionRecognizer,
@@ -54,10 +95,103 @@ try:
         SyntheticMelodyDataset,
         export_to_rtneural
     )
-except ImportError:
+except ImportError as e:
     # Fallback: define models here if import fails
-    print("Warning: Could not import models from train_all_models.py")
-    print("Please ensure train_all_models.py is in the same directory")
+    print(f"Warning: Could not import models from train_all_models.py: {e}")
+    print("Using fallback model definitions")
+    # Define minimal fallback models for testing
+    class EmotionRecognizer(nn.Module):
+        def __init__(self):
+            super().__init__()
+            self.fc1 = nn.Linear(128, 512)
+            self.fc2 = nn.Linear(512, 256)
+            self.lstm = nn.LSTM(256, 128, batch_first=True)
+            self.fc3 = nn.Linear(128, 64)
+        def forward(self, x):
+            x = torch.tanh(self.fc1(x))
+            x = torch.tanh(self.fc2(x))
+            x = x.unsqueeze(1)
+            x, _ = self.lstm(x)
+            x = x.squeeze(1)
+            x = torch.tanh(self.fc3(x))
+            return x
+    
+    class MelodyTransformer(nn.Module):
+        def __init__(self):
+            super().__init__()
+            self.fc1 = nn.Linear(64, 256)
+            self.lstm = nn.LSTM(256, 256, batch_first=True)
+            self.fc2 = nn.Linear(256, 256)
+            self.fc3 = nn.Linear(256, 128)
+        def forward(self, x):
+            x = torch.relu(self.fc1(x))
+            x = x.unsqueeze(1)
+            x, _ = self.lstm(x)
+            x = x.squeeze(1)
+            x = torch.relu(self.fc2(x))
+            x = torch.sigmoid(self.fc3(x))
+            return x
+    
+    class HarmonyPredictor(nn.Module):
+        def __init__(self):
+            super().__init__()
+            self.fc1 = nn.Linear(128, 256)
+            self.fc2 = nn.Linear(256, 128)
+            self.fc3 = nn.Linear(128, 64)
+        def forward(self, x):
+            x = torch.tanh(self.fc1(x))
+            x = torch.tanh(self.fc2(x))
+            x = torch.softmax(self.fc3(x), dim=-1)
+            return x
+    
+    class DynamicsEngine(nn.Module):
+        def __init__(self):
+            super().__init__()
+            self.fc1 = nn.Linear(32, 128)
+            self.fc2 = nn.Linear(128, 64)
+            self.fc3 = nn.Linear(64, 16)
+        def forward(self, x):
+            x = torch.relu(self.fc1(x))
+            x = torch.relu(self.fc2(x))
+            x = torch.sigmoid(self.fc3(x))
+            return x
+    
+    class GroovePredictor(nn.Module):
+        def __init__(self):
+            super().__init__()
+            self.fc1 = nn.Linear(64, 128)
+            self.fc2 = nn.Linear(128, 64)
+            self.fc3 = nn.Linear(64, 32)
+        def forward(self, x):
+            x = torch.tanh(self.fc1(x))
+            x = torch.tanh(self.fc2(x))
+            x = torch.tanh(self.fc3(x))
+            return x
+    
+    class SyntheticEmotionDataset(Dataset):
+        def __init__(self, num_samples=10000, seed=42):
+            np.random.seed(seed)
+            self.mel_features = np.random.randn(num_samples, 128).astype(np.float32)
+            self.emotion_labels = np.tanh(np.random.randn(num_samples, 64).astype(np.float32))
+        def __len__(self):
+            return len(self.mel_features)
+        def __getitem__(self, idx):
+            return {'mel_features': torch.tensor(self.mel_features[idx]), 'emotion': torch.tensor(self.emotion_labels[idx])}
+    
+    class SyntheticMelodyDataset(Dataset):
+        def __init__(self, num_samples=10000, seed=42):
+            np.random.seed(seed)
+            self.emotions = np.tanh(np.random.randn(num_samples, 64).astype(np.float32))
+            note_probs = np.random.rand(num_samples, 128).astype(np.float32)
+            self.note_probs = note_probs / note_probs.sum(axis=1, keepdims=True)
+        def __len__(self):
+            return len(self.emotions)
+        def __getitem__(self, idx):
+            return {'emotion': torch.tensor(self.emotions[idx]), 'notes': torch.tensor(self.note_probs[idx])}
+    
+    def export_to_rtneural(model, model_name, output_dir):
+        print(f"Exporting {model_name} to {output_dir} (simplified)")
+        return {}
 
 
 def train_emotion_recognizer_enhanced(

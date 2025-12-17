@@ -1,9 +1,11 @@
 #pragma once
 
 #include "voice/LyricTypes.h"
+#include "voice/CMUDictionary.h"
 #include <string>
 #include <vector>
 #include <map>
+#include <memory>
 
 namespace kelly {
 
@@ -84,6 +86,17 @@ public:
     bool loadPhonemeDatabase(const std::string& filePath);
 
     /**
+     * Enable/disable CMU Dictionary usage
+     * @param enable true to use CMU Dictionary for lookups
+     */
+    void setUseCMUDictionary(bool enable) { useCMUDictionary_ = enable; }
+
+    /**
+     * Check if CMU Dictionary is enabled
+     */
+    bool isUsingCMUDictionary() const { return useCMUDictionary_; }
+
+    /**
      * Count syllables in a word.
      * @param word Input word
      * @return Number of syllables
@@ -96,6 +109,10 @@ private:
 
     // Common word dictionary: word -> phonemes (for accurate G2P)
     std::map<std::string, std::vector<std::string>> wordDictionary_;
+
+    // CMU Dictionary for improved G2P accuracy
+    std::unique_ptr<CMUDictionary> cmuDictionary_;
+    bool useCMUDictionary_ = true;
 
     /**
      * Initialize default phoneme database (built-in data).

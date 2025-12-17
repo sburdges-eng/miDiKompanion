@@ -393,8 +393,13 @@ def train_model(args):
         train_loss = 0.0
         num_batches = 0
 
-        for features, labels in train_loader:
-            features, labels = features.to(device), labels.to(device)
+        for batch in train_loader:
+            # Handle both dict and tuple formats
+            if isinstance(batch, dict):
+                features = batch['mel_features'].to(device)
+                labels = batch['emotion'].to(device)
+            else:
+                features, labels = batch[0].to(device), batch[1].to(device)
 
             optimizer.zero_grad()
             outputs = model(features)
@@ -419,8 +424,13 @@ def train_model(args):
         num_val_batches = 0
 
         with torch.no_grad():
-            for features, labels in val_loader:
-                features, labels = features.to(device), labels.to(device)
+            for batch in val_loader:
+                # Handle both dict and tuple formats
+                if isinstance(batch, dict):
+                    features = batch['mel_features'].to(device)
+                    labels = batch['emotion'].to(device)
+                else:
+                    features, labels = batch[0].to(device), batch[1].to(device)
                 outputs = model(features)
                 loss = criterion(outputs, labels)
                 val_loss += loss.item()

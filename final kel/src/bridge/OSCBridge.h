@@ -3,7 +3,7 @@
 /**
  * OSCBridge - OSC Client for C++ Plugin ↔ Python Brain Communication
  * ====================================================================
- * 
+ *
  * Implements OSC client functionality to communicate with the Python brain server.
  * This enables the hybrid architecture:
  * - C++ Body (plugin): Sends requests via OSC
@@ -28,9 +28,9 @@ namespace bridge {
 struct OSCMessage {
     std::string address;
     std::vector<juce::var> arguments;
-    
+
     OSCMessage(const std::string& addr) : address(addr) {}
-    
+
     template<typename T>
     OSCMessage& add(T value) {
         arguments.push_back(juce::var(value));
@@ -50,7 +50,7 @@ class OSCBridge {
 public:
     OSCBridge();
     ~OSCBridge();
-    
+
     /**
      * Initialize OSC bridge
      * @param brainHost Python brain server host (default: 127.0.0.1)
@@ -63,12 +63,12 @@ public:
         int brainPort = 5005,
         int listenPort = 5006
     );
-    
+
     /**
      * Check if bridge is connected
      */
     bool isConnected() const { return connected_; }
-    
+
     /**
      * Send generation request to brain
      * @param text User input text
@@ -84,7 +84,7 @@ public:
         float vulnerability,
         OSCResponseHandler callback
     );
-    
+
     /**
      * Request chord analysis
      * @param progression Chord progression string
@@ -94,7 +94,7 @@ public:
         const std::string& progression,
         OSCResponseHandler callback
     );
-    
+
     /**
      * Request intent processing
      * @param intentFile Path to intent file
@@ -104,7 +104,7 @@ public:
         const std::string& intentFile,
         OSCResponseHandler callback
     );
-    
+
     /**
      * Request intent suggestions
      * @param emotion Emotion name
@@ -114,13 +114,13 @@ public:
         const std::string& emotion,
         OSCResponseHandler callback
     );
-    
+
     /**
      * Send ping to check brain server availability
      * @param callback Response handler
      */
     void ping(OSCResponseHandler callback);
-    
+
     /**
      * Shutdown OSC bridge
      */
@@ -131,25 +131,25 @@ private:
     std::string brainHost_;
     int brainPort_;
     int listenPort_;
-    
+
     // Response handlers (message ID -> handler)
     std::map<int, OSCResponseHandler> responseHandlers_;
     int nextMessageId_ = 0;
-    
+
     // OSC sender and receiver (would use JUCE OSC classes)
     std::unique_ptr<juce::OSCSender> sender_;
     std::unique_ptr<juce::OSCReceiver> receiver_;
-    
+
     /**
      * Send OSC message
      */
     bool sendMessage(const OSCMessage& message);
-    
+
     /**
      * Handle incoming OSC message
      */
     void handleOSCMessage(const juce::OSCMessage& message);
-    
+
     /**
      * Generate unique message ID
      */

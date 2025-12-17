@@ -1,28 +1,46 @@
 #include "biometric/BiometricInput.h"
+#include "biometric/HealthKitBridge.h"
+#include "biometric/FitbitBridge.h"
 #include <algorithm>
 #include <numeric>
 #include <cmath>
+#include <thread>
+#include <chrono>
 
 namespace kelly {
 
-BiometricInput::BiometricInput() : enabled_(false) {
+BiometricInput::BiometricInput() 
+    : enabled_(false)
+    , adaptiveNormalization_(false)
+    , streamingActive_(false)
+    , lastReadingTime_(0.0)
+    , healthKitInitialized_(false)
+    , fitbitInitialized_(false)
+    , shouldStream_(false)
+{
     dataHistory_.reserve(HISTORY_SIZE);
+
+    // Initialize default baseline
+    baseline_.heartRate = 70.0f;
+    baseline_.heartRateVariability = 50.0f;
+    baseline_.skinConductance = 5.0f;
+    baseline_.temperature = 36.5f;
 }
 
 BiometricInput::EmotionFromBiometrics BiometricInput::processBiometricData(const BiometricData& data) {
     if (!enabled_) {
         return {0.0f, 0.5f, 0.5f};  // Neutral default
     }
-    
+
     EmotionFromBiometrics result;
-    
+
     // Process heart rate -> arousal
     if (data.heartRate) {
         result.arousal = heartRateToArousal(*data.heartRate);
     } else {
         result.arousal = 0.5f;  // Default
     }
-    
+
     // Process HRV if available (affects both arousal and intensity)
     if (data.heartRateVariability) {
         float hrv = *data.heartRateVariability;
@@ -34,7 +52,7 @@ BiometricInput::EmotionFromBiometrics BiometricInput::processBiometricData(const
             result.arousal *= 1.2f;  // Low HRV = more stressed/aroused
             result.arousal = std::clamp(result.arousal, 0.0f, 1.0f);
         }
-        
+
         // HRV also affects intensity: low HRV = higher emotional intensity
         if (data.skinConductance) {
             // Combine EDA and HRV for intensity
@@ -55,13 +73,13 @@ BiometricInput::EmotionFromBiometrics BiometricInput::processBiometricData(const
             result.intensity = 0.5f;  // Default
         }
     }
-    
+
     // Movement can also affect arousal
     if (data.movement) {
         float movementArousal = movementToArousal(*data.movement);
         result.arousal = (result.arousal + movementArousal) / 2.0f;  // Average
     }
-    
+
     // Valence is harder to determine from basic biometrics
     // Could use temperature (warmer = more positive) or other signals
     if (data.temperature) {
@@ -71,20 +89,20 @@ BiometricInput::EmotionFromBiometrics BiometricInput::processBiometricData(const
     } else {
         result.valence = 0.0f;  // Neutral
     }
-    
+
     // Clamp all values
     result.valence = std::clamp(result.valence, -1.0f, 1.0f);
     result.arousal = std::clamp(result.arousal, 0.0f, 1.0f);
     result.intensity = std::clamp(result.intensity, 0.0f, 1.0f);
-    
+
     // Add to history for smoothing
     addToHistory(data);
-    
+
     // Trigger callback
     if (onDataCallback_) {
         onDataCallback_(data);
     }
-    
+
     return result;
 }
 
@@ -98,10 +116,10 @@ BiometricInput::BiometricData BiometricInput::getSmoothedData() const {
     if (dataHistory_.empty()) {
         return {};
     }
-    
+
     BiometricData smoothed;
     size_t count = dataHistory_.size();
-    
+
     // Average heart rate
     float totalHR = 0.0f;
     int hrCount = 0;
@@ -112,7 +130,7 @@ BiometricInput::BiometricData BiometricInput::getSmoothedData() const {
         }
     }
     if (hrCount > 0) smoothed.heartRate = totalHR / hrCount;
-    
+
     // Average HRV (Heart Rate Variability)
     float totalHRV = 0.0f;
     int hrvCount = 0;
@@ -123,7 +141,7 @@ BiometricInput::BiometricData BiometricInput::getSmoothedData() const {
         }
     }
     if (hrvCount > 0) smoothed.heartRateVariability = totalHRV / hrvCount;
-    
+
     // Average skin conductance
     float totalSC = 0.0f;
     int scCount = 0;
@@ -134,7 +152,7 @@ BiometricInput::BiometricData BiometricInput::getSmoothedData() const {
         }
     }
     if (scCount > 0) smoothed.skinConductance = totalSC / scCount;
-    
+
     // Average temperature
     float totalTemp = 0.0f;
     int tempCount = 0;
@@ -145,7 +163,7 @@ BiometricInput::BiometricData BiometricInput::getSmoothedData() const {
         }
     }
     if (tempCount > 0) smoothed.temperature = totalTemp / tempCount;
-    
+
     // Average movement
     float totalMove = 0.0f;
     int moveCount = 0;
@@ -156,10 +174,10 @@ BiometricInput::BiometricData BiometricInput::getSmoothedData() const {
         }
     }
     if (moveCount > 0) smoothed.movement = totalMove / moveCount;
-    
+
     // Use most recent timestamp
     smoothed.timestamp = dataHistory_.back().timestamp;
-    
+
     return smoothed;
 }
 
@@ -178,7 +196,7 @@ float BiometricInput::heartRateToArousal(float bpm) const {
     // Normal resting HR: 60-100 BPM
     // High arousal: >100 BPM
     // Low arousal: <60 BPM (or very calm)
-    
+
     if (bpm < 60.0f) {
         return 0.2f;  // Very calm
     } else if (bpm < 80.0f) {
@@ -200,6 +218,122 @@ float BiometricInput::movementToArousal(float movement) const {
     // Movement already normalized 0.0 to 1.0
     // More movement = higher arousal
     return movement;
+}
+
+void BiometricInput::setBaseline(const BiometricData& baseline) {
+    baseline_ = baseline;
+    
+    // Update baseline from smoothed history if adaptive normalization is enabled
+    if (adaptiveNormalization_ && !dataHistory_.empty()) {
+        auto smoothed = getSmoothedData();
+        if (smoothed.heartRate) baseline_.heartRate = *smoothed.heartRate;
+        if (smoothed.heartRateVariability) baseline_.heartRateVariability = *smoothed.heartRateVariability;
+        if (smoothed.skinConductance) baseline_.skinConductance = *smoothed.skinConductance;
+        if (smoothed.temperature) baseline_.temperature = *smoothed.temperature;
+    }
+}
+
+bool BiometricInput::initializeHealthKit() {
+#if JUCE_MAC || JUCE_IOS
+    if (!healthKitBridge_) {
+        healthKitBridge_ = std::make_unique<biometric::HealthKitBridge>();
+    }
+    
+    if (!healthKitBridge_->isAvailable()) {
+        healthKitInitialized_ = false;
+        return false;
+    }
+    
+    // Request authorization
+    if (healthKitBridge_->requestAuthorization()) {
+        healthKitInitialized_ = true;
+        return true;
+    }
+    
+    healthKitInitialized_ = false;
+    return false;
+#else
+    // HealthKit not available on this platform
+    healthKitInitialized_ = false;
+    return false;
+#endif
+}
+
+bool BiometricInput::initializeFitbit(const std::string& accessToken) {
+    if (accessToken.empty()) {
+        return false;
+    }
+
+    fitbitAccessToken_ = accessToken;
+
+    // TODO: Implement Fitbit API integration
+    // This requires:
+    // 1. HTTP client for Fitbit API calls
+    // 2. OAuth token management
+    // 3. WebSocket connection for real-time data (if available)
+    // 4. API endpoints:
+    //    - GET /1/user/-/activities/heart/date/{date}/1d/{detail-level}.json
+    //    - GET /1/user/-/hrv/date/{date}.json
+
+    fitbitInitialized_ = false;
+    return false;  // Not yet implemented
+}
+
+bool BiometricInput::startStreaming() {
+    if (!enabled_) {
+        return false;
+    }
+
+    if (healthKitInitialized_) {
+        // Start HealthKit streaming
+        readHealthKitData();
+        streamingActive_ = true;
+        return true;
+    } else if (fitbitInitialized_) {
+        // Start Fitbit streaming (polling or WebSocket)
+        // For now, use polling
+        streamingActive_ = true;
+        return true;
+    }
+
+    return false;
+}
+
+void BiometricInput::stopStreaming() {
+    streamingActive_ = false;
+}
+
+void BiometricInput::readHealthKitData() {
+#if JUCE_MAC || JUCE_IOS
+    // TODO: Read from HealthKit
+    // Example:
+    // HKQuantityType* heartRateType = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierHeartRate];
+    // Query latest sample and convert to BiometricData
+#endif
+}
+
+void BiometricInput::readFitbitData() {
+    if (fitbitAccessToken_.empty()) {
+        return;
+    }
+
+    // TODO: Implement Fitbit API call
+    // Example HTTP request:
+    // GET https://api.fitbit.com/1/user/-/activities/heart/date/today/1d/1sec.json
+    // Headers: Authorization: Bearer {accessToken}
+
+    // Parse JSON response and convert to BiometricData
+    // Update lastReadingTime_
+}
+
+    // Update baseline from smoothed history if adaptive normalization is enabled
+    if (adaptiveNormalization_ && !dataHistory_.empty()) {
+        auto smoothed = getSmoothedData();
+        if (smoothed.heartRate) baseline_.heartRate = *smoothed.heartRate;
+        if (smoothed.heartRateVariability) baseline_.heartRateVariability = *smoothed.heartRateVariability;
+        if (smoothed.skinConductance) baseline_.skinConductance = *smoothed.skinConductance;
+        if (smoothed.temperature) baseline_.temperature = *smoothed.temperature;
+    }
 }
 
 } // namespace kelly

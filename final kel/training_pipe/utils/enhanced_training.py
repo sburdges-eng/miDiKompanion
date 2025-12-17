@@ -111,23 +111,56 @@ def train_model_with_validation(
         for batch in train_loader:
             # Get batch data (handle different batch formats)
             if isinstance(batch, dict):
-                # Try common input keys
-                inputs = (batch.get('mel_features') or
-                         batch.get('emotion') or
-                         batch.get('context') or
-                         batch.get('input'))
-                # Try common target keys
-                targets = (batch.get('emotion') or
-                          batch.get('notes') or
-                          batch.get('chords') or
-                          batch.get('dynamics') or
-                          batch.get('groove') or
-                          batch.get('target'))
-
+                # Determine input key based on task type
+                inputs = None
+                if task_type == 'regression':
+                    # For regression (emotion recognition), input is mel_features
+                    input_keys = ['mel_features', 'context', 'input']
+                elif task_type == 'multilabel':
+                    # For multilabel (melody), input is emotion
+                    input_keys = ['emotion', 'context', 'input']
+                else:
+                    input_keys = ['mel_features', 'emotion', 'context', 'input']
+                
+                for key in input_keys:
+                    if key in batch:
+                        inputs = batch[key]
+                        break
+                
+                # Determine target key - prioritize task-specific keys
+                targets = None
+                if task_type == 'regression':
+                    # For emotion recognition, target is emotion
+                    target_keys = ['emotion', 'target']
+                elif task_type == 'multilabel':
+                    # For melody, target is notes (NOT emotion, even though emotion is in batch)
+                    target_keys = ['notes', 'target']
+                else:
+                    # Default: try all target keys except the one used for input
+                    target_keys = ['notes', 'chords', 'dynamics', 'groove', 'emotion', 'target']
+                    # Remove input key from target keys
+                    input_key_used = None
+                    for key in input_keys:
+                        if key in batch and batch[key] is inputs:
+                            input_key_used = key
+                            break
+                    if input_key_used:
+                        target_keys = [k for k in target_keys if k != input_key_used]
+                
+                for key in target_keys:
+                    if key in batch:
+                        targets = batch[key]
+                        break
+                
                 if inputs is None or targets is None:
-                    raise ValueError(f"Could not find input/target in batch. Keys: {batch.keys()}")
+                    available_keys = [k for k in batch.keys()] if hasattr(batch, 'keys') else 'unknown'
+                    raise ValueError(f"Could not find input/target in batch. Available keys: {available_keys}, inputs={inputs is not None}, targets={targets is not None}, task_type={task_type}")
             else:
-                inputs, targets = batch
+                # Assume tuple/list format: (inputs, targets)
+                if isinstance(batch, (tuple, list)) and len(batch) >= 2:
+                    inputs, targets = batch[0], batch[1]
+                else:
+                    raise ValueError(f"Unknown batch format: {type(batch)}")
 
             inputs = inputs.to(device)
             targets = targets.to(device)
@@ -158,21 +191,50 @@ def train_model_with_validation(
             with torch.no_grad():
                 for batch in val_loader:
                     if isinstance(batch, dict):
-                        inputs = (batch.get('mel_features') or
-                                 batch.get('emotion') or
-                                 batch.get('context') or
-                                 batch.get('input'))
-                        targets = (batch.get('emotion') or
-                                  batch.get('notes') or
-                                  batch.get('chords') or
-                                  batch.get('dynamics') or
-                                  batch.get('groove') or
-                                  batch.get('target'))
-
+                        # Use same logic as training phase
+                        inputs = None
+                        if task_type == 'regression':
+                            input_keys = ['mel_features', 'context', 'input']
+                        elif task_type == 'multilabel':
+                            input_keys = ['emotion', 'context', 'input']
+                        else:
+                            input_keys = ['mel_features', 'emotion', 'context', 'input']
+                        
+                        for key in input_keys:
+                            if key in batch:
+                                inputs = batch[key]
+                                break
+                        
+                        targets = None
+                        if task_type == 'regression':
+                            target_keys = ['emotion', 'target']
+                        elif task_type == 'multilabel':
+                            # For melody, target is notes (NOT emotion)
+                            target_keys = ['notes', 'target']
+                        else:
+                            target_keys = ['notes', 'chords', 'dynamics', 'groove', 'emotion', 'target']
+                            input_key_used = None
+                            for key in input_keys:
+                                if key in batch and batch[key] is inputs:
+                                    input_key_used = key
+                                    break
+                            if input_key_used:
+                                target_keys = [k for k in target_keys if k != input_key_used]
+                        
+                        for key in target_keys:
+                            if key in batch:
+                                targets = batch[key]
+                                break
+                        
                         if inputs is None or targets is None:
-                            raise ValueError(f"Could not find input/target in batch. Keys: {batch.keys()}")
+                            available_keys = [k for k in batch.keys()] if hasattr(batch, 'keys') else 'unknown'
+                            raise ValueError(f"Could not find input/target in batch. Available keys: {available_keys}, task_type={task_type}")
                     else:
-                        inputs, targets = batch
+                        # Assume tuple/list format: (inputs, targets)
+                        if isinstance(batch, (tuple, list)) and len(batch) >= 2:
+                            inputs, targets = batch[0], batch[1]
+                        else:
+                            raise ValueError(f"Unknown batch format: {type(batch)}")
 
                     inputs = inputs.to(device)
                     targets = targets.to(device)

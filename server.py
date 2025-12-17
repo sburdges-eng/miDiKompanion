@@ -1,581 +1,383 @@
-"""
-MCP Workstation - MCP Server
+"""Enhanced HTTP/WebSocket server for penta-core with REST API and real-time streaming."""
 
-Exposes workstation functionality as MCP tools for AI assistants.
-"""
-
+import asyncio
 import json
+import logging
+import os
+import signal
 import sys
-from typing import Any, Callable, Dict, List, Optional
+from datetime import datetime
+from http.server import HTTPServer, SimpleHTTPRequestHandler
+from pathlib import Path
+from typing import Dict, List, Optional
+import threading
 
-from .models import AIAgent, ProposalCategory, ProposalStatus, PhaseStatus
-from .orchestrator import get_workstation, Workstation
-from .ai_specializations import TaskType
-from .debug import log_info, log_error, DebugCategory
+try:
+    import websockets
+    WEBSOCKETS_AVAILABLE = True
+except ImportError:
+    WEBSOCKETS_AVAILABLE = False
+    logging.warning("websockets not available. Install with: pip install websockets")
 
+try:
+    from penta_core import PentaCore
+    import numpy as np
+    PENTA_CORE_AVAILABLE = True
+except ImportError:
+    PENTA_CORE_AVAILABLE = False
+    logging.warning("penta_core not available. Music analysis features disabled.")
 
-# =============================================================================
-# MCP Tool Definitions
-# =============================================================================
-
-def get_mcp_tools() -> List[Dict[str, Any]]:
-    """
-    Get MCP tool definitions for the workstation.
-
-    Returns a list of tool definitions compatible with the MCP protocol.
-    """
-    return [
-        # Agent Management
-        {
-            "name": "workstation_register",
-            "description": "Register an AI agent with the workstation. Call this first!",
-            "inputSchema": {
-                "type": "object",
-                "properties": {
-                    "agent": {
-                        "type": "string",
-                        "enum": ["claude", "chatgpt", "gemini", "github_copilot"],
-                        "description": "The AI agent to register",
-                    },
-                },
-                "required": ["agent"],
-            },
-        },
-        {
-            "name": "workstation_status",
-            "description": "Get current workstation status and dashboard",
-            "inputSchema": {
-                "type": "object",
-                "properties": {},
-            },
-        },
-        {
-            "name": "workstation_capabilities",
-            "description": "Get capabilities and strengths for an AI agent",
-            "inputSchema": {
-                "type": "object",
-                "properties": {
-                    "agent": {
-                        "type": "string",
-                        "enum": ["claude", "chatgpt", "gemini", "github_copilot"],
-                    },
-                },
-                "required": ["agent"],
-            },
-        },
-
-        # Proposal Operations
-        {
-            "name": "proposal_submit",
-            "description": "Submit an improvement proposal (max 3 per agent)",
-            "inputSchema": {
-                "type": "object",
-                "properties": {
-                    "agent": {
-                        "type": "string",
-                        "enum": ["claude", "chatgpt", "gemini", "github_copilot"],
-                    },
-                    "title": {
-                        "type": "string",
-                        "description": "Proposal title",
-                    },
-                    "description": {
-                        "type": "string",
-                        "description": "Detailed proposal description",
-                    },
-                    "category": {
-                        "type": "string",
-                        "enum": [c.value for c in ProposalCategory],
-                        "description": "Proposal category",
-                    },
-                    "priority": {
-                        "type": "integer",
-                        "minimum": 1,
-                        "maximum": 10,
-                        "description": "Priority 1-10 (10 highest)",
-                    },
-                    "estimated_effort": {
-                        "type": "string",
-                        "enum": ["low", "medium", "high", "very_high"],
-                    },
-                    "phase_target": {
-                        "type": "integer",
-                        "minimum": 1,
-                        "maximum": 3,
-                        "description": "Which iDAW phase (1-3)",
-                    },
-                    "implementation_notes": {
-                        "type": "string",
-                        "description": "Technical implementation notes",
-                    },
-                },
-                "required": ["agent", "title", "description", "category"],
-            },
-        },
-        {
-            "name": "proposal_vote",
-            "description": "Vote on a proposal (-1 reject, 0 neutral, 1 approve)",
-            "inputSchema": {
-                "type": "object",
-                "properties": {
-                    "agent": {
-                        "type": "string",
-                        "enum": ["claude", "chatgpt", "gemini", "github_copilot"],
-                    },
-                    "proposal_id": {
-                        "type": "string",
-                        "description": "ID of the proposal to vote on",
-                    },
-                    "vote": {
-                        "type": "integer",
-                        "enum": [-1, 0, 1],
-                        "description": "-1=reject, 0=neutral, 1=approve",
-                    },
-                    "comment": {
-                        "type": "string",
-                        "description": "Optional vote comment",
-                    },
-                },
-                "required": ["agent", "proposal_id", "vote"],
-            },
-        },
-        {
-            "name": "proposal_list",
-            "description": "List proposals (optionally filtered)",
-            "inputSchema": {
-                "type": "object",
-                "properties": {
-                    "agent": {
-                        "type": "string",
-                        "enum": ["claude", "chatgpt", "gemini", "github_copilot"],
-                        "description": "Filter by agent",
-                    },
-                    "status": {
-                        "type": "string",
-                        "enum": [s.value for s in ProposalStatus],
-                        "description": "Filter by status",
-                    },
-                },
-            },
-        },
-        {
-            "name": "proposal_pending_votes",
-            "description": "Get proposals waiting for your vote",
-            "inputSchema": {
-                "type": "object",
-                "properties": {
-                    "agent": {
-                        "type": "string",
-                        "enum": ["claude", "chatgpt", "gemini", "github_copilot"],
-                    },
-                },
-                "required": ["agent"],
-            },
-        },
-
-        # Phase Operations
-        {
-            "name": "phase_status",
-            "description": "Get current phase status and tasks",
-            "inputSchema": {
-                "type": "object",
-                "properties": {},
-            },
-        },
-        {
-            "name": "phase_progress",
-            "description": "Get formatted phase progress view",
-            "inputSchema": {
-                "type": "object",
-                "properties": {},
-            },
-        },
-        {
-            "name": "task_update",
-            "description": "Update a task status",
-            "inputSchema": {
-                "type": "object",
-                "properties": {
-                    "phase_id": {
-                        "type": "integer",
-                        "minimum": 1,
-                        "maximum": 3,
-                    },
-                    "task_id": {
-                        "type": "string",
-                    },
-                    "status": {
-                        "type": "string",
-                        "enum": [s.value for s in PhaseStatus],
-                    },
-                    "progress": {
-                        "type": "number",
-                        "minimum": 0,
-                        "maximum": 1,
-                    },
-                    "notes": {
-                        "type": "string",
-                    },
-                },
-                "required": ["phase_id", "task_id", "status"],
-            },
-        },
-        {
-            "name": "task_assign",
-            "description": "Assign a task to an AI agent",
-            "inputSchema": {
-                "type": "object",
-                "properties": {
-                    "phase_id": {
-                        "type": "integer",
-                    },
-                    "task_id": {
-                        "type": "string",
-                    },
-                    "agent": {
-                        "type": "string",
-                        "enum": ["claude", "chatgpt", "gemini", "github_copilot"],
-                    },
-                },
-                "required": ["phase_id", "task_id", "agent"],
-            },
-        },
-
-        # C++ Transition
-        {
-            "name": "cpp_plan",
-            "description": "Get C++ transition plan and status",
-            "inputSchema": {
-                "type": "object",
-                "properties": {},
-            },
-        },
-        {
-            "name": "cpp_progress",
-            "description": "Get formatted C++ transition progress",
-            "inputSchema": {
-                "type": "object",
-                "properties": {},
-            },
-        },
-        {
-            "name": "cpp_start_module",
-            "description": "Start work on a C++ module",
-            "inputSchema": {
-                "type": "object",
-                "properties": {
-                    "module_id": {
-                        "type": "string",
-                    },
-                    "agent": {
-                        "type": "string",
-                        "enum": ["claude", "chatgpt", "gemini", "github_copilot"],
-                    },
-                },
-                "required": ["module_id"],
-            },
-        },
-        {
-            "name": "cpp_update_module",
-            "description": "Update C++ module progress",
-            "inputSchema": {
-                "type": "object",
-                "properties": {
-                    "module_id": {
-                        "type": "string",
-                    },
-                    "progress": {
-                        "type": "number",
-                        "minimum": 0,
-                        "maximum": 1,
-                    },
-                    "status": {
-                        "type": "string",
-                        "enum": [s.value for s in PhaseStatus],
-                    },
-                },
-                "required": ["module_id", "progress"],
-            },
-        },
-        {
-            "name": "cpp_cmake",
-            "description": "Get CMake build plan",
-            "inputSchema": {
-                "type": "object",
-                "properties": {},
-            },
-        },
-
-        # Task Assignment
-        {
-            "name": "suggest_assignments",
-            "description": "Get optimal AI assignments for tasks",
-            "inputSchema": {
-                "type": "object",
-                "properties": {
-                    "tasks": {
-                        "type": "array",
-                        "items": {
-                            "type": "object",
-                            "properties": {
-                                "name": {"type": "string"},
-                                "type": {
-                                    "type": "string",
-                                    "enum": [t.value for t in TaskType],
-                                },
-                            },
-                            "required": ["name", "type"],
-                        },
-                    },
-                },
-                "required": ["tasks"],
-            },
-        },
-        {
-            "name": "workload",
-            "description": "Get current workload for each AI agent",
-            "inputSchema": {
-                "type": "object",
-                "properties": {},
-            },
-        },
-
-        # Debug
-        {
-            "name": "debug_summary",
-            "description": "Get debug and monitoring summary",
-            "inputSchema": {
-                "type": "object",
-                "properties": {},
-            },
-        },
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s - %(levelname)s - %(name)s - %(message)s",
+    handlers=[
+        logging.FileHandler("penta_server.log"),
+        logging.StreamHandler(sys.stdout)
     ]
+)
+logger = logging.getLogger(__name__)
 
 
-# =============================================================================
-# Tool Handlers
-# =============================================================================
-
-def handle_tool_call(name: str, arguments: Dict[str, Any]) -> Dict[str, Any]:
-    """
-    Handle an MCP tool call.
-
-    Returns the result as a dictionary.
-    """
-    ws = get_workstation()
-
-    try:
-        # Agent Management
-        if name == "workstation_register":
-            agent = AIAgent(arguments["agent"])
-            ws.register_agent(agent)
-            return {
-                "success": True,
-                "message": f"Agent {agent.display_name} registered",
-                "capabilities": ws.get_agent_capabilities(agent),
-            }
-
-        elif name == "workstation_status":
-            return {
-                "dashboard": ws.get_dashboard(),
-                "status": ws.get_status(),
-            }
-
-        elif name == "workstation_capabilities":
-            agent = AIAgent(arguments["agent"])
-            return ws.get_agent_capabilities(agent)
-
-        # Proposals
-        elif name == "proposal_submit":
-            result = ws.submit_proposal(
-                agent=AIAgent(arguments["agent"]),
-                title=arguments["title"],
-                description=arguments["description"],
-                category=ProposalCategory(arguments["category"]),
-                priority=arguments.get("priority", 5),
-                estimated_effort=arguments.get("estimated_effort", "medium"),
-                phase_target=arguments.get("phase_target", 1),
-                implementation_notes=arguments.get("implementation_notes", ""),
-            )
-            if result:
-                return {"success": True, "proposal": result}
-            return {"success": False, "error": "Failed to submit proposal (limit reached?)"}
-
-        elif name == "proposal_vote":
-            result = ws.vote_on_proposal(
-                agent=AIAgent(arguments["agent"]),
-                proposal_id=arguments["proposal_id"],
-                vote=arguments["vote"],
-                comment=arguments.get("comment", ""),
-            )
-            return {"success": result}
-
-        elif name == "proposal_list":
-            all_proposals = ws.get_all_proposals()
-
-            # Apply filters
-            proposals = all_proposals["proposals"]
-            if "agent" in arguments:
-                proposals = [p for p in proposals if p["agent"] == arguments["agent"]]
-            if "status" in arguments:
-                proposals = [p for p in proposals if p["status"] == arguments["status"]]
-
-            return {
-                "proposals": proposals,
-                "summary": all_proposals["summary"],
-            }
-
-        elif name == "proposal_pending_votes":
-            agent = AIAgent(arguments["agent"])
-            data = ws.get_proposals_for_agent(agent)
-            return {
-                "pending_votes": data["pending_votes"],
-                "slots_remaining": data["slots_remaining"],
-            }
-
-        # Phases
-        elif name == "phase_status":
-            return ws.get_current_phase()
-
-        elif name == "phase_progress":
-            return {"progress": ws.get_phase_progress()}
-
-        elif name == "task_update":
-            ws.update_task(
-                phase_id=arguments["phase_id"],
-                task_id=arguments["task_id"],
-                status=arguments["status"],
-                progress=arguments.get("progress"),
-                notes=arguments.get("notes"),
-            )
-            return {"success": True}
-
-        elif name == "task_assign":
-            ws.assign_task_to_agent(
-                phase_id=arguments["phase_id"],
-                task_id=arguments["task_id"],
-                agent=AIAgent(arguments["agent"]),
-            )
-            return {"success": True}
-
-        # C++ Transition
-        elif name == "cpp_plan":
-            return ws.get_cpp_plan()
-
-        elif name == "cpp_progress":
-            return {"progress": ws.get_cpp_progress()}
-
-        elif name == "cpp_start_module":
-            agent = AIAgent(arguments["agent"]) if "agent" in arguments else None
-            ws.start_cpp_module(arguments["module_id"], agent)
-            return {"success": True}
-
-        elif name == "cpp_update_module":
-            ws.update_cpp_module(
-                module_id=arguments["module_id"],
-                progress=arguments["progress"],
-                status=arguments.get("status"),
-            )
-            return {"success": True}
-
-        elif name == "cpp_cmake":
-            return {"cmake": ws.get_cmake_plan()}
-
-        # Task Assignment
-        elif name == "suggest_assignments":
-            tasks = [(t["name"], TaskType(t["type"])) for t in arguments["tasks"]]
-            return {"assignments": ws.suggest_assignments(tasks)}
-
-        elif name == "workload":
-            return {"workload": ws.get_agent_workload()}
-
-        # Debug
-        elif name == "debug_summary":
-            return ws.get_debug_summary()
-
-        else:
-            return {"error": f"Unknown tool: {name}"}
-
-    except Exception as e:
-        log_error(DebugCategory.MCP, f"Tool error: {name}: {e}")
-        return {"error": str(e)}
-
-
-# =============================================================================
-# MCP Server (stdio transport)
-# =============================================================================
-
-def run_server():
-    """
-    Run the MCP server using stdio transport.
-
-    This implements the MCP protocol for tool invocation.
-    """
-    log_info(DebugCategory.MCP, "MCP Workstation server starting")
-
-    tools = get_mcp_tools()
-
-    while True:
+def load_config():
+    """Load configuration from file or environment."""
+    config_file = Path("server_config.json")
+    default_config = {
+        "port": int(os.environ.get("PORT", "8000")),
+        "host": os.environ.get("HOST", "0.0.0.0"),
+        "ws_port": int(os.environ.get("WS_PORT", "8001")),
+        "enable_cors": os.environ.get("ENABLE_CORS", "true").lower() == "true",
+        "sample_rate": 48000.0,
+        "log_requests": True,
+        "max_connections": 100
+    }
+    
+    if config_file.exists():
         try:
-            # Read JSON-RPC request from stdin
-            line = sys.stdin.readline()
-            if not line:
-                break
-
-            request = json.loads(line)
-            method = request.get("method", "")
-            params = request.get("params", {})
-            req_id = request.get("id")
-
-            response = {"jsonrpc": "2.0", "id": req_id}
-
-            if method == "initialize":
-                response["result"] = {
-                    "protocolVersion": "2024-11-05",
-                    "capabilities": {
-                        "tools": {},
-                    },
-                    "serverInfo": {
-                        "name": "mcp-workstation",
-                        "version": "1.0.0",
-                    },
-                }
-
-            elif method == "tools/list":
-                response["result"] = {"tools": tools}
-
-            elif method == "tools/call":
-                tool_name = params.get("name", "")
-                tool_args = params.get("arguments", {})
-                result = handle_tool_call(tool_name, tool_args)
-                response["result"] = {
-                    "content": [
-                        {
-                            "type": "text",
-                            "text": json.dumps(result, indent=2),
-                        }
-                    ],
-                }
-
-            elif method == "notifications/initialized":
-                # No response needed for notifications
-                continue
-
-            else:
-                response["error"] = {
-                    "code": -32601,
-                    "message": f"Method not found: {method}",
-                }
-
-            # Write response to stdout
-            sys.stdout.write(json.dumps(response) + "\n")
-            sys.stdout.flush()
-
-        except json.JSONDecodeError as e:
-            log_error(DebugCategory.MCP, f"JSON decode error: {e}")
+            with open(config_file) as f:
+                file_config = json.load(f)
+                default_config.update(file_config)
+                logger.info("Loaded configuration from %s", config_file)
         except Exception as e:
-            log_error(DebugCategory.MCP, f"Server error: {e}")
+            logger.warning("Failed to load config file: %s. Using defaults.", e)
+    
+    return default_config
+
+
+CONFIG = load_config()
+
+# Analytics tracking
+class Analytics:
+    """Simple request analytics."""
+    def __init__(self):
+        self.requests = []
+        self.start_time = datetime.now()
+        self.endpoint_counts = {}
+    
+    def log_request(self, endpoint: str, method: str, duration_ms: float):
+        """Log a request."""
+        self.requests.append({
+            "endpoint": endpoint,
+            "method": method,
+            "duration_ms": duration_ms,
+            "timestamp": datetime.now().isoformat()
+        })
+        key = f"{method} {endpoint}"
+        self.endpoint_counts[key] = self.endpoint_counts.get(key, 0) + 1
+        
+        # Keep only last 1000 requests
+        if len(self.requests) > 1000:
+            self.requests = self.requests[-1000:]
+    
+    def get_stats(self) -> dict:
+        """Get analytics statistics."""
+        uptime = (datetime.now() - self.start_time).total_seconds()
+        return {
+            "uptime_seconds": uptime,
+            "total_requests": len(self.requests),
+            "endpoint_counts": self.endpoint_counts,
+            "recent_requests": self.requests[-10:]
+        }
+
+
+analytics = Analytics()
+
+# Music engine instance
+music_engine = None
+if PENTA_CORE_AVAILABLE:
+    try:
+        music_engine = PentaCore(sample_rate=CONFIG["sample_rate"])
+        logger.info("Initialized Penta Core music engine")
+    except Exception as e:
+        logger.error("Failed to initialize music engine: %s", e)
+
+
+class EnhancedRequestHandler(SimpleHTTPRequestHandler):
+    """Enhanced request handler with REST API and CORS support."""
+
+    def end_headers(self):
+        """Add CORS headers if enabled."""
+        if CONFIG["enable_cors"]:
+            self.send_header("Access-Control-Allow-Origin", "*")
+            self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+            self.send_header("Access-Control-Allow-Headers", "Content-Type")
+        super().end_headers()
+    
+    def do_OPTIONS(self):
+        """Handle preflight CORS requests."""
+        self.send_response(200)
+        self.end_headers()
+    
+    def do_GET(self):
+        """Handle GET requests with REST API."""
+        start_time = datetime.now()
+        
+        try:
+            if self.path == "/health":
+                self._handle_health()
+            elif self.path == "/api/status":
+                self._handle_status()
+            elif self.path == "/api/analytics":
+                self._handle_analytics()
+            elif self.path.startswith("/api/harmony"):
+                self._handle_harmony()
+            elif self.path.startswith("/api/groove"):
+                self._handle_groove()
+            elif self.path == "/api/state":
+                self._handle_state()
+            else:
+                super().do_GET()
+        finally:
+            duration = (datetime.now() - start_time).total_seconds() * 1000
+            if CONFIG["log_requests"]:
+                analytics.log_request(self.path, "GET", duration)
+    
+    def do_POST(self):
+        """Handle POST requests for music analysis."""
+        start_time = datetime.now()
+        
+        try:
+            if self.path == "/api/analyze/midi":
+                self._handle_midi_analysis()
+            elif self.path == "/api/analyze/audio":
+                self._handle_audio_analysis()
+            elif self.path == "/api/analyze/chord":
+                self._handle_chord_analysis()
+            else:
+                self._send_error(404, "Endpoint not found")
+        finally:
+            duration = (datetime.now() - start_time).total_seconds() * 1000
+            if CONFIG["log_requests"]:
+                analytics.log_request(self.path, "POST", duration)
+    
+    def _handle_health(self):
+        """Health check endpoint."""
+        self._send_json({
+            "status": "healthy",
+            "version": "1.0.0",
+            "engine_available": music_engine is not None,
+            "websockets_available": WEBSOCKETS_AVAILABLE
+        })
+    
+    def _handle_status(self):
+        """System status endpoint."""
+        status = {
+            "server": "running",
+            "config": CONFIG,
+            "music_engine": music_engine is not None
+        }
+        if music_engine:
+            status["diagnostics"] = music_engine.diagnostics.get_stats()
+        self._send_json(status)
+    
+    def _handle_analytics(self):
+        """Analytics endpoint."""
+        self._send_json(analytics.get_stats())
+    
+    def _handle_harmony(self):
+        """Harmony analysis endpoint."""
+        if not music_engine:
+            self._send_error(503, "Music engine not available")
+            return
+        
+        chord = music_engine.harmony.get_current_chord()
+        scale = music_engine.harmony.get_current_scale()
+        self._send_json({
+            "chord": chord,
+            "scale": scale
+        })
+    
+    def _handle_groove(self):
+        """Groove analysis endpoint."""
+        if not music_engine:
+            self._send_error(503, "Music engine not available")
+            return
+        
+        self._send_json(music_engine.groove.get_analysis())
+    
+    def _handle_state(self):
+        """Complete state endpoint."""
+        if not music_engine:
+            self._send_error(503, "Music engine not available")
+            return
+        
+        self._send_json(music_engine.get_state())
+    
+    def _handle_midi_analysis(self):
+        """Analyze MIDI notes."""
+        if not music_engine:
+            self._send_error(503, "Music engine not available")
+            return
+        
+        try:
+            content_length = int(self.headers.get('Content-Length', 0))
+            body = self.rfile.read(content_length)
+            data = json.loads(body)
+            
+            notes = [(n["pitch"], n["velocity"]) for n in data.get("notes", [])]
+            music_engine.harmony.process_midi_notes(notes)
+            
+            self._send_json({
+                "success": True,
+                "chord": music_engine.harmony.get_current_chord()
+            })
+        except Exception as e:
+            self._send_error(400, f"Invalid request: {e}")
+    
+    def _handle_audio_analysis(self):
+        """Analyze audio data."""
+        if not music_engine:
+            self._send_error(503, "Music engine not available")
+            return
+        
+        try:
+            content_length = int(self.headers.get('Content-Length', 0))
+            body = self.rfile.read(content_length)
+            data = json.loads(body)
+            
+            audio_data = np.array(data.get("samples", []), dtype=np.float32)
+            music_engine.groove.process_audio(audio_data)
+            
+            self._send_json({
+                "success": True,
+                "analysis": music_engine.groove.get_analysis()
+            })
+        except Exception as e:
+            self._send_error(400, f"Invalid request: {e}")
+    
+    def _handle_chord_analysis(self):
+        """Analyze chord progression."""
+        try:
+            content_length = int(self.headers.get('Content-Length', 0))
+            body = self.rfile.read(content_length)
+            data = json.loads(body)
+            
+            chords = data.get("chords", [])
+            # Simple progression analysis
+            progression = self._analyze_progression(chords)
+            
+            self._send_json({
+                "success": True,
+                "progression": progression
+            })
+        except Exception as e:
+            self._send_error(400, f"Invalid request: {e}")
+    
+    def _analyze_progression(self, chords: List[str]) -> dict:
+        """Analyze chord progression."""
+        # Basic progression analysis
+        common_progressions = {
+            ("I", "IV", "V"): "Classic I-IV-V",
+            ("I", "V", "vi", "IV"): "Pop progression",
+            ("ii", "V", "I"): "Jazz ii-V-I",
+            ("I", "vi", "IV", "V"): "50s progression"
+        }
+        
+        return {
+            "chords": chords,
+            "length": len(chords),
+            "pattern": "Custom" if tuple(chords) not in common_progressions else common_progressions[tuple(chords)]
+        }
+    
+    def _send_json(self, data: dict):
+        """Send JSON response."""
+        self.send_response(200)
+        self.send_header("Content-type", "application/json")
+        self.end_headers()
+        self.wfile.write(json.dumps(data, indent=2).encode())
+    
+    def _send_error(self, code: int, message: str):
+        """Send error response."""
+        self.send_response(code)
+        self.send_header("Content-type", "application/json")
+        self.end_headers()
+        self.wfile.write(json.dumps({"error": message}).encode())
+    
+    def log_message(self, format, *args):
+        """Override to use logger."""
+        if CONFIG["log_requests"]:
+            logger.info(format % args)
+
+
+# WebSocket server for real-time streaming
+async def websocket_handler(websocket, path):
+    """Handle WebSocket connections for real-time music data."""
+    logger.info("WebSocket client connected from %s", websocket.remote_address)
+    
+    try:
+        async for message in websocket:
+            # Echo back current state
+            if music_engine:
+                state = music_engine.get_state()
+                await websocket.send(json.dumps(state))
+            else:
+                await websocket.send(json.dumps({"error": "Engine not available"}))
+    except websockets.exceptions.ConnectionClosed:
+        logger.info("WebSocket client disconnected")
+
+
+def run_websocket_server():
+    """Run WebSocket server in separate thread."""
+    if not WEBSOCKETS_AVAILABLE:
+        logger.warning("WebSocket server disabled - websockets package not installed")
+        return
+    
+    async def start_ws():
+        async with websockets.serve(websocket_handler, CONFIG["host"], CONFIG["ws_port"]):
+            logger.info("WebSocket server running on ws://%s:%d", CONFIG["host"], CONFIG["ws_port"])
+            await asyncio.Future()  # run forever
+    
+    try:
+        asyncio.run(start_ws())
+    except Exception as e:
+        logger.error("WebSocket server error: %s", e)
+
+
+def run_http_server():
+    """Run HTTP server."""
+    server_address = (CONFIG["host"], CONFIG["port"])
+    httpd = HTTPServer(server_address, EnhancedRequestHandler)
+
+    def shutdown_handler(signum, frame):
+        """Handle shutdown signals gracefully."""
+        logger.info("Shutting down server...")
+        httpd.shutdown()
+        sys.exit(0)
+
+    signal.signal(signal.SIGINT, shutdown_handler)
+    signal.signal(signal.SIGTERM, shutdown_handler)
+
+    logger.info("HTTP server running on http://%s:%d", CONFIG["host"], CONFIG["port"])
+    logger.info("REST API available at /api/*")
+    logger.info("Health check: http://%s:%d/health", CONFIG["host"], CONFIG["port"])
+    httpd.serve_forever()
 
 
 if __name__ == "__main__":
-    run_server()
+    # Start WebSocket server in separate thread
+    if WEBSOCKETS_AVAILABLE:
+        ws_thread = threading.Thread(target=run_websocket_server, daemon=True)
+        ws_thread.start()
+    
+    # Start HTTP server (blocking)
+    run_http_server()

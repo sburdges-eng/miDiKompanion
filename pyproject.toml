@@ -1,111 +1,50 @@
 [build-system]
-requires = ["setuptools>=45", "wheel", "setuptools-scm[toml]>=6.2"]
+requires = ["setuptools>=61.0", "wheel", "pybind11>=2.10.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "daiw"
-version = "0.2.0"
-description = "Music production intelligence toolkit - groove extraction, chord analysis, AI-assisted songwriting"
+name = "penta-core"
+version = "0.3.0"
+description = "Real-time music theory analysis engine with emotional expression and genre-specific timing"
 readme = "README.md"
+requires-python = ">=3.8"
 license = {text = "MIT"}
-requires-python = ">=3.9"
 authors = [
-    {name = "Sean Burdges", email = "seanblariat@gmail.com"}
+    {name = "Penta Core Team"}
 ]
-keywords = ["midi", "music", "analysis", "groove", "chord", "songwriting", "daw", "production"]
+keywords = ["music", "theory", "analysis", "real-time", "audio", "harmony", "rhythm", "emotion"]
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
-    "Intended Audience :: End Users/Desktop",
-    "Topic :: Multimedia :: Sound/Audio :: Analysis",
-    "Topic :: Multimedia :: Sound/Audio :: MIDI",
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
+    "Topic :: Multimedia :: Sound/Audio :: Analysis",
 ]
 
-dependencies = [
-    "mido>=1.2.10",
-    "numpy>=1.21.0",
-]
+dependencies = []
 
 [project.optional-dependencies]
-audio = [
-    "librosa>=0.9.0",
-    "soundfile>=0.10.0",
-]
-theory = [
-    "music21>=7.0.0",
-]
 dev = [
-    "pytest>=7.0.0",
-    "black>=22.0.0",
-    "flake8>=4.0.0",
-    "mypy>=0.900",
-]
-# Desktop UI dependencies
-ui = [
-    "streamlit>=1.28.0",
-]
-# Native desktop app wrapper
-desktop = [
-    "streamlit>=1.28.0",
-    "pywebview>=4.0.0",
-]
-# Build tools for creating standalone executables
-build = [
-    "streamlit>=1.28.0",
-    "pywebview>=4.0.0",
-    "pyinstaller>=6.0.0",
-]
-all = [
-    "librosa>=0.9.0",
-    "soundfile>=0.10.0",
-    "music21>=7.0.0",
-    "streamlit>=1.28.0",
-    "pywebview>=4.0.0",
+    "pytest>=7.0",
+    "black>=23.0",
+    "mypy>=1.0",
 ]
 
-[project.scripts]
-daiw = "music_brain.cli:main"
-
-[project.gui-scripts]
-daiw-desktop = "launcher:main"
-
-[project.urls]
-Homepage = "https://github.com/yourusername/DAiW-Music-Brain"
-"Bug Tracker" = "https://github.com/yourusername/DAiW-Music-Brain/issues"
-Documentation = "https://github.com/yourusername/DAiW-Music-Brain#readme"
-
-[tool.setuptools.packages.find]
-exclude = ["tests", "tests.*", "examples", "vault"]
-
-[tool.setuptools.package-data]
-music_brain = ["data/*.json"]
+[tool.setuptools]
+packages = ["penta_core", "penta_core.rules", "penta_core.teachers"]
+package-dir = {"" = "python"}
 
 [tool.black]
 line-length = 100
-target-version = ["py39", "py310", "py311", "py312"]
-exclude = '''
-/(
-    \.git
-    | \.venv
-    | build
-    | dist
-    | \.eggs
-)/
-'''
-
-[tool.pytest.ini_options]
-testpaths = ["DAiW-Music-Brain/tests"]
-python_files = ["test_*.py"]
-python_functions = ["test_*"]
+target-version = ['py38', 'py39', 'py310', 'py311', 'py312']
 
 [tool.mypy]
-python_version = "3.9"
+python_version = "3.8"
 warn_return_any = true
 warn_unused_configs = true
-ignore_missing_imports = true
+disallow_untyped_defs = false

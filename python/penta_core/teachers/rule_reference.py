@@ -145,17 +145,17 @@ Examples:
         
         print("\nVOICE LEADING RULES:")
         vl_rules = VoiceLeadingRules.get_all_rules()
-        for category in vl_rules:
+        for category in vl_rules.keys():
             print(f"  • {category.replace('_', ' ').title()}")
         
         print("\nHARMONY RULES:")
         harm_rules = HarmonyRules.get_all_rules()
-        for category in harm_rules:
+        for category in harm_rules.keys():
             print(f"  • {category.replace('_', ' ').title()}")
         
         print("\nCOUNTERPOINT RULES:")
         cp_rules = CounterpointRules.get_all_rules()
-        for category in cp_rules:
+        for category in cp_rules.keys():
             print(f"  • {category.replace('_', ' ').title()}")
         
         print("\nUse --context, --severity, or --species to filter rules")

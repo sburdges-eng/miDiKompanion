@@ -240,7 +240,7 @@ std::vector<float> VoiceSynthesizer::synthesizeAudio(
             // Calculate transition time based on note duration (5-10% of note duration)
             float transitionTime = static_cast<float>(note.duration) * 0.05f;
             transitionTime = std::clamp(transitionTime, 0.01f, 0.1f);  // 10ms to 100ms
-            
+
             vocoder_->setTargetFormants(formantData.frequencies, formantData.bandwidths, transitionTime);
             currentVowel_ = targetVowel;
         }
@@ -387,8 +387,8 @@ void VoiceSynthesizer::synthesizeBlock(
         }
 
         // Get formant data (use emotion if available)
-        currentVowel_ = selectVowel(note.pitch, emotion);
-        auto formantData = VowelFormantDatabase::getFormants(currentVowel_);
+        VowelFormantDatabase::Vowel targetVowel = selectVowel(note.pitch, emotion);
+        auto formantData = VowelFormantDatabase::getFormants(targetVowel);
 
         // Apply voice type formant shifts
         for (size_t i = 0; i < 4; ++i) {
@@ -402,6 +402,13 @@ void VoiceSynthesizer::synthesizeBlock(
         }
 
         vocoder_->setFormantShift(voiceParams_.formantShift);
+
+        // Smooth formant transition if vowel changed (for real-time synthesis)
+        if (targetVowel != currentVowel_) {
+            float transitionTime = 0.05f;  // 50ms transition for real-time
+            vocoder_->setTargetFormants(formantData.frequencies, formantData.bandwidths, transitionTime);
+            currentVowel_ = targetVowel;
+        }
 
         // Convert MIDI pitch to frequency
         float frequency = midiToFrequency(note.pitch);

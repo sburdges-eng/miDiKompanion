@@ -5,13 +5,24 @@ Metrics Visualization for Kelly MIDI Companion ML Training
 Provides plotting and visualization of training metrics.
 """
 
-import matplotlib
-matplotlib.use('Agg')  # Non-interactive backend
-import matplotlib.pyplot as plt
+try:
+    import matplotlib
+    matplotlib.use('Agg')  # Non-interactive backend
+    import matplotlib.pyplot as plt
+    MATPLOTLIB_AVAILABLE = True
+except ImportError:
+    MATPLOTLIB_AVAILABLE = False
+    print("Warning: matplotlib not available. Plotting features will be disabled.")
+
 import numpy as np
 from pathlib import Path
 from typing import List, Optional, Dict
-from .training_utils import TrainingMetrics
+
+# Handle both relative and absolute imports
+try:
+    from .training_utils import TrainingMetrics
+except ImportError:
+    from training_utils import TrainingMetrics
 
 
 def plot_training_curves(
@@ -22,13 +33,17 @@ def plot_training_curves(
 ):
     """
     Plot training and validation curves.
-
+    
     Args:
         metrics: TrainingMetrics object with training history
         output_path: Path to save the plot
         model_name: Name of the model for title
         show_learning_rate: Whether to plot learning rate curve
     """
+    if not MATPLOTLIB_AVAILABLE:
+        print(f"Warning: matplotlib not available. Skipping plot generation for {output_path}")
+        return
+    
     fig, axes = plt.subplots(2, 2, figsize=(15, 10))
     fig.suptitle(f'{model_name} - Training Curves', fontsize=16, fontweight='bold')
 
@@ -102,13 +117,17 @@ def plot_comparison_curves(
 ):
     """
     Plot comparison of multiple training runs.
-
+    
     Args:
         metrics_list: List of TrainingMetrics objects
         labels: List of labels for each run
         output_path: Path to save the plot
         metric_type: 'loss' or 'accuracy'
     """
+    if not MATPLOTLIB_AVAILABLE:
+        print(f"Warning: matplotlib not available. Skipping comparison plot for {output_path}")
+        return
+    
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(15, 5))
     fig.suptitle(f'Training Comparison - {metric_type.capitalize()}',
                  fontsize=16, fontweight='bold')

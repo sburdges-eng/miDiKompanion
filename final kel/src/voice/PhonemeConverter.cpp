@@ -12,6 +12,10 @@ PhonemeConverter::PhonemeConverter() {
     initializeDefaultPhonemes();
     initializeWordDictionary();
 
+    // Initialize CMU Dictionary
+    cmuDictionary_ = std::make_unique<CMUDictionary>();
+    useCMUDictionary_ = true;
+
     // Attempt to load phoneme database from JSON file
     // Falls back to default phonemes if file is not found
     loadPhonemeDatabase("");  // Empty path will use PathResolver to find file
@@ -172,7 +176,16 @@ std::vector<Phoneme> PhonemeConverter::textToPhonemes(const std::string& text) {
 std::vector<std::string> PhonemeConverter::wordToPhonemes(const std::string& word) {
     std::string normalized = normalizeWord(word);
 
-    // Check dictionary first
+    // Try CMU Dictionary first if enabled
+    if (useCMUDictionary_ && cmuDictionary_) {
+        auto arpabetPhonemes = cmuDictionary_->lookup(normalized);
+        if (!arpabetPhonemes.empty()) {
+            // Convert ARPABET to IPA
+            return CMUDictionary::arpabetToIPA(arpabetPhonemes);
+        }
+    }
+
+    // Check built-in dictionary
     auto dictIt = wordDictionary_.find(normalized);
     if (dictIt != wordDictionary_.end()) {
         return dictIt->second;

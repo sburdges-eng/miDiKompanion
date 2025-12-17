@@ -323,10 +323,18 @@ class LearningRateScheduler:
         self.min_lr = min_lr
 
         if mode == 'reduce_on_plateau':
-            self.scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
-                optimizer, mode='min', factor=factor, patience=patience,
-                min_lr=min_lr, verbose=True
-            )
+            # verbose parameter was added in PyTorch 1.4, use try/except for compatibility
+            try:
+                self.scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
+                    optimizer, mode='min', factor=factor, patience=patience,
+                    min_lr=min_lr, verbose=True
+                )
+            except TypeError:
+                # Fallback for older PyTorch versions
+                self.scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
+                    optimizer, mode='min', factor=factor, patience=patience,
+                    min_lr=min_lr
+                )
         elif mode == 'step':
             step_size = kwargs.get('step_size', 10)
             self.scheduler = torch.optim.lr_scheduler.StepLR(

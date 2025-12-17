@@ -32,6 +32,14 @@ from training_utils import (
     compute_cosine_similarity
 )
 
+# Try to import real dataset loaders
+try:
+    from dataset_loaders import create_dataset
+    REAL_DATASETS_AVAILABLE = True
+except ImportError:
+    REAL_DATASETS_AVAILABLE = False
+    print("Note: Real dataset loaders not available. Using synthetic data.")
+
 
 # =============================================================================
 # Model Definitions
@@ -219,8 +227,24 @@ def export_to_rtneural(
 
 
 # =============================================================================
-# Synthetic Dataset (Replace with real data for production)
+# Dataset Loading (Real or Synthetic)
 # =============================================================================
+
+# Try to import real dataset loaders
+try:
+    from dataset_loaders import (
+        create_dataset,
+        DEAMDataset,
+        LakhMIDIDataset,
+        MAESTRODataset,
+        GrooveMIDIDataset,
+        HarmonyDataset
+    )
+    REAL_DATASETS_AVAILABLE = True
+except ImportError:
+    REAL_DATASETS_AVAILABLE = False
+    print("Warning: Real dataset loaders not available. Using synthetic data.")
+
 
 class SyntheticEmotionDataset(Dataset):
     """Synthetic dataset for testing training pipeline."""
@@ -483,7 +507,9 @@ def train_all_models(
     learning_rate: float = 0.001,
     resume_from: Optional[str] = None,
     save_history: bool = True,
-    plot_curves: bool = True
+    plot_curves: bool = True,
+    datasets_dir: Optional[Path] = None,
+    use_real_data: bool = True
 ):
     """
     Train all 5 models and export to RTNeural format.
@@ -547,8 +573,48 @@ def train_all_models(
     print()
 
     # Create datasets
-    emotion_dataset = SyntheticEmotionDataset(num_samples=10000)
-    melody_dataset = SyntheticMelodyDataset(num_samples=10000)
+    print("\n" + "=" * 60)
+    print("Loading Datasets...")
+    print("=" * 60)
+
+    use_real = use_real_data and REAL_DATASETS_AVAILABLE and datasets_dir
+
+    if use_real and datasets_dir:
+        datasets_dir = Path(datasets_dir)
+        try:
+            # 1. EmotionRecognizer - DEAM
+            print("\n[1/5] Loading DEAM dataset for EmotionRecognizer...")
+            try:
+                emotion_dataset = create_dataset('deam', datasets_dir / 'deam')
+                print(f"  ✓ Loaded {len(emotion_dataset)} samples")
+            except Exception as e:
+                print(f"  ⚠ Failed to load DEAM: {e}")
+                print("  → Falling back to synthetic data")
+                emotion_dataset = SyntheticEmotionDataset(num_samples=10000)
+
+            # 2. MelodyTransformer - Lakh MIDI
+            print("\n[2/5] Loading Lakh MIDI dataset for MelodyTransformer...")
+            try:
+                melody_dataset = create_dataset(
+                    'lakh',
+                    datasets_dir / 'lakh_midi',
+                    max_files=10000  # Limit for faster training
+                )
+                print(f"  ✓ Loaded {len(melody_dataset)} samples")
+            except Exception as e:
+                print(f"  ⚠ Failed to load Lakh MIDI: {e}")
+                print("  → Falling back to synthetic data")
+                melody_dataset = SyntheticMelodyDataset(num_samples=10000)
+
+        except Exception as e:
+            print(f"\n⚠ Error loading real datasets: {e}")
+            print("  → Falling back to synthetic data for all models")
+            use_real = False
+
+    if not use_real:
+        print("\nUsing synthetic datasets for training...")
+        emotion_dataset = SyntheticEmotionDataset(num_samples=10000)
+        melody_dataset = SyntheticMelodyDataset(num_samples=10000)
 
     # Split datasets into train/validation
     if validation_split > 0:
@@ -714,6 +780,10 @@ if __name__ == "__main__":
                         help="Don't save training history")
     parser.add_argument("--no-plots", action="store_true",
                         help="Don't generate training curve plots")
+    parser.add_argument("--datasets-dir", type=str, default=None,
+                        help="Directory containing real datasets (DEAM, Lakh MIDI, etc.)")
+    parser.add_argument("--use-synthetic", action="store_true",
+                        help="Force use of synthetic data even if real datasets available")
 
     args = parser.parse_args()
 
@@ -736,5 +806,7 @@ if __name__ == "__main__":
         learning_rate=args.learning_rate,
         resume_from=args.resume,
         save_history=not args.no_history,
-        plot_curves=not args.no_plots
+        plot_curves=not args.no_plots,
+        datasets_dir=Path(args.datasets_dir) if args.datasets_dir else None,
+        use_real_data=not args.use_synthetic
     )

@@ -136,7 +136,7 @@ void VocoderEngine::setTargetFormants(
 {
     targetFormants_ = targetFormants;
     targetBandwidths_ = targetBandwidths;
-    
+
     if (transitionTime > 0.0f && sampleRate_ > 0.0) {
         // Calculate interpolation rate (formant units per sample)
         // Use exponential interpolation for smoother transitions
@@ -176,7 +176,7 @@ float VocoderEngine::processSample(
             } else {
                 currentFormants_[i] = targetFormants_[i];
             }
-            
+
             float bwDiff = targetBandwidths_[i] - currentBandwidths_[i];
             if (std::abs(bwDiff) > 0.1f) {
                 currentBandwidths_[i] += bwDiff * formantInterpolationRate_;
@@ -185,7 +185,7 @@ float VocoderEngine::processSample(
                 currentBandwidths_[i] = targetBandwidths_[i];
             }
         }
-        
+
         if (allReached) {
             isInterpolating_ = false;
         }

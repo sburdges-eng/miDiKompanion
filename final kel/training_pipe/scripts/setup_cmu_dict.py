@@ -15,9 +15,9 @@ import json
 def download_cmu_dict(output_path: Path) -> bool:
     """Download CMU Pronouncing Dictionary."""
     url = "https://raw.githubusercontent.com/cmusphinx/cmudict/master/cmudict.dict"
-    
+
     print(f"Downloading CMU Pronouncing Dictionary from {url}...")
-    
+
     try:
         urllib.request.urlretrieve(url, output_path)
         print(f"✓ Downloaded to {output_path}")
@@ -30,20 +30,20 @@ def download_cmu_dict(output_path: Path) -> bool:
 def parse_cmu_dict(cmu_file: Path) -> dict:
     """Parse CMU dictionary file into word -> phonemes mapping."""
     word_dict = {}
-    
+
     print(f"Parsing CMU dictionary: {cmu_file}")
-    
+
     with open(cmu_file, 'r', encoding='latin-1') as f:
         for line in f:
             line = line.strip()
             if not line or line.startswith(';;;'):
                 continue
-            
+
             # Format: WORD  PHONEME1 PHONEME2 ...
             parts = line.split()
             if len(parts) < 2:
                 continue
-            
+
             word = parts[0].lower()
             # Remove stress markers (1, 2, 0)
             phonemes = []
@@ -52,7 +52,7 @@ def parse_cmu_dict(cmu_file: Path) -> dict:
                 p_clean = re.sub(r'[012]', '', p)
                 if p_clean:
                     phonemes.append(f"/{p_clean.lower()}/")
-            
+
             if phonemes:
                 # Handle alternate pronunciations (marked with (1), (2), etc.)
                 if '(' in word:
@@ -62,7 +62,7 @@ def parse_cmu_dict(cmu_file: Path) -> dict:
                     word_dict[base_word].append(phonemes)
                 else:
                     word_dict[word] = phonemes
-    
+
     print(f"✓ Parsed {len(word_dict)} words")
     return word_dict
 
@@ -79,7 +79,7 @@ def convert_arpabet_to_ipa(arpabet_phoneme: str) -> str:
         'T': 't', 'TH': 'θ', 'UH': 'ʊ', 'UW': 'u', 'V': 'v', 'W': 'w',
         'Y': 'j', 'Z': 'z', 'ZH': 'ʒ'
     }
-    
+
     # Remove stress markers
     arpabet_clean = re.sub(r'[012]', '', arpabet_phoneme.upper())
     return arpabet_to_ipa.get(arpabet_clean, arpabet_clean.lower())
@@ -88,7 +88,7 @@ def convert_arpabet_to_ipa(arpabet_phoneme: str) -> str:
 def create_phoneme_json(word_dict: dict, output_path: Path):
     """Create JSON file with word -> IPA phonemes mapping."""
     print(f"Creating phoneme JSON: {output_path}")
-    
+
     # Convert ARPABET to IPA
     ipa_dict = {}
     for word, phonemes_arpabet in word_dict.items():
@@ -101,10 +101,10 @@ def create_phoneme_json(word_dict: dict, output_path: Path):
         else:
             # Single pronunciation
             ipa_dict[word] = [convert_arpabet_to_ipa(p) for p in phonemes_arpabet]
-    
+
     with open(output_path, 'w') as f:
         json.dump(ipa_dict, f, indent=2)
-    
+
     print(f"✓ Created JSON with {len(ipa_dict)} words")
 
 
@@ -123,36 +123,36 @@ def main():
         action="store_true",
         help="Download CMU dictionary (if not already present)"
     )
-    
+
     args = parser.parse_args()
-    
+
     output_dir = Path(args.output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
-    
+
     cmu_file = output_dir / "cmudict.dict"
     json_file = output_dir / "cmu_phonemes.json"
-    
+
     # Download if requested or not present
     if args.download or not cmu_file.exists():
         if not download_cmu_dict(cmu_file):
             print("Failed to download CMU dictionary")
             return 1
-    
+
     if not cmu_file.exists():
         print(f"CMU dictionary not found: {cmu_file}")
         print("Run with --download to download it")
         return 1
-    
+
     # Parse and convert
     word_dict = parse_cmu_dict(cmu_file)
     create_phoneme_json(word_dict, json_file)
-    
+
     print(f"\n✓ Setup complete!")
     print(f"  Dictionary file: {cmu_file}")
     print(f"  JSON file: {json_file}")
     print(f"\nTo use in PhonemeConverter, load the JSON file:")
     print(f"  converter.loadPhonemeDatabase(\"{json_file.absolute()}\")")
-    
+
     return 0
 
 

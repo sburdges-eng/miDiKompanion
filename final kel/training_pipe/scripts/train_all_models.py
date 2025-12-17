@@ -29,30 +29,52 @@ from collections import defaultdict
 # Import real dataset loaders
 import sys
 from pathlib import Path
+
+# Try to import from ml_training (parent directory)
 script_dir = Path(__file__).parent
+ml_training_dir = script_dir.parent.parent / "ml_training"
+sys.path.insert(0, str(ml_training_dir))
 sys.path.insert(0, str(script_dir))
 
 try:
-    from data_loaders import (
-        EmotionDataset,
-        MelodyDataset,
-        DynamicsDataset,
-        GrooveDataset
-    )
+    from dataset_loaders import create_dataset
     REAL_DATASETS_AVAILABLE = True
-except ImportError as e:
-    REAL_DATASETS_AVAILABLE = False
-    print(f"Warning: data_loaders not found ({e}). Using synthetic data.")
+except ImportError:
+    try:
+        # Fallback to local data_loaders if it exists
+        from data_loaders import (
+            EmotionDataset,
+            MelodyDataset,
+            DynamicsDataset,
+            GrooveDataset
+        )
+        REAL_DATASETS_AVAILABLE = True
+        # Create compatibility wrapper
+        def create_dataset(dataset_type, data_dir, **kwargs):
+            if dataset_type == 'deam':
+                return EmotionDataset(data_dir, **kwargs)
+            elif dataset_type == 'lakh':
+                return MelodyDataset(data_dir, **kwargs)
+            elif dataset_type == 'maestro':
+                return DynamicsDataset(data_dir, **kwargs)
+            elif dataset_type == 'groove':
+                return GrooveDataset(data_dir, **kwargs)
+            else:
+                raise ValueError(f"Unknown dataset type: {dataset_type}")
+    except ImportError:
+        REAL_DATASETS_AVAILABLE = False
+        print("Warning: Real dataset loaders not available. Using synthetic data.")
 
 # Import training utilities
 try:
     from training_utils import (
+        TrainingMetrics,
         EarlyStopping,
-        CheckpointManager,
-        MetricsTracker,
-        train_epoch,
-        validate_epoch,
-        split_dataset
+        validate_model,
+        evaluate_model,
+        save_checkpoint,
+        load_checkpoint,
+        create_train_val_split
     )
     TRAINING_UTILS_AVAILABLE = True
 except ImportError as e:
@@ -431,12 +453,15 @@ def train_emotion_recognizer(
     optimizer = optim.Adam(model.parameters(), lr=lr)
     criterion = nn.MSELoss()
 
-    train_losses = []
-    val_losses = []
-    best_val_loss = float('inf')
-    patience_counter = 0
+    # Initialize training utilities
+    metrics = TrainingMetrics() if TRAINING_UTILS_AVAILABLE else None
+    early_stopping = None
+    if TRAINING_UTILS_AVAILABLE and val_loader is not None:
+        early_stopping = EarlyStopping(patience=early_stop_patience, min_delta=0.001)
 
     for epoch in range(epochs):
+        epoch_start_time = time.time()
+
         # Training
         model.train()
         train_loss = 0.0
@@ -454,42 +479,76 @@ def train_emotion_recognizer(
             train_loss += loss.item()
 
         avg_train_loss = train_loss / len(train_loader)
-        train_losses.append(avg_train_loss)
 
         # Validation
         val_loss = None
+        val_acc = None
         if val_loader is not None:
-            model.eval()
-            val_loss = 0.0
-            with torch.no_grad():
-                for batch in val_loader:
-                    mel_features = batch['mel_features'].to(device)
-                    emotion_target = batch['emotion'].to(device)
-                    emotion_pred = model(mel_features)
-                    loss = criterion(emotion_pred, emotion_target)
-                    val_loss += loss.item()
-            avg_val_loss = val_loss / len(val_loader)
-            val_losses.append(avg_val_loss)
-
-            # Early stopping
-            if avg_val_loss < best_val_loss:
-                best_val_loss = avg_val_loss
-                patience_counter = 0
-                # Save best model
-                if checkpoint_dir:
-                    torch.save(model.state_dict(), checkpoint_dir / "emotionrecognizer_best.pt")
+            if TRAINING_UTILS_AVAILABLE:
+                val_loss, val_acc = validate_model(model, val_loader, criterion, device)
             else:
-                patience_counter += 1
-                if patience_counter >= early_stop_patience:
-                    print(f"Early stopping at epoch {epoch+1}")
-                    break
+                # Fallback validation
+                model.eval()
+                val_loss = 0.0
+                with torch.no_grad():
+                    for batch in val_loader:
+                        mel_features = batch['mel_features'].to(device)
+                        emotion_target = batch['emotion'].to(device)
+                        emotion_pred = model(mel_features)
+                        loss = criterion(emotion_pred, emotion_target)
+                        val_loss += loss.item()
+                val_loss = val_loss / len(val_loader)
 
+        # Update metrics
+        epoch_time = time.time() - epoch_start_time
+        if metrics:
+            metrics.update(
+                epoch=epoch,
+                train_loss=avg_train_loss,
+                val_loss=val_loss,
+                val_acc=val_acc,
+                epoch_time=epoch_time
+            )
+
+        # Early stopping
+        if early_stopping and val_loss is not None:
+            if early_stopping(val_loss, model):
+                print(f"Early stopping at epoch {epoch+1}")
+                break
+
+        # Save checkpoint
+        if checkpoint_dir and val_loss is not None:
+            checkpoint_dir = Path(checkpoint_dir)
+            checkpoint_dir.mkdir(parents=True, exist_ok=True)
+            checkpoint_path = checkpoint_dir / f"emotionrecognizer_epoch_{epoch+1}.pt"
+            if TRAINING_UTILS_AVAILABLE:
+                save_checkpoint(model, optimizer, epoch, val_loss, checkpoint_path, metrics)
+            else:
+                torch.save({
+                    'epoch': epoch,
+                    'model_state_dict': model.state_dict(),
+                    'optimizer_state_dict': optimizer.state_dict(),
+                    'loss': val_loss,
+                }, checkpoint_path)
+
+        # Print progress
         if (epoch + 1) % 10 == 0 or epoch == 0:
-            val_str = f", Val Loss: {avg_val_loss:.6f}" if val_loss is not None else ""
+            val_str = f", Val Loss: {val_loss:.6f}" if val_loss is not None else ""
+            acc_str = f", Val Acc: {val_acc:.4f}" if val_acc is not None else ""
             print(f"EmotionRecognizer Epoch {epoch+1}/{epochs}, "
-                  f"Train Loss: {avg_train_loss:.6f}{val_str}")
+                  f"Train Loss: {avg_train_loss:.6f}{val_str}{acc_str}")
 
-    return {'train': train_losses, 'val': val_losses}
+    # Save final metrics
+    if metrics and checkpoint_dir:
+        metrics_path = checkpoint_dir / "emotionrecognizer_metrics.json"
+        metrics.save(metrics_path)
+        plot_path = checkpoint_dir / "emotionrecognizer_metrics.png"
+        metrics.plot_metrics(plot_path)
+
+    return {
+        'train': metrics.train_losses if metrics else [avg_train_loss],
+        'val': metrics.val_losses if (metrics and val_loss) else []
+    }
 
 
 def train_melody_transformer(
@@ -508,12 +567,15 @@ def train_melody_transformer(
     optimizer = optim.Adam(model.parameters(), lr=lr)
     criterion = nn.BCELoss()
 
-    train_losses = []
-    val_losses = []
-    best_val_loss = float('inf')
-    patience_counter = 0
+    # Initialize training utilities
+    metrics = TrainingMetrics() if TRAINING_UTILS_AVAILABLE else None
+    early_stopping = None
+    if TRAINING_UTILS_AVAILABLE and val_loader is not None:
+        early_stopping = EarlyStopping(patience=early_stop_patience, min_delta=0.001)
 
     for epoch in range(epochs):
+        epoch_start_time = time.time()
+
         # Training
         model.train()
         train_loss = 0.0
@@ -531,41 +593,76 @@ def train_melody_transformer(
             train_loss += loss.item()
 
         avg_train_loss = train_loss / len(train_loader)
-        train_losses.append(avg_train_loss)
 
         # Validation
         val_loss = None
+        val_acc = None
         if val_loader is not None:
-            model.eval()
-            val_loss = 0.0
-            with torch.no_grad():
-                for batch in val_loader:
-                    emotion = batch['emotion'].to(device)
-                    notes_target = batch['notes'].to(device)
-                    notes_pred = model(emotion)
-                    loss = criterion(notes_pred, notes_target)
-                    val_loss += loss.item()
-            avg_val_loss = val_loss / len(val_loader)
-            val_losses.append(avg_val_loss)
-
-            # Early stopping
-            if avg_val_loss < best_val_loss:
-                best_val_loss = avg_val_loss
-                patience_counter = 0
-                if checkpoint_dir:
-                    torch.save(model.state_dict(), checkpoint_dir / "melodytransformer_best.pt")
+            if TRAINING_UTILS_AVAILABLE:
+                val_loss, val_acc = validate_model(model, val_loader, criterion, device)
             else:
-                patience_counter += 1
-                if patience_counter >= early_stop_patience:
-                    print(f"Early stopping at epoch {epoch+1}")
-                    break
+                # Fallback validation
+                model.eval()
+                val_loss = 0.0
+                with torch.no_grad():
+                    for batch in val_loader:
+                        emotion = batch['emotion'].to(device)
+                        notes_target = batch['notes'].to(device)
+                        notes_pred = model(emotion)
+                        loss = criterion(notes_pred, notes_target)
+                        val_loss += loss.item()
+                val_loss = val_loss / len(val_loader)
 
+        # Update metrics
+        epoch_time = time.time() - epoch_start_time
+        if metrics:
+            metrics.update(
+                epoch=epoch,
+                train_loss=avg_train_loss,
+                val_loss=val_loss,
+                val_acc=val_acc,
+                epoch_time=epoch_time
+            )
+
+        # Early stopping
+        if early_stopping and val_loss is not None:
+            if early_stopping(val_loss, model):
+                print(f"Early stopping at epoch {epoch+1}")
+                break
+
+        # Save checkpoint
+        if checkpoint_dir and val_loss is not None:
+            checkpoint_dir = Path(checkpoint_dir)
+            checkpoint_dir.mkdir(parents=True, exist_ok=True)
+            checkpoint_path = checkpoint_dir / f"melodytransformer_epoch_{epoch+1}.pt"
+            if TRAINING_UTILS_AVAILABLE:
+                save_checkpoint(model, optimizer, epoch, val_loss, checkpoint_path, metrics)
+            else:
+                torch.save({
+                    'epoch': epoch,
+                    'model_state_dict': model.state_dict(),
+                    'optimizer_state_dict': optimizer.state_dict(),
+                    'loss': val_loss,
+                }, checkpoint_path)
+
+        # Print progress
         if (epoch + 1) % 10 == 0 or epoch == 0:
-            val_str = f", Val Loss: {avg_val_loss:.6f}" if val_loss is not None else ""
+            val_str = f", Val Loss: {val_loss:.6f}" if val_loss is not None else ""
+            acc_str = f", Val Acc: {val_acc:.4f}" if val_acc is not None else ""
             print(f"MelodyTransformer Epoch {epoch+1}/{epochs}, "
-                  f"Train Loss: {avg_train_loss:.6f}{val_str}")
+                  f"Train Loss: {avg_train_loss:.6f}{val_str}{acc_str}")
 
-    return {'train': train_losses, 'val': val_losses}
+    # Save final metrics
+    if metrics and checkpoint_dir:
+        metrics_path = checkpoint_dir / "melodytransformer_metrics.json"
+        metrics.save(metrics_path)
+        plot_path = checkpoint_dir / "melodytransformer_metrics.png"
+        metrics.plot_metrics(plot_path)
+
+    return {
+        'train': metrics.train_losses if metrics else [avg_train_loss],
+        'val': metrics.val_losses if (metrics and val_loss) else []
+    }
 
 
 def train_harmony_predictor(
@@ -584,12 +681,15 @@ def train_harmony_predictor(
     optimizer = optim.Adam(model.parameters(), lr=lr)
     criterion = nn.KLDivLoss(reduction='batchmean')
 
-    train_losses = []
-    val_losses = []
-    best_val_loss = float('inf')
-    patience_counter = 0
+    # Initialize training utilities
+    metrics = TrainingMetrics() if TRAINING_UTILS_AVAILABLE else None
+    early_stopping = None
+    if TRAINING_UTILS_AVAILABLE and val_loader is not None:
+        early_stopping = EarlyStopping(patience=early_stop_patience, min_delta=0.001)
 
     for epoch in range(epochs):
+        epoch_start_time = time.time()
+
         # Training
         model.train()
         train_loss = 0.0
@@ -607,41 +707,76 @@ def train_harmony_predictor(
             train_loss += loss.item()
 
         avg_train_loss = train_loss / len(train_loader)
-        train_losses.append(avg_train_loss)
 
         # Validation
         val_loss = None
+        val_acc = None
         if val_loader is not None:
-            model.eval()
-            val_loss = 0.0
-            with torch.no_grad():
-                for batch in val_loader:
-                    context = batch['context'].to(device)
-                    chords_target = batch['chords'].to(device)
-                    chords_pred = model(context)
-                    loss = criterion(torch.log(chords_pred + 1e-8), chords_target)
-                    val_loss += loss.item()
-            avg_val_loss = val_loss / len(val_loader)
-            val_losses.append(avg_val_loss)
-
-            # Early stopping
-            if avg_val_loss < best_val_loss:
-                best_val_loss = avg_val_loss
-                patience_counter = 0
-                if checkpoint_dir:
-                    torch.save(model.state_dict(), checkpoint_dir / "harmonypredictor_best.pt")
+            if TRAINING_UTILS_AVAILABLE:
+                val_loss, val_acc = validate_model(model, val_loader, criterion, device)
             else:
-                patience_counter += 1
-                if patience_counter >= early_stop_patience:
-                    print(f"Early stopping at epoch {epoch+1}")
-                    break
+                # Fallback validation
+                model.eval()
+                val_loss = 0.0
+                with torch.no_grad():
+                    for batch in val_loader:
+                        context = batch['context'].to(device)
+                        chords_target = batch['chords'].to(device)
+                        chords_pred = model(context)
+                        loss = criterion(torch.log(chords_pred + 1e-8), chords_target)
+                        val_loss += loss.item()
+                val_loss = val_loss / len(val_loader)
 
+        # Update metrics
+        epoch_time = time.time() - epoch_start_time
+        if metrics:
+            metrics.update(
+                epoch=epoch,
+                train_loss=avg_train_loss,
+                val_loss=val_loss,
+                val_acc=val_acc,
+                epoch_time=epoch_time
+            )
+
+        # Early stopping
+        if early_stopping and val_loss is not None:
+            if early_stopping(val_loss, model):
+                print(f"Early stopping at epoch {epoch+1}")
+                break
+
+        # Save checkpoint
+        if checkpoint_dir and val_loss is not None:
+            checkpoint_dir = Path(checkpoint_dir)
+            checkpoint_dir.mkdir(parents=True, exist_ok=True)
+            checkpoint_path = checkpoint_dir / f"harmonypredictor_epoch_{epoch+1}.pt"
+            if TRAINING_UTILS_AVAILABLE:
+                save_checkpoint(model, optimizer, epoch, val_loss, checkpoint_path, metrics)
+            else:
+                torch.save({
+                    'epoch': epoch,
+                    'model_state_dict': model.state_dict(),
+                    'optimizer_state_dict': optimizer.state_dict(),
+                    'loss': val_loss,
+                }, checkpoint_path)
+
+        # Print progress
         if (epoch + 1) % 10 == 0 or epoch == 0:
-            val_str = f", Val Loss: {avg_val_loss:.6f}" if val_loss is not None else ""
+            val_str = f", Val Loss: {val_loss:.6f}" if val_loss is not None else ""
+            acc_str = f", Val Acc: {val_acc:.4f}" if val_acc is not None else ""
             print(f"HarmonyPredictor Epoch {epoch+1}/{epochs}, "
-                  f"Train Loss: {avg_train_loss:.6f}{val_str}")
+                  f"Train Loss: {avg_train_loss:.6f}{val_str}{acc_str}")
 
-    return {'train': train_losses, 'val': val_losses}
+    # Save final metrics
+    if metrics and checkpoint_dir:
+        metrics_path = checkpoint_dir / "harmonypredictor_metrics.json"
+        metrics.save(metrics_path)
+        plot_path = checkpoint_dir / "harmonypredictor_metrics.png"
+        metrics.plot_metrics(plot_path)
+
+    return {
+        'train': metrics.train_losses if metrics else [avg_train_loss],
+        'val': metrics.val_losses if (metrics and val_loss) else []
+    }
 
 
 def train_dynamics_engine(
@@ -660,12 +795,15 @@ def train_dynamics_engine(
     optimizer = optim.Adam(model.parameters(), lr=lr)
     criterion = nn.MSELoss()
 
-    train_losses = []
-    val_losses = []
-    best_val_loss = float('inf')
-    patience_counter = 0
+    # Initialize training utilities
+    metrics = TrainingMetrics() if TRAINING_UTILS_AVAILABLE else None
+    early_stopping = None
+    if TRAINING_UTILS_AVAILABLE and val_loader is not None:
+        early_stopping = EarlyStopping(patience=early_stop_patience, min_delta=0.001)
 
     for epoch in range(epochs):
+        epoch_start_time = time.time()
+
         # Training
         model.train()
         train_loss = 0.0
@@ -683,41 +821,76 @@ def train_dynamics_engine(
             train_loss += loss.item()
 
         avg_train_loss = train_loss / len(train_loader)
-        train_losses.append(avg_train_loss)
 
         # Validation
         val_loss = None
+        val_acc = None
         if val_loader is not None:
-            model.eval()
-            val_loss = 0.0
-            with torch.no_grad():
-                for batch in val_loader:
-                    context = batch['context'].to(device)
-                    dynamics_target = batch.get('dynamics', batch.get('expression')).to(device)
-                    dynamics_pred = model(context)
-                    loss = criterion(dynamics_pred, dynamics_target)
-                    val_loss += loss.item()
-            avg_val_loss = val_loss / len(val_loader)
-            val_losses.append(avg_val_loss)
-
-            # Early stopping
-            if avg_val_loss < best_val_loss:
-                best_val_loss = avg_val_loss
-                patience_counter = 0
-                if checkpoint_dir:
-                    torch.save(model.state_dict(), checkpoint_dir / "dynamicsengine_best.pt")
+            if TRAINING_UTILS_AVAILABLE:
+                val_loss, val_acc = validate_model(model, val_loader, criterion, device)
             else:
-                patience_counter += 1
-                if patience_counter >= early_stop_patience:
-                    print(f"Early stopping at epoch {epoch+1}")
-                    break
+                # Fallback validation
+                model.eval()
+                val_loss = 0.0
+                with torch.no_grad():
+                    for batch in val_loader:
+                        context = batch['context'].to(device)
+                        dynamics_target = batch.get('dynamics', batch.get('expression')).to(device)
+                        dynamics_pred = model(context)
+                        loss = criterion(dynamics_pred, dynamics_target)
+                        val_loss += loss.item()
+                val_loss = val_loss / len(val_loader)
 
+        # Update metrics
+        epoch_time = time.time() - epoch_start_time
+        if metrics:
+            metrics.update(
+                epoch=epoch,
+                train_loss=avg_train_loss,
+                val_loss=val_loss,
+                val_acc=val_acc,
+                epoch_time=epoch_time
+            )
+
+        # Early stopping
+        if early_stopping and val_loss is not None:
+            if early_stopping(val_loss, model):
+                print(f"Early stopping at epoch {epoch+1}")
+                break
+
+        # Save checkpoint
+        if checkpoint_dir and val_loss is not None:
+            checkpoint_dir = Path(checkpoint_dir)
+            checkpoint_dir.mkdir(parents=True, exist_ok=True)
+            checkpoint_path = checkpoint_dir / f"dynamicsengine_epoch_{epoch+1}.pt"
+            if TRAINING_UTILS_AVAILABLE:
+                save_checkpoint(model, optimizer, epoch, val_loss, checkpoint_path, metrics)
+            else:
+                torch.save({
+                    'epoch': epoch,
+                    'model_state_dict': model.state_dict(),
+                    'optimizer_state_dict': optimizer.state_dict(),
+                    'loss': val_loss,
+                }, checkpoint_path)
+
+        # Print progress
         if (epoch + 1) % 10 == 0 or epoch == 0:
-            val_str = f", Val Loss: {avg_val_loss:.6f}" if val_loss is not None else ""
+            val_str = f", Val Loss: {val_loss:.6f}" if val_loss is not None else ""
+            acc_str = f", Val Acc: {val_acc:.4f}" if val_acc is not None else ""
             print(f"DynamicsEngine Epoch {epoch+1}/{epochs}, "
-                  f"Train Loss: {avg_train_loss:.6f}{val_str}")
+                  f"Train Loss: {avg_train_loss:.6f}{val_str}{acc_str}")
 
-    return {'train': train_losses, 'val': val_losses}
+    # Save final metrics
+    if metrics and checkpoint_dir:
+        metrics_path = checkpoint_dir / "dynamicsengine_metrics.json"
+        metrics.save(metrics_path)
+        plot_path = checkpoint_dir / "dynamicsengine_metrics.png"
+        metrics.plot_metrics(plot_path)
+
+    return {
+        'train': metrics.train_losses if metrics else [avg_train_loss],
+        'val': metrics.val_losses if (metrics and val_loss) else []
+    }
 
 
 def train_groove_predictor(
@@ -736,12 +909,15 @@ def train_groove_predictor(
     optimizer = optim.Adam(model.parameters(), lr=lr)
     criterion = nn.MSELoss()
 
-    train_losses = []
-    val_losses = []
-    best_val_loss = float('inf')
-    patience_counter = 0
+    # Initialize training utilities
+    metrics = TrainingMetrics() if TRAINING_UTILS_AVAILABLE else None
+    early_stopping = None
+    if TRAINING_UTILS_AVAILABLE and val_loader is not None:
+        early_stopping = EarlyStopping(patience=early_stop_patience, min_delta=0.001)
 
     for epoch in range(epochs):
+        epoch_start_time = time.time()
+
         # Training
         model.train()
         train_loss = 0.0
@@ -759,41 +935,76 @@ def train_groove_predictor(
             train_loss += loss.item()
 
         avg_train_loss = train_loss / len(train_loader)
-        train_losses.append(avg_train_loss)
 
         # Validation
         val_loss = None
+        val_acc = None
         if val_loader is not None:
-            model.eval()
-            val_loss = 0.0
-            with torch.no_grad():
-                for batch in val_loader:
-                    emotion = batch['emotion'].to(device)
-                    groove_target = batch['groove'].to(device)
-                    groove_pred = model(emotion)
-                    loss = criterion(groove_pred, groove_target)
-                    val_loss += loss.item()
-            avg_val_loss = val_loss / len(val_loader)
-            val_losses.append(avg_val_loss)
-
-            # Early stopping
-            if avg_val_loss < best_val_loss:
-                best_val_loss = avg_val_loss
-                patience_counter = 0
-                if checkpoint_dir:
-                    torch.save(model.state_dict(), checkpoint_dir / "groovepredictor_best.pt")
+            if TRAINING_UTILS_AVAILABLE:
+                val_loss, val_acc = validate_model(model, val_loader, criterion, device)
             else:
-                patience_counter += 1
-                if patience_counter >= early_stop_patience:
-                    print(f"Early stopping at epoch {epoch+1}")
-                    break
+                # Fallback validation
+                model.eval()
+                val_loss = 0.0
+                with torch.no_grad():
+                    for batch in val_loader:
+                        emotion = batch['emotion'].to(device)
+                        groove_target = batch['groove'].to(device)
+                        groove_pred = model(emotion)
+                        loss = criterion(groove_pred, groove_target)
+                        val_loss += loss.item()
+                val_loss = val_loss / len(val_loader)
 
+        # Update metrics
+        epoch_time = time.time() - epoch_start_time
+        if metrics:
+            metrics.update(
+                epoch=epoch,
+                train_loss=avg_train_loss,
+                val_loss=val_loss,
+                val_acc=val_acc,
+                epoch_time=epoch_time
+            )
+
+        # Early stopping
+        if early_stopping and val_loss is not None:
+            if early_stopping(val_loss, model):
+                print(f"Early stopping at epoch {epoch+1}")
+                break
+
+        # Save checkpoint
+        if checkpoint_dir and val_loss is not None:
+            checkpoint_dir = Path(checkpoint_dir)
+            checkpoint_dir.mkdir(parents=True, exist_ok=True)
+            checkpoint_path = checkpoint_dir / f"groovepredictor_epoch_{epoch+1}.pt"
+            if TRAINING_UTILS_AVAILABLE:
+                save_checkpoint(model, optimizer, epoch, val_loss, checkpoint_path, metrics)
+            else:
+                torch.save({
+                    'epoch': epoch,
+                    'model_state_dict': model.state_dict(),
+                    'optimizer_state_dict': optimizer.state_dict(),
+                    'loss': val_loss,
+                }, checkpoint_path)
+
+        # Print progress
         if (epoch + 1) % 10 == 0 or epoch == 0:
-            val_str = f", Val Loss: {avg_val_loss:.6f}" if val_loss is not None else ""
+            val_str = f", Val Loss: {val_loss:.6f}" if val_loss is not None else ""
+            acc_str = f", Val Acc: {val_acc:.4f}" if val_acc is not None else ""
             print(f"GroovePredictor Epoch {epoch+1}/{epochs}, "
-                  f"Train Loss: {avg_train_loss:.6f}{val_str}")
+                  f"Train Loss: {avg_train_loss:.6f}{val_str}{acc_str}")
 
-    return {'train': train_losses, 'val': val_losses}
+    # Save final metrics
+    if metrics and checkpoint_dir:
+        metrics_path = checkpoint_dir / "groovepredictor_metrics.json"
+        metrics.save(metrics_path)
+        plot_path = checkpoint_dir / "groovepredictor_metrics.png"
+        metrics.plot_metrics(plot_path)
+
+    return {
+        'train': metrics.train_losses if metrics else [avg_train_loss],
+        'val': metrics.val_losses if (metrics and val_loss) else []
+    }
 
 
 def train_all_models(
@@ -852,12 +1063,14 @@ def train_all_models(
         emotion_train_size = int((1 - val_split) * len(emotion_dataset))
         emotion_val_size = len(emotion_dataset) - emotion_train_size
         emotion_train, emotion_val = torch.utils.data.random_split(
-            emotion_dataset, [emotion_train_size, emotion_val_size])
+            emotion_dataset, [emotion_train_size, emotion_val_size],
+            generator=torch.Generator().manual_seed(42))
 
         melody_train_size = int((1 - val_split) * len(melody_dataset))
         melody_val_size = len(melody_dataset) - melody_train_size
         melody_train, melody_val = torch.utils.data.random_split(
-            melody_dataset, [melody_train_size, melody_val_size])
+            melody_dataset, [melody_train_size, melody_val_size],
+            generator=torch.Generator().manual_seed(42))
 
         emotion_loader = DataLoader(
             emotion_train, batch_size=batch_size, shuffle=True)
@@ -867,8 +1080,18 @@ def train_all_models(
             melody_train, batch_size=batch_size, shuffle=True)
         melody_val_loader = DataLoader(
             melody_val, batch_size=batch_size, shuffle=False)
+        
+        # Other models use synthetic or skip
+        harmony_loader = None
+        harmony_val_loader = None
+        dynamics_loader = None
+        dynamics_val_loader = None
+        groove_loader = None
+        groove_val_loader = None
     else:
-        print(f"Loading real datasets from {datasets_dir}...")
+        print(f"\n{'='*60}")
+        print(f"Loading Real Datasets from {datasets_dir}...")
+        print(f"{'='*60}")
         datasets_dir = Path(datasets_dir)
 
         # Emotion dataset
@@ -910,43 +1133,75 @@ def train_all_models(
             melody_loader = DataLoader(
                 melody_dataset, batch_size=batch_size, shuffle=True)
 
-        # Harmony dataset - using synthetic for now (requires chord extraction logic)
-        print(f"Note: HarmonyPredictor training uses synthetic data")
-        harmony_loader = None
-        harmony_val_loader = None
+        # 3. HarmonyPredictor - Harmony progressions
+        print("\n[3/5] Loading Harmony dataset for HarmonyPredictor...")
+        try:
+            harmony_dataset = create_dataset(
+                'harmony',
+                datasets_dir / 'harmony',
+                harmony_file=datasets_dir / 'harmony' / 'chord_progressions.json'
+            )
+            print(f"  ✓ Loaded {len(harmony_dataset)} samples")
+            harmony_train_size = int((1 - val_split) * len(harmony_dataset))
+            harmony_val_size = len(harmony_dataset) - harmony_train_size
+            harmony_train, harmony_val = torch.utils.data.random_split(
+                harmony_dataset, [harmony_train_size, harmony_val_size],
+                generator=torch.Generator().manual_seed(42))
+            harmony_loader = DataLoader(
+                harmony_train, batch_size=batch_size, shuffle=True, num_workers=0)
+            harmony_val_loader = DataLoader(
+                harmony_val, batch_size=batch_size, shuffle=False, num_workers=0)
+        except Exception as e:
+            print(f"  ⚠ Failed to load Harmony: {e}")
+            print("  → Skipping HarmonyPredictor training")
+            harmony_loader = None
+            harmony_val_loader = None
 
-        # Dynamics dataset
-        dynamics_midi_dir = datasets_dir / "training" / "dynamics_midi"
-        if dynamics_midi_dir.exists():
-            dynamics_dataset = DynamicsDataset(dynamics_midi_dir)
+        # 4. DynamicsEngine - MAESTRO
+        print("\n[4/5] Loading MAESTRO dataset for DynamicsEngine...")
+        try:
+            dynamics_dataset = create_dataset(
+                'maestro',
+                datasets_dir / 'maestro',
+                max_files=5000
+            )
+            print(f"  ✓ Loaded {len(dynamics_dataset)} samples")
             dynamics_train_size = int((1 - val_split) * len(dynamics_dataset))
             dynamics_val_size = len(dynamics_dataset) - dynamics_train_size
             dynamics_train, dynamics_val = torch.utils.data.random_split(
-                dynamics_dataset, [dynamics_train_size, dynamics_val_size])
+                dynamics_dataset, [dynamics_train_size, dynamics_val_size],
+                generator=torch.Generator().manual_seed(42))
             dynamics_loader = DataLoader(
-                dynamics_train, batch_size=batch_size, shuffle=True, num_workers=2)
+                dynamics_train, batch_size=batch_size, shuffle=True, num_workers=0)
             dynamics_val_loader = DataLoader(
-                dynamics_val, batch_size=batch_size, shuffle=False, num_workers=2)
-        else:
-            print(f"Warning: {dynamics_midi_dir} not found, skipping DynamicsEngine training")
+                dynamics_val, batch_size=batch_size, shuffle=False, num_workers=0)
+        except Exception as e:
+            print(f"  ⚠ Failed to load MAESTRO: {e}")
+            print("  → Skipping DynamicsEngine training")
             dynamics_loader = None
             dynamics_val_loader = None
 
-        # Groove dataset
-        drums_dir = datasets_dir / "training" / "drums"
-        drum_labels = datasets_dir / "training" / "drum_labels.json"
-        if drums_dir.exists():
-            groove_dataset = GrooveDataset(drums_dir, drum_labels)
+        # 5. GroovePredictor - Groove MIDI
+        print("\n[5/5] Loading Groove MIDI dataset for GroovePredictor...")
+        try:
+            groove_dataset = create_dataset(
+                'groove',
+                datasets_dir / 'groove',
+                max_files=2000
+            )
+            print(f"  ✓ Loaded {len(groove_dataset)} samples")
             groove_train_size = int((1 - val_split) * len(groove_dataset))
             groove_val_size = len(groove_dataset) - groove_train_size
             groove_train, groove_val = torch.utils.data.random_split(
-                groove_dataset, [groove_train_size, groove_val_size])
+                groove_dataset, [groove_train_size, groove_val_size],
+                generator=torch.Generator().manual_seed(42))
             groove_loader = DataLoader(
-                groove_train, batch_size=batch_size, shuffle=True, num_workers=2)
+                groove_train, batch_size=batch_size, shuffle=True, num_workers=0)
             groove_val_loader = DataLoader(
-                groove_val, batch_size=batch_size, shuffle=False, num_workers=2)
-        else:
-            print(f"Warning: {drums_dir} not found, skipping GroovePredictor training")
+                groove_val, batch_size=batch_size, shuffle=False, num_workers=0)
+        except Exception as e:
+            print(f"  ⚠ Failed to load Groove MIDI: {e}")
+            print("  → Skipping GroovePredictor training")
             groove_loader = None
             groove_val_loader = None
 
