@@ -1,129 +1,109 @@
-#!/usr/bin/env python
+# app.py
 """
-The Lariat Bible - Main Application
-Restaurant Management System Web Interface
-"""
+DAiW Streamlit UI - Desktop-facing product interface.
 
-from flask import Flask, render_template, jsonify
-from flask_cors import CORS
+Simple flow: talk to TherapySession, show the analysis, render MIDI, offer download.
+"""
 import os
-from dotenv import load_dotenv
-from datetime import datetime
+import tempfile
 
-# Load environment variables
-load_dotenv()
+import streamlit as st
 
-# Initialize Flask app
-app = Flask(__name__)
-app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'dev-secret-key')
-CORS(app)
+from music_brain.structure.comprehensive_engine import (
+    TherapySession,
+    render_plan_to_midi,
+)
 
-# Import modules (when implemented)
-try:
-    from modules.vendor_analysis import VendorComparator
-    vendor_comparator = VendorComparator()
-except ImportError:
-    vendor_comparator = None
 
-@app.route('/')
-def index():
-    """Main dashboard"""
-    return jsonify({
-        'message': 'Welcome to The Lariat Bible',
-        'status': 'operational',
-        'modules': {
-            'vendor_analysis': 'ready' if vendor_comparator else 'pending',
-            'inventory': 'pending',
-            'recipes': 'pending',
-            'catering': 'pending',
-            'maintenance': 'pending',
-            'reporting': 'pending'
-        },
-        'metrics': {
-            'monthly_catering_revenue': 28000,
-            'monthly_restaurant_revenue': 20000,
-            'potential_annual_savings': 52000
-        }
-    })
+def main() -> None:
+    st.set_page_config(
+        page_title="DAiW - Digital Audio Intimate Workstation",
+        layout="centered",
+    )
 
-@app.route('/api/vendor-comparison')
-def vendor_comparison():
-    """Get vendor comparison data"""
-    if vendor_comparator:
-        savings = vendor_comparator.compare_vendors('Shamrock Foods', 'SYSCO')
-        margin_impact = vendor_comparator.calculate_margin_impact(savings)
-        
-        return jsonify({
-            'monthly_savings': savings,
-            'annual_savings': savings * 12,
-            'margin_impact': margin_impact,
-            'timestamp': datetime.now().isoformat()
-        })
-    
-    return jsonify({'error': 'Vendor analysis module not available'}), 503
+    st.title("DAiW - Digital Audio Intimate Workstation")
+    st.caption("Creative companion, not a factory.")
 
-@app.route('/api/health')
-def health_check():
-    """Health check endpoint"""
-    return jsonify({
-        'status': 'healthy',
-        'timestamp': datetime.now().isoformat(),
-        'restaurant': os.getenv('RESTAURANT_NAME', 'The Lariat')
-    })
+    st.markdown("### 1. Tell me what hurts")
 
-@app.route('/api/modules')
-def list_modules():
-    """List all available modules and their status"""
-    modules = [
-        {
-            'name': 'Vendor Analysis',
-            'endpoint': '/vendor-analysis',
-            'status': 'active' if vendor_comparator else 'development',
-            'description': 'Compare vendor prices and identify savings'
-        },
-        {
-            'name': 'Inventory Management',
-            'endpoint': '/inventory',
-            'status': 'development',
-            'description': 'Track stock levels and automate ordering'
-        },
-        {
-            'name': 'Recipe Management',
-            'endpoint': '/recipes',
-            'status': 'development',
-            'description': 'Standardize recipes and calculate costs'
-        },
-        {
-            'name': 'Catering Operations',
-            'endpoint': '/catering',
-            'status': 'development',
-            'description': 'Manage catering quotes and events'
-        },
-        {
-            'name': 'Maintenance Tracking',
-            'endpoint': '/maintenance',
-            'status': 'development',
-            'description': 'Schedule and track equipment maintenance'
-        },
-        {
-            'name': 'Reporting Dashboard',
-            'endpoint': '/reports',
-            'status': 'development',
-            'description': 'Business intelligence and analytics'
-        }
-    ]
-    
-    return jsonify(modules)
+    default_text = "I feel dead inside because I chose safety over freedom."
+    user_text = st.text_area(
+        "What is hurting you right now?",
+        value=default_text,
+        height=140,
+    )
 
-if __name__ == '__main__':
-    host = os.getenv('HOST', '127.0.0.1')
-    port = int(os.getenv('PORT', 5000))
-    debug = os.getenv('FLASK_DEBUG', 'True').lower() == 'true'
-    
-    print(f"\n🤠 The Lariat Bible - Starting server...")
-    print(f"📍 Access at: http://{host}:{port}")
-    print(f"📊 API Health: http://{host}:{port}/api/health")
-    print(f"🔧 Debug mode: {debug}")
-    print("\nPress Ctrl+C to stop the server\n")
-    
-    app.run(host=host, port=port, debug=debug)
+    st.markdown("### 2. Set your state")
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+        motivation = st.slider(
+            "Motivation (1 = sketch, 10 = full piece)",
+            min_value=1,
+            max_value=10,
+            value=7,
+        )
+
+    with col2:
+        chaos_1_10 = st.slider(
+            "Chaos tolerance (1-10)",
+            min_value=1,
+            max_value=10,
+            value=5,
+            help="Higher = more unstable tempo and structure.",
+        )
+
+    st.markdown("### 3. Generate session")
+
+    if st.button("Generate MIDI session"):
+        if not user_text.strip():
+            st.error("I need at least one sentence to work with.")
+            return
+
+        session = TherapySession()
+        affect = session.process_core_input(user_text)
+        session.set_scales(motivation, chaos_1_10 / 10.0)
+        plan = session.generate_plan()
+
+        st.subheader("Analysis")
+        if session.state.affect_result:
+            st.write(f"**Primary affect:** `{affect}`")
+            if session.state.affect_result.secondary:
+                st.write(
+                    f"**Secondary undertone:** "
+                    f"`{session.state.affect_result.secondary}`"
+                )
+            st.write(
+                f"**Affect intensity:** "
+                f"`{session.state.affect_result.intensity:.2f}`"
+            )
+
+        st.subheader("Generation directive")
+        st.write(f"- Mode: **{plan.root_note} {plan.mode}**")
+        st.write(f"- Tempo: **{plan.tempo_bpm} BPM**")
+        st.write(f"- Length: **{plan.length_bars} bars**")
+        st.write(f"- Progression: `{' - '.join(plan.chord_symbols)}`")
+        st.write(f"- Complexity (chaos): `{plan.complexity:.2f}`")
+
+        with st.spinner("Rendering MIDI..."):
+            tmpdir = tempfile.mkdtemp(prefix="daiw_")
+            midi_path = os.path.join(tmpdir, "daiw_therapy_session.mid")
+            midi_path = render_plan_to_midi(plan, midi_path)
+
+        st.success("MIDI generated.")
+
+        try:
+            with open(midi_path, "rb") as f:
+                st.download_button(
+                    label="Download MIDI",
+                    data=f.read(),
+                    file_name="daiw_therapy_session.mid",
+                    mime="audio/midi",
+                )
+        except OSError:
+            st.error("MIDI file could not be read back from disk.")
+
+
+if __name__ == "__main__":
+    main()
