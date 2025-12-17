@@ -110,7 +110,7 @@ def generate_session(
 - [ ] `generate_session()` works without UI
 - [ ] Returns valid JSON-serializable dict
 - [ ] All tests pass: `pytest tests/ -v`
-- [ ] Can be imported: `from music_brain import generate_session`
+- [ ] Can be imported: `from midee import generate_session`
 
 ## Phase 2: Python OSC Server
 
@@ -135,7 +135,7 @@ import json
 import threading
 
 # Import your brain
-from music_brain import generate_session
+from midee import generate_session
 
 class BrainServer:
     def __init__(self, listen_port=9000, reply_port=9001):

@@ -12,7 +12,7 @@
 
 1. [Audio File Inventory](#audio-file-inventory)
 2. [iDAW System Overview](#idaw-system-overview)
-3. [DAiW Music Brain System](#daiw-music-brain-system)
+3. [DAiW miDEE System](#daiw-music-brain-system)
 4. [Logic Pro X Settings & Workflow](#logic-pro-x-settings--workflow)
 5. [DAW Integration Guide](#daw-integration-guide)
 6. [Harmony & Chord Systems](#harmony--chord-systems)
@@ -219,7 +219,7 @@ Examples:
 
 ---
 
-# DAiW Music Brain System
+# DAiW miDEE System
 
 ## Project Overview
 
@@ -449,7 +449,7 @@ After MIDI import, assign your local WAV files:
 
 **Example - Kelly Song:**
 ```python
-from music_brain.harmony import HarmonyGenerator
+from midee.harmony import HarmonyGenerator
 
 generator = HarmonyGenerator()
 harmony = generator.generate_from_intent(kelly_intent)
@@ -523,7 +523,7 @@ RULE BREAKS DETECTED:
 
 **Example:**
 ```python
-from music_brain.groove import GrooveExtractor
+from midee.groove import GrooveExtractor
 
 extractor = GrooveExtractor()
 groove = extractor.extract_from_midi_file("questlove_drums.mid")
@@ -542,7 +542,7 @@ groove = extractor.extract_from_midi_file("questlove_drums.mid")
 
 **Example:**
 ```python
-from music_brain.groove import GrooveApplicator
+from midee.groove import GrooveApplicator
 
 applicator = GrooveApplicator()
 funk = applicator.get_genre_template('funk')
@@ -715,7 +715,7 @@ kelly_groove = GrooveTemplate(
 - `idaw_launcher.py` - Application launcher
 - `idaw_library_integration.py` - Sample library integration
 
-## DAiW Music Brain Files
+## DAiW miDEE Files
 
 ### Main Project Directories
 - `/Users/seanburdges/Desktop/DAiW-Music-Brain/` - Primary development
@@ -749,54 +749,54 @@ kelly_groove = GrooveTemplate(
 
 ### Python Modules
 **Core:**
-- `music_brain/cli.py` - CLI interface
-- `music_brain/__init__.py` - Package init
+- `midee/cli.py` - CLI interface
+- `midee/__init__.py` - Package init
 
 **Groove:**
-- `music_brain/groove/extractor.py` - Groove extraction
-- `music_brain/groove/applicator.py` - Groove application
-- `music_brain/groove/groove_engine.py` - Groove engine
+- `midee/groove/extractor.py` - Groove extraction
+- `midee/groove/applicator.py` - Groove application
+- `midee/groove/groove_engine.py` - Groove engine
 
 **Structure:**
-- `music_brain/structure/chord.py` - Chord analysis
-- `music_brain/structure/comprehensive_engine.py` - Comprehensive engine
-- `music_brain/structure/progression.py` - Progression analysis
-- `music_brain/structure/sections.py` - Section analysis
-- `music_brain/structure/tension_curve.py` - Tension analysis
+- `midee/structure/chord.py` - Chord analysis
+- `midee/structure/comprehensive_engine.py` - Comprehensive engine
+- `midee/structure/progression.py` - Progression analysis
+- `midee/structure/sections.py` - Section analysis
+- `midee/structure/tension_curve.py` - Tension analysis
 
 **Session:**
-- `music_brain/session/generator.py` - Session generator
-- `music_brain/session/intent_processor.py` - Intent processing
-- `music_brain/session/intent_schema.py` - Intent schema
-- `music_brain/session/interrogator.py` - Song interrogator
-- `music_brain/session/teaching.py` - Teaching module
+- `midee/session/generator.py` - Session generator
+- `midee/session/intent_processor.py` - Intent processing
+- `midee/session/intent_schema.py` - Intent schema
+- `midee/session/interrogator.py` - Song interrogator
+- `midee/session/teaching.py` - Teaching module
 
 **DAW Integration:**
-- `music_brain/daw/__init__.py` - DAW init
-- `music_brain/daw/logic.py` - Logic Pro integration
-- `music_brain/daw/markers.py` - Marker management
+- `midee/daw/__init__.py` - DAW init
+- `midee/daw/logic.py` - Logic Pro integration
+- `midee/daw/markers.py` - Marker management
 
 **Utils:**
-- `music_brain/utils/__init__.py` - Utils init
-- `music_brain/utils/instruments.py` - Instrument mappings
-- `music_brain/utils/midi_io.py` - MIDI I/O
-- `music_brain/utils/ppq.py` - PPQ normalization
+- `midee/utils/__init__.py` - Utils init
+- `midee/utils/instruments.py` - Instrument mappings
+- `midee/utils/midi_io.py` - MIDI I/O
+- `midee/utils/ppq.py` - PPQ normalization
 
 **Audio:**
-- `music_brain/audio/__init__.py` - Audio init
-- `music_brain/audio/feel.py` - Feel analysis
-- `music_brain/audio/reference_dna.py` - Reference DNA
+- `midee/audio/__init__.py` - Audio init
+- `midee/audio/feel.py` - Feel analysis
+- `midee/audio/reference_dna.py` - Reference DNA
 
 ### Data Files
 **Scales & Theory:**
-- `music_brain/data/scales_database.json` - Scales database
-- `music_brain/data/chord_progressions.json` - Chord progressions
-- `music_brain/data/chord_progression_families.json` - Progression families
+- `midee/data/scales_database.json` - Scales database
+- `midee/data/chord_progressions.json` - Chord progressions
+- `midee/data/chord_progression_families.json` - Progression families
 
 **Intent & Emotion:**
-- `music_brain/data/song_intent_schema.yaml` - Intent schema
-- `music_brain/data/song_intent_examples.json` - Intent examples
-- `music_brain/data/genre_pocket_maps.json` - Genre groove maps
+- `midee/data/song_intent_schema.yaml` - Intent schema
+- `midee/data/song_intent_examples.json` - Intent examples
+- `midee/data/genre_pocket_maps.json` - Genre groove maps
 
 **Rule-Breaking:**
 - `data/rule_breaks.json` - Rule-breaking database
@@ -807,7 +807,7 @@ kelly_groove = GrooveTemplate(
 **Example Data:**
 - `data/idaw_examples/iDAW_20251127_182312_neutral.idaw.json`
 - `happy.json`, `sad.json`, `angry.json`, `fear.json`, `disgust.json`, `surprise.json`, `blends.json`
-- `emotion_thesaurus.py`
+- `kelly.thesaurus.py`
 
 ### Vault (Knowledge Base)
 **Songwriting Guides:**
@@ -1086,7 +1086,7 @@ daiw intent process kelly_intent.json
 
 ### 2. Apply Lo-Fi Groove
 ```python
-from music_brain.groove import GrooveTemplate, GrooveApplicator
+from midee.groove import GrooveTemplate, GrooveApplicator
 
 kelly_groove = GrooveTemplate(
     name="kelly_lofi",
@@ -1204,7 +1204,7 @@ applicator.apply_groove(
 
 *This comprehensive document combines information from:*
 - iDAW GPT Instructions & Documentation
-- DAiW Music Brain System & All Modules
+- DAiW miDEE System & All Modules
 - Logic Pro X Settings, Shortcuts & Plugin Guides
 - Complete Audio File Inventory (WAV, AIFF, MP3, M4A)
 - Harmony, Groove & Chord Analysis Systems

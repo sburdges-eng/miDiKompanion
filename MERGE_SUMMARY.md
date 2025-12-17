@@ -52,7 +52,7 @@ When files or directories existed in both repositories with the same name, the f
 | tests/ | tests_penta-core/ | penta-core |
 | tests/ | tests_music-brain/ | DAiW-Music-Brain |
 | src/ | src_penta-core/ | penta-core |
-| music_brain/ | music_brain/ | DAiW-Music-Brain |
+| midee/ | midee/ | DAiW-Music-Brain |
 | python/ | python/ | penta-core |
 | penta_core/ | penta_core_music-brain/ | DAiW-Music-Brain |
 
@@ -101,7 +101,7 @@ When files or directories existed in both repositories with the same name, the f
 ## Files Copied from DAiW-Music-Brain
 
 ### Source Code
-- `music_brain/` - Main Python package (13 subdirectories)
+- `midee/` - Main Python package (13 subdirectories)
   - audio/ - Audio feel analysis
   - cli/ - Command-line interface
   - data/ - JSON datasets
@@ -121,7 +121,7 @@ When files or directories existed in both repositories with the same name, the f
 - `launcher.py` - Application launcher
 - `setup.py` - Package setup
 - `daiw.spec` - PyInstaller spec
-- `emotion_thesaurus.py` - Emotion thesaurus
+- `kelly.thesaurus.py` - Emotion thesaurus
 - `generate_scales_db.py` - Scales database generator
 
 ### Data Assets
@@ -152,7 +152,7 @@ When files or directories existed in both repositories with the same name, the f
 - `CLAUDE.md` - AI integration documentation
 
 ### Examples & Tests
-- `examples_music-brain/` - Music Brain examples
+- `examples_music-brain/` - miDEE examples
 - `tests_music-brain/` - Comprehensive test suite (18 test files)
 
 ### macOS Support
@@ -211,7 +211,7 @@ When files or directories existed in both repositories with the same name, the f
 - Maintain separate build processes with documentation
 
 ### 2. Python Package Namespacing
-**Issue**: Both have Python packages (penta_core and music_brain)  
+**Issue**: Both have Python packages (penta_core and midee)  
 **Status**: ⚠️ Needs Coordination  
 **Solution Options**:
 - Keep separate namespaces (current approach)

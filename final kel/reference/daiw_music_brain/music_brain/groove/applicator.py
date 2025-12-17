@@ -15,8 +15,8 @@ try:
 except ImportError:
     MIDO_AVAILABLE = False
 
-from music_brain.groove.extractor import GrooveTemplate
-from music_brain.groove.templates import get_genre_template
+from midee.groove.extractor import GrooveTemplate
+from midee.groove.templates import get_genre_template
 
 
 def apply_groove(

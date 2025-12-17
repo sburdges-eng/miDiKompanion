@@ -8,8 +8,8 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import List, Dict, Any, Optional
 
-from music_brain.api import DAiWAPI
-from music_brain.chatbot import tools
+from midee.api import DAiWAPI
+from midee.chatbot import tools
 
 
 @dataclass

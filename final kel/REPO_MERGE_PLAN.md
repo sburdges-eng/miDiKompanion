@@ -19,11 +19,11 @@ Merge all Kelly MIDI-related repositories into the miDiKompanion branch in chron
 
 ### 3. **iDAW** (Date pending - checking)
 - **Path**: `/Users/seanburdges/Desktop/KELLY MIDI VERSION 3.0.00/iDAW`
-- **Content**: iDAW system, Music Brain vault integration
+- **Content**: iDAW system, miDEE vault integration
 
 ### 4. **DAiW-Music-Brain** (Date pending - checking)
 - **Path**: `/Users/seanburdges/Desktop/KELLY MIDI VERSION 3.0.00/iDAW/DAiW-Music-Brain222`
-- **Content**: Complete DAiW Music Brain system
+- **Content**: Complete DAiW miDEE system
 
 ###5. **FINAL-KEL** (Dec 16, 2025 04:12:03)
 - **Path**: `/Users/seanburdges/Desktop/FINAL-KEL`
@@ -46,7 +46,7 @@ Merge all Kelly MIDI-related repositories into the miDiKompanion branch in chron
 
 ### 7. **iDAWComp/DAiW-Music-Brain** (OneDrive)
 - **Path**: `~/Library/CloudStorage/OneDrive-Personal/iDAWComp/DAiW-Music-Brain`
-- **Content**: DAiW Music Brain with MIDI examples, Kelly song
+- **Content**: DAiW miDEE with MIDI examples, Kelly song
 
 ### 8. **iDAWComp/DAiW-Music-Brain copy** (OneDrive)
 - **Path**: `~/Library/CloudStorage/OneDrive-Personal/iDAWComp/DAiW-Music-Brain copy`
@@ -102,7 +102,7 @@ git merge idaw/main --allow-unrelated-histories -m "Merge iDAW: Integrated DAW s
 
 #### Merge 4: DAiW-Music-Brain (TBD)
 ```bash
-git merge daiw-music-brain/main --allow-unrelated-histories -m "Merge DAiW-Music-Brain: Complete Music Brain system"
+git merge daiw-music-brain/main --allow-unrelated-histories -m "Merge DAiW-Music-Brain: Complete miDEE system"
 ```
 
 #### Merge 5: FINAL-KEL (Dec 16, 2025)
@@ -133,7 +133,7 @@ final kel/
 │   ├── pentagon-core/        # Pentagon functionality
 │   ├── 1daw1/               # DAW integration
 │   ├── idaw/                # iDAW system
-│   ├── daiw-music-brain/    # Music Brain
+│   ├── daiw-music-brain/    # miDEE
 │   └── final-kel-alt/       # Alternative implementation
 ├── docs/                     # All documentation combined
 ├── REPO_MERGE_SUMMARY.md    # Summary of merge

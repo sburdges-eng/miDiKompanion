@@ -18,9 +18,9 @@ except ImportError:
     MCP_AVAILABLE = False
 
 # Import DAiW modules
-from music_brain.session.teaching import RuleBreakingTeacher
-from music_brain.structure.progression import diagnose_progression
-from music_brain.session.intent_schema import suggest_rule_break
+from midee.session.teaching import RuleBreakingTeacher
+from midee.structure.progression import diagnose_progression
+from midee.session.intent_schema import suggest_rule_break
 
 
 def register_tools(server: Server) -> None:

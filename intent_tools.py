@@ -20,7 +20,7 @@ except ImportError:
     MCP_AVAILABLE = False
 
 # Import DAiW modules
-from music_brain.session.intent_schema import (
+from midee.session.intent_schema import (
     CompleteSongIntent,
     SongRoot,
     SongIntent,
@@ -30,7 +30,7 @@ from music_brain.session.intent_schema import (
     validate_intent,
     list_all_rules
 )
-from music_brain.session.intent_processor import process_intent
+from midee.session.intent_processor import process_intent
 
 
 def register_tools(server: Server) -> None:
@@ -200,7 +200,7 @@ def register_tools(server: Server) -> None:
                 
                 # Save MIDI if requested
                 if "output_midi" in arguments:
-                    from music_brain.harmony import generate_midi_from_harmony
+                    from midee.harmony import generate_midi_from_harmony
                     harmony = result_dict["harmony"]
                     tempo = getattr(intent.technical_constraints, "technical_tempo_range", (82, 82))[0]
                     generate_midi_from_harmony(

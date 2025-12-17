@@ -29,7 +29,7 @@ Download these from your outputs folder:
 ```
 ☐ Go to chat.openai.com
 ☐ Click profile → My GPTs → Create a GPT
-☐ Name: "DAiW Music Brain"
+☐ Name: "DAiW miDEE"
 ☐ Description: "AI music production assistant..."
 ☐ Paste system prompt from Custom_GPT_Build_Script.md
 ☐ Upload files (4 files above)
@@ -78,12 +78,12 @@ After GPT is working, put files in your repo:
 
 ```bash
 claude "Deploy DAiW knowledge files:
-1. Create music_brain/data/ if not exists
-2. Copy daiw_knowledge_base.json to music_brain/data/presets.json
-3. Copy rule_breaking_database.json to music_brain/data/rule_breaks.json  
-4. Copy emotional_mapping.py to music_brain/models/emotional_mapping.py
+1. Create midee/data/ if not exists
+2. Copy daiw_knowledge_base.json to midee/data/presets.json
+3. Copy rule_breaking_database.json to midee/data/rule_breaks.json  
+4. Copy emotional_mapping.py to midee/models/emotional_mapping.py
 5. Copy DAiW_Cheat_Sheet.md to docs/cheat_sheet.md
-6. Update music_brain/__init__.py to import emotional_mapping
+6. Update midee/__init__.py to import emotional_mapping
 7. Create basic test file tests/models/test_emotional_mapping.py
 8. Run pytest to verify
 9. Show me the updated structure"
@@ -101,8 +101,8 @@ echo "[paste Gemini output]" > docs/research/[topic]_research.md
 
 # Then tell Claude Code to integrate
 claude "Read docs/research/[topic]_research.md and:
-1. Extract any new presets → add to music_brain/data/presets.json
-2. Extract any new examples → add to music_brain/data/rule_breaks.json
+1. Extract any new presets → add to midee/data/presets.json
+2. Extract any new examples → add to midee/data/rule_breaks.json
 3. Update emotional_mapping.py if needed
 4. Show me what changed"
 ```

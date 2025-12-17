@@ -108,7 +108,7 @@
 
 ## Python Backend as Reference
 
-**Location**: `/Users/seanburdges/Desktop/1DAW1/music_brain/`
+**Location**: `/Users/seanburdges/Desktop/1DAW1/midee/`
 
 **Use this as the reference implementation for:**
 - Emotion mapping (`emotion_mapper.py`)
@@ -148,9 +148,9 @@
 - Voice leading rules
 
 **Reference Files:**
-- `/Users/seanburdges/Desktop/1DAW1/music_brain/emotion_mapper.py`
-- `/Users/seanburdges/Desktop/1DAW1/music_brain/harmony.py`
-- `/Users/seanburdges/Desktop/1DAW1/music_brain/groove/engine.py`
+- `/Users/seanburdges/Desktop/1DAW1/midee/emotion_mapper.py`
+- `/Users/seanburdges/Desktop/1DAW1/midee/harmony.py`
+- `/Users/seanburdges/Desktop/1DAW1/midee/groove/engine.py`
 
 **Deliverable**: Feature-complete C++ implementation
 
@@ -242,7 +242,7 @@ Follow complete integration plan + enhanced UI development.
 
 ### Working Code
 - **Plugin**: `/Users/seanburdges/Desktop/kelly-midi-max/kellymidicompanion/kelly-midi-companion/`
-- **Python Backend**: `/Users/seanburdges/Desktop/1DAW1/music_brain/`
+- **Python Backend**: `/Users/seanburdges/Desktop/1DAW1/midee/`
 - **Tests**: `/Users/seanburdges/Desktop/TEST UPLOADS/`
 
 ### Installed Plugin

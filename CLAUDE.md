@@ -129,7 +129,7 @@ Music production intelligence library for groove extraction, chord analysis, and
 ### Directory Structure
 ```
 DAiW-Music-Brain/
-├── music_brain/
+├── midee/
 │   ├── __init__.py           # Public API (v0.2.0)
 │   ├── cli.py                # `daiw` CLI command
 │   ├── data/                 # JSON/YAML data files
@@ -318,14 +318,14 @@ ctest --output-on-failure  # Run tests
 
 ### Python Tests
 ```bash
-# Music Brain tests
+# miDEE tests
 pytest tests_music-brain/ -v
 
 # DAiW-Music-Brain internal tests
 pytest DAiW-Music-Brain/tests/ -v
 
 # All tests with coverage
-pytest tests_music-brain/ -v --cov=music_brain --cov-report=term-missing
+pytest tests_music-brain/ -v --cov=midee --cov-report=term-missing
 ```
 
 ### C++ Tests
@@ -345,7 +345,7 @@ ctest --output-on-failure
 | `tests/` | C++ unit tests (groove, harmony, simd, memory) |
 | `tests_music-brain/` | Python integration tests |
 | `tests_penta-core/` | Penta-Core C++ tests (performance, OSC, etc.) |
-| `DAiW-Music-Brain/tests/` | Music Brain internal tests |
+| `DAiW-Music-Brain/tests/` | miDEE internal tests |
 
 ---
 
@@ -383,13 +383,13 @@ ctest --output-on-failure
 ### Python
 ```bash
 # Format
-black music_brain/ tests/
+black midee/ tests/
 
 # Type check
-mypy music_brain/
+mypy midee/
 
 # Lint
-flake8 music_brain/ tests/
+flake8 midee/ tests/
 ```
 
 - **Line length**: 100 characters
@@ -446,11 +446,11 @@ flake8 music_brain/ tests/
 
 ### Adding a New Groove Genre
 1. Add entry to `Data_Files/genre_pocket_maps.json`
-2. Add template in `music_brain/groove/templates.py`
-3. Add to CLI choices in `music_brain/cli.py`
+2. Add template in `midee/groove/templates.py`
+3. Add to CLI choices in `midee/cli.py`
 
 ### Adding a Rule-Breaking Option
-1. Add enum value in `music_brain/session/intent_schema.py`
+1. Add enum value in `midee/session/intent_schema.py`
 2. Add entry in `RULE_BREAKING_EFFECTS` dict
 3. Implement in `intent_processor.py`
 

@@ -743,7 +743,7 @@ Based on the comprehensive requirements above, here is a prioritized implementat
 - [Rust DAW Backend](./rust-daw-backend.md) - 150 backend implementation topics
 - [DAW Engine Stability](./daw-engine-stability.md) - Audio engine stability guide
 - [Multi-Agent MCP Guide](./multi-agent-mcp-guide.md) - MCP cluster architecture
-- [DAiW Music Brain](./daiw-music-brain.md) - Project architecture
+- [DAiW miDEE](./daiw-music-brain.md) - Project architecture
 - [DAW UI Patterns](./daw-ui-patterns.md) - UI component patterns
 - [Psychoacoustic Sound Design](./psychoacoustic-sound-design.md) - Emotional audio manipulation
 - [DAW Track Import Methods](./daw-track-import-methods.md) - Import implementation guide

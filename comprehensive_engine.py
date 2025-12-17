@@ -7,7 +7,7 @@ Direct MIDI Generation (Phase 3) into a single production pipeline.
 Logic Flow:
 1. TherapySession processes text -> AffectResult
 2. TherapySession generates HarmonyPlan (with mode/tempo/chords)
-3. render_plan_to_midi() converts Plan -> MIDI using music_brain.daw.logic
+3. render_plan_to_midi() converts Plan -> MIDI using midee.daw.logic
 
 Philosophy: "Interrogate Before Generate" - The tool shouldn't finish art
 for people; it should make them braver.
@@ -113,8 +113,8 @@ class TherapyState:
 class HarmonyPlan:
     """
     Complete blueprint for generation.
-    Can be passed to music_brain.structure.progression functions
-    and rendered to MIDI via music_brain.daw.logic.
+    Can be passed to midee.structure.progression functions
+    and rendered to MIDI via midee.daw.logic.
     """
     root_note: str         # "C", "F#"
     mode: str              # "minor", "dorian", "phrygian", etc.
@@ -324,9 +324,9 @@ class TherapySession:
 def render_plan_to_midi(plan: HarmonyPlan, output_path: str) -> str:
     """
     Render a HarmonyPlan to a MIDI file using existing music_brain components:
-    - music_brain.structure.progression.parse_progression_string
-    - music_brain.structure.chord.CHORD_QUALITIES
-    - music_brain.daw.logic.LogicProject
+    - midee.structure.progression.parse_progression_string
+    - midee.structure.chord.CHORD_QUALITIES
+    - midee.daw.logic.LogicProject
 
     The progression is looped to fill the entire length_bars specified
     in the plan.
@@ -339,9 +339,9 @@ def render_plan_to_midi(plan: HarmonyPlan, output_path: str) -> str:
         Path to the generated MIDI file
     """
     try:
-        from music_brain.structure.progression import parse_progression_string
-        from music_brain.structure.chord import CHORD_QUALITIES
-        from music_brain.daw.logic import LogicProject, LOGIC_CHANNELS
+        from midee.structure.progression import parse_progression_string
+        from midee.structure.chord import CHORD_QUALITIES
+        from midee.daw.logic import LogicProject, LOGIC_CHANNELS
     except ImportError as exc:
         print(f"[SYSTEM]: MIDI bridge unavailable: {exc}")
         print(f"          Chords would have been: {plan.chord_symbols}")

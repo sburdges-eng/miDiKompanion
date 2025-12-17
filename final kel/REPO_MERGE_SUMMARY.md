@@ -45,7 +45,7 @@
 - Kelly Song Logic Template (Kelly_Song_Logic_Template.txt)
 - MIDI Structure Analyzer (Obsidian_Documentation/MIDI_Structure_Analyzer.md)
 - Kelly in the Water song documentation
-- DAiW Music Brain integration
+- DAiW miDEE integration
 - Multiple cursor branches with cloud agent workflows
 - Build and deploy scripts for standalone macOS app
 
@@ -80,7 +80,7 @@
 **Expected Contents**:
 - iDAW system integration
 - DAiW-Music-Brain222 subdirectory
-- Music Brain Vault
+- miDEE Vault
 - Additional Kelly song integrations
 
 ### 5. DAiW-Music-Brain
@@ -88,7 +88,7 @@
 **Status**: ⏳ Not yet added as remote
 
 **Expected Contents**:
-- Complete DAiW Music Brain system
+- Complete DAiW miDEE system
 - Kelly song harmony examples
 - MIDI comparison tools
 
@@ -180,7 +180,7 @@ miDiKompanion (current)
 1. **Complete iDAW Fetch**: Wait for large iDAW repository to finish fetching
 2. **Merge iDAW**: Add iDAW commits to history
 3. **Add DAiW-Music-Brain Remote**: Create remote for DAiW-Music-Brain222
-4. **Fetch DAiW-Music-Brain**: Pull DAiW Music Brain commits
+4. **Fetch DAiW-Music-Brain**: Pull DAiW miDEE commits
 5. **Merge DAiW-Music-Brain**: Complete the merge sequence
 6. **Create Unified Changelog**: Document all merged functionality
 7. **Tag Release**: Tag as "unified-history-v1.0"

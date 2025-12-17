@@ -37,7 +37,7 @@
 **Contents**:
 - ✅ Complete Python implementation
 - ✅ Emotion JSON files (angry.json, sad.json, happy.json, fear.json, disgust.json, surprise.json)
-- ✅ Full music_brain module with submodules:
+- ✅ Full midee module with submodules:
   - `agents/` - AI agents
   - `audio/` - Audio processing
   - `daw/` - DAW integration
@@ -120,10 +120,10 @@
 
 ## Python Reference Implementations
 
-### Core Music Brain Modules
+### Core miDEE Modules
 
 #### 1. Groove System
-**Location**: `DAiW-Music-Brain/music_brain/groove/`
+**Location**: `DAiW-Music-Brain/midee/groove/`
 
 **Purpose**: Groove generation, humanization, swing, feel
 
@@ -139,7 +139,7 @@
 **Action**: Compare Python → C++ for algorithm refinement
 
 #### 2. Harmony System
-**Location**: `DAiW-Music-Brain/music_brain/harmony/`
+**Location**: `DAiW-Music-Brain/midee/harmony/`
 
 **Purpose**: Chord progression generation, voice leading
 
@@ -155,7 +155,7 @@
 **Action**: Port advanced harmony algorithms
 
 #### 3. Structure System
-**Location**: `DAiW-Music-Brain/music_brain/structure/`
+**Location**: `DAiW-Music-Brain/midee/structure/`
 
 **Purpose**: Song form and arrangement
 
@@ -170,7 +170,7 @@
 **Action**: Implement full song structure logic
 
 #### 4. Audio Processing
-**Location**: `DAiW-Music-Brain/music_brain/audio/`
+**Location**: `DAiW-Music-Brain/midee/audio/`
 
 **Purpose**: Audio analysis and processing
 
@@ -185,7 +185,7 @@
 **Action**: Consider for future audio analysis features
 
 #### 5. DAW Integration
-**Location**: `DAiW-Music-Brain/music_brain/daw/`
+**Location**: `DAiW-Music-Brain/midee/daw/`
 
 **Purpose**: DAW protocol integration
 
@@ -200,7 +200,7 @@
 **Action**: Reference for DAW interop
 
 #### 6. Vocal Processing
-**Location**: `DAiW-Music-Brain/music_brain/vocal/`
+**Location**: `DAiW-Music-Brain/midee/vocal/`
 
 **Purpose**: Vocal melody and harmony generation
 
@@ -319,8 +319,8 @@ Based on the thesaurus structure, each JSON likely contains:
 |--------|----------------|------------|----------|
 | Melody Engine | `python/engines/kellymidicompanion_melody_engine.py` | ✅ Ported | Refine |
 | Bass Engine | `python/engines/kellymidicompanion_bass_engine.py` | ✅ Ported | Refine |
-| Groove Engine | `music_brain/groove/` | ⚠️ Partial | **HIGH** |
-| Harmony | `music_brain/harmony/` | ⚠️ Partial | **HIGH** |
+| Groove Engine | `midee/groove/` | ⚠️ Partial | **HIGH** |
+| Harmony | `midee/harmony/` | ⚠️ Partial | **HIGH** |
 | Dynamics | `python/engines/kellymidicompanion_dynamics_engine.py` | ✅ Ported | Refine |
 | Arrangement | `python/engines/kellymidicompanion_arrangement_engine.py` | ✅ Ported | Refine |
 | Rhythm | `python/engines/kellymidicompanion_rhythm_engine.py` | ✅ Ported | Refine |
@@ -334,10 +334,10 @@ Based on the thesaurus structure, each JSON likely contains:
 | Tempo/Key Adapter | `python/engines/kellymidicompanion_tempo_key_adapter.py` | ❌ Not ported | Medium |
 | Orchestration | `python/engines/kellymidicompanion_orchestration.py` | ❌ Not ported | Medium |
 | Interrogator | `python/engines/kellymidicompanion_interrogator.py` | ❌ Not ported | **HIGH** |
-| Audio Processing | `music_brain/audio/` | ❌ Not ported | Low |
-| Vocal Processing | `music_brain/vocal/` | ❌ Not ported | Low |
-| DAW Integration | `music_brain/daw/` | ⚠️ Partial | Medium |
-| AI Agents | `music_brain/agents/` | ❌ Not ported | Low |
+| Audio Processing | `midee/audio/` | ❌ Not ported | Low |
+| Vocal Processing | `midee/vocal/` | ❌ Not ported | Low |
+| DAW Integration | `midee/daw/` | ⚠️ Partial | Medium |
+| AI Agents | `midee/agents/` | ❌ Not ported | Low |
 
 ---
 
@@ -462,7 +462,7 @@ cp "/Users/seanburdges/Library/CloudStorage/OneDrive-Personal/iDAWComp/DAiW-Musi
 ### Access Python Reference
 ```bash
 cd "/Users/seanburdges/Library/CloudStorage/OneDrive-Personal/iDAWComp/DAiW-Music-Brain"
-python3 -m music_brain.groove.groove_engine  # Example
+python3 -m midee.groove.groove_engine  # Example
 ```
 
 ### Read Complete Documentation

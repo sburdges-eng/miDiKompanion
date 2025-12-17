@@ -251,9 +251,9 @@ For this session, focus on [specific song/project].
 
 ### Option 1: Multiple Workspaces
 Create different AnythingLLM workspaces:
-- "Music Brain - General"
-- "Music Brain - Mixing"
-- "Music Brain - Writing"
+- "miDEE - General"
+- "miDEE - Mixing"
+- "miDEE - Writing"
 
 Each with its own system prompt.
 

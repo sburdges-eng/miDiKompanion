@@ -2,7 +2,7 @@
 ## Lo-Fi Bedroom Emo / Indie Folk Starter Kit
 
 **Created:** 2025-11-25
-**For:** Kelly Song Production + DAiW Music Brain
+**For:** Kelly Song Production + DAiW miDEE
 
 ---
 

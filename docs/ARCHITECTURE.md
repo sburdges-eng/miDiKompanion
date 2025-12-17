@@ -25,7 +25,7 @@ User Input (Wound)
     ↓
 Intent Processor (Python)
     ↓
-Emotion Thesaurus Mapping
+KELLY Thesaurus Mapping
     ↓
 Rule-Break Generation
     ↓
@@ -36,7 +36,7 @@ MIDI Generator
 Audio Output (C++ / Plugins)
 ```
 
-## Emotion Thesaurus
+## KELLY Thesaurus
 
 The 216-node emotion thesaurus is organized around three dimensions:
 

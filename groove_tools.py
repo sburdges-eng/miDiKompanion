@@ -21,8 +21,8 @@ except ImportError:
     MCP_AVAILABLE = False
 
 # Import DAiW modules
-from music_brain.groove import extract_groove, apply_groove
-from music_brain.groove_engine import apply_groove as apply_groove_events
+from midee.groove import extract_groove, apply_groove
+from midee.groove_engine import apply_groove as apply_groove_events
 
 
 def register_tools(server: Server) -> None:
@@ -221,7 +221,7 @@ def register_tools(server: Server) -> None:
                     return [TextContent(type="text", text=f"Error: MIDI file not found: {midi_file}")]
                 
                 # Use groove engine for humanization
-                from music_brain.groove import humanize_midi_file, GrooveSettings, settings_from_preset
+                from midee.groove import humanize_midi_file, GrooveSettings, settings_from_preset
                 
                 if preset:
                     settings = settings_from_preset(preset)
@@ -256,7 +256,7 @@ def register_tools(server: Server) -> None:
                 # Implement smart quantization
                 try:
                     import mido
-                    from music_brain.utils.ppq import quantize_ticks
+                    from midee.utils.ppq import quantize_ticks
                     
                     mid = mido.MidiFile(midi_file)
                     output_mid = mido.MidiFile(ticks_per_beat=mid.ticks_per_beat)

@@ -17,14 +17,14 @@ Sprint 3 focuses on ensuring all documentation is complete, accurate, and follow
 
 #### Project Root
 - `README.md` - Main project overview
-- `README_music-brain.md` - Music Brain component docs
+- `README_music-brain.md` - miDEE component docs
 - `README_penta-core.md` - Penta Core component docs
 - `QUICKSTART_penta-core.md` - Quick start guide
 - `INTEGRATION_GUIDE.md` - Integration instructions
 - `PROJECT_TIMELINE.md` - Project roadmap and timeline
 
-#### Music Brain Documentation (`DAiW-Music-Brain/`)
-- `README.md` - Music Brain overview
+#### miDEE Documentation (`DAiW-Music-Brain/`)
+- `README.md` - miDEE overview
 - `CLAUDE.md` - Claude AI instructions
 - `vault/` - Knowledge base and guides
   - `Songwriting_Guides/` - Intent schema, rule-breaking guides
@@ -61,7 +61,7 @@ Sprint 3 focuses on ensuring all documentation is complete, accurate, and follow
 
 ### Example Scripts
 
-#### Music Brain Examples (`examples_music-brain/`)
+#### miDEE Examples (`examples_music-brain/`)
 - `example.py` - Basic usage examples
 - `intents/` - Intent schema examples
 - `midi/` - MIDI file examples
@@ -162,7 +162,7 @@ sprint3_documentation:
 ````markdown
 ```python
 # Python code example
-import music_brain
+import midee
 ```
 
 ```bash

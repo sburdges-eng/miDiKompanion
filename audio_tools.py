@@ -23,7 +23,7 @@ except ImportError:
 
 # Import DAiW audio modules
 try:
-    from music_brain.audio import (
+    from midee.audio import (
         analyze_feel,
         AudioFeatures,
         AudioAnalyzer,
@@ -277,7 +277,7 @@ def register_tools(server: Server) -> None:
                     result = {
                         "audio_file": audio_file,
                         "error": "Audio analysis module not available",
-                        "note": "Install librosa and ensure music_brain.audio is accessible"
+                        "note": "Install librosa and ensure midee.audio is accessible"
                     }
                 return [TextContent(type="text", text=json.dumps(result, indent=2))]
             

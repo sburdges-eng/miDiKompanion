@@ -12,23 +12,23 @@ TODO: Future integration planned for:
 - Session-aware progression recommendations
 """
 
-from music_brain.structure.chord import (
+from midee.structure.chord import (
     analyze_chords,
     ChordProgression,
     Chord,
     detect_key,
 )
-from music_brain.structure.sections import (
+from midee.structure.sections import (
     detect_sections,
     Section,
     SectionType,
 )
-from music_brain.structure.progression import (
+from midee.structure.progression import (
     diagnose_progression,
     generate_reharmonizations,
     parse_progression_string,
 )
-from music_brain.structure.comprehensive_engine import (
+from midee.structure.comprehensive_engine import (
     # Core classes
     AffectResult,
     AffectAnalyzer,

@@ -14,15 +14,15 @@
 
 #### Files to Implement:
 ```
-music_brain/cli/
+midee/cli/
 ├── commands.py          # CLI command implementations (NEW)
 ├── __init__.py          # CLI exports
 └── cli.py               # Entry point (EXISTS - needs wrapper commands)
 
-music_brain/harmony/
+midee/harmony/
 └── harmony_generator.py # (PARTIALLY EXISTS - in data/)
 
-music_brain/groove/
+midee/groove/
 └── groove_applicator.py # (EXISTS - in data/)
 
 tests/
@@ -30,9 +30,9 @@ tests/
 ```
 
 #### Tasks:
-- [x] Create `music_brain/cli/commands.py` - CLI command wrappers
-- [ ] Move `data/harmony_generator.py` → `music_brain/harmony/harmony_generator.py`
-- [ ] Move `data/groove_applicator.py` → `music_brain/groove/groove_applicator.py`
+- [x] Create `midee/cli/commands.py` - CLI command wrappers
+- [ ] Move `data/harmony_generator.py` → `midee/harmony/harmony_generator.py`
+- [ ] Move `data/groove_applicator.py` → `midee/groove/groove_applicator.py`
 - [ ] Add CLI commands to `cli.py`:
   - [x] `daiw extract` (groove extraction) - basic exists
   - [x] `daiw apply` (groove application) - basic exists
@@ -118,7 +118,7 @@ async def analyze_progression(progression: str, key: str = None) -> dict:
     Returns:
         Analysis with emotional character, rule breaks, suggestions
     """
-    from music_brain.structure.progression import diagnose_progression
+    from midee.structure.progression import diagnose_progression
     result = diagnose_progression(progression, key)
     return result.to_dict()
 ```
@@ -141,7 +141,7 @@ async def analyze_progression(progression: str, key: str = None) -> dict:
 
 #### Current Status:
 ```
-music_brain/audio/
+midee/audio/
 ├── feel.py              # ✅ Audio feel analysis (EXISTS)
 ├── analyzer.py          # 🔄 Starter module (NEEDS EXPANSION)
 ├── chord_detection.py   # ❌ Not implemented
@@ -246,18 +246,18 @@ scipy>=1.10.0     # Signal processing
 
 ### For CLI Commands:
 ```python
-# music_brain/cli/commands.py
+# midee/cli/commands.py
 
 import click
-from music_brain.harmony import harmony_generator
-from music_brain.groove import groove_applicator
+from midee.harmony import harmony_generator
+from midee.groove import groove_applicator
 
 @click.command()
 @click.argument('progression')
 @click.option('--key', help='Key context')
 def diagnose(progression, key):
     """Diagnose chord progression for harmonic issues."""
-    from music_brain.structure.progression import diagnose_progression
+    from midee.structure.progression import diagnose_progression
     result = diagnose_progression(progression, key)
     click.echo(f"Progression: {result.progression}")
     click.echo(f"Emotional Character: {result.emotional_character}")
@@ -277,14 +277,14 @@ async def generate_harmony(
     genre: str = "pop"
 ) -> dict:
     """Generate harmony from emotional intent."""
-    from music_brain.session.intent_processor import process_intent
+    from midee.session.intent_processor import process_intent
     # Implementation
     return result
 ```
 
 ### For Audio Analysis:
 ```python
-# music_brain/audio/analyzer.py
+# midee/audio/analyzer.py
 
 import librosa
 import numpy as np
@@ -393,13 +393,13 @@ daiw --help
 ### Start Coding:
 ```bash
 # Priority 1: CLI Implementation
-code music_brain/cli/commands.py
+code midee/cli/commands.py
 
 # Priority 2: MCP Tools
 code daiw_mcp/tools/intent.py
 
 # Priority 3: Audio Analysis
-code music_brain/audio/analyzer.py
+code midee/audio/analyzer.py
 ```
 
 ---

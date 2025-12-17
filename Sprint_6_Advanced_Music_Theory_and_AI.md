@@ -140,7 +140,7 @@ Expand music theory capabilities and integrate AI models for melody generation, 
 
 ## Related Documentation
 - [vault/Theory_Reference/](vault/Theory_Reference/) - Music theory reference
-- [music_brain/harmony.py](music_brain/harmony.py) - Harmony module
+- [midee/harmony.py](midee/harmony.py) - Harmony module
 - [AI Assistant Setup Guide.md](AI%20Assistant%20Setup%20Guide.md) - AI integration
 
 ## Notes

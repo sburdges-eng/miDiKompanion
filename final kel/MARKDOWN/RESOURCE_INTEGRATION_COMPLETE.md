@@ -24,7 +24,7 @@ python_kelly/
 ├── __init__.py (3KB)
 ├── cli.py (7KB)
 ├── core/
-│   ├── emotion_thesaurus.py
+│   ├── kelly.thesaurus.py
 │   ├── emotional_mapping.py
 │   ├── intent_processor.py
 │   ├── intent_schema.py
@@ -83,7 +83,7 @@ daiw_music_brain/
 ├── CLAUDE.md (17KB - AI implementation context)
 ├── README.md (7KB)
 ├── LICENSE
-├── music_brain/ (original Python implementation)
+├── midee/ (original Python implementation)
 ├── vault/ (emotional vault system)
 ├── tests/ (test suite)
 ├── pyproject.toml
@@ -93,7 +93,7 @@ daiw_music_brain/
 
 **Critical Files**:
 - **CLAUDE.md**: 17KB of AI-readable implementation documentation
-- **music_brain/**: Original Python Music-Brain implementation
+- **midee/**: Original Python Music-Brain implementation
 - **vault/**: Emotional processing and storage system
 
 **Value**: Original reference implementation with comprehensive documentation
@@ -292,7 +292,7 @@ final kel/reference/
 │
 └── daiw_music_brain/      # Original DAiW-Music-Brain
     ├── CLAUDE.md          # AI implementation context
-    ├── music_brain/       # Python implementation
+    ├── midee/       # Python implementation
     ├── vault/             # Emotional vault
     ├── tests/
     └── docs/

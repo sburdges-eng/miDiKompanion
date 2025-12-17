@@ -155,7 +155,7 @@ The penta_core module was made importable by:
    ```toml
    [tool.setuptools.packages.find]
    where = [".", "python"]
-   include = ["music_brain*", "mcp_todo*", "mcp_workstation*", "penta_core*"]
+   include = ["midee*", "mcp_todo*", "mcp_workstation*", "penta_core*"]
    ```
 
 2. Copying the MCP server to the penta_core package:
@@ -215,4 +215,4 @@ All TODO items from the INTEGRATION_GUIDE.md "Today" list have been completed:
 - ✅ Test suite improved (502 → 519 passing)
 - ✅ Documentation updated
 
-**The music_brain toolkit is fully operational and ready for use!** 🎵
+**The midee toolkit is fully operational and ready for use!** 🎵

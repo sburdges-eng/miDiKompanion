@@ -22,7 +22,7 @@ This document provides guidance for AI assistants working with the DAiW (Digital
 
 ```
 DAiW-Music-Brain/
-├── music_brain/              # Core Python package
+├── midee/              # Core Python package
 │   ├── __init__.py           # Package exports (v0.2.0)
 │   ├── cli.py                # Command-line interface
 │   ├── groove/               # Groove analysis & application
@@ -107,13 +107,13 @@ pytest tests/test_basic.py::TestGrooveTemplates -v
 
 ```bash
 # Format code with Black (100 char line length)
-black music_brain/
+black midee/
 
 # Lint with flake8
-flake8 music_brain/
+flake8 midee/
 
 # Type check with mypy
-mypy music_brain/
+mypy midee/
 ```
 
 ### CLI Commands
@@ -199,7 +199,7 @@ def load_midi(path: str):
 ### Module Organization
 
 - All subpackages define `__all__` with public API
-- Clean import paths: `from music_brain.groove import extract_groove`
+- Clean import paths: `from midee.groove import extract_groove`
 - Package-level exports in `__init__.py`
 
 ## Key Concepts
@@ -355,13 +355,13 @@ Change code → Run tests → Run application
 
 | File | Purpose |
 |------|---------|
-| `music_brain/session/intent_schema.py` | Core intent system and rule-breaking enums |
-| `music_brain/session/intent_processor.py` | Intent processing and music generation |
-| `music_brain/groove/templates.py` | Genre groove templates |
-| `music_brain/structure/progression.py` | Chord parsing and diagnosis |
-| `music_brain/cli.py` | CLI entry point |
-| `music_brain/data/song_intent_schema.yaml` | Schema specification |
-| `music_brain/data/song_intent_examples.json` | Working intent examples |
+| `midee/session/intent_schema.py` | Core intent system and rule-breaking enums |
+| `midee/session/intent_processor.py` | Intent processing and music generation |
+| `midee/groove/templates.py` | Genre groove templates |
+| `midee/structure/progression.py` | Chord parsing and diagnosis |
+| `midee/cli.py` | CLI entry point |
+| `midee/data/song_intent_schema.yaml` | Schema specification |
+| `midee/data/song_intent_examples.json` | Working intent examples |
 
 ## Common Tasks
 

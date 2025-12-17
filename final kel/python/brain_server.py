@@ -31,8 +31,8 @@ except ImportError:
 # Import DAiW music brain modules
 try:
     sys.path.insert(0, str(Path(__file__).parent.parent / "reference" / "daiw_music_brain"))
-    from music_brain.session.intent_processor import generate_session
-    from music_brain.structure.progression import diagnose_progression
+    from midee.session.intent_processor import generate_session
+    from midee.structure.progression import diagnose_progression
     DAiW_AVAILABLE = True
 except ImportError:
     DAiW_AVAILABLE = False

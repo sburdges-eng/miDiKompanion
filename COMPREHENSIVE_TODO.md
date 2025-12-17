@@ -86,7 +86,7 @@ This document provides a complete roadmap of tasks for the iDAW project, organiz
 | ML Module | 0 | 2,210 | **0%** | 🔴 CRITICAL |
 | Collaboration | 0 | 1,433 | **0%** | 🟡 MEDIUM |
 | DSP Module | 0 | 1,130 | **0%** | 🔴 HIGH |
-| Music Brain Core | ~12,000 | 15,000 | **77%** | ✅ Good |
+| miDEE Core | ~12,000 | 15,000 | **77%** | ✅ Good |
 | Penta-Core C++ | 1,815 | 3,120 | **58%** | 🟡 MEDIUM |
 
 **Critical Tasks**:
@@ -110,7 +110,7 @@ This document provides a complete roadmap of tasks for the iDAW project, organiz
 | pybind11 bindings | ✅ Complete | `bindings/*.cpp` - all 4 modules |
 | Python wrapper API | ✅ Complete | `python/penta_core/__init__.py` (326 lines) |
 | C++ PythonBridge | ✅ Complete | `iDAW_Core/include/PythonBridge.h` |
-| Bridge API | ✅ Complete | `music_brain/orchestrator/bridge_api.py` (678 lines) |
+| Bridge API | ✅ Complete | `midee/orchestrator/bridge_api.py` (678 lines) |
 | OSC communication | ✅ Complete | Documented in `vault/Production_Workflows/` |
 | Integration tests | ✅ Complete | 11/11 passing |
 
@@ -132,14 +132,14 @@ This document provides a complete roadmap of tasks for the iDAW project, organiz
 
 | Component | Status | Location |
 |-----------|--------|----------|
-| Affect Analyzer | ✅ Complete | `music_brain/structure/comprehensive_engine.py` |
-| Therapy Session | ✅ Complete | `music_brain/structure/comprehensive_engine.py` |
+| Affect Analyzer | ✅ Complete | `midee/structure/comprehensive_engine.py` |
+| Therapy Session | ✅ Complete | `midee/structure/comprehensive_engine.py` |
 | Song Interrogator | ✅ Complete | `interrogator.py` (7 phases) |
-| Intent Schema | ✅ Complete | `music_brain/session/intent_schema.py` |
-| Rule-Breaking System | ✅ Complete | `music_brain/session/teaching.py` |
+| Intent Schema | ✅ Complete | `midee/session/intent_schema.py` |
+| Rule-Breaking System | ✅ Complete | `midee/session/teaching.py` |
 | MIDI Rendering | ✅ Complete | `render_plan_to_midi()` |
 | MCP Tool | ✅ Complete | `therapy.py` → `daiw.therapy.session` |
-| Optional Ollama | ✅ Available | `music_brain/agents/unified_hub.py` |
+| Optional Ollama | ✅ Available | `midee/agents/unified_hub.py` |
 
 **Completed Tasks**:
 - [x] ~~Define chatbot service API~~ Uses therapy session API
@@ -384,8 +384,8 @@ This document provides a complete roadmap of tasks for the iDAW project, organiz
 
 | Component | Primary Location |
 |-----------|------------------|
-| Python Music Brain | `DAiW-Music-Brain/music_brain/` |
-| Python CLI | `DAiW-Music-Brain/music_brain/cli.py` |
+| Python miDEE | `DAiW-Music-Brain/midee/` |
+| Python CLI | `DAiW-Music-Brain/midee/cli.py` |
 | C++ Penta-Core | `src_penta-core/` |
 | C++ Headers | `include/penta/` |
 | JUCE Plugins | `iDAW_Core/plugins/` |

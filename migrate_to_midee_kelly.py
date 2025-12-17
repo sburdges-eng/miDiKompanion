@@ -65,8 +65,8 @@ class MigrationTool:
             content = re.sub(r'\bfrom music_brain\b', 'from midee', content)
             content = re.sub(r'\bimport music_brain\b', 'import midee', content)
             content = re.sub(r'\bmusic_brain\.', 'midee.', content)
-            content = re.sub(r'"music_brain"', '"midee"', content)
-            content = re.sub(r"'music_brain'", "'midee'", content)
+            content = re.sub(r'"midee"', '"midee"', content)
+            content = re.sub(r"'midee'", "'midee'", content)
             
             # Update emotion_thesaurus → kelly.thesaurus
             content = re.sub(r'\bfrom emotion_thesaurus\b', 'from kelly.thesaurus', content)
@@ -128,7 +128,7 @@ class MigrationTool:
             
             # Update package names
             content = re.sub(r'name\s*=\s*"music-brain"', 'name = "midee"', content)
-            content = re.sub(r'name\s*=\s*"music_brain"', 'name = "midee"', content)
+            content = re.sub(r'name\s*=\s*"midee"', 'name = "midee"', content)
             
             if content != original and not self.dry_run:
                 filepath.write_text(content)
@@ -149,7 +149,7 @@ class MigrationTool:
                 data = json.load(f)
             
             updated = False
-            if 'name' in data and data['name'] in ['music-brain', 'music_brain']:
+            if 'name' in data and data['name'] in ['music-brain', 'midee']:
                 data['name'] = 'midee'
                 updated = True
             
@@ -196,7 +196,7 @@ class MigrationTool:
         
         renames = [
             # Music → miDEE
-            ("music_brain", "midee"),
+            ("midee", "midee"),
             ("cpp_music_brain", "cpp_midee"),
             ("penta_core_music-brain", "penta_core_midee"),
             ("examples_music-brain", "examples_midee"),
@@ -225,8 +225,8 @@ class MigrationTool:
         emotion_thesaurus = self.repo_root / "emotion_thesaurus"
         kelly_thesaurus = self.repo_root / "kelly" / "thesaurus"
         
-        if emotion_thesaurus.exists():
-            for file in emotion_thesaurus.iterdir():
+        if kelly.thesaurus.exists():
+            for file in kelly.thesaurus.iterdir():
                 if file.is_file():
                     dest = kelly_thesaurus / file.name
                     if not self.dry_run:

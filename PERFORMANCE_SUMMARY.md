@@ -12,8 +12,8 @@ This document summarizes the performance optimizations applied to the iDAW repos
 - `harmony_tools.py` - Voice leading voicing generation
 - `python/penta_core/groove/polyrhythm.py` - Polyrhythm pattern analysis (2 locations)
 - `python/penta_core/harmony/jazz_voicings.py` - Jazz chord voicing optimization
-- `music_brain/voice/modulator.py` - Audio envelope calculation
-- `music_brain/arrangement/generator.py` - Velocity curve generation
+- `midee/voice/modulator.py` - Audio envelope calculation
+- `midee/arrangement/generator.py` - Velocity curve generation
 
 **Impact:** 5-10% performance improvement in affected loops
 

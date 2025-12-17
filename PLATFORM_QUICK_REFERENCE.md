@@ -74,9 +74,9 @@ daiw intent suggest grief
 
 ```python
 # Import
-from music_brain.groove import GrooveApplicator
-from music_brain.structure import Chord, diagnose_progression
-from music_brain.session import CompleteSongIntent, process_intent
+from midee.groove import GrooveApplicator
+from midee.structure import Chord, diagnose_progression
+from midee.session import CompleteSongIntent, process_intent
 
 # Extract and apply groove
 applicator = GrooveApplicator()

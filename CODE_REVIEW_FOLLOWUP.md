@@ -8,7 +8,7 @@ This document tracks code review suggestions for the integrated files that shoul
 
 ## Files to Improve
 
-### music_brain/harmony.py
+### midee/harmony.py
 
 1. **Performance: Duplicate iteration** (lines 142-152)
    - Issue: Voicings list is iterated twice
@@ -30,7 +30,7 @@ This document tracks code review suggestions for the integrated files that shoul
    - Suggestion: Use relative paths or tempfile.mkdtemp()
    - Priority: Low (documentation/examples only)
 
-### music_brain/data/emotional_mapping.py
+### midee/data/emotional_mapping.py
 
 1. **Bug: Global state mutation** (lines 439-454)
    - Issue: Directly modifies shared EMOTIONAL_PRESETS['calm'] object
@@ -52,7 +52,7 @@ Since the integrated files are functional and tested, these improvements can be 
 
 ## Quick Fix for High-Priority Issue
 
-**File:** music_brain/data/emotional_mapping.py
+**File:** midee/data/emotional_mapping.py
 
 **Current code (lines 439-454):**
 ```python

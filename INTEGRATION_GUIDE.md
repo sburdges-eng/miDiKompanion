@@ -92,7 +92,7 @@ iDAW/
 │   └── tests_penta-core/                  # C++ tests
 │
 ├── DAiW-Music-Brain (Python Engine)
-│   ├── music_brain/                       # Main Python package
+│   ├── midee/                       # Main Python package
 │   ├── mcp_todo/                          # MCP TODO server
 │   ├── mcp_workstation/                   # MCP workstation
 │   ├── vault/                             # Knowledge base
@@ -155,7 +155,7 @@ pip install -e ".[all]"
 # Use both systems together
 python3
 >>> from penta_core import PentaCore
->>> from music_brain.session import process_intent
+>>> from midee.session import process_intent
 >>> # Combine real-time C++ analysis with intent-based composition
 ```
 
@@ -188,10 +188,10 @@ pip install -e ".[dev]"
 pytest tests_music-brain/ -v
 
 # Format code
-black music_brain/ --line-length 100
+black midee/ --line-length 100
 
 # Type checking
-mypy music_brain/
+mypy midee/
 ```
 
 ### For Integration Development
@@ -256,7 +256,7 @@ ctest --output-on-failure
 **Implementation:**
 ```python
 from penta_core import PentaCore
-from music_brain.session import process_intent, analyze_emotional_content
+from midee.session import process_intent, analyze_emotional_content
 
 # Real-time analysis
 penta = PentaCore(sample_rate=48000.0)
@@ -282,14 +282,14 @@ emotion = analyze_emotional_content(state['chord'])
 
 **Goal:** Combine technical analysis (penta-core) with music theory teaching (DAiW).
 
-**Location:** Enhance `music_brain/session/teaching.py` with penta-core analysis
+**Location:** Enhance `midee/session/teaching.py` with penta-core analysis
 
 ## Troubleshooting
 
 ### Python Import Errors
 
 ```bash
-# If music_brain import fails:
+# If midee import fails:
 export PYTHONPATH="${PYTHONPATH}:$(pwd)"
 
 # If penta_core import fails:
@@ -330,13 +330,13 @@ brew install cmake
    - Check `MERGE_SUMMARY.md` for merge details
 
 2. **Choose Your Path:**
-   - Python-only: Focus on `music_brain/` package
+   - Python-only: Focus on `midee/` package
    - C++ development: Focus on `include/` and `src_penta-core/`
    - Integration: Work with both systems
 
 3. **Run Examples:**
    - Penta Core: `examples_penta-core/`
-   - Music Brain: `examples_music-brain/`
+   - miDEE: `examples_music-brain/`
 
 4. **Contribute:**
    - Follow existing code style in each component
@@ -348,16 +348,16 @@ brew install cmake
 ### Documentation
 - Main README: [README.md](README.md)
 - Penta Core: [README_penta-core.md](README_penta-core.md)
-- Music Brain: [README_music-brain.md](README_music-brain.md)
+- miDEE: [README_music-brain.md](README_music-brain.md)
 - Merge Details: [MERGE_SUMMARY.md](MERGE_SUMMARY.md)
 
 ### Roadmaps
 - Penta Core: [ROADMAP_penta-core.md](ROADMAP_penta-core.md)
-- Music Brain: [DEVELOPMENT_ROADMAP_music-brain.md](DEVELOPMENT_ROADMAP_music-brain.md)
+- miDEE: [DEVELOPMENT_ROADMAP_music-brain.md](DEVELOPMENT_ROADMAP_music-brain.md)
 
 ### Technical Guides
 - Penta Core Docs: `docs_penta-core/`
-- Music Brain Docs: `docs_music-brain/`
+- miDEE Docs: `docs_music-brain/`
 - Knowledge Vault: `vault/`
 
 ### Support

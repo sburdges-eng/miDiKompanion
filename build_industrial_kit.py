@@ -8,7 +8,7 @@ import os
 from pathlib import Path
 
 try:
-    from music_brain.audio.refinery import pipe_industrial, process_file
+    from midee.audio.refinery import pipe_industrial, process_file
     HAS_REFINERY = True
 except ImportError:
     HAS_REFINERY = False

@@ -36,15 +36,15 @@
 │                     ▼                                                       │
 │  CLAUDE CODE / CURSOR (Implementation)                                      │
 │  ─────────────────────────────────────                                      │
-│  - Implement in music_brain package                                         │
+│  - Implement in midee package                                         │
 │  - Write tests                                                              │
 │  - Integrate with existing modules                                          │
 │                     │                                                       │
 │                     ▼                                                       │
 │  ┌─────────────────────────────────────┐                                    │
 │  │  GITHUB REPO                        │                                    │
-│  │  music_brain/models/emotional_mapping.py                                 │
-│  │  music_brain/data/presets.json      │                                    │
+│  │  midee/models/emotional_mapping.py                                 │
+│  │  midee/data/presets.json      │                                    │
 │  │  docs/rule_breaking_masterpieces.md │                                    │
 │  └─────────────────────────────────────┘                                    │
 │                     │                                                       │
@@ -82,7 +82,7 @@ Claude takes research → Creates emotional_mapping.py with:
 ### Step 3: Code Goes to Repo
 ```bash
 # Claude Code or Cursor implements
-cp emotional_mapping.py music_brain/models/
+cp emotional_mapping.py midee/models/
 pytest tests/models/test_emotional_mapping.py
 git add . && git commit -m "Add emotional mapping module"
 ```
@@ -102,7 +102,7 @@ Now GPT can reference: "Based on Russell's circumplex model in emotional_mapping
 
 ```
 DAiW-Music-Brain/
-├── music_brain/
+├── midee/
 │   ├── models/
 │   │   ├── emotional_mapping.py    ◄── Research → Code
 │   │   ├── emotional_intent.py
@@ -144,7 +144,7 @@ When Gemini gives you a research packet, save it:
 ---
 
 ## Integration Notes (added by Claude)
-- Used to create: music_brain/models/emotional_mapping.py
+- Used to create: midee/models/emotional_mapping.py
 - Key insights applied: [list]
 - Gaps to fill: [list]
 ```
@@ -164,7 +164,7 @@ Your Custom GPT should have these files uploaded:
 
 ### Optional (for deeper context)
 4. **Research packets** - Gemini outputs
-5. **Key module files** - From music_brain/
+5. **Key module files** - From midee/
 
 ### In GPT Instructions, reference them:
 ```

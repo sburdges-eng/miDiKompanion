@@ -1,6 +1,6 @@
 # Quick Start Guide
 
-Get your Music Brain system running in 30 minutes.
+Get your miDEE system running in 30 minutes.
 
 ---
 
@@ -50,7 +50,7 @@ Wait for downloads to complete.
 3. Configure:
    - LLM: Ollama → llama3
    - Embedder: Ollama → nomic-embed-text
-4. Create workspace "Music Brain"
+4. Create workspace "miDEE"
 5. Upload this vault folder
 
 ---

@@ -2,7 +2,7 @@
 
 **Last Updated:** 2025-12-06 03:15:00
 **Last Agent:** Agent 1 (Frontend)
-**Next Recommended Agent:** Agent 3 (Music Brain) - Start API server for testing
+**Next Recommended Agent:** Agent 3 (miDEE) - Start API server for testing
 
 ## What Just Happened
 - ✅ Fixed blank screen issue - React UI now rendering correctly
@@ -24,27 +24,27 @@
   - API status indicator (shows connection status)
   - Error boundary catches React errors
   - Helpful error messages when API is offline
-- **Note:** UI works, but requires Music Brain API server to be running for full functionality
-- **To start API:** `python -m music_brain.api` (runs on http://127.0.0.1:8000)
+- **Note:** UI works, but requires miDEE API server to be running for full functionality
+- **To start API:** `python -m midee.api` (runs on http://127.0.0.1:8000)
 
 ### Audio Engine (Agent 2) - COMPLETE ✅
 - **Status:** Tauri backend built and compiling
 - **Working:** 
   - Rust commands: generate_music, interrogate, get_emotions
-  - Bridge to Music Brain API (http://127.0.0.1:8000)
+  - Bridge to miDEE API (http://127.0.0.1:8000)
 - **Ready for:** Frontend to call Tauri commands (now connected!)
 
-### Music Brain (Agent 3) - NEEDS STARTUP ⚠️
+### miDEE (Agent 3) - NEEDS STARTUP ⚠️
 - **Status:** API server ready but not running
 - **Working:** All endpoints functional when server is started
-- **To start:** Run `python -m music_brain.api` in a separate terminal
+- **To start:** Run `python -m midee.api` in a separate terminal
 - **Port:** http://127.0.0.1:8000
 - **Endpoints:** `/generate`, `/interrogate`, `/emotions`
 
 ### DevOps (Agent 4)
 - **Status:** Update docs with new architecture
 - **Needs:** Document Tauri commands and API flow
-- **Next:** Add startup script for Music Brain API server
+- **Next:** Add startup script for miDEE API server
 
 ## Available Tauri Commands
 

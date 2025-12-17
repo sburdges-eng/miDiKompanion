@@ -29,7 +29,7 @@ except ImportError:
     OSC_AVAILABLE = False
     print("[WARNING] pythonosc not installed. Install with: pip install python-osc")
 
-from music_brain.structure.comprehensive_engine import (
+from midee.structure.comprehensive_engine import (
     TherapySession,
     HarmonyPlan,
     NoteEvent,
@@ -204,8 +204,8 @@ class DAiWBrainServer:
         events = []
         
         try:
-            from music_brain.structure.progression import parse_progression_string
-            from music_brain.structure.chord import CHORD_QUALITIES
+            from midee.structure.progression import parse_progression_string
+            from midee.structure.chord import CHORD_QUALITIES
         except ImportError:
             # Fallback to simplified generation if modules unavailable
             return self._plan_to_events_simple(plan)

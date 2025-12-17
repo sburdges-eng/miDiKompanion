@@ -51,7 +51,7 @@
 
 ```
 DAiW-Music-Brain/
-├── music_brain/              # Main Python package (v0.4.0)
+├── midee/              # Main Python package (v0.4.0)
 │   ├── __init__.py          # Package exports
 │   ├── cli.py               # CLI entry point (`daiw` command)
 │   │
@@ -167,7 +167,7 @@ User Input → CompleteSongIntent → IntentProcessor → Generated Elements
 
 ### Core Modules
 
-#### `music_brain.groove`
+#### `midee.groove`
 **Purpose:** Extract and apply groove patterns from MIDI files
 
 **Key Functions:**
@@ -179,7 +179,7 @@ User Input → CompleteSongIntent → IntentProcessor → Generated Elements
 
 **Genre Templates:** funk, jazz, rock, hiphop, edm, latin, reggae, blues
 
-#### `music_brain.structure`
+#### `midee.structure`
 **Purpose:** Harmonic analysis and chord progression diagnosis
 
 **Key Functions:**
@@ -191,7 +191,7 @@ User Input → CompleteSongIntent → IntentProcessor → Generated Elements
 - `Chord` - Single chord with root, quality, extensions
 - `ChordProgression` - Complete progression with analysis
 
-#### `music_brain.session`
+#### `midee.session`
 **Purpose:** Intent-based song generation and teaching
 
 **Key Functions:**
@@ -204,7 +204,7 @@ User Input → CompleteSongIntent → IntentProcessor → Generated Elements
 - `IntentProcessor` - Converts intent to musical elements
 - `RuleBreakingTeacher` - Interactive teaching
 
-#### `music_brain.harmony`
+#### `midee.harmony`
 **Purpose:** Generate harmony from emotional intent
 
 **Key Functions:**
@@ -215,7 +215,7 @@ User Input → CompleteSongIntent → IntentProcessor → Generated Elements
 - `HarmonyResult` - Generated harmony with voicings
 - `ChordVoicing` - MIDI voicing data
 
-#### `music_brain.audio`
+#### `midee.audio`
 **Purpose:** Comprehensive audio analysis
 
 **Key Functions:**
@@ -232,7 +232,7 @@ User Input → CompleteSongIntent → IntentProcessor → Generated Elements
 
 **Note:** Audio analysis requires `librosa`. Gracefully degrades if not available.
 
-#### `music_brain.realtime`
+#### `midee.realtime`
 **Purpose:** Real-time MIDI input/output processing
 
 **Key Classes:**
@@ -249,7 +249,7 @@ User Input → CompleteSongIntent → IntentProcessor → Generated Elements
 - `create_arpeggiator_transformer(pattern) -> MidiTransformCallback`
 - `create_chord_generator_transformer(chords) -> MidiTransformCallback`
 
-#### `music_brain.effects`
+#### `midee.effects`
 **Purpose:** Comprehensive guitar effects modulator
 
 **Key Classes:**
@@ -278,7 +278,7 @@ User Input → CompleteSongIntent → IntentProcessor → Generated Elements
 - MIDI_CC_Source
 - ExpressionSource
 
-#### `music_brain.daw`
+#### `midee.daw`
 **Purpose:** DAW integration utilities
 
 **Key Functions:**
@@ -341,20 +341,20 @@ The MCP (Model Context Protocol) server provides 24 tools across 5 categories:
 
 ## API Reference
 
-### Public API Exports (`music_brain/__init__.py`)
+### Public API Exports (`midee/__init__.py`)
 
 ```python
 # Groove
-from music_brain import extract_groove, apply_groove, GrooveTemplate
+from midee import extract_groove, apply_groove, GrooveTemplate
 
 # Structure
-from music_brain import analyze_chords, detect_sections, ChordProgression
+from midee import analyze_chords, detect_sections, ChordProgression
 
 # Audio (feel)
-from music_brain import analyze_feel, AudioFeatures
+from midee import analyze_feel, AudioFeatures
 
 # Audio (analysis)
-from music_brain import (
+from midee import (
     AudioAnalyzer, AudioAnalysis,
     ChordDetector, FrequencyAnalyzer, TheoryAnalyzer,
     detect_key, detect_bpm, detect_chords_from_audio,
@@ -363,21 +363,21 @@ from music_brain import (
 )
 
 # Harmony
-from music_brain import HarmonyGenerator, HarmonyResult, generate_midi_from_harmony
+from midee import HarmonyGenerator, HarmonyResult, generate_midi_from_harmony
 
 # Real-time MIDI
-from music_brain import (
+from midee import (
     RealtimeMidiProcessor, MidiProcessorConfig,
     RealtimeEngine, RealtimeClock, EventScheduler
 )
 
 # Comprehensive Engine
-from music_brain import (
+from midee import (
     AffectAnalyzer, TherapySession, HarmonyPlan, render_plan_to_midi
 )
 
 # Text/Lyrical
-from music_brain import generate_lyrical_fragments
+from midee import generate_lyrical_fragments
 ```
 
 ---
@@ -474,13 +474,13 @@ pytest tests/test_basic.py::TestImports -v
 
 ```bash
 # Format code
-black music_brain/ tests/
+black midee/ tests/
 
 # Type check
-mypy music_brain/
+mypy midee/
 
 # Lint
-flake8 music_brain/ tests/
+flake8 midee/ tests/
 ```
 
 ### CLI Usage
@@ -573,7 +573,7 @@ pyinstaller daiw.spec --clean --noconfirm
 Heavy modules are imported lazily to speed up CLI startup:
 ```python
 def get_audio_module():
-    from music_brain.audio import AudioAnalyzer
+    from midee.audio import AudioAnalyzer
     return AudioAnalyzer
 ```
 
@@ -659,7 +659,7 @@ __all__ = [
 
 ### Test Failures
 - Run with verbose: `pytest -v`
-- Check data files exist in `music_brain/data/`
+- Check data files exist in `midee/data/`
 - Verify test fixtures are set up correctly
 
 ### Build Issues
@@ -714,7 +714,7 @@ If built app opens and immediately closes:
 - Calculates quality score (0.0-1.0) based on parallel motion and large leaps
 
 **Smart Quantization:**
-- Uses `quantize_ticks()` from `music_brain.utils.ppq` for grid alignment
+- Uses `quantize_ticks()` from `midee.utils.ppq` for grid alignment
 - Blends original timing with quantized timing: `blended = original * (1 - strength) + quantized * strength`
 - Preserves feel by only partially quantizing based on strength parameter
 
@@ -723,22 +723,22 @@ If built app opens and immediately closes:
 ## Key Files to Understand
 
 ### Entry Points
-- `music_brain/cli.py` - CLI implementation, all commands
-- `music_brain/__init__.py` - Public API exports
+- `midee/cli.py` - CLI implementation, all commands
+- `midee/__init__.py` - Public API exports
 - `daiw_mcp/server.py` - MCP server implementation
 
 ### Core Logic
-- `music_brain/session/intent_schema.py` - The heart of the intent system
-- `music_brain/session/intent_processor.py` - Converts intent to musical elements
-- `music_brain/groove/templates.py` - Genre groove definitions
-- `music_brain/structure/progression.py` - Chord parsing and diagnosis
-- `music_brain/audio/analyzer.py` - Audio analysis with graceful degradation
+- `midee/session/intent_schema.py` - The heart of the intent system
+- `midee/session/intent_processor.py` - Converts intent to musical elements
+- `midee/groove/templates.py` - Genre groove definitions
+- `midee/structure/progression.py` - Chord parsing and diagnosis
+- `midee/audio/analyzer.py` - Audio analysis with graceful degradation
 
 ### Data Files
-- `music_brain/data/genre_pocket_maps.json` - Genre timing characteristics
-- `music_brain/data/song_intent_schema.yaml` - Schema definition
-- `music_brain/data/chord_progressions.json` - Common progressions
-- `music_brain/data/scales_database.json` - Scale definitions
+- `midee/data/genre_pocket_maps.json` - Genre timing characteristics
+- `midee/data/song_intent_schema.yaml` - Schema definition
+- `midee/data/chord_progressions.json` - Common progressions
+- `midee/data/scales_database.json` - Scale definitions
 
 ---
 

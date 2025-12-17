@@ -17,7 +17,7 @@ import urllib.parse
 
 # Paths
 SCRIPT_DIR = Path(__file__).parent
-MUSIC_BRAIN_DIR = SCRIPT_DIR / "music_brain"
+MUSIC_BRAIN_DIR = SCRIPT_DIR / "midee"
 SCALES_DB_PATH = MUSIC_BRAIN_DIR / "scales_database.json"
 GDRIVE_ROOT = Path.home() / "sburdges@gmail.com - Google Drive" / "My Drive"
 GDRIVE_SAMPLES = GDRIVE_ROOT / "iDAW_Samples" / "Emotion_Scale_Library"

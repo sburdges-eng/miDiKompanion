@@ -122,11 +122,11 @@ Creates **LoFi_Bedroom_Kit_01**:
 
 ---
 
-## Integration with DAiW Music Brain
+## Integration with DAiW miDEE
 
 Future features:
 ```python
-from music_brain.audio import SampleLibrary
+from midee.audio import SampleLibrary
 
 # Auto-suggest samples based on song metadata
 lib = SampleLibrary("~/Music/Samples/sample_catalog.json")
@@ -292,7 +292,7 @@ open FREESOUND_PACK_LIST.md
 - ✅ Logic Pro integration
 - ✅ Standard naming convention
 - ✅ Curated lo-fi/bedroom production packs
-- ✅ Compatible with DAiW Music Brain
+- ✅ Compatible with DAiW miDEE
 
 ---
 

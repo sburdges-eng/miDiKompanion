@@ -10,7 +10,7 @@ This comprehensive update resolves all unfinished work across the entire iDAW pr
 
 ### Code Changes
 - **14 C++ files modified** (penta-core library and BridgeClient)
-- **2 Python files modified** (DAiW menubar and Music Brain)
+- **2 Python files modified** (DAiW menubar and miDEE)
 - **3 Documentation files updated**
 - **1 Implementation summary created**
 
@@ -92,7 +92,7 @@ This comprehensive update resolves all unfinished work across the entire iDAW pr
 - ✅ OSC message routing
 
 ### 5. Python Components (✅ Complete)
-**Files:** `daiw_menubar.py`, `DAiW-Music-Brain/music_brain/structure/__init__.py`
+**Files:** `daiw_menubar.py`, `DAiW-Music-Brain/midee/structure/__init__.py`
 
 #### DAiW Menubar
 - ✅ Real sample mapping implementation
@@ -100,7 +100,7 @@ This comprehensive update resolves all unfinished work across the entire iDAW pr
 - ✅ Velocity-based volume adjustment
 - ✅ Time-accurate sample placement
 
-#### Music Brain Structure
+#### miDEE Structure
 - ✅ Documentation updated to reflect completed integrations
 - ✅ All planned features now implemented
 

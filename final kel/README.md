@@ -41,7 +41,7 @@ final kel/
 │
 ├── python/                # Python wrapper and utilities
 ├── reference/             # Reference implementations
-│   ├── daiw_music_brain/ # DAiW Music Brain reference
+│   ├── daiw_music_brain/ # DAiW miDEE reference
 │   └── python_kelly/     # Python Kelly implementation
 │
 ├── data/                  # Data resources
@@ -144,7 +144,7 @@ python visualize_quantum_emotional_field.py
    - Intense emotions trigger intentional music theory violations
    - Dissonance, syncopation, extreme dynamics serve emotional truth
 
-### Emotion Thesaurus
+### KELLY Thesaurus
 
 The 216-node thesaurus organizes emotions in 3D space:
 
@@ -180,7 +180,7 @@ The 216-node thesaurus organizes emotions in 3D space:
 
 ### Reference
 
-- **DAiW Music Brain**: `reference/daiw_music_brain/README.md`
+- **DAiW miDEE**: `reference/daiw_music_brain/README.md`
 - **Python Kelly**: `reference/python_kelly/` (see `__init__.py`)
 
 ---

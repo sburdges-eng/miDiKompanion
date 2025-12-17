@@ -56,7 +56,7 @@ All visualizations now properly display the three-dimensional nature of the emot
 
 ## ⚠️ Trust and Anticipation Emotions
 
-**Status:** Trust and Anticipation are defined in the C++ codebase (`src/common/Types.h`) but are **not yet in the Python thesaurus** (`reference/python_kelly/core/emotion_thesaurus.py`).
+**Status:** Trust and Anticipation are defined in the C++ codebase (`src/common/Types.h`) but are **not yet in the Python thesaurus** (`reference/python_kelly/core/kelly.thesaurus.py`).
 
 **Current State:**
 - C++ version has Trust and Anticipation categories
@@ -64,7 +64,7 @@ All visualizations now properly display the three-dimensional nature of the emot
 - Visualizations are ready to display Trust and Anticipation once added to Python thesaurus
 
 **To Add Trust and Anticipation:**
-1. Update `EmotionCategory` enum in `emotion_thesaurus.py` to include `TRUST` and `ANTICIPATION`
+1. Update `EmotionCategory` enum in `kelly.thesaurus.py` to include `TRUST` and `ANTICIPATION`
 2. Add emotion nodes for these categories in the thesaurus
 3. Visualizations will automatically include them (colors already defined: Trust = #00CED1, Anticipation = #FF69B4)
 

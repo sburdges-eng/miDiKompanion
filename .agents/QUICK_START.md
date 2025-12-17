@@ -5,7 +5,7 @@
 ### Step 1: Choose Your Agent
 - **Agent 1 (Frontend):** Working on React UI
 - **Agent 2 (Audio):** Working on Rust/C++ backend
-- **Agent 3 (Music Brain):** Working on Python music generation
+- **Agent 3 (miDEE):** Working on Python music generation
 - **Agent 4 (DevOps):** Working on docs/build/tests
 
 ### Step 2: Read Current State
@@ -63,7 +63,7 @@ cat .agents/contexts/musicbrain_context.md
 
 # END SESSION
 git add .
-git commit -m "[Music Brain] Built FastAPI server with /generate endpoint"
+git commit -m "[miDEE] Built FastAPI server with /generate endpoint"
 git push origin main
 ./agent_handoff.sh musicbrain "Created API server, tested with Kelly song"
 vim .agents/handoffs/CURRENT_STATE.md  # update status

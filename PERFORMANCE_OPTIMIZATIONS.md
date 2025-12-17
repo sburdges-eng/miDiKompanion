@@ -18,8 +18,8 @@ This document describes performance optimizations applied to the iDAW codebase.
 - `harmony_tools.py` (line 361)
 - `python/penta_core/groove/polyrhythm.py` (lines 66, 72)
 - `python/penta_core/harmony/jazz_voicings.py` (line 346)
-- `music_brain/voice/modulator.py` (line 461)
-- `music_brain/arrangement/generator.py` (line 244)
+- `midee/voice/modulator.py` (line 461)
+- `midee/arrangement/generator.py` (line 244)
 
 **Example:**
 ```python

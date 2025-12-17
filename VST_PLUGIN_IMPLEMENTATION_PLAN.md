@@ -1,8 +1,8 @@
-# Music Brain VST/AU Plugin - Implementation Plan
+# miDEE VST/AU Plugin - Implementation Plan
 
 ## Overview
 
-Transform Music Brain into a DAW plugin (VST3/AU) for real-time MIDI groove transformation within Logic Pro, Ableton, FL Studio, etc.
+Transform miDEE into a DAW plugin (VST3/AU) for real-time MIDI groove transformation within Logic Pro, Ableton, FL Studio, etc.
 
 ---
 
@@ -29,7 +29,7 @@ Transform Music Brain into a DAW plugin (VST3/AU) for real-time MIDI groove tran
 **Pros:**
 - Keep existing Python codebase
 - Faster prototyping
-- Direct access to music_brain
+- Direct access to midee
 
 **Cons:**
 - Limited plugin framework support
@@ -39,7 +39,7 @@ Transform Music Brain into a DAW plugin (VST3/AU) for real-time MIDI groove tran
 ### Option 3: Hybrid (Python + C++ Wrapper)
 **Pros:**
 - Best of both worlds
-- Reuse music_brain logic
+- Reuse midee logic
 - Professional plugin interface
 
 **Cons:**
@@ -62,7 +62,7 @@ Transform Music Brain into a DAW plugin (VST3/AU) for real-time MIDI groove tran
 **Deliverable:** Empty plugin that receives/sends MIDI
 
 ### Phase 2: Python Integration
-**Goal:** Bridge JUCE C++ with music_brain Python
+**Goal:** Bridge JUCE C++ with midee Python
 
 **Options:**
 ```cpp
@@ -75,7 +75,7 @@ class MusicBrainProcessor {
 
     void initPython() {
         Py_Initialize();
-        pModule = PyImport_ImportModule("music_brain.groove");
+        pModule = PyImport_ImportModule("midee.groove");
         pGrooveEngine = PyObject_CallMethod(pModule, "Applicator", NULL);
     }
 
@@ -140,7 +140,7 @@ class MusicBrainProcessor {
 **Layout:**
 ```
 ┌─────────────────────────────────────────────┐
-│  Music Brain Groove Engine          v1.0.0  │
+│  miDEE Groove Engine          v1.0.0  │
 ├─────────────────────────────────────────────┤
 │                                               │
 │  Genre: [Rock ▼]          Intensity: ▓▓▓░░   │
@@ -188,7 +188,7 @@ public:
                      juce::MidiBuffer& midiMessages) override {
         // Process MIDI here
         for (const auto midi : midiMessages) {
-            // Transform using music_brain
+            // Transform using midee
         }
     }
 
@@ -210,7 +210,7 @@ public:
         PyRun_SimpleString("import sys");
         PyRun_SimpleString("sys.path.append('/Users/.../DAiW')");
 
-        PyObject* pModule = PyImport_ImportModule("music_brain.groove.applicator");
+        PyObject* pModule = PyImport_ImportModule("midee.groove.applicator");
         groove_applicator = PyObject_GetAttrString(pModule, "Applicator");
     }
 
@@ -329,7 +329,7 @@ For faster prototyping, create REAPER JS plugin first:
 
 ```javascript
 // music_brain_groove.jsfx
-desc:Music Brain Groove Engine
+desc:miDEE Groove Engine
 
 slider1:0<0,10,1{Rock,Jazz,HipHop,EDM}>Genre
 slider2:0.75<0,1,0.01>Intensity

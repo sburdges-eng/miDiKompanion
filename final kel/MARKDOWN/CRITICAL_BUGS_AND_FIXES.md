@@ -25,7 +25,7 @@ The WoundProcessor uses arbitrary IDs (10, 20, 30) but EmotionThesaurus starts a
 
 ### Python Solution (CORRECT)
 ```python
-# 1DAW1/music_brain/emotion_mapper.py
+# 1DAW1/midee/emotion_mapper.py
 BASE_EMOTIONS = {
     "joy": {"valence": 0.8, "arousal": 0.7, "category": "joy"},
     "sad": {"valence": -0.7, "arousal": 0.3, "category": "sadness"},
@@ -80,7 +80,7 @@ This path doesn't exist in the plugin bundle. Data files are never found.
 
 ### Python Solution (CORRECT)
 ```python
-# 1DAW1/music_brain/emotion_mapper.py
+# 1DAW1/midee/emotion_mapper.py
 import os
 from pathlib import Path
 
@@ -165,7 +165,7 @@ If two threads load thesaurus simultaneously, IDs collide.
 
 ### Python Solution (CORRECT)
 ```python
-# 1DAW1/music_brain/emotion_mapper.py
+# 1DAW1/midee/emotion_mapper.py
 class EmotionThesaurus:
     def __init__(self):
         self._next_id = 1  # Instance variable
@@ -263,7 +263,7 @@ private:
 
 ### Python Solution (CORRECT)
 ```python
-# 1DAW1/music_brain/api.py
+# 1DAW1/midee/api.py
 import asyncio
 from threading import Lock
 
@@ -320,7 +320,7 @@ if (valence < -0.5f) rootNote = 45;  // Magic threshold
 
 ### Python Solution (CORRECT)
 ```python
-# 1DAW1/music_brain/harmony.py
+# 1DAW1/midee/harmony.py
 # Named constants
 MIDI_C3 = 48
 MIDI_A2 = 45
@@ -380,7 +380,7 @@ The plugin generates MIDI data but never sends it to the DAW.
 
 ### Python Solution (Reference)
 ```python
-# 1DAW1/music_brain/daw/logic.py
+# 1DAW1/midee/daw/logic.py
 def export_to_logic(midi_data, output_path):
     track = mido.MidiTrack()
 
@@ -457,7 +457,7 @@ AudioProcessorValueTreeState exists but isn't connected to actual functionality.
 
 ### Python Solution (Reference)
 ```python
-# 1DAW1/music_brain/api.py
+# 1DAW1/midee/api.py
 class MusicBrainAPI:
     def __init__(self):
         self.parameters = {
@@ -547,19 +547,19 @@ PluginProcessor::createParameterLayout() {
 
 **Best Practice**: Port algorithms from Python to C++
 
-1. **Emotion Mapping**: `/Users/seanburdges/Desktop/1DAW1/music_brain/emotion_mapper.py`
+1. **Emotion Mapping**: `/Users/seanburdges/Desktop/1DAW1/midee/emotion_mapper.py`
    - Correct valence/arousal calculations
    - Proper emotion matching
 
-2. **Chord Generation**: `/Users/seanburdges/Desktop/1DAW1/music_brain/harmony.py`
+2. **Chord Generation**: `/Users/seanburdges/Desktop/1DAW1/midee/harmony.py`
    - Voice leading rules
    - Progression families
 
-3. **Groove Engine**: `/Users/seanburdges/Desktop/1DAW1/music_brain/groove/engine.py`
+3. **Groove Engine**: `/Users/seanburdges/Desktop/1DAW1/midee/groove/engine.py`
    - Humanization algorithms
    - Genre pocket maps
 
-4. **Intent Processing**: `/Users/seanburdges/Desktop/1DAW1/music_brain/session/intent_processor.py`
+4. **Intent Processing**: `/Users/seanburdges/Desktop/1DAW1/midee/session/intent_processor.py`
    - Three-phase workflow
    - Rule-breaking logic
 

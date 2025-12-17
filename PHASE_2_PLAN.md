@@ -326,9 +326,9 @@ analysis = prod_analyzer.analyze_reference("elliott_smith_waltz2.wav")
 ### **Complete Kelly Song Generation:**
 
 ```python
-from music_brain.audio import AudioAnalyzer
-from music_brain.arrangement import ArrangementGenerator
-from music_brain.composition import CompleteComposer
+from midee.audio import AudioAnalyzer
+from midee.arrangement import ArrangementGenerator
+from midee.composition import CompleteComposer
 
 # 1. Analyze reference tracks
 analyzer = AudioAnalyzer()
@@ -375,7 +375,7 @@ kelly_song = composer.compose_from_intent(
 
 ```
 DAiW-Music-Brain/
-├── music_brain/
+├── midee/
 │   ├── audio/                    # NEW - Phase 2
 │   │   ├── __init__.py
 │   │   ├── analyzer.py           # Core audio analysis
@@ -700,9 +700,9 @@ python -c "import aubio; print('✓ aubio ready')"
 ### **Step 2: Create Audio Module Skeleton (1 hour)**
 ```bash
 # Create directory structure
-mkdir -p DAiW-Music-Brain/music_brain/audio
-touch DAiW-Music-Brain/music_brain/audio/__init__.py
-touch DAiW-Music-Brain/music_brain/audio/analyzer.py
+mkdir -p DAiW-Music-Brain/midee/audio
+touch DAiW-Music-Brain/midee/audio/__init__.py
+touch DAiW-Music-Brain/midee/audio/analyzer.py
 ```
 
 ### **Step 3: Implement Basic Audio Analysis (3-4 hours)**

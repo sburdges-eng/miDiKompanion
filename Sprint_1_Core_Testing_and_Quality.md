@@ -17,7 +17,7 @@ Ensure all core modules have comprehensive test coverage and meet quality standa
 - [x] **CI/CD foundation** - Prepared for automated testing
 
 ### Module Testing
-- [x] **music_brain core** - Import and initialization tests (35/35 passing)
+- [x] **midee core** - Import and initialization tests (35/35 passing)
 - [x] **Groove module** - Template and application tests
 - [x] **Structure module** - Chord parsing and progression analysis tests
 - [x] **Session module** - Intent schema and teaching tests

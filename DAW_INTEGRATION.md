@@ -42,7 +42,7 @@ Real-time communication between DAiW and Logic Pro.
 
 2. Configure DAiW for OSC:
 ```python
-from music_brain.integration import LogicProOSC
+from midee.integration import LogicProOSC
 
 # Connect to Logic
 logic = LogicProOSC(host='localhost', port=9000)
@@ -189,7 +189,7 @@ cp -r ableton_remote_scripts/DAiW_Remote \
 **Usage:**
 ```python
 # From DAiW
-from music_brain.integration import AbletonRemote
+from midee.integration import AbletonRemote
 
 ableton = AbletonRemote()
 ableton.set_tempo(120)
@@ -206,7 +206,7 @@ Use virtual MIDI ports for real-time communication.
 # Audio MIDI Setup → MIDI Studio → IAC Driver → Device is online
 
 # Send from DAiW
-python -c "from music_brain.integration import send_midi_realtime; \
+python -c "from midee.integration import send_midi_realtime; \
            send_midi_realtime('IAC Driver Bus 1', progression)"
 ```
 
@@ -220,8 +220,8 @@ python -c "from music_brain.integration import send_midi_realtime; \
 
 **Example 1: Lo-Fi Hip-Hop Beat**
 ```python
-from music_brain.groove import GrooveApplicator
-from music_brain.session import process_intent
+from midee.groove import GrooveApplicator
+from midee.session import process_intent
 
 # Extract groove from reference
 extractor.extract_groove('reference_beat.mid', 'my_groove.json')
@@ -325,7 +325,7 @@ For older Pro Tools versions with ReWire support.
 **Film Scoring:**
 ```python
 # Generate emotional underscore
-from music_brain.session import CompleteSongIntent
+from midee.session import CompleteSongIntent
 
 intent = CompleteSongIntent(
     song_root={
@@ -436,7 +436,7 @@ Native Bitwig integration.
 **Modular Integration:**
 ```python
 # Generate modulation curves from emotional intent
-from music_brain.data.emotional_mapping import get_parameters_for_state
+from midee.data.emotional_mapping import get_parameters_for_state
 
 params = get_parameters_for_state(EmotionalState(
     valence=-0.8,

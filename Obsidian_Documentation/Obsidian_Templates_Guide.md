@@ -1,6 +1,6 @@
 # Obsidian Templates Guide
 
-Complete guide to creating and using templates in your Music Brain vault.
+Complete guide to creating and using templates in your miDEE vault.
 
 ---
 

@@ -78,7 +78,7 @@ for rec in comparison['recommendations']:
 
 ```python
 # Complete Kelly song generation
-from music_brain.composition import CompleteComposer
+from midee.composition import CompleteComposer
 
 composer = CompleteComposer()
 

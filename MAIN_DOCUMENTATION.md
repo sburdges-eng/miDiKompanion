@@ -1,4 +1,4 @@
-# DAiW Music Brain - Main Documentation
+# DAiW miDEE - Main Documentation
 ## Verified & Accurate as of 2025-11-28
 
 ---
@@ -88,7 +88,7 @@ Tests cover:
 
 ```
 DAiW-Music-Brain/
-├── music_brain/           # Core Python package
+├── midee/           # Core Python package
 │   ├── cli.py             # CLI interface (49KB)
 │   ├── groove/            # Groove extraction/application
 │   │   ├── extractor.py
@@ -254,9 +254,9 @@ pip install mido pyyaml numpy pytest
 pytest tests/test_basic.py -v
 
 # Use CLI
-python -m music_brain.cli --help
-python -m music_brain.cli diagnose "F-C-Am-Dm"
-python -m music_brain.cli generate --key F --mode major --pattern "I-V-vi-IV" -o output.mid
+python -m midee.cli --help
+python -m midee.cli diagnose "F-C-Am-Dm"
+python -m midee.cli generate --key F --mode major --pattern "I-V-vi-IV" -o output.mid
 
 # Run Streamlit UI
 pip install streamlit
@@ -300,9 +300,9 @@ streamlit run app.py
 
 ### Uncommitted Work
 - `daiw_mcp/` — MCP server for AI integration
-- `music_brain/realtime/` — Real-time engine
-- `music_brain/effects/` — Audio effects
-- `music_brain/harmony/` — Expanded harmony generation
+- `midee/realtime/` — Real-time engine
+- `midee/effects/` — Audio effects
+- `midee/harmony/` — Expanded harmony generation
 - Phase 2 documentation and summaries
 
 ---
@@ -310,7 +310,7 @@ streamlit run app.py
 ## Related Projects
 
 - **iDAW** — Streamlit-based UI with Ableton-style interface (separate app)
-- **Music Brain Vault** — Obsidian knowledge base (integrated in `/vault`)
+- **miDEE Vault** — Obsidian knowledge base (integrated in `/vault`)
 
 ---
 

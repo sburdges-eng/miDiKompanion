@@ -1,4 +1,4 @@
-# DAiW / Music Brain - Cleanup Summary
+# DAiW / miDEE - Cleanup Summary
 
 ## ✅ Cleanup Completed
 
@@ -6,13 +6,13 @@
 **Folders:**
 - `~/Desktop/DAiW copy/` - duplicate of main folder
 - `~/Desktop/DAiW_clean/` - older version (preserved data files first)
-- `~/Desktop/music_brain/` - standalone version (old structure)
-- `~/Desktop/DAiW/Music-Brain-Vault/music_brain/` - nested duplicate
+- `~/Desktop/midee/` - standalone version (old structure)
+- `~/Desktop/DAiW/Music-Brain-Vault/midee/` - nested duplicate
 
 **ZIP Archives:**
 - `DAiW copy.zip` (1.0M)
 - `DAiW_clean.zip` (345K)
-- `music_brain.zip` (45K)
+- `midee.zip` (45K)
 - `music_brain_all_packages.zip` x3 (22B each - empty)
 - `Music-Brain-Vault.zip` x7 (various versions)
 
@@ -35,7 +35,7 @@
 
 ```
 ~/Desktop/DAiW/
-├── music_brain/              # THE PACKAGE
+├── midee/              # THE PACKAGE
 │   ├── __init__.py
 │   ├── cli.py               # Full CLI with 14 commands
 │   ├── groove/              # Extraction, application, templates

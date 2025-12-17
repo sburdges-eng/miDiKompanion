@@ -7,7 +7,7 @@ Each template contains:
 - Common deviations for the genre
 """
 
-from music_brain.groove.extractor import GrooveTemplate
+from midee.groove.extractor import GrooveTemplate
 
 
 # Genre timing characteristics

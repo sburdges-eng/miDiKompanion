@@ -383,5 +383,5 @@ meme_to_theory:
 ---
 
 *Consolidated from: Gemini Research (Casual Music Sound Descriptions) + rule_breaking_masterpieces.md*
-*For iDAW Music Brain integration - November 2025*
+*For iDAW miDEE integration - November 2025*
 *"The audience doesn't hear 'borrowed from Dorian.' They hear 'that part made me cry.'"*

@@ -13,7 +13,7 @@
 - **Domain:** Rust, C++, Tauri, penta-core, audio processing
 - **Context:** `.agents/contexts/audio_context.md`
 
-### Agent 3: Music Brain Specialist (Claude)
+### Agent 3: miDEE Specialist (Claude)
 - **Primary:** Claude
 - **Domain:** Python, music generation, emotion system, MIDI
 - **Context:** `.agents/contexts/musicbrain_context.md`

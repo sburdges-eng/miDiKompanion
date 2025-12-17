@@ -1,12 +1,12 @@
-# DAiW Music Brain Project Architecture
+# DAiW miDEE Project Architecture
 
-A comprehensive project structure for the DAiW (Digital Audio Intelligence Workstation) Music Brain system - an AI-powered music composition and production assistant.
+A comprehensive project structure for the DAiW (Digital Audio Intelligence Workstation) miDEE system - an AI-powered music composition and production assistant.
 
 ---
 
 ## Project Overview
 
-The DAiW Music Brain is a modular AI system designed to:
+The DAiW miDEE is a modular AI system designed to:
 - Analyze and apply musical grooves and feel
 - Understand and generate emotional musical content
 - Integrate with major DAWs (Logic Pro, Ableton, Pro Tools, Reaper)
@@ -15,7 +15,7 @@ The DAiW Music Brain is a modular AI system designed to:
 
 ---
 
-## 🧠 Core Music Brain (1-15)
+## 🧠 Core miDEE (1-15)
 
 The heart of the system - groove analysis, structure understanding, and session processing.
 
@@ -143,7 +143,7 @@ MisdirectionModifier    # Create unexpected harmonic movements
 
 ## 🧩 DAW Integration Layer (26-35)
 
-Bridges between the Music Brain and professional DAW software.
+Bridges between the miDEE and professional DAW software.
 
 ### DAW Adapters
 

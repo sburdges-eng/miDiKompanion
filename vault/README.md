@@ -1,4 +1,4 @@
-# Music Brain Vault
+# miDEE Vault
 
 An Obsidian-compatible knowledge base for music production, songwriting, and creative theory.
 

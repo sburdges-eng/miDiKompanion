@@ -12,9 +12,9 @@ A Python package for music production analysis:
 __version__ = "0.2.0"
 __author__ = "Sean Burdges"
 
-from music_brain.groove import extract_groove, apply_groove, GrooveTemplate
-from music_brain.structure import analyze_chords, detect_sections, ChordProgression
-from music_brain.audio import analyze_feel, AudioFeatures
+from midee.groove import extract_groove, apply_groove, GrooveTemplate
+from midee.structure import analyze_chords, detect_sections, ChordProgression
+from midee.audio import analyze_feel, AudioFeatures
 
 __all__ = [
     # Groove

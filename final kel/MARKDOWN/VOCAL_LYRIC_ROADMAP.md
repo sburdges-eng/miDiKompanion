@@ -364,7 +364,7 @@ class VocalExpression:
 
 ### 9.1 Study Existing Python Code
 
-- [ ] Analyze existing `emotion_thesaurus.py` structure
+- [ ] Analyze existing `kelly.thesaurus.py` structure
 - [ ] Review `intent_processor.py` flow
 - [ ] Study `midi_generator.py` output format
 - [ ] Examine `groove_templates.py` patterns

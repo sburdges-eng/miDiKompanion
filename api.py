@@ -13,18 +13,18 @@ import os
 import numpy as np
 
 # Core imports
-from music_brain.audio import (
+from midee.audio import (
     AudioAnalyzer,
     AudioAnalysis,
     analyze_feel,
     AudioFeatures,
 )
-from music_brain.harmony import (
+from midee.harmony import (
     HarmonyGenerator,
     HarmonyResult,
     generate_midi_from_harmony,
 )
-from music_brain.groove import (
+from midee.groove import (
     extract_groove,
     apply_groove,
     GrooveTemplate,
@@ -34,28 +34,28 @@ from music_brain.groove import (
     list_presets,
     get_preset,
 )
-from music_brain.structure import (
+from midee.structure import (
     analyze_chords,
     detect_sections,
     ChordProgression,
 )
-from music_brain.structure.progression import (
+from midee.structure.progression import (
     diagnose_progression,
     generate_reharmonizations,
 )
-from music_brain.structure.comprehensive_engine import (
+from midee.structure.comprehensive_engine import (
     TherapySession,
     render_plan_to_midi,
     HarmonyPlan,
 )
-from music_brain.session.intent_schema import (
+from midee.session.intent_schema import (
     CompleteSongIntent,
     suggest_rule_break,
     validate_intent,
     list_all_rules,
 )
-from music_brain.session.intent_processor import process_intent
-from music_brain.voice import (
+from midee.session.intent_processor import process_intent
+from midee.voice import (
     AutoTuneProcessor,
     AutoTuneSettings,
     get_auto_tune_preset,

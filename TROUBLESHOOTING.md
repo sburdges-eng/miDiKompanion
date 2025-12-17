@@ -160,7 +160,7 @@ python -c "import mido; print(mido.get_input_names())"
 
 #### 7. Module Not Found After Installation
 
-**Symptom:** `ModuleNotFoundError: No module named 'music_brain'`
+**Symptom:** `ModuleNotFoundError: No module named 'midee'`
 
 **Solution:**
 ```powershell
@@ -428,7 +428,7 @@ Audio passthrough not supported - use CLI tools only
 export PYTHONOPTIMIZE=1
 
 # Or compile to bytecode
-python -m compileall music_brain/
+python -m compileall midee/
 ```
 
 #### High Memory Usage
@@ -451,7 +451,7 @@ os.environ['LIBROSA_CACHE_DIR'] = '/tmp'
 import logging
 logging.basicConfig(level=logging.DEBUG)
 
-from music_brain import *
+from midee import *
 ```
 
 #### Check Installation
@@ -493,8 +493,8 @@ print(f"Python: {sys.version}")
 print(f"Architecture: {platform.machine()}")
 
 try:
-    import music_brain
-    print(f"DAiW version: {music_brain.__version__}")
+    import midee
+    print(f"DAiW version: {midee.__version__}")
 except Exception as e:
     print(f"DAiW import error: {e}")
 

@@ -39,12 +39,12 @@ src/
 
 ## What You DON'T Touch
 - Rust/Tauri backend (src-tauri/) - Agent 2's domain
-- Python music generation (music_brain/) - Agent 3's domain
+- Python music generation (midee/) - Agent 3's domain
 - C++ audio engine (cpp_music_brain/, penta_core/) - Agent 2's domain
 
 ## Integration Points
 - **With Agent 2:** Tauri commands for backend communication
-- **With Agent 3:** HTTP calls to Python Music Brain API
+- **With Agent 3:** HTTP calls to Python miDEE API
 
 ## Design Philosophy
 - Ableton-inspired minimal dark UI
@@ -54,7 +54,7 @@ src/
 
 ## Current Priorities
 1. Complete Emotion Wheel with 6x6x6 node selection
-2. Wire up GhostWriter to Music Brain API
+2. Wire up GhostWriter to miDEE API
 3. Build functional Mixer with channel strips
 4. Implement Timeline with audio waveform rendering
 5. Add VU meters with real-time audio visualization

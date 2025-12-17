@@ -276,7 +276,7 @@ Same as VSCode - uses VSCode configuration system.
 
 ### Import Errors
 
-**Problem**: `ModuleNotFoundError: No module named 'music_brain'`
+**Problem**: `ModuleNotFoundError: No module named 'midee'`
 
 **Solution**:
 ```bash

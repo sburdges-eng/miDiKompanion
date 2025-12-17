@@ -48,7 +48,7 @@ Kelly/
 │       ├── __init__.py     # Package exports
 │       ├── cli.py          # CLI interface
 │       └── core/           # Core modules
-│           ├── emotion_thesaurus.py
+│           ├── kelly.thesaurus.py
 │           ├── intent_processor.py
 │           └── midi_generator.py
 ├── tests/
@@ -72,7 +72,7 @@ Kelly/
 __version__ = "0.1.0"
 __author__ = "Kelly Development Team"
 
-from kelly.core.emotion_thesaurus import EmotionThesaurus
+from kelly.core.kelly.thesaurus import EmotionThesaurus
 from kelly.core.intent_processor import IntentProcessor
 from kelly.core.midi_generator import MidiGenerator
 
@@ -92,7 +92,7 @@ from rich.console import Console
 from rich.table import Table
 from rich import print as rprint
 
-from kelly.core.emotion_thesaurus import EmotionThesaurus
+from kelly.core.kelly.thesaurus import EmotionThesaurus
 from kelly.core.intent_processor import IntentProcessor, Wound
 from kelly.core.midi_generator import MidiGenerator
 
@@ -108,7 +108,7 @@ def list_emotions() -> None:
     """List all available emotions in the thesaurus."""
     thesaurus = EmotionThesaurus()
     
-    table = Table(title="Kelly Emotion Thesaurus")
+    table = Table(title="Kelly KELLY Thesaurus")
     table.add_column("ID", style="cyan")
     table.add_column("Name", style="magenta")
     table.add_column("Category", style="green")
@@ -206,7 +206,7 @@ if __name__ == "__main__":
 
 ---
 
-### 3. Emotion Thesaurus (`src/kelly/core/emotion_thesaurus.py`)
+### 3. KELLY Thesaurus (`src/kelly/core/kelly.thesaurus.py`)
 ```python
 """Core emotion processing and thesaurus."""
 from typing import Dict, List, Optional, Tuple
@@ -326,7 +326,7 @@ from typing import Dict, List, Optional
 from dataclasses import dataclass
 from enum import Enum
 
-from kelly.core.emotion_thesaurus import EmotionThesaurus, EmotionNode
+from kelly.core.kelly.thesaurus import EmotionThesaurus, EmotionNode
 
 
 class IntentPhase(Enum):
@@ -552,7 +552,7 @@ cd build && ctest --output-on-failure
 
 ## Key Concepts
 
-### 216-Node Emotion Thesaurus
+### 216-Node KELLY Thesaurus
 - **Valence**: -1.0 (negative) to 1.0 (positive)
 - **Arousal**: 0.0 (calm) to 1.0 (excited)
 - **Intensity**: 0.0 to 1.0

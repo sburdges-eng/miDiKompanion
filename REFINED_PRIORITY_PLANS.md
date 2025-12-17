@@ -156,7 +156,7 @@ Priority: MEDIUM | Effort: 2-3 days | Impact: Pitch shifting quality
 | Groove Analysis | ~200 | 2,543 | **8%** | 🔴 HIGH |
 | Harmony Analysis | ~300 | 1,851 | **16%** | 🟡 MEDIUM |
 | DSP Module | 0 | 1,130 | **0%** | 🔴 HIGH |
-| Music Brain Core | ~12,000 | 15,000 | **77%** | ✅ Good |
+| miDEE Core | ~12,000 | 15,000 | **77%** | ✅ Good |
 | Penta-Core C++ | 1,815 | 3,120 | **58%** | 🟡 MEDIUM |
 
 ### Critical Gaps & Action Plan
@@ -287,7 +287,7 @@ Priority: MEDIUM | Effort: 3-4 days
 | pybind11 bindings | ✅ Complete | `bindings/*.cpp` - all 4 modules |
 | Python wrapper API | ✅ Complete | `python/penta_core/__init__.py` (326 lines) |
 | C++ PythonBridge | ✅ Complete | `iDAW_Core/include/PythonBridge.h` |
-| Bridge API | ✅ Complete | `music_brain/orchestrator/bridge_api.py` (678 lines) |
+| Bridge API | ✅ Complete | `midee/orchestrator/bridge_api.py` (678 lines) |
 | OSC communication | ✅ Complete | Documented in `vault/Production_Workflows/` |
 | Orchestrator pipeline | ✅ Complete | Intent → Harmony → Groove stages |
 | Error handling | ✅ Complete | Try-catch + fail-safe MIDI |
@@ -336,7 +336,7 @@ print(result)  # {'chord': 'Cmaj', 'scale': 'C major', ...}
 
 ## Bridge API (for JUCE plugins)
 ```python
-from music_brain.orchestrator.bridge_api import process_prompt
+from midee.orchestrator.bridge_api import process_prompt
 
 result = await process_prompt(
     text_prompt="melancholic piano ballad",
@@ -367,17 +367,17 @@ User Emotional Text → AffectAnalyzer → TherapySession → HarmonyPlan → MI
 
 | Component | Status | Location |
 |-----------|--------|----------|
-| Affect Analyzer | ✅ Complete | `music_brain/structure/comprehensive_engine.py` |
-| Therapy Session | ✅ Complete | `music_brain/structure/comprehensive_engine.py` |
+| Affect Analyzer | ✅ Complete | `midee/structure/comprehensive_engine.py` |
+| Therapy Session | ✅ Complete | `midee/structure/comprehensive_engine.py` |
 | Song Interrogator | ✅ Complete | `interrogator.py` (7 phases) |
-| Intent Schema | ✅ Complete | `music_brain/session/intent_schema.py` |
-| Rule-Breaking System | ✅ Complete | `music_brain/session/teaching.py` |
-| Emotion Thesaurus | ✅ Complete | `emotion_thesaurus.py` (6×6×6 taxonomy) |
+| Intent Schema | ✅ Complete | `midee/session/intent_schema.py` |
+| Rule-Breaking System | ✅ Complete | `midee/session/teaching.py` |
+| KELLY Thesaurus | ✅ Complete | `kelly.thesaurus.py` (6×6×6 taxonomy) |
 | MIDI Rendering | ✅ Complete | `render_plan_to_midi()` |
 | Streamlit UI | ✅ Complete | `app.py` |
 | MCP Tool | ✅ Complete | `therapy.py` → `daiw.therapy.session` |
-| Bridge API | ✅ Complete | `music_brain/orchestrator/bridge_api.py` |
-| Optional Ollama | ✅ Available | `music_brain/agents/unified_hub.py` |
+| Bridge API | ✅ Complete | `midee/orchestrator/bridge_api.py` |
+| Optional Ollama | ✅ Available | `midee/agents/unified_hub.py` |
 
 ### Remaining Enhancements (Optional)
 

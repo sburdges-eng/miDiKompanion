@@ -47,7 +47,7 @@ penta_core/                          # Core audio utilities
 - Tauri backend doesn't exist yet (YOU BUILD IT)
 - Need real-time audio pipeline
 - Need MIDI I/O
-- Need Python bridge for Music Brain
+- Need Python bridge for miDEE
 
 ## What You DON'T Touch
 - Frontend React code (src/) - Agent 1's domain
@@ -56,7 +56,7 @@ penta_core/                          # Core audio utilities
 
 ## Integration Points
 - **With Agent 1:** Tauri commands exposed to frontend
-- **With Agent 3:** Call Python Music Brain via PyO3 or HTTP
+- **With Agent 3:** Call Python miDEE via PyO3 or HTTP
 
 ## Technical Constraints
 - **Real-time audio:** No allocations in audio callback

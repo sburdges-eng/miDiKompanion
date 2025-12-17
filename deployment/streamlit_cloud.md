@@ -27,7 +27,7 @@ iDAW/
 ```python
 # streamlit_app.py
 import streamlit as st
-from music_brain import IntentSchema, HarmonyGenerator, GrooveApplicator
+from midee import IntentSchema, HarmonyGenerator, GrooveApplicator
 
 st.set_page_config(
     page_title="iDAW - Intelligent DAW",

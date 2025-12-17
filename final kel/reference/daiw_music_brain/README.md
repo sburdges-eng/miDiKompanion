@@ -10,7 +10,7 @@
 ## Overview
 
 DAiW (Digital Audio intelligent Workstation) combines:
-- **Music Brain** - Python analysis engine for MIDI/audio
+- **miDEE** - Python analysis engine for MIDI/audio
 - **Intent Schema** - Three-phase deep interrogation for songwriting
 - **Rule-Breaking Engine** - Intentional theory violations for emotional impact
 - **Vault** - Knowledge base of songwriting guides and theory references
@@ -72,13 +72,13 @@ daiw teach rulebreaking
 ### Python API
 
 ```python
-from music_brain.groove import extract_groove, apply_groove
-from music_brain.structure import analyze_chords
-from music_brain.session import (
+from midee.groove import extract_groove, apply_groove
+from midee.structure import analyze_chords
+from midee.session import (
     CompleteSongIntent, SongRoot, SongIntent, TechnicalConstraints,
     suggest_rule_break
 )
-from music_brain.session.intent_processor import process_intent
+from midee.session.intent_processor import process_intent
 
 # Create song intent
 intent = CompleteSongIntent(
@@ -155,7 +155,7 @@ print(result['harmony'].chords)  # ['F', 'C', 'Bbm', 'F']
 
 ```
 DAiW-Music-Brain/
-├── music_brain/              # Python analysis package
+├── midee/              # Python analysis package
 │   ├── groove/               # Groove extraction & application
 │   ├── structure/            # Chord, section, progression analysis
 │   ├── audio/                # Audio feel analysis

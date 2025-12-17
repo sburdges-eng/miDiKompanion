@@ -10,7 +10,7 @@ This document provides a comprehensive reference for renaming and reorganizing t
 
 ### Music Modules (to become miDEE)
 ```
-music_brain/                      → midee/
+midee/                      → midee/
 ├── __init__.py
 ├── cli.py
 ├── api.py
@@ -41,8 +41,8 @@ tests_music-brain/                → tests_midee/
 
 ### Emotion Modules (to become KELLY)
 ```
-emotion_thesaurus/                → kelly/thesaurus/
-├── emotion_thesaurus.py          → thesaurus.py
+kelly.thesaurus/                → kelly/thesaurus/
+├── kelly.thesaurus.py          → thesaurus.py
 ├── angry.json
 ├── sad.json
 ├── happy.json
@@ -52,7 +52,7 @@ emotion_thesaurus/                → kelly/thesaurus/
 ├── blends.json
 └── metadata.json
 
-music_brain/emotion_api.py        → kelly/emotion_api.py
+midee/emotion_api.py        → kelly/emotion_api.py
 emotional_mapping.py              → kelly/emotional_mapping.py
 auto_emotion_sampler.py           → kelly/emotion_sampler.py
 
@@ -85,7 +85,7 @@ mkdir -p docs_kelly
 
 | Current Path | New Path | Type |
 |-------------|----------|------|
-| `music_brain/` | `midee/` | Directory |
+| `midee/` | `midee/` | Directory |
 | `cpp_music_brain/` | `cpp_midee/` | Directory |
 | `penta_core_music-brain/` | `penta_core_midee/` | Directory |
 | `examples_music-brain/` | `examples_midee/` | Directory |
@@ -100,11 +100,11 @@ mkdir -p docs_kelly
 
 | Current Path | New Path | Type |
 |-------------|----------|------|
-| `emotion_thesaurus/` | `kelly/thesaurus/` | Directory |
-| `emotion_thesaurus/emotion_thesaurus.py` | `kelly/thesaurus/thesaurus.py` | File |
+| `kelly.thesaurus/` | `kelly/thesaurus/` | Directory |
+| `kelly.thesaurus/kelly.thesaurus.py` | `kelly/thesaurus/thesaurus.py` | File |
 | `emotional_mapping.py` | `kelly/emotional_mapping.py` | File |
 | `auto_emotion_sampler.py` | `kelly/emotion_sampler.py` | File |
-| `music_brain/emotion_api.py` | `kelly/emotion_api.py` | File |
+| `midee/emotion_api.py` | `kelly/emotion_api.py` | File |
 
 ### Phase 3: Import Statement Updates
 
@@ -113,10 +113,10 @@ mkdir -p docs_kelly
 Replace all occurrences:
 ```python
 # OLD
-from music_brain import ...
-from music_brain.groove import ...
-from music_brain.harmony import ...
-import music_brain
+from midee import ...
+from midee.groove import ...
+from midee.harmony import ...
+import midee
 
 # NEW
 from midee import ...
@@ -130,9 +130,9 @@ import midee
 Replace all occurrences:
 ```python
 # OLD
-from emotion_thesaurus import ...
+from kelly.thesaurus import ...
 from emotional_mapping import ...
-import emotion_thesaurus
+import kelly.thesaurus
 
 # NEW
 from kelly.thesaurus import ...
@@ -146,7 +146,7 @@ import kelly
 
 ```cpp
 // OLD
-namespace music_brain {
+namespace midee {
 namespace MusicBrain {
 
 // NEW
@@ -202,7 +202,7 @@ name = "kelly"
 
 ```cmake
 # OLD
-project(music_brain)
+project(midee)
 project(MusicBrain)
 
 # NEW
@@ -216,8 +216,8 @@ project(miDEE)
 
 ```python
 # OLD
-"""Music Brain - Emotion to music translation"""
-"""Emotion Thesaurus - 216-node emotion mapping"""
+"""miDEE - Emotion to music translation"""
+"""KELLY Thesaurus - 216-node emotion mapping"""
 
 # NEW
 """miDEE - Music generation and processing engine"""
@@ -228,7 +228,7 @@ project(miDEE)
 
 ```python
 # OLD
-logger.info("Music Brain initialized")
+logger.info("miDEE initialized")
 logger.info("Emotion thesaurus loaded")
 
 # NEW
@@ -242,7 +242,7 @@ logger.info("KELLY thesaurus loaded")
 
 ```python
 # OLD
-from music_brain.tests import ...
+from midee.tests import ...
 from tests_music-brain import ...
 
 # NEW
@@ -255,10 +255,10 @@ from tests_midee import ...
 #### README Files
 
 Update all references:
-- `music_brain` → `midee`
-- `Music Brain` → `miDEE`
-- `emotion_thesaurus` → `kelly.thesaurus`
-- `Emotion Thesaurus` → `KELLY`
+- `midee` → `midee`
+- `miDEE` → `miDEE`
+- `kelly.thesaurus` → `kelly.thesaurus`
+- `KELLY Thesaurus` → `KELLY`
 
 #### API Documentation
 
@@ -274,11 +274,11 @@ Update module names in:
 
 ```bash
 # Python module names
-music_brain → midee
-emotion_thesaurus → kelly.thesaurus
+midee → midee
+kelly.thesaurus → kelly.thesaurus
 
 # C++ namespaces
-namespace music_brain → namespace midee
+namespace midee → namespace midee
 namespace MusicBrain → namespace miDEE
 
 # Include guards
@@ -290,9 +290,9 @@ EMOTION_THESAURUS_ → KELLY_THESAURUS_
 
 ```bash
 # Documentation and comments
-"Music Brain" → "miDEE"
+"miDEE" → "miDEE"
 "music brain" → "miDEE"
-"Emotion Thesaurus" → "KELLY"
+"KELLY Thesaurus" → "KELLY"
 "emotion thesaurus" → "KELLY"
 ```
 
@@ -300,14 +300,14 @@ EMOTION_THESAURUS_ → KELLY_THESAURUS_
 
 ```regex
 # Python imports
-from music_brain\.(\w+) → from midee.\1
-from emotion_thesaurus → from kelly.thesaurus
+from midee\.(\w+) → from midee.\1
+from kelly.thesaurus → from kelly.thesaurus
 
 # Include statements
-#include "music_brain/(\w+)" → #include "midee/\1"
+#include "midee/(\w+)" → #include "midee/\1"
 
 # CMake targets
-target_link_libraries.*music_brain → target_link_libraries.*midee
+target_link_libraries.*midee → target_link_libraries.*midee
 ```
 
 ## Versioning Reset
@@ -372,7 +372,7 @@ kelly = ["kelly>=1.0.0"]
 
 ### Old Commands
 ```bash
-# Music Brain
+# miDEE
 daiw extract drums.mid
 daiw apply --genre funk track.mid
 daiw analyze --chords song.mid
@@ -481,7 +481,7 @@ miDiKompanion/
 # rename_directories.sh
 
 # Music → miDEE
-mv music_brain midee
+mv midee midee
 mv cpp_music_brain cpp_midee
 mv penta_core_music-brain penta_core_midee
 mv examples_music-brain examples_midee
@@ -490,7 +490,7 @@ mv tests_music-brain tests_midee
 
 # Emotion → KELLY
 mkdir -p kelly/thesaurus
-mv emotion_thesaurus/* kelly/thesaurus/
+mv kelly.thesaurus/* kelly/thesaurus/
 mv emotional_mapping.py kelly/
 mv auto_emotion_sampler.py kelly/emotion_sampler.py
 ```
@@ -510,13 +510,13 @@ def update_file_imports(filepath):
     with open(filepath, 'r') as f:
         content = f.read()
     
-    # Update music_brain → midee
-    content = re.sub(r'from music_brain', 'from midee', content)
-    content = re.sub(r'import music_brain', 'import midee', content)
+    # Update midee → midee
+    content = re.sub(r'from midee', 'from midee', content)
+    content = re.sub(r'import midee', 'import midee', content)
     
-    # Update emotion_thesaurus → kelly.thesaurus
-    content = re.sub(r'from emotion_thesaurus', 'from kelly.thesaurus', content)
-    content = re.sub(r'import emotion_thesaurus', 'import kelly.thesaurus', content)
+    # Update kelly.thesaurus → kelly.thesaurus
+    content = re.sub(r'from kelly.thesaurus', 'from kelly.thesaurus', content)
+    content = re.sub(r'import kelly.thesaurus', 'import kelly.thesaurus', content)
     
     with open(filepath, 'w') as f:
         f.write(content)

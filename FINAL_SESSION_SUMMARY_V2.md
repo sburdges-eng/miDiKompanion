@@ -303,14 +303,14 @@ python /mnt/user-data/outputs/kelly_song_example.py
 ### **Option B: Integrate Into Repo (30 min)**
 ```bash
 # Copy core modules
-cp harmony_generator.py DAiW-Music-Brain/music_brain/harmony/generator.py
-cp chord_diagnostics.py DAiW-Music-Brain/music_brain/structure/diagnostics.py
-cp groove_extractor.py DAiW-Music-Brain/music_brain/groove/extractor.py
-cp groove_applicator.py DAiW-Music-Brain/music_brain/groove/applicator.py
+cp harmony_generator.py DAiW-Music-Brain/midee/harmony/generator.py
+cp chord_diagnostics.py DAiW-Music-Brain/midee/structure/diagnostics.py
+cp groove_extractor.py DAiW-Music-Brain/midee/groove/extractor.py
+cp groove_applicator.py DAiW-Music-Brain/midee/groove/applicator.py
 
 # Copy data
-cp rule_breaks.json DAiW-Music-Brain/music_brain/data/
-cp -r groove_templates/ DAiW-Music-Brain/music_brain/data/
+cp rule_breaks.json DAiW-Music-Brain/midee/data/
+cp -r groove_templates/ DAiW-Music-Brain/midee/data/
 
 # Update __init__.py files (see INTEGRATION_GUIDE.md)
 # Add CLI commands (examples provided)

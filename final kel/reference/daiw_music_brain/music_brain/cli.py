@@ -24,24 +24,24 @@ from typing import Optional
 
 # Lazy imports to speed up CLI startup
 def get_groove_module():
-    from music_brain.groove import extract_groove, apply_groove
+    from midee.groove import extract_groove, apply_groove
     return extract_groove, apply_groove
 
 def get_structure_module():
-    from music_brain.structure import analyze_chords, detect_sections
+    from midee.structure import analyze_chords, detect_sections
     return analyze_chords, detect_sections
 
 def get_session_module():
-    from music_brain.session import RuleBreakingTeacher
+    from midee.session import RuleBreakingTeacher
     return RuleBreakingTeacher
 
 
 def get_intent_module():
-    from music_brain.session.intent_schema import (
+    from midee.session.intent_schema import (
         CompleteSongIntent, SongRoot, SongIntent, TechnicalConstraints, 
         SystemDirective, suggest_rule_break, validate_intent, list_all_rules
     )
-    from music_brain.session.intent_processor import IntentProcessor, process_intent
+    from midee.session.intent_processor import IntentProcessor, process_intent
     return (CompleteSongIntent, SongRoot, SongIntent, TechnicalConstraints,
             SystemDirective, suggest_rule_break, validate_intent, list_all_rules,
             IntentProcessor, process_intent)
@@ -127,7 +127,7 @@ def cmd_analyze(args):
 
 def cmd_diagnose(args):
     """Diagnose issues in a chord progression string."""
-    from music_brain.structure.progression import diagnose_progression
+    from midee.structure.progression import diagnose_progression
     
     progression = args.progression
     print(f"Diagnosing: {progression}")
@@ -155,7 +155,7 @@ def cmd_diagnose(args):
 
 def cmd_reharm(args):
     """Generate reharmonization suggestions."""
-    from music_brain.structure.progression import generate_reharmonizations
+    from midee.structure.progression import generate_reharmonizations
     
     progression = args.progression
     style = args.style or "jazz"

@@ -1,4 +1,4 @@
-# 🎵 Music Brain Dashboard
+# 🎵 miDEE Dashboard
 
 > Your command center for music production.
 

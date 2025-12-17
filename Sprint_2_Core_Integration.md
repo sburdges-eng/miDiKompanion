@@ -7,7 +7,7 @@ Sprint 2 focuses on integrating all core modules into a cohesive system with pro
 ✅ **Complete** - 100%
 
 ## Objectives
-Ensure all music_brain modules work together seamlessly through the orchestrator and API layers.
+Ensure all midee modules work together seamlessly through the orchestrator and API layers.
 
 ## Completed Tasks
 
@@ -56,9 +56,9 @@ Ensure all music_brain modules work together seamlessly through the orchestrator
 - [x] CLI commands execute properly
 
 ## Related Files
-- [music_brain/orchestrator/](music_brain/orchestrator/) - Orchestration layer
-- [music_brain/api.py](music_brain/api.py) - REST API implementation
-- [music_brain/cli.py](music_brain/cli.py) - Command-line interface
+- [midee/orchestrator/](midee/orchestrator/) - Orchestration layer
+- [midee/api.py](midee/api.py) - REST API implementation
+- [midee/cli.py](midee/cli.py) - Command-line interface
 - [BridgeClient.cpp](BridgeClient.cpp) - C++ bridge implementation
 
 ## Notes

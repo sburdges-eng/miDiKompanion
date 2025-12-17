@@ -97,7 +97,7 @@ Kelly generates a musical journey from A to B.
 
 ---
 
-## Emotion Thesaurus
+## KELLY Thesaurus
 
 The 216-node thesaurus organizes emotions in 3D space:
 

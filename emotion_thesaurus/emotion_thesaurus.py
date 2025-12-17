@@ -7,7 +7,7 @@ This module provides loading and querying capabilities for the emotion thesaurus
 JSON data files, designed to integrate with the DAiW-Music-Brain interrogation system.
 
 Usage:
-    from emotion_thesaurus import EmotionThesaurus
+    from kelly.thesaurus import EmotionThesaurus
     
     thesaurus = EmotionThesaurus()
     

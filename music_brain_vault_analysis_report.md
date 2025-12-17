@@ -1,18 +1,18 @@
-# Music Brain Vault - Complete Code Analysis Report
+# miDEE Vault - Complete Code Analysis Report
 
 ## Executive Summary
-After extracting and analyzing multiple versions of the Music Brain Vault codebase across 9 ZIP files, I've performed a line-by-line analysis to identify missing components, broken functionality, and implementation issues. The codebase shows evidence of iterative development with some issues addressed but many still remaining.
+After extracting and analyzing multiple versions of the miDEE Vault codebase across 9 ZIP files, I've performed a line-by-line analysis to identify missing components, broken functionality, and implementation issues. The codebase shows evidence of iterative development with some issues addressed but many still remaining.
 
 ## File Structure Analysis
 
 ### Extracted Archives
 1. **Archive_2.zip** - Contains nested ZIPs (9f130d2e-3ee4-418d-b8cf-d64750c1e9a0.zip, files(10).zip)
 2. **Music-Brain-Vault__3-6_.zip** - Progressive versions of the vault
-3. **files.zip, files__9-12_.zip** - Contains both Music-Brain-Vault.zip and music_brain.zip nested files
+3. **files.zip, files__9-12_.zip** - Contains both Music-Brain-Vault.zip and midee.zip nested files
 4. **files__10_/** - Contains code_review.md identifying 15 critical issues
 
 ### Primary Code Locations
-- `/music_brain/` - Core library code
+- `/midee/` - Core library code
 - `/Music-Brain-Vault/` - Documentation and extended system
 - `/AI-System/` - AI-related components
 
@@ -216,22 +216,22 @@ confidence = min(1.0, score / 5.0)  # Why 5.0?
 
 ## File-Specific Issues
 
-### `/music_brain/groove/genre_templates.py`
+### `/midee/groove/genre_templates.py`
 - Line 123-602: Templates defined but not all validated
 - Missing: Latin, Afrobeat detailed patterns
 - Issue: Hardcoded grid=16 everywhere
 
-### `/music_brain/audio/feel.py`
+### `/midee/audio/feel.py`
 - Line 250: No file type validation
 - Line 316: Tempo array not handled (librosa update)
 - Line 689-690: BPM could be array, needs [0] index
 
-### `/music_brain/structure/chord.py`
+### `/midee/structure/chord.py`
 - Line 85-99: Should validate exclude_drums parameter
 - Line 149-198: _detect_chord needs optimization (O(n²))
 - Missing: Chord inversion detection
 
-### `/music_brain/structure/progression.py`
+### `/midee/structure/progression.py`
 - Line 76-89: Auto key detection not implemented
 - Line 117-130: Transposition search inefficient
 - Missing: Modulation detection

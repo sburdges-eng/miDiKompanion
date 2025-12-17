@@ -198,13 +198,13 @@ pip install -e .
 ### Documentation
 - [Main README](README.md)
 - [Penta Core README](README_penta-core.md)
-- [Music Brain README](README_music-brain.md)
+- [miDEE README](README_music-brain.md)
 - [Merge Summary](MERGE_SUMMARY.md)
 - [Integration Guide](INTEGRATION_GUIDE.md)
 
 ### Roadmaps
 - [Penta Core Roadmap](ROADMAP_penta-core.md)
-- [Music Brain Development Roadmap](DEVELOPMENT_ROADMAP_music-brain.md)
+- [miDEE Development Roadmap](DEVELOPMENT_ROADMAP_music-brain.md)
 
 ### Contact
 - GitHub Issues: https://github.com/sburdges-eng/iDAW/issues

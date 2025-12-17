@@ -11,7 +11,7 @@ This document summarizes the integration of useful files from the recent upload 
 **Total Files Integrated:** 16 files
 **Categories:** Python modules, data files, documentation, production guides
 
-All files have been successfully integrated into the appropriate locations within the music_brain ecosystem and verified to be functional.
+All files have been successfully integrated into the appropriate locations within the midee ecosystem and verified to be functional.
 
 ---
 
@@ -19,7 +19,7 @@ All files have been successfully integrated into the appropriate locations withi
 
 ### 1. Python Modules (2 files)
 
-#### music_brain/harmony.py
+#### midee/harmony.py
 - **Source:** harmony_generator.py (root)
 - **Purpose:** Harmony generation and MIDI output
 - **Exports:** `HarmonyGenerator`, `HarmonyResult`, `generate_midi_from_harmony`
@@ -30,7 +30,7 @@ All files have been successfully integrated into the appropriate locations withi
   - MIDI export functionality
   - Rule-breaking integration (modal interchange, etc.)
 
-#### music_brain/data/emotional_mapping.py
+#### midee/data/emotional_mapping.py
 - **Source:** emotional_mapping.py (root)
 - **Purpose:** Emotion-to-musical parameter mapping
 - **Exports:** `EmotionalState`, `Valence`, `Arousal`, `TimingFeel`, `Mode`, etc.
@@ -43,7 +43,7 @@ All files have been successfully integrated into the appropriate locations withi
 
 ### 2. Data Files (3 files)
 
-#### music_brain/data/chord_progression_families.json
+#### midee/data/chord_progression_families.json
 - **Size:** 8,347 bytes
 - **Contents:** 349 lines of comprehensive chord progressions
 - **Features:**
@@ -52,7 +52,7 @@ All files have been successfully integrated into the appropriate locations withi
   - Real song examples
   - Roman numeral and scale degree notation
 
-#### music_brain/data/rule_breaking_database.json
+#### midee/data/rule_breaking_database.json
 - **Size:** 19,120 bytes
 - **Contents:** Masterpiece rule-breaking examples
 - **Features:**
@@ -61,7 +61,7 @@ All files have been successfully integrated into the appropriate locations withi
   - Categorized by rule type (harmonic, rhythmic, etc.)
   - Implementation guidance
 
-#### music_brain/data/vernacular_database.json
+#### midee/data/vernacular_database.json
 - **Size:** 13,246 bytes
 - **Contents:** Casual music language to technical translation
 - **Features:**
@@ -109,11 +109,11 @@ All added to `vault/Production_Guides/`:
 
 ## Code Changes
 
-### music_brain/__init__.py
+### midee/__init__.py
 Updated to export new harmony module:
 
 ```python
-from music_brain.harmony import HarmonyGenerator, HarmonyResult, generate_midi_from_harmony
+from midee.harmony import HarmonyGenerator, HarmonyResult, generate_midi_from_harmony
 ```
 
 Added to `__all__` list:
@@ -173,11 +173,11 @@ Timing feel: TimingFeel.BEHIND
 The following files were identified but NOT integrated (reasons noted):
 
 ### Duplicate Directories
-- `DAiW-Music-Brain/` - Identical to current music_brain
-- `DAiW-Music-Brain 2/` - Identical to current music_brain
+- `DAiW-Music-Brain/` - Identical to current midee
+- `DAiW-Music-Brain 2/` - Identical to current midee
 
 ### API File
-- `api.py` - Copied to music_brain/api.py but requires updates to match current audio module structure (imports AudioAnalyzer which doesn't exist)
+- `api.py` - Copied to midee/api.py but requires updates to match current audio module structure (imports AudioAnalyzer which doesn't exist)
 
 ### MCP Tool Files
 - `teaching_tools.py` - MCP server tools (optional integration)
@@ -186,14 +186,14 @@ The following files were identified but NOT integrated (reasons noted):
 - `groove_tools.py` - MCP server tools (optional integration)
 - `audio_tools.py` - MCP server tools (optional integration)
 
-These could be integrated into a `music_brain/mcp/` directory in the future if needed.
+These could be integrated into a `midee/mcp/` directory in the future if needed.
 
 ---
 
 ## Next Steps (Optional)
 
 1. **Clean up duplicates:** Remove or archive `DAiW-Music-Brain/` and `DAiW-Music-Brain 2/` directories
-2. **MCP Integration:** Consider creating `music_brain/mcp/` for MCP server tool files
+2. **MCP Integration:** Consider creating `midee/mcp/` for MCP server tool files
 3. **Fix api.py:** Update audio module to provide AudioAnalyzer class or update api.py imports
 4. **Testing:** Add unit tests for new harmony generation functionality
 5. **Documentation:** Create usage examples for HarmonyGenerator in examples/
@@ -204,7 +204,7 @@ These could be integrated into a `music_brain/mcp/` directory in the future if n
 
 ✅ **Status:** Integration Complete and Verified
 
-All useful files from the upload have been successfully integrated into the appropriate locations within the iDAW repository structure. The music_brain package now includes:
+All useful files from the upload have been successfully integrated into the appropriate locations within the iDAW repository structure. The midee package now includes:
 
 - Complete harmony generation system
 - Emotional-to-musical parameter mapping

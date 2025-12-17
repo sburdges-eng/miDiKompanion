@@ -228,7 +228,7 @@ python3 -m pygame.examples.midi --input \
 
 ## Integration Points
 
-### DAiW Music Brain
+### DAiW miDEE
 
 The MVP test includes integration hooks for:
 - TherapySession (emotion → music)

@@ -1,17 +1,17 @@
-# Music Brain Agent Context
+# miDEE Agent Context
 
 ## Your Role
-You are the Music Brain Specialist for the Kelly Project. You own the Python music generation engine, emotion-to-music mapping, and all music theory algorithms.
+You are the miDEE Specialist for the Kelly Project. You own the Python music generation engine, emotion-to-music mapping, and all music theory algorithms.
 
 ## Tech Stack You Own
 - **Language:** Python 3.9+
 - **Music:** mido (MIDI), pretty_midi
-- **Data:** JSON databases (emotion_thesaurus, scales, chords)
+- **Data:** JSON databases (kelly.thesaurus, scales, chords)
 - **API:** FastAPI or Flask (if building API server)
 
 ## Key Files You Work With
 ```
-music_brain/                         # Core music generation
+midee/                         # Core music generation
 ├── __init__.py
 ├── api.py                           # API for frontend/backend
 ├── session/
@@ -33,7 +33,7 @@ music_brain/                         # Core music generation
     ├── emotional_mapping.py
     └── song_intent_schema.yaml
 
-emotion_thesaurus/                   # 6x6x6 emotion system
+kelly.thesaurus/                   # 6x6x6 emotion system
 ├── angry.json
 ├── disgust.json
 ├── fear.json
@@ -75,10 +75,10 @@ vault/
 - **Imperfection = Authenticity:** Voice cracks, timing irregularities are features
 
 ## Current Priorities
-1. Build FastAPI server (music_brain/api.py)
+1. Build FastAPI server (midee/api.py)
 2. Create endpoint: `/generate` - takes emotional intent, returns MIDI
 3. Create endpoint: `/interrogate` - conversational music creation
-4. Integrate emotion_thesaurus into intent processing
+4. Integrate kelly.thesaurus into intent processing
 5. Test with Kelly song ("When I Found You Sleeping")
 
 ## Canonical Test Case: Kelly Song

@@ -105,13 +105,13 @@ Implement audio analysis and advanced MIDI generation capabilities to support co
 
 ## Implementation Summary
 
-### Audio Analysis Module (`music_brain/audio/`)
+### Audio Analysis Module (`midee/audio/`)
 - **chord_detection.py**: Chromagram-based chord detection with template matching
 - **frequency_analysis.py**: 8-band frequency analysis with production notes
 - **feel.py**: Tempo, beat, and groove analysis (pre-existing, enhanced)
 - **reference_dna.py**: Reference track analysis (pre-existing)
 
-### Arrangement Module (`music_brain/arrangement/`)
+### Arrangement Module (`midee/arrangement/`)
 - **templates.py**: Genre-specific section templates (pop, rock, EDM, lo-fi, indie)
 - **energy_arc.py**: 7 narrative arc types for emotional progression
 - **bass_generator.py**: 6 bass patterns (root, fifth, walking, pedal, funk, etc.)
@@ -132,7 +132,7 @@ Implement audio analysis and advanced MIDI generation capabilities to support co
 
 ## Related Documentation
 - [PROJECT_ROADMAP.md](PROJECT_ROADMAP.md) - Phase 2: Audio Engine
-- [music_brain/audio/](music_brain/audio/) - Audio analysis modules
+- [midee/audio/](midee/audio/) - Audio analysis modules
 - [examples_music-brain/](examples_music-brain/) - Example implementations
 
 ## Notes

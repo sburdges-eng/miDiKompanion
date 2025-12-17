@@ -21,7 +21,7 @@ setup(
     url="https://github.com/yourusername/DAiW-Music-Brain",
     packages=find_packages(exclude=["tests", "tests.*", "examples", "vault"]),
     package_data={
-        "music_brain": ["data/*.json"],
+        "midee": ["data/*.json"],
     },
     include_package_data=True,
     python_requires=">=3.9",
@@ -51,7 +51,7 @@ setup(
     },
     entry_points={
         "console_scripts": [
-            "daiw=music_brain.cli:main",
+            "daiw=midee.cli:main",
         ],
     },
     classifiers=[

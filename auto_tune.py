@@ -17,8 +17,8 @@ except ImportError:  # pragma: no cover - handled at runtime
     librosa = None
     sf = None
 
-from music_brain.audio import AudioAnalyzer
-from music_brain.voice.presets import AUTO_TUNE_PRESETS
+from midee.audio import AudioAnalyzer
+from midee.voice.presets import AUTO_TUNE_PRESETS
 
 SCALE_PATTERNS = {
     "major": [0, 2, 4, 5, 7, 9, 11],

@@ -29,7 +29,7 @@ Transform iDAW from a plugin suite and music intelligence toolkit into a **compl
 │  └─────────────┘  └─────────────┘  └─────────────────────────┘  │
 ├─────────────────────────────────────────────────────────────────┤
 │  ┌─────────────┐  ┌─────────────┐  ┌─────────────────────────┐  │
-│  │ Audio Engine│  │ MIDI Engine │  │   Music Brain (AI)      │  │
+│  │ Audio Engine│  │ MIDI Engine │  │   miDEE (AI)      │  │
 │  │  (RT Core)  │  │             │  │   Intent-Driven Tools   │  │
 │  └─────────────┘  └─────────────┘  └─────────────────────────┘  │
 ├─────────────────────────────────────────────────────────────────┤
@@ -50,7 +50,7 @@ Transform iDAW from a plugin suite and music intelligence toolkit into a **compl
 | Phase 4 | Plugin Hosting | 🔴 Not Started | Extensibility |
 | Phase 5 | User Interface | 🔴 Not Started | Interaction |
 | Phase 6 | MIDI Implementation | 🔴 Not Started | Composition |
-| Phase 7 | AI Integration | 🟡 Partial (Music Brain exists) | Intelligence |
+| Phase 7 | AI Integration | 🟡 Partial (miDEE exists) | Intelligence |
 | Phase 8 | File I/O & Export | 🔴 Not Started | Delivery |
 | Phase 9 | Polish & Release | 🔴 Not Started | Production |
 
@@ -362,12 +362,12 @@ Integrate existing iDAW_Core plugins as built-in effects:
 | CC editing | Control change automation | Pending |
 | Pitch bend editing | Pitch wheel data | Pending |
 
-### 6.3 Music Brain MIDI Integration
+### 6.3 miDEE MIDI Integration
 **Priority**: HIGH
 
-Leverage existing Music Brain capabilities:
+Leverage existing miDEE capabilities:
 
-| Feature | Music Brain Module | Status |
+| Feature | miDEE Module | Status |
 |---------|-------------------|--------|
 | Groove extraction | `groove/` | ✅ Available |
 | Groove application | `groove/templates.py` | ✅ Available |
@@ -383,11 +383,11 @@ Leverage existing Music Brain capabilities:
 ### 7.1 Intent-Driven Composition
 **Priority**: HIGH
 
-Integrate existing Music Brain intent system:
+Integrate existing miDEE intent system:
 
 | Feature | Status | Location |
 |---------|--------|----------|
-| Intent Schema (3-phase) | ✅ Complete | `music_brain/session/` |
+| Intent Schema (3-phase) | ✅ Complete | `midee/session/` |
 | Affect Analyzer | ✅ Complete | `comprehensive_engine.py` |
 | Song Interrogator | ✅ Complete | `interrogator.py` |
 | Rule-Breaking System | ✅ Complete | `teaching.py` |
@@ -633,7 +633,7 @@ iDAW_Core/
 - RT-safe memory patterns
 - SIMD optimization templates
 
-### From Music Brain
+### From miDEE
 - Intent schema system
 - Affect analyzer
 - Song interrogator

@@ -188,7 +188,7 @@ def export_to_logic(
     if not MIDO_AVAILABLE:
         raise ImportError("mido package required")
     
-    from music_brain.utils.ppq import normalize_ppq as norm_ppq
+    from midee.utils.ppq import normalize_ppq as norm_ppq
     
     midi_path = Path(midi_path)
     mid = mido.MidiFile(str(midi_path))
@@ -238,7 +238,7 @@ def import_from_logic(midi_path: str) -> LogicProject:
     if not MIDO_AVAILABLE:
         raise ImportError("mido package required")
     
-    from music_brain.utils.midi_io import get_midi_info, extract_notes
+    from midee.utils.midi_io import get_midi_info, extract_notes
     
     midi_path = Path(midi_path)
     mid = mido.MidiFile(str(midi_path))

@@ -1,4 +1,4 @@
-# 🎵 Music Brain
+# 🎵 miDEE
 
 **Your Personal Music Production Knowledge Base, AI Assistant & Groove Tools**
 

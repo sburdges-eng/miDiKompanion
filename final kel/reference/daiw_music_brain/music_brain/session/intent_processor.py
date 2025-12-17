@@ -15,7 +15,7 @@ from typing import List, Dict, Optional, Tuple
 from dataclasses import dataclass, field
 import random
 
-from music_brain.session.intent_schema import (
+from midee.session.intent_schema import (
     CompleteSongIntent,
     HarmonyRuleBreak,
     RhythmRuleBreak,

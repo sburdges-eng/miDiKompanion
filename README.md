@@ -1,18 +1,29 @@
-# Kelly - Therapeutic iDAW
+# miDiKompanion - Therapeutic iDAW
 
-**Kelly** is a therapeutic interactive Digital Audio Workstation (iDAW) that translates emotions into music.
+**miDiKompanion** is a therapeutic interactive Digital Audio Workstation (iDAW) powered by **miDEE** (music generation) and **KELLY** (emotion understanding).
 
 ## Overview
 
-Kelly helps users express and process emotions through music generation, using a unique three-phase intent system:
+miDiKompanion helps users express and process emotions through music generation, using a unique three-phase intent system:
 
-1. **Wound** → Identify the emotional trigger
-2. **Emotion** → Map to the 216-node emotion thesaurus
-3. **Rule-breaks** → Express through intentional musical violations
+1. **Wound** → Identify the emotional trigger (KELLY)
+2. **Emotion** → Map to the 216-node emotion thesaurus (KELLY)
+3. **Music** → Generate through intentional musical expression (miDEE)
 
 ## Architecture
 
-### Brain (Python 3.11)
+### miDEE - Music Generation Engine (Python 3.11)
+- **Harmony Generation**: Chord progressions and voice leading
+- **Groove Engine**: Rhythmic patterns and humanization
+- **Structure Analysis**: Section detection and arrangement
+- **MIDI Processing**: Real-time MIDI generation and manipulation
+
+### KELLY - Emotion Understanding System (Python 3.11)
+- **216-Node Thesaurus**: Comprehensive emotion taxonomy
+- **Emotional Mapping**: Emotion → musical parameter translation
+- **Affect Analysis**: Real-time emotional state processing
+
+### Core Technologies
 - **music21**: Music theory and analysis
 - **librosa**: Audio analysis
 - **mido**: MIDI processing
@@ -48,7 +59,7 @@ Kelly helps users express and process emotions through music generation, using a
 
 ## Features
 
-- **216-node Emotion Thesaurus**: Comprehensive emotional mapping system
+- **216-node KELLY Thesaurus**: Comprehensive emotional mapping system
 - **Groove Templates**: Rhythmic patterns for different emotional expressions
 - **Chord Diagnostics**: Analyze and generate emotionally-appropriate harmonies
 - **MIDI Pipeline**: Real-time MIDI generation based on emotional state

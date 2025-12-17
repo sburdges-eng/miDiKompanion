@@ -1,6 +1,6 @@
 # Dataview Queries Reference
 
-Copy-paste ready queries for your Music Brain vault.
+Copy-paste ready queries for your miDEE vault.
 
 ---
 

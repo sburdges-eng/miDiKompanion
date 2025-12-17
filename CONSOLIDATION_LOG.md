@@ -24,7 +24,7 @@ This repository consolidates 5 separate Kelly Project repositories into one unif
 ### Extracted Features
 
 #### From DAiW-Music-Brain:
-- ✅ **emotion_thesaurus/** - 6×6×6 emotion node system (216 emotions)
+- ✅ **kelly.thesaurus/** - 6×6×6 emotion node system (216 emotions)
 - ✅ **cpp/** - C++ music processing code → moved to `cpp_music_brain/`
 - ✅ **data/** - Unique data files merged
 
@@ -38,9 +38,9 @@ This repository consolidates 5 separate Kelly Project repositories into one unif
 
 ```
 1DAW1/
-├── emotion_thesaurus/          # From DAiW-Music-Brain (CRITICAL)
+├── kelly.thesaurus/          # From DAiW-Music-Brain (CRITICAL)
 ├── cpp_music_brain/            # From DAiW-Music-Brain
-├── music_brain/                # Core music logic (from iDAW)
+├── midee/                # Core music logic (from iDAW)
 ├── vault/                      # Music vault storage (from iDAW)
 ├── penta_core/                 # Core audio (from iDAW, enhanced)
 ├── src/                        # Main source code
@@ -60,7 +60,7 @@ This repository consolidates 5 separate Kelly Project repositories into one unif
 - ✅ Emotion Wheel (6×6×6 thesaurus system)
 - ✅ Dreamstate mode
 - ✅ Parrot feature
-- ✅ Music Brain processing engine
+- ✅ miDEE processing engine
 - ✅ Music Vault storage system
 - ✅ AI/Interrogation schema
 - ✅ Tauri 2.0 backend

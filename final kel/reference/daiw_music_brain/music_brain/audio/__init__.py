@@ -8,7 +8,7 @@ Features:
 - Spectral analysis
 """
 
-from music_brain.audio.feel import analyze_feel, AudioFeatures
+from midee.audio.feel import analyze_feel, AudioFeatures
 
 __all__ = [
     "analyze_feel",

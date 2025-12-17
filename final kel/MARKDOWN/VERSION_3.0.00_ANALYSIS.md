@@ -102,7 +102,7 @@ src/
 **Contents**:
 - Complete DAiW + Music-Brain + Pentagon-Core integration
 - benchmarks/, bindings/, cpp_music_brain/
-- deployment/, docs/, emotion_thesaurus/
+- deployment/, docs/, kelly.thesaurus/
 - Kelly/, Kelly-main/, kellymidicompanion/
 - mobile/, modules/, plugins/
 - Production_Workflows/, Songwriting_Guides/, Templates/
@@ -113,15 +113,15 @@ src/
 - DAiW-Music-Brain/ (and DAiW-Music-Brain222/)
 - iDAW_Core/, iDAWi/
 - mcp_todo/, mcp_workstation/
-- music_brain/, penta_core_music-brain/
+- midee/, penta_core_music-brain/
 - Production_Workflows/, Python_Tools/, Songwriting_Guides/
 
 #### kelly-midi-max/ - 115 Subdirectories
 **Contents**:
 - Multiple Kelly versions: kelly/, kelly 2/, kelly 3/, kelly 4/
 - kelly_ai/, kelly_system/, kellymidicompanion/
-- DAiW/, DAiW-Music-Brain/, emotion_thesaurus/
-- music_brain/, Music-Brain-Vault/
+- DAiW/, DAiW-Music-Brain/, kelly.thesaurus/
+- midee/, Music-Brain-Vault/
 
 #### kelly-consolidation/ - Consolidated Version
 **Contents**:
@@ -142,7 +142,7 @@ src/
 **Structure**:
 ```
 python/
-├── emotion_thesaurus.py
+├── kelly.thesaurus.py
 ├── harmony_system.py
 ├── engines/
 │   ├── kellymidicompanion_bass_engine.py
@@ -193,12 +193,12 @@ python/
 - audio/, groove/, Production_Workflows/
 - structure/, Templates/, Theory_Reference/, utils/
 
-#### include/daiw/ - DAiW Music Brain Headers
+#### include/daiw/ - DAiW miDEE Headers
 **Files**:
 - harmony.hpp (25KB)
 - midi.hpp (21KB)
 - memory.hpp
-- All C++ headers for DAiW Music Brain
+- All C++ headers for DAiW miDEE
 
 #### logic_pro/ - Logic Pro Integration
 - Logic_Pro_Scripter_Kelly.js - Direct Logic Pro MIDI Scripter integration

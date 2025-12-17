@@ -27,14 +27,14 @@ This document provides a comprehensive 18-month implementation plan for the iDAW
 ### Month 1: CLI & Python Core Completion ✅
 
 #### Week 1-2: Phase 1 CLI Completion ✅
-- [x] Complete CLI wrapper commands in `music_brain/cli/commands.py`
+- [x] Complete CLI wrapper commands in `midee/cli/commands.py`
   - [x] `daiw generate` - Harmony generation from intent
   - [x] `daiw diagnose` - Chord progression diagnosis
   - [x] `daiw reharm` - Reharmonization suggestions
   - [x] `daiw intent new|process|validate|suggest` - Intent subcommands
   - [x] `daiw teach` - Interactive teaching mode
-- [x] Move `data/harmony_generator.py` → `music_brain/harmony/harmony_generator.py`
-- [x] Move `data/groove_applicator.py` → `music_brain/groove/groove_applicator.py`
+- [x] Move `data/harmony_generator.py` → `midee/harmony/harmony_generator.py`
+- [x] Move `data/groove_applicator.py` → `midee/groove/groove_applicator.py`
 - [x] Create comprehensive test suite `tests/test_cli.py`
 - [x] Achieve ≥80% test coverage for CLI commands
 - [x] Update `__init__.py` exports
@@ -150,7 +150,7 @@ This document provides a comprehensive 18-month implementation plan for the iDAW
 #### Week 3-4: Python Bindings & Testing ✅
 - [x] Complete pybind11 wrappers for GrooveEngine
 - [x] Integration tests for Python bindings
-- [x] Benchmark against music_brain Python implementations
+- [x] Benchmark against midee Python implementations
 - [x] Document Python API with examples
 - [x] Verify real-time quantization works
 
@@ -161,7 +161,7 @@ This document provides a comprehensive 18-month implementation plan for the iDAW
 ### Month 4: Audio Analysis & MCP Tools ✅
 
 #### Week 1-2: Audio Analysis Module ✅
-- [x] Expand `music_brain/audio/analyzer.py` with full AudioAnalyzer class
+- [x] Expand `midee/audio/analyzer.py` with full AudioAnalyzer class
 - [x] Implement `chord_detection.py` with ChordDetector
   - [x] Detect chords from audio
   - [x] Detect progression from file
@@ -501,8 +501,8 @@ This document provides a comprehensive 18-month implementation plan for the iDAW
 
 | Component | Location |
 |-----------|----------|
-| Python Music Brain | `DAiW-Music-Brain/music_brain/` |
-| Python CLI | `DAiW-Music-Brain/music_brain/cli.py` |
+| Python miDEE | `DAiW-Music-Brain/midee/` |
+| Python CLI | `DAiW-Music-Brain/midee/cli.py` |
 | C++ Penta-Core | `src_penta-core/` |
 | C++ Headers | `include/penta/` |
 | JUCE Plugins | `iDAW_Core/plugins/` |

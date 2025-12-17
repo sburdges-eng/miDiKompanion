@@ -259,5 +259,5 @@ As Beethoven demonstrated: the rules exist for a reason, but the ultimate author
 
 ---
 
-*Document compiled for Music Brain Vault - November 2025*
+*Document compiled for miDEE Vault - November 2025*
 *For creative application to the Kelly song and general reference*

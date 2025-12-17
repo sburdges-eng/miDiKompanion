@@ -184,12 +184,12 @@ def load_emotions_with_complete_musical_data(data_dir: Path) -> List[Dict]:
         
         original_path = sys.path[:]
         for path in possible_paths:
-            if (path / "emotion_thesaurus.py").exists():
+            if (path / "kelly.thesaurus.py").exists():
                 sys.path.insert(0, str(path))
                 break
         
         try:
-            from emotion_thesaurus import EmotionThesaurus
+            from kelly.thesaurus import EmotionThesaurus
             
             thesaurus = EmotionThesaurus()
             emotions = []

@@ -25,11 +25,11 @@ This file tracks references to external improvement ideas and proposals.
 - `iDAW_Core/data/LearningLevels.json` - Difficulty level definitions
 - `iDAW_Core/data/LearningPedagogy.json` - Teaching methodology data
 - `iDAW_Core/data/LearningSources.json` - Educational resource references
-- `music_brain/learning/__init__.py` - Learning module package init
-- `music_brain/learning/curriculum.py` - Curriculum structures and learning paths
-- `music_brain/learning/instruments.py` - Instrument definitions and metadata
-- `music_brain/learning/pedagogy.py` - Adaptive teaching engine
-- `music_brain/learning/resources.py` - Resource fetching and caching
+- `midee/learning/__init__.py` - Learning module package init
+- `midee/learning/curriculum.py` - Curriculum structures and learning paths
+- `midee/learning/instruments.py` - Instrument definitions and metadata
+- `midee/learning/pedagogy.py` - Adaptive teaching engine
+- `midee/learning/resources.py` - Resource fetching and caching
 
 **Features**:
 - AI-powered instrument education with web-sourced curricula

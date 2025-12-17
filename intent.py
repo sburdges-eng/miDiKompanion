@@ -6,7 +6,7 @@ from __future__ import annotations
 
 from typing import Any, Dict
 
-from music_brain.session.intent_schema import (
+from midee.session.intent_schema import (
     CompleteSongIntent,
     SongIntent,
     SongRoot,

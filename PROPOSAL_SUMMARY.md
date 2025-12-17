@@ -26,7 +26,7 @@ This document catalogs **25+ files** discovered across your system containing va
 ### 1. Chord Progression Data (`chord_data/`)
 
 #### `chord_progression_families.json` (349 lines)
-**Source:** `Desktop/clusterfuck/DAiW V.5/music_brain/data/`
+**Source:** `Desktop/clusterfuck/DAiW V.5/midee/data/`
 
 **Contents:**
 - Universal progressions (I-IV-V-I, I-V-vi-IV, etc.) with emotional descriptors
@@ -60,7 +60,7 @@ This document catalogs **25+ files** discovered across your system containing va
 ---
 
 #### `chord_progressions_db.json` (323 lines)
-**Source:** `Desktop/clusterfuck/DAiW V.5/music_brain/data/`
+**Source:** `Desktop/clusterfuck/DAiW V.5/midee/data/`
 
 **Contents:**
 - Similar structure to chord_progression_families.json
@@ -74,7 +74,7 @@ This document catalogs **25+ files** discovered across your system containing va
 ### 2. Emotional Mapping System (`emotion_data/`)
 
 #### `emotional_mapping.py` (565 lines)
-**Source:** `Desktop/clusterfuck/DAiW V.5/music_brain/models/`
+**Source:** `Desktop/clusterfuck/DAiW V.5/midee/models/`
 
 **Philosophy:** "Interrogate Before Generate" - Maps emotional states to musical parameters
 
@@ -117,7 +117,7 @@ This document catalogs **25+ files** discovered across your system containing va
    - Example: "This feels slow and sparse—are we sitting in the quiet, or is there restlessness under the surface?"
 
 **Integration Value:**
-- Could be integrated into `music_brain/models/` as a new module
+- Could be integrated into `midee/models/` as a new module
 - Enhances intent_processor.py with scientific emotional→musical mapping
 - Provides foundation for more nuanced mood-based generation
 
@@ -135,7 +135,7 @@ This document catalogs **25+ files** discovered across your system containing va
 ### 3. Scales Database (`scales_data/`)
 
 #### `scales_database.json` (1.9MB, ~1500+ lines)
-**Source:** `Applications/iDAW/music_brain/`
+**Source:** `Applications/iDAW/midee/`
 
 **Contents:**
 - Comprehensive database of 52+ musical scales
@@ -448,20 +448,20 @@ Emotion_Scale_Library/
 1. **Merge chord progression databases**
    - Compare `chord_progression_families.json` and `chord_progressions_db.json`
    - Identify unique entries and merge into single comprehensive file
-   - Replace current `music_brain/data/chord_progressions.json`
+   - Replace current `midee/data/chord_progressions.json`
    - Update structure/progression.py to use enhanced format
 
 2. **Integrate emotional mapping system**
-   - Add `music_brain/models/emotional_mapping.py`
-   - Create `music_brain/models/__init__.py`
+   - Add `midee/models/emotional_mapping.py`
+   - Create `midee/models/__init__.py`
    - Add tests to `tests/models/test_emotional_mapping.py`
    - Link to intent_processor.py for mood-based parameter generation
 
 ### Phase 2: Natural Language Interface (Week 2)
 
 3. **Add vernacular translation**
-   - Integrate `vernacular_database.json` into `music_brain/data/`
-   - Add `music_brain/utils/vernacular.py` parser
+   - Integrate `vernacular_database.json` into `midee/data/`
+   - Add `midee/utils/vernacular.py` parser
    - Extend CLI with natural language input mode
    - Map vernacular terms to existing rule-breaking enums
 
@@ -640,8 +640,8 @@ The following files contain valuable educational content:
 
 ### Short-term (Next 2 Weeks)
 
-- [ ] Integrate chord_progression_families.json into music_brain/data/
-- [ ] Add emotional_mapping.py to music_brain/models/
+- [ ] Integrate chord_progression_families.json into midee/data/
+- [ ] Add emotional_mapping.py to midee/models/
 - [ ] Create vernacular parser utility
 - [ ] Document misdirection technique in vault/
 

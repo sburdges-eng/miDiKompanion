@@ -9,7 +9,7 @@ import tempfile
 
 import streamlit as st
 
-from music_brain.structure.comprehensive_engine import (
+from midee.structure.comprehensive_engine import (
     TherapySession,
     render_plan_to_midi,
 )

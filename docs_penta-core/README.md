@@ -68,7 +68,7 @@ Welcome to the penta-core team documentation hub. This documentation is designed
 - **[MCP Protocol & Autonomous Debugging Strategy](mcp-protocol-debugging.md)** ⭐ NEW
   Comprehensive MCP protocol specification and autonomous debugging strategy for operation when human operators are not active. Covers message formats, tool invocation, self-healing mechanisms, monitoring, alerting, runbooks, and implementation checklist.
 
-- **[DAiW Music Brain Architecture](daiw-music-brain.md)**
+- **[DAiW miDEE Architecture](daiw-music-brain.md)**
   Complete project architecture for the AI-powered music composition system: groove analysis, emotional mapping, DAW integration, and knowledge vault.
 
 - **[DAW UI Design Patterns](daw-ui-patterns.md)** ⭐ NEW
@@ -96,7 +96,7 @@ Welcome to the penta-core team documentation hub. This documentation is designed
 13. **Working with AI tools?** See the [AI Prompting & Efficiency Guide](ai-prompting-guide.md)
 14. **Building multi-agent systems?** Check out the [Multi-Agent Systems & MCP Guide](multi-agent-mcp-guide.md)
 15. **Setting up autonomous debugging?** See the [MCP Protocol & Debugging Strategy](mcp-protocol-debugging.md)
-16. **Working on DAiW Music Brain?** See the [DAiW Music Brain Architecture](daiw-music-brain.md)
+16. **Working on DAiW miDEE?** See the [DAiW miDEE Architecture](daiw-music-brain.md)
 17. **Building DAW user interfaces?** Check out the [DAW UI Design Patterns](daw-ui-patterns.md)
 18. **Researching instrument learning?** See the [Instrument Learning Research Tool](instrument-learning-research.md)
 

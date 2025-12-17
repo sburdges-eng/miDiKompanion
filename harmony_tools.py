@@ -22,9 +22,9 @@ except ImportError:
     MCP_AVAILABLE = False
 
 # Import DAiW modules
-from music_brain.harmony import HarmonyGenerator, HarmonyResult, generate_midi_from_harmony
-from music_brain.structure.progression import diagnose_progression, generate_reharmonizations
-from music_brain.structure.chord import analyze_chords, CHORD_QUALITIES
+from midee.harmony import HarmonyGenerator, HarmonyResult, generate_midi_from_harmony
+from midee.structure.progression import diagnose_progression, generate_reharmonizations
+from midee.structure.chord import analyze_chords, CHORD_QUALITIES
 
 
 def register_tools(server: Server) -> None:
@@ -201,7 +201,7 @@ def register_tools(server: Server) -> None:
                     if not intent_path.exists():
                         return [TextContent(type="text", text=f"Error: Intent file not found: {intent_path}")]
                     
-                    from music_brain.session.intent_schema import CompleteSongIntent
+                    from midee.session.intent_schema import CompleteSongIntent
                     intent = CompleteSongIntent.load(str(intent_path))
                     harmony = generator.generate_from_intent(intent)
                 else:
@@ -219,7 +219,7 @@ def register_tools(server: Server) -> None:
                     
                     if emotion:
                         # Apply emotional rule-breaking
-                        from music_brain.session.intent_schema import suggest_rule_break
+                        from midee.session.intent_schema import suggest_rule_break
                         suggestions = suggest_rule_break(emotion)
                         if suggestions:
                             # Apply first suggestion

@@ -8,14 +8,14 @@
 
 ## Overview
 
-Fixed all bridge integration test failures in the iDAW repository, addressing issues in the `music_brain.structure.comprehensive_engine` module and related tests.
+Fixed all bridge integration test failures in the iDAW repository, addressing issues in the `midee.structure.comprehensive_engine` module and related tests.
 
 ## Issues Fixed
 
 ### 1. HarmonyPlan Missing Parameter ✅
 - **Issue**: Tests expected `vulnerability` parameter but class didn't have it
 - **Fix**: Added `vulnerability: float = 0.5` to HarmonyPlan dataclass
-- **Files**: `music_brain/structure/comprehensive_engine.py`
+- **Files**: `midee/structure/comprehensive_engine.py`
 
 ### 2. HarmonyPlan Required Arguments ✅
 - **Issue**: All fields were required positional arguments
@@ -114,7 +114,7 @@ Fixed all bridge integration test failures in the iDAW repository, addressing is
 
 ## Files Modified
 
-1. **music_brain/structure/comprehensive_engine.py** (2 commits)
+1. **midee/structure/comprehensive_engine.py** (2 commits)
    - Added MIDO_AVAILABLE flag
    - Enhanced HarmonyPlan with defaults and vulnerability
    - Added `__post_init__` for chord_symbols generation

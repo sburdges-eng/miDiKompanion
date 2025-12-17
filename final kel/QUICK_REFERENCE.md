@@ -65,7 +65,7 @@ python visualize_quantum_emotional_field.py
 
 ## 🎯 Core Concepts
 
-### Emotion Thesaurus (216 nodes)
+### KELLY Thesaurus (216 nodes)
 - **Valence**: -1.0 (sad) to +1.0 (happy) → Mode (minor/major)
 - **Arousal**: 0.0 (calm) to 1.0 (intense) → Tempo, rhythm
 - **Intensity**: 0.0 (subtle) to 1.0 (extreme) → Dynamics, rule-breaking

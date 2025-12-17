@@ -29,7 +29,7 @@ kelly 3/src/kelly/
 ├── __init__.py
 ├── cli.py
 ├── core/
-│   ├── emotion_thesaurus.py
+│   ├── kelly.thesaurus.py
 │   ├── emotional_mapping.py
 │   ├── intent_processor.py
 │   ├── intent_schema.py
@@ -71,7 +71,7 @@ kelly 3/src/kelly/
 #### Structure:
 ```
 DAiW-Music-Brain/
-├── music_brain/
+├── midee/
 ├── output/
 ├── tests/
 ├── pyproject.toml
@@ -85,7 +85,7 @@ DAiW-Music-Brain/
 #### Structure:
 ```
 DAiW-Music-Brain/
-├── music_brain/
+├── midee/
 ├── vault/
 ├── tests/
 ├── CLAUDE.md (17KB documentation)
@@ -124,7 +124,7 @@ iDAW-copilot-merge-code-assets-workflows/
 ├── sad.json (similar)
 ├── surprise.json
 ├── metadata.json
-├── emotion_thesaurus.py (18KB)
+├── kelly.thesaurus.py (18KB)
 ├── app.py (Flask/HTTP server)
 ├── launcher.py
 ├── bindings/ (Python-C++ bindings)
@@ -140,7 +140,7 @@ iDAW-copilot-merge-code-assets-workflows/
 ├── macos/
 ├── mcp_todo/
 ├── mcp_workstation/
-├── music_brain/
+├── midee/
 ├── penta_core_music-brain/
 ├── plugins/
 ├── CMakeLists.txt
@@ -153,7 +153,7 @@ iDAW-copilot-merge-code-assets-workflows/
 ```
 
 #### Critical Files:
-- **emotion_thesaurus.py**: 18KB Python thesaurus implementation
+- **kelly.thesaurus.py**: 18KB Python thesaurus implementation
 - **emotion JSON files**: Complete emotion database (angry, happy, sad, fear, disgust, blends, surprise)
 - **bindings/**: Python-C++ integration layer
 - **INTEGRATION_GUIDE.md**: How to integrate components

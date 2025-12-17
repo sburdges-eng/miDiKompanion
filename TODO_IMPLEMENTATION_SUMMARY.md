@@ -141,7 +141,7 @@ All code-level TODO items have been implemented across the C++ penta-core librar
 - Time-accurate sample placement using pydub overlay
 - Supports multiple instrument types (drums, bass, keys, etc.)
 
-### 2. Music Brain Structure Module (DAiW-Music-Brain/music_brain/structure/__init__.py)
+### 2. miDEE Structure Module (DAiW-Music-Brain/midee/structure/__init__.py)
 
 **Completed:**
 - ✅ Updated documentation to reflect completed integrations

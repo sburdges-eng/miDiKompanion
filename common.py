@@ -12,8 +12,8 @@ import tempfile
 from contextlib import contextmanager
 from typing import Any, Dict, Generator, Optional, Tuple, TypeVar
 
-from music_brain.api import DAiWAPI
-from music_brain.session.intent_schema import CompleteSongIntent
+from midee.api import DAiWAPI
+from midee.session.intent_schema import CompleteSongIntent
 
 JsonDict = Dict[str, Any]
 T = TypeVar("T")

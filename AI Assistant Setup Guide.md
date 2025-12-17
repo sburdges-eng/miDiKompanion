@@ -6,7 +6,7 @@ Complete setup for your local AI assistant using Ollama + AnythingLLM on M4 Mac.
 
 ## Overview
 
-This system lets you chat with your Music Brain vault locally — no cloud, no subscription, 100% private.
+This system lets you chat with your miDEE vault locally — no cloud, no subscription, 100% private.
 
 **Components:**
 1. **Ollama** — Runs AI models locally on your Mac
@@ -85,10 +85,10 @@ ollama pull nomic-embed-text
 
 ### Step 1: Create a Workspace
 1. In AnythingLLM, click "+ New Workspace"
-2. Name it: "Music Brain"
+2. Name it: "miDEE"
 
 ### Step 2: Upload Your Vault
-1. Click on your Music Brain workspace
+1. Click on your miDEE workspace
 2. Click the upload icon (📁)
 3. Select "Upload Folder"
 4. Navigate to your Obsidian vault (e.g., `~/Documents/Music-Brain-Vault`)
@@ -123,7 +123,7 @@ Try asking:
 When you add new notes to Obsidian:
 
 1. Open AnythingLLM
-2. Go to your Music Brain workspace
+2. Go to your miDEE workspace
 3. Click upload icon
 4. Re-upload the vault folder (or just new files)
 5. AnythingLLM will process new content

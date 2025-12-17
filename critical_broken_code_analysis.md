@@ -1,7 +1,7 @@
 # Critical Broken Code - Line-by-Line Analysis
 
 ## 1. BROKEN: Chord to Degree Conversion
-**File:** `/music_brain/structure/progression.py`
+**File:** `/midee/structure/progression.py`
 **Issue:** Returns 0 for chromatic chords, causing false matches
 
 ### Current Broken Code:
@@ -49,7 +49,7 @@ def chord_to_degree(root_pc: int, key_root_pc: int, key_mode='major'):
 ---
 
 ## 2. BROKEN: Timing Map Semantics
-**File:** `/music_brain/groove/genre_templates.py` (older versions)
+**File:** `/midee/groove/genre_templates.py` (older versions)
 **Issue:** timing_map values have no clear meaning
 
 ### Current Broken Code (from old version):
@@ -85,7 +85,7 @@ def chord_to_degree(root_pc: int, key_root_pc: int, key_mode='major'):
 ---
 
 ## 3. BROKEN: Progression Pattern Matching
-**File:** `/music_brain/structure/progression.py`
+**File:** `/midee/structure/progression.py`
 
 ### Current Broken Code:
 ```python
@@ -153,7 +153,7 @@ def match_progression_families(degrees, families, min_confidence=0.75):
 ---
 
 ## 4. BROKEN: Duplicate Progression Patterns
-**File:** `/music_brain/structure/progression.py`
+**File:** `/midee/structure/progression.py`
 
 ### Current Broken Code:
 ```python
@@ -174,7 +174,7 @@ PROGRESSION_FAMILIES = {
 ---
 
 ## 5. BROKEN: Key Parsing
-**File:** `/music_brain/structure/chord.py`
+**File:** `/midee/structure/chord.py`
 
 ### Current Broken Code:
 ```python
@@ -245,7 +245,7 @@ def parse_key(key_name: str):
 ---
 
 ## 6. BROKEN: Beat Density Division by Zero
-**File:** `/music_brain/audio/feel.py`
+**File:** `/midee/audio/feel.py`
 
 ### Current Broken Code:
 ```python
@@ -272,7 +272,7 @@ else:
 ---
 
 ## 7. BROKEN: Librosa Tempo Return Type
-**File:** `/music_brain/audio/feel.py`
+**File:** `/midee/audio/feel.py`
 
 ### Current Broken Code:
 ```python
@@ -302,7 +302,7 @@ else:
 ---
 
 ## 8. MISSING: Instrument Assignment
-**File:** `/music_brain/groove/templates.py`
+**File:** `/midee/groove/templates.py`
 
 ### Current Problem:
 ```python
@@ -387,7 +387,7 @@ raise ValueError("Invalid template")  # WHAT'S invalid??
 ```python
 # Custom exceptions with context
 class MusicBrainError(Exception):
-    """Base exception for Music Brain."""
+    """Base exception for miDEE."""
     pass
 
 class TemplateError(MusicBrainError):

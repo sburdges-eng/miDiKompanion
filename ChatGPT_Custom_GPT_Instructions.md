@@ -155,7 +155,7 @@ Emotional quality: Triumphant, heroic, video game
 
 That's a multi-file change - better for Claude Code:
 ```bash
-claude "refactor music_brain/groove/ to use dataclasses"
+claude "refactor midee/groove/ to use dataclasses"
 ```
 Or use Cursor's Composer mode (Cmd+I).
 

@@ -9,7 +9,7 @@ import itertools
 from pathlib import Path
 from typing import Dict, List, Any
 
-MUSIC_BRAIN_DIR = Path(__file__).parent / "music_brain"
+MUSIC_BRAIN_DIR = Path(__file__).parent / "midee"
 
 # Base scales template (56 core scales)
 BASE_SCALES = {

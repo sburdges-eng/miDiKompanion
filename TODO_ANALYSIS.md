@@ -108,7 +108,7 @@ This document categorizes and explains the TODO items in the codebase.
 
 ## 3. Documentation TODOs
 
-### DAiW-Music-Brain/music_brain/structure/__init__.py (1 TODO)
+### DAiW-Music-Brain/midee/structure/__init__.py (1 TODO)
 
 ```python
 TODO: Future integration planned for:
