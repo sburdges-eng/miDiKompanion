@@ -1,0 +1,76 @@
+{
+  "models": {
+    "emotion_recognizer": {
+      "name": "EmotionRecognizer",
+      "description": "Audio features → 64-dim emotion embedding",
+      "input_size": 128,
+      "output_size": 64,
+      "architecture": [
+        {"type": "dense", "in_size": 128, "out_size": 512, "activation": "tanh"},
+        {"type": "dense", "in_size": 512, "out_size": 256, "activation": "tanh"},
+        {"type": "lstm", "in_size": 256, "out_size": 128},
+        {"type": "dense", "in_size": 128, "out_size": 64, "activation": "tanh"}
+      ],
+      "estimated_params": 497664,
+      "estimated_memory_kb": 1944
+    },
+    "melody_transformer": {
+      "name": "MelodyTransformer",
+      "description": "Emotion embedding → 128-dim MIDI note probabilities",
+      "input_size": 64,
+      "output_size": 128,
+      "architecture": [
+        {"type": "dense", "in_size": 64, "out_size": 256, "activation": "relu"},
+        {"type": "lstm", "in_size": 256, "out_size": 256},
+        {"type": "dense", "in_size": 256, "out_size": 256, "activation": "relu"},
+        {"type": "dense", "in_size": 256, "out_size": 128, "activation": "sigmoid"}
+      ],
+      "estimated_params": 412672,
+      "estimated_memory_kb": 1612
+    },
+    "harmony_predictor": {
+      "name": "HarmonyPredictor",
+      "description": "Context → 64-dim chord probabilities",
+      "input_size": 128,
+      "output_size": 64,
+      "architecture": [
+        {"type": "dense", "in_size": 128, "out_size": 256, "activation": "tanh"},
+        {"type": "dense", "in_size": 256, "out_size": 128, "activation": "tanh"},
+        {"type": "dense", "in_size": 128, "out_size": 64, "activation": "softmax"}
+      ],
+      "estimated_params": 74048,
+      "estimated_memory_kb": 289
+    },
+    "dynamics_engine": {
+      "name": "DynamicsEngine",
+      "description": "Compact context → 16-dim velocity/timing/expression",
+      "input_size": 32,
+      "output_size": 16,
+      "architecture": [
+        {"type": "dense", "in_size": 32, "out_size": 128, "activation": "relu"},
+        {"type": "dense", "in_size": 128, "out_size": 64, "activation": "relu"},
+        {"type": "dense", "in_size": 64, "out_size": 16, "activation": "sigmoid"}
+      ],
+      "estimated_params": 13456,
+      "estimated_memory_kb": 52
+    },
+    "groove_predictor": {
+      "name": "GroovePredictor",
+      "description": "Emotion → 32-dim groove parameters",
+      "input_size": 64,
+      "output_size": 32,
+      "architecture": [
+        {"type": "dense", "in_size": 64, "out_size": 128, "activation": "tanh"},
+        {"type": "dense", "in_size": 128, "out_size": 64, "activation": "tanh"},
+        {"type": "dense", "in_size": 64, "out_size": 32, "activation": "tanh"}
+      ],
+      "estimated_params": 19040,
+      "estimated_memory_kb": 74
+    }
+  },
+  "totals": {
+    "total_params": 1016880,
+    "total_memory_kb": 3971,
+    "estimated_inference_ms": 8
+  }
+}

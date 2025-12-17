@@ -1,0 +1,141 @@
+
+---
+events:
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineSystem.cmake:12 (find_program)"
+      - "CMakeLists.txt:16 (project)"
+    mode: "program"
+    variable: "CMAKE_UNAME"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "FIRST"
+      SearchAppBundle: "FIRST"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "uname"
+    candidate_directories:
+      - "/usr/local/bin/"
+      - "/Library/Frameworks/Python.framework/Versions/3.14/bin/"
+      - "/Library/Frameworks/Python.framework/Versions/3.13/bin/"
+      - "/System/Cryptexes/App/usr/bin/"
+      - "/usr/bin/"
+      - "/bin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
+      - "/opt/pmk/env/global/bin/"
+      - "/usr/local/share/dotnet/"
+      - "/Users/seanburdges/.dotnet/tools/"
+      - "/opt/homebrew/bin/"
+      - "/Users/seanburdges/.cargo/bin/"
+    searched_directories:
+      - "/usr/local/bin/uname"
+      - "/Library/Frameworks/Python.framework/Versions/3.14/bin/uname"
+      - "/Library/Frameworks/Python.framework/Versions/3.13/bin/uname"
+      - "/System/Cryptexes/App/usr/bin/uname"
+    found: "/usr/bin/uname"
+    search_context:
+      ENV{PATH}:
+        - "/usr/local/bin"
+        - "/Library/Frameworks/Python.framework/Versions/3.14/bin"
+        - "/Library/Frameworks/Python.framework/Versions/3.13/bin"
+        - "/Library/Frameworks/Python.framework/Versions/3.13/bin"
+        - "/Library/Frameworks/Python.framework/Versions/3.13/bin"
+        - "/usr/local/bin"
+        - "/System/Cryptexes/App/usr/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/opt/pmk/env/global/bin"
+        - "/usr/local/share/dotnet"
+        - "~/.dotnet/tools"
+        - "/opt/homebrew/bin"
+        - "/Library/Frameworks/Python.framework/Versions/3.14/bin"
+        - "/Library/Frameworks/Python.framework/Versions/3.13/bin"
+        - "/Users/seanburdges/.cargo/bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineSystem.cmake:212 (message)"
+      - "CMakeLists.txt:16 (project)"
+    message: |
+      The system is: Darwin - 25.1.0 - arm64
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/Platform/Darwin.cmake:76 (find_program)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeSystemSpecificInformation.cmake:32 (include)"
+      - "CMakeLists.txt:16 (project)"
+    mode: "program"
+    variable: "CMAKE_INSTALL_NAME_TOOL"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "FIRST"
+      SearchAppBundle: "FIRST"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "install_name_tool"
+    candidate_directories:
+      - "/usr/local/bin/"
+      - "/Library/Frameworks/Python.framework/Versions/3.14/bin/"
+      - "/Library/Frameworks/Python.framework/Versions/3.13/bin/"
+      - "/System/Cryptexes/App/usr/bin/"
+      - "/usr/bin/"
+      - "/bin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
+      - "/opt/pmk/env/global/bin/"
+      - "/usr/local/share/dotnet/"
+      - "/Users/seanburdges/.dotnet/tools/"
+      - "/opt/homebrew/bin/"
+      - "/Users/seanburdges/.cargo/bin/"
+    searched_directories:
+      - "/usr/local/bin/install_name_tool"
+      - "/Library/Frameworks/Python.framework/Versions/3.14/bin/install_name_tool"
+      - "/Library/Frameworks/Python.framework/Versions/3.13/bin/install_name_tool"
+      - "/System/Cryptexes/App/usr/bin/install_name_tool"
+    found: "/usr/bin/install_name_tool"
+    search_context:
+      ENV{PATH}:
+        - "/usr/local/bin"
+        - "/Library/Frameworks/Python.framework/Versions/3.14/bin"
+        - "/Library/Frameworks/Python.framework/Versions/3.13/bin"
+        - "/Library/Frameworks/Python.framework/Versions/3.13/bin"
+        - "/Library/Frameworks/Python.framework/Versions/3.13/bin"
+        - "/usr/local/bin"
+        - "/System/Cryptexes/App/usr/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/opt/pmk/env/global/bin"
+        - "/usr/local/share/dotnet"
+        - "~/.dotnet/tools"
+        - "/opt/homebrew/bin"
+        - "/Library/Frameworks/Python.framework/Versions/3.14/bin"
+        - "/Library/Frameworks/Python.framework/Versions/3.13/bin"
+        - "/Users/seanburdges/.cargo/bin"
+      CMAKE_INSTALL_PREFIX: "/usr/local"
+...

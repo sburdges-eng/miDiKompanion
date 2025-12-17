@@ -1,0 +1,10 @@
+[  1%] Building CXX object CMakeFiles/KellyMidiCompanion.dir/src/plugin/PluginProcessor.cpp.o
+In file included from /Users/seanburdges/Desktop/final kel/src/plugin/PluginProcessor.cpp:2:
+In file included from /Users/seanburdges/Desktop/final kel/src/plugin/PluginEditor.h:8:
+/Users/seanburdges/Desktop/final kel/src/ui/EmotionWheel.h:5:10: fatal error: '../core/EmotionThesaurus.h' file not found
+    5 | #include "../core/EmotionThesaurus.h"
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1 error generated.
+make[2]: *** [CMakeFiles/KellyMidiCompanion.dir/src/plugin/PluginProcessor.cpp.o] Error 1
+make[1]: *** [CMakeFiles/KellyMidiCompanion.dir/all] Error 2
+make: *** [all] Error 2

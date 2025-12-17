@@ -1,0 +1,231 @@
+{
+    "folders": [
+        {
+            "name": "Root",
+            "path": "."
+        },
+        {
+            "name": "C++ Source",
+            "path": "./src"
+        },
+        {
+            "name": "ML Framework",
+            "path": "./ml_framework"
+        },
+        {
+            "name": "Python Utils",
+            "path": "./python"
+        },
+        {
+            "name": "Phase 2",
+            "path": "./phase2"
+        },
+        {
+            "name": "Code",
+            "path": "./CODE"
+        },
+        {
+            "name": "Data",
+            "path": "./data"
+        },
+        {
+            "name": "Documentation",
+            "path": "./MARKDOWN"
+        },
+        {
+            "name": "HTML Visualizations",
+            "path": "./H T M L"
+        },
+        {
+            "name": "Tests",
+            "path": "./tests"
+        },
+        {
+            "name": "Reference",
+            "path": "./reference"
+        },
+        {
+            "name": "Future Features",
+            "path": "./future_features"
+        }
+    ],
+    "settings": {
+        "files.exclude": {
+            "**/__pycache__": true,
+            "**/*.pyc": true,
+            "**/.DS_Store": true,
+            "**/.mypy_cache": true,
+            "**/build": true,
+            "**/*.zip": true,
+            "**/.claude": true,
+            "**/*.complex_backup": true
+        },
+        "search.exclude": {
+            "**/node_modules": true,
+            "**/build": true,
+            "**/.git": true,
+            "**/__pycache__": true,
+            "**/*.pyc": true,
+            "**/ZIPS": true,
+            "**/.claude": true,
+            "**/TXT": true,
+            "**/*.complex_backup": true,
+            "**/*.zip": true
+        },
+        "files.associations": {
+            "*.h": "cpp",
+            "*.cpp": "cpp",
+            "*.hpp": "cpp",
+            "*.cmake": "cmake",
+            "CMakeLists.txt": "cmake"
+        },
+        "C_Cpp.default.cppStandard": "c++20",
+        "C_Cpp.default.compilerPath": "/usr/bin/clang++",
+        "C_Cpp.default.intelliSenseMode": "macos-clang-x64",
+        "C_Cpp.default.includePath": [
+            "${workspaceFolder:Root}/src",
+            "${workspaceFolder:Root}/src/engine",
+            "${workspaceFolder:Root}/src/engines",
+            "${workspaceFolder:Root}/src/midi",
+            "${workspaceFolder:Root}/src/ui",
+            "${workspaceFolder:Root}/src/plugin",
+            "${workspaceFolder:Root}/src/common",
+            "${workspaceFolder:Root}/src/voice",
+            "${workspaceFolder:Root}/src/biometric",
+            "${workspaceFolder:Root}/src/bridge"
+        ],
+        "C_Cpp.default.browse": {
+            "path": [
+                "${workspaceFolder:Root}/src"
+            ],
+            "limitSymbolsToIncludedHeaders": true
+        },
+        "python.defaultInterpreterPath": "${workspaceFolder:ML Framework}/venv/bin/python",
+        "python.analysis.extraPaths": [
+            "${workspaceFolder:ML Framework}",
+            "${workspaceFolder:Python Utils}",
+            "${workspaceFolder:Root}/CODE/PYTHON CODE",
+            "${workspaceFolder:Phase 2}",
+            "${workspaceFolder:Reference}",
+            "${workspaceFolder:Reference}/daiw_music_brain",
+            "${workspaceFolder:Reference}/daiw_music_brain/music_brain",
+            "${workspaceFolder:Reference}/python_kelly",
+            "${workspaceFolder:Reference}/standalone"
+        ],
+        "python.analysis.typeCheckingMode": "basic",
+        "python.linting.enabled": true,
+        "python.linting.pylintEnabled": false,
+        "python.linting.mypyEnabled": true,
+        "python.formatting.provider": "black",
+        "python.formatting.blackArgs": [
+            "--line-length=100"
+        ],
+        "cmake.buildDirectory": "${workspaceFolder:Root}/build",
+        "cmake.configureOnOpen": false,
+        "cmake.sourceDirectory": "${workspaceFolder:Root}",
+        "cmake.generator": "Unix Makefiles",
+        "files.trimTrailingWhitespace": true,
+        "files.insertFinalNewline": true,
+        "files.encoding": "utf8",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "explicit"
+        },
+        "editor.rulers": [
+            100
+        ],
+        "[python]": {
+            "editor.defaultFormatter": "ms-python.black-formatter",
+            "editor.formatOnSave": true,
+            "editor.tabSize": 4
+        },
+        "[cpp]": {
+            "editor.tabSize": 4,
+            "editor.insertSpaces": true
+        },
+        "[json]": {
+            "editor.defaultFormatter": "vscode.json-language-features",
+            "editor.formatOnSave": true
+        },
+        "[markdown]": {
+            "editor.wordWrap": "on",
+            "editor.quickSuggestions": {
+                "comments": "off",
+                "strings": "off",
+                "other": "off"
+            }
+        }
+    },
+    "extensions": {
+        "recommendations": [
+            "ms-python.python",
+            "ms-python.vscode-pylance",
+            "ms-python.black-formatter",
+            "ms-python.mypy-type-checker",
+            "ms-vscode.cpptools",
+            "ms-vscode.cmake-tools",
+            "twxs.cmake",
+            "ms-vscode.vscode-json"
+        ]
+    },
+    "tasks": {
+        "version": "2.0.0",
+        "tasks": [
+            {
+                "label": "CMake: Configure",
+                "type": "shell",
+                "command": "cmake",
+                "args": [
+                    "-B",
+                    "build",
+                    "-DCMAKE_BUILD_TYPE=Release"
+                ],
+                "options": {
+                    "cwd": "${workspaceFolder:Root}"
+                },
+                "problemMatcher": []
+            },
+            {
+                "label": "CMake: Build",
+                "type": "shell",
+                "command": "cmake",
+                "args": [
+                    "--build",
+                    "build",
+                    "--config",
+                    "Release"
+                ],
+                "options": {
+                    "cwd": "${workspaceFolder:Root}"
+                },
+                "problemMatcher": [
+                    "$gcc"
+                ],
+                "group": {
+                    "kind": "build",
+                    "isDefault": true
+                }
+            },
+            {
+                "label": "CMake: Build Debug",
+                "type": "shell",
+                "command": "cmake -B build -DCMAKE_BUILD_TYPE=Debug && cmake --build build --config Debug",
+                "options": {
+                    "cwd": "${workspaceFolder:Root}"
+                },
+                "problemMatcher": [
+                    "$gcc"
+                ]
+            },
+            {
+                "label": "Run C++ Tests",
+                "type": "shell",
+                "command": "cd build && ctest --output-on-failure",
+                "options": {
+                    "cwd": "${workspaceFolder:Root}"
+                },
+                "problemMatcher": []
+            }
+        ]
+    }
+}

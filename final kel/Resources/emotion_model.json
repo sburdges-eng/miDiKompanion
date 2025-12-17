@@ -1,0 +1,45 @@
+{
+  "model_type": "sequential",
+  "input_size": 128,
+  "output_size": 64,
+  "layers": [
+    {
+      "type": "dense",
+      "in_size": 128,
+      "out_size": 128,
+      "activation": "tanh",
+      "weights": [],
+      "bias": [],
+      "note": "Reduced from 256 to fit stack allocation limits (128KB)"
+    },
+    {
+      "type": "lstm",
+      "in_size": 128,
+      "out_size": 64,
+      "activation": "tanh",
+      "recurrent_activation": "sigmoid",
+      "weights_ih": [],
+      "weights_hh": [],
+      "bias_ih": [],
+      "bias_hh": [],
+      "note": "Reduced from 128 to fit stack allocation limits"
+    },
+    {
+      "type": "dense",
+      "in_size": 64,
+      "out_size": 64,
+      "activation": "tanh",
+      "weights": [],
+      "bias": []
+    }
+  ],
+  "metadata": {
+    "description": "Placeholder emotion recognition model for Kelly MIDI Companion",
+    "architecture": "128→128→64→64 (optimized for stack allocation)",
+    "input_features": "128-dimensional mel-spectrogram features",
+    "output_dimensions": "64-dimensional emotion embedding (first 32: valence-related, last 32: arousal-related)",
+    "training_status": "placeholder - requires training",
+    "suggested_training": "See ml_training/train_emotion_model.py",
+    "version": "0.2.0-placeholder-stack-optimized"
+  }
+}

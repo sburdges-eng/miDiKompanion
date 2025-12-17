@@ -1,0 +1,48 @@
+{
+  "model_name": "EmotionRecognizer",
+  "model_type": "sequential",
+  "input_size": 128,
+  "output_size": 64,
+  "layers": [
+    {
+      "type": "dense",
+      "in_size": 128,
+      "out_size": 512,
+      "activation": "tanh",
+      "weights": [],
+      "bias": []
+    },
+    {
+      "type": "dense",
+      "in_size": 512,
+      "out_size": 256,
+      "activation": "tanh",
+      "weights": [],
+      "bias": []
+    },
+    {
+      "type": "lstm",
+      "in_size": 256,
+      "out_size": 128,
+      "weights_ih": [],
+      "weights_hh": [],
+      "bias_ih": [],
+      "bias_hh": []
+    },
+    {
+      "type": "dense",
+      "in_size": 128,
+      "out_size": 64,
+      "activation": "tanh",
+      "weights": [],
+      "bias": []
+    }
+  ],
+  "metadata": {
+    "description": "Audio features → 64-dim emotion embedding",
+    "parameter_count": 497664,
+    "memory_bytes": 1990656,
+    "training_status": "placeholder",
+    "version": "1.0.0"
+  }
+}
