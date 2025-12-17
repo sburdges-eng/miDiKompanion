@@ -142,6 +142,34 @@ cmake --build build
 cd build && ctest -V
 ```
 
+## Version Management
+
+This project uses [Semantic Versioning](https://semver.org/) (MAJOR.MINOR.PATCH):
+- **MAJOR**: Breaking changes or major builds
+- **MINOR**: New features (backward-compatible)
+- **PATCH**: Bug fixes and minor updates
+
+### Using the Version Manager
+
+```bash
+# Check current version
+./version_manager.py current
+
+# Bump patch version (bug fixes)
+./version_manager.py bump-patch -m "Fix MIDI timing issue"
+
+# Bump minor version (new features)
+./version_manager.py bump-minor -m "Add new emotion presets"
+
+# Bump major version (breaking changes)
+./version_manager.py bump-major -m "Redesign plugin architecture"
+
+# Auto-detect appropriate bump based on git changes
+./version_manager.py auto -m "Your commit message"
+```
+
+See [VERSIONING.md](VERSIONING.md) for detailed documentation.
+
 ## License
 
 MIT
