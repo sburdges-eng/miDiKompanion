@@ -1,0 +1,30 @@
+name: Auto-Merge Approved Copilot PRs
+
+on:
+  pull_request_review:
+    types: [submitted]
+  check_suite:
+    types: [completed]
+
+permissions:
+  pull-requests: write
+  contents: write
+
+jobs:
+  auto-merge:
+    runs-on: ubuntu-latest
+    
+    # Only for Copilot/bot PRs that have been approved
+    if: |
+      (github.actor == 'copilot[bot]' || 
+       github.actor == 'github-actions[bot]' ||
+       contains(github.event.pull_request.user.login, 'copilot')) &&
+      github.event.review.state == 'approved'
+    
+    steps:
+      - name: Enable auto-merge
+        uses: peter-evans/enable-pull-request-automerge@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          pull-request-number: ${{ github.event.pull_request.number }}
+          merge-method: squash
