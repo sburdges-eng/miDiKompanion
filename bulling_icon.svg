@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1024" height="1024" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1024" height="1024" fill="#2C3E50"/>
+  
+  <!-- Bull Head Shadow -->
+  <ellipse cx="512" cy="532" rx="240" ry="230" fill="#000000" opacity="0.2"/>
+  
+  <!-- Bull Head -->
+  <circle cx="512" cy="512" r="220" fill="url(#headGradient)"/>
+  
+  <!-- Gradients -->
+  <defs>
+    <linearGradient id="headGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#9B6B3F;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7A5230;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="pinGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E8E8E8;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Left Ear -->
+  <ellipse cx="330" cy="420" rx="45" ry="65" fill="#9B6B3F" transform="rotate(-25 330 420)"/>
+  
+  <!-- Right Ear -->
+  <ellipse cx="694" cy="420" rx="45" ry="65" fill="#9B6B3F" transform="rotate(25 694 420)"/>
+  
+  <!-- Left Horn (Bowling Pin) -->
+  <g transform="translate(310, 250) rotate(-30)">
+    <path d="M 20 0 Q 25 0 30 0 Q 38 8 40 25 Q 38 40 35 55 Q 40 70 50 100 L 0 100 Q 10 70 15 55 Q 12 40 10 25 Q 12 8 20 0 Z" 
+          fill="url(#pinGradient)" stroke="#333333" stroke-width="2"/>
+    <!-- Pin stripes -->
+    <rect x="12" y="35" width="26" height="4" fill="#E74C3C" opacity="0.7"/>
+    <rect x="10" y="48" width="30" height="4" fill="#E74C3C" opacity="0.7"/>
+  </g>
+  
+  <!-- Right Horn (Bowling Pin) -->
+  <g transform="translate(664, 250) rotate(30)">
+    <path d="M 20 0 Q 25 0 30 0 Q 38 8 40 25 Q 38 40 35 55 Q 40 70 50 100 L 0 100 Q 10 70 15 55 Q 12 40 10 25 Q 12 8 20 0 Z" 
+          fill="url(#pinGradient)" stroke="#333333" stroke-width="2"/>
+    <!-- Pin stripes -->
+    <rect x="12" y="35" width="26" height="4" fill="#E74C3C" opacity="0.7"/>
+    <rect x="10" y="48" width="30" height="4" fill="#E74C3C" opacity="0.7"/>
+  </g>
+  
+  <!-- Left Eye (Dartboard) -->
+  <g transform="translate(420, 470)">
+    <!-- Outer black ring -->
+    <circle cx="0" cy="0" r="45" fill="#1A1A1A"/>
+    <!-- White ring -->
+    <circle cx="0" cy="0" r="38" fill="#FFFFFF"/>
+    <!-- Green ring -->
+    <circle cx="0" cy="0" r="28" fill="#27AE60"/>
+    <!-- Red ring -->
+    <circle cx="0" cy="0" r="18" fill="#E74C3C"/>
+    <!-- Bullseye -->
+    <circle cx="0" cy="0" r="8" fill="#1A1A1A"/>
+    <!-- Highlight -->
+    <circle cx="-5" cy="-5" r="3" fill="#FFFFFF" opacity="0.6"/>
+  </g>
+  
+  <!-- Right Eye (Dartboard) -->
+  <g transform="translate(604, 470)">
+    <!-- Outer black ring -->
+    <circle cx="0" cy="0" r="45" fill="#1A1A1A"/>
+    <!-- White ring -->
+    <circle cx="0" cy="0" r="38" fill="#FFFFFF"/>
+    <!-- Green ring -->
+    <circle cx="0" cy="0" r="28" fill="#27AE60"/>
+    <!-- Red ring -->
+    <circle cx="0" cy="0" r="18" fill="#E74C3C"/>
+    <!-- Bullseye -->
+    <circle cx="0" cy="0" r="8" fill="#1A1A1A"/>
+    <!-- Highlight -->
+    <circle cx="-5" cy="-5" r="3" fill="#FFFFFF" opacity="0.6"/>
+  </g>
+  
+  <!-- Snout -->
+  <ellipse cx="512" cy="590" rx="70" ry="50" fill="#7A5230"/>
+  
+  <!-- Nostrils -->
+  <ellipse cx="485" cy="595" rx="12" ry="15" fill="#2C2C2C"/>
+  <ellipse cx="539" cy="595" rx="12" ry="15" fill="#2C2C2C"/>
+  
+  <!-- Nose highlight -->
+  <ellipse cx="512" cy="570" rx="25" ry="15" fill="#9B6B3F" opacity="0.5"/>
+  
+  <!-- Mouth hint (optional) -->
+  <path d="M 470 620 Q 512 635 554 620" stroke="#5A4020" stroke-width="3" fill="none" opacity="0.5"/>
+  
+</svg>
