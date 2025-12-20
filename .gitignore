@@ -1,0 +1,317 @@
+# OS
+.DS_Store
+*.swp
+*.swo
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.coverage
+.venv/
+venv/
+.env
+.env.*
+
+# CMake / build
+build/
+build-*/
+cmake-build-*/
+CMakeCache.txt
+CMakeFiles/
+Makefile
+compile_commands.json
+Testing/
+
+# Node / web
+node_modules/
+dist/
+.parcel-cache/
+.turbo/
+.next/
+
+# Rust / Cargo
+target/
+
+# Logs and temp
+*.log
+*.tmp
+*.bak
+
+# IDE/editor
+.vscode/
+.idea/
+.DS_Store?
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+.venv/
+venv/
+ENV/
+env/
+
+# C++
+*.o
+*.obj
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
+*.d
+*.slo
+*.lo
+*.ko
+*.elf
+*.ilk
+*.map
+*.exp
+*.gch
+*.pch
+*.lib
+*.a
+*.la
+*.lai
+*.so.*
+*.dylib
+*.dll
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+CMakeScripts/
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+_deps/
+cmake-build-*/
+
+# Build directories
+build/
+Build/
+out/
+bin/
+Bin/
+debug/
+Debug/
+release/
+Release/
+x64/
+x86/
+
+# JUCE
+JuceLibraryCode/
+Builds/
+
+# Qt
+*.pro.user
+*.qm
+.qmake.stash
+moc_*.cpp
+qrc_*.cpp
+ui_*.h
+*.moc
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.sublime-project
+*.sublime-workspace
+
+# Node (for any web tools)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Test artifacts
+*.log
+*.tlog
+Testing/
+test_results/
+*.gcda
+*.gcno
+*.gcov
+coverage/
+*.coverage
+
+# Profiling
+*.prof
+*.perf
+tracy/
+valgrind*.log
+perfetto*.trace
+
+# Audio files (generated during testing)
+*.wav
+*.mp3
+*.flac
+*.aiff
+*.ogg
+!tests/fixtures/*.wav
+!tests/fixtures/*.mp3
+
+# MIDI files (generated)
+*.mid
+*.midi
+!tests/fixtures/*.mid
+!tests/fixtures/*.midi
+
+# VST/CLAP build artifacts
+*.vst3
+*.clap
+Plugins/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Linux
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+_codeql_detected_source_root
+
+# Large binary files (use Git LFS or external storage)
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.rar
+*.7z
+*.pkg
+*.deb
+*.dmg
+*.iso
+
+# Images (store externally)
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.bmp
+*.tiff
+*.psd
+*.xcf
+!assets/icons/*.png
+!docs/images/*.png
+
+# Node native binaries
+*.node
+
+# Lock files (regenerate locally)
+yarn.lock
+package-lock.json
+*.lock
+!flake.lock
+
+# ML/AI models (use Git LFS or cloud storage)
+*.pt
+*.pth
+*.onnx
+*.ckpt
+*.h5
+*.npy
+*.npz
+*.pkl
+*.pickle
+*.wavetable
+
+# Video files
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.webm
+
+# Compiled docs (track source only)
+*.pdf
+*.docx
+*.pptx
+*.xlsx
+!docs/specs/*.pdf
+
+# Temporary and cache
+*.tmp
+*.temp
+*.cache
+*.bak
+*.orig
+*.alias
+
+# SDK extracts (use system headers directly)
+idaw_extract_*
+*_extract_*
+
+# Source maps (generated)
+*.map
+!*.md.map
+
+# Bundled/minified JavaScript (build artifacts)
+*.min.js
+*.bundle.js
+index.*.js
+index_*.js
+typescript*.js
+typescript*.mjs
+rollup*.js
+babel.js
+axe.js
+react-dom.development*.js
+StreamlitSyntaxHighlighter*.js
+embed.*.js
+archive_*.js
+
+# Large vendor type definitions (install via npm)
+lib.dom.d.ts
+lucide-react.d.ts
+dynamicIconImports.d.ts
+code/python/
+code/python/
+data/xml/
+docs/markdown/
+docs/txt/
+docs/html/
+code/
