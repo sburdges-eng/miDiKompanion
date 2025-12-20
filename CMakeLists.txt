@@ -17,14 +17,22 @@ find_package(Qt6 COMPONENTS Core Widgets REQUIRED)
 # JUCE setup
 add_subdirectory(external/JUCE EXCLUDE_FROM_ALL)
 
-# Main Kelly library
-add_library(KellyCore STATIC
-    src/core/emotion_engine.cpp
-    src/core/emotion_thesaurus.cpp
-    src/core/groove_templates.cpp
-    src/core/chord_diagnostics.cpp
-    src/core/midi_pipeline.cpp
-    src/core/intent_processor.cpp
+# Main Kelly library (shared core)
+file(GLOB_RECURSE KELLY_CORE_SOURCES CONFIGURE_DEPENDS
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/*.mm
+)
+
+# Exclude app entry point and plugin sources from the core lib
+list(FILTER KELLY_CORE_SOURCES EXCLUDE REGEX "/src/gui/main.cpp$")
+list(FILTER KELLY_CORE_SOURCES EXCLUDE REGEX "/src/plugin/")
+
+add_library(KellyCore STATIC ${KELLY_CORE_SOURCES})
+
+# Ensure ObjC++ file (for biometrics) is treated correctly if present
+set_source_files_properties(
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/biometric/BiometricInput.mm
+    PROPERTIES COMPILE_LANGUAGES OBJCXX
 )
 
 target_include_directories(KellyCore PUBLIC
@@ -68,7 +76,7 @@ target_link_libraries(KellyApp PRIVATE
 
 # Plugin builds
 if(BUILD_PLUGINS)
-    # VST3 Plugin
+    # VST3/CLAP plugin
     juce_add_plugin(KellyPlugin
         COMPANY_NAME "Kelly"
         PLUGIN_MANUFACTURER_CODE Klly
@@ -80,8 +88,9 @@ if(BUILD_PLUGINS)
     )
 
     target_sources(KellyPlugin PRIVATE
-        src/plugin/plugin_processor.cpp
-        src/plugin/plugin_editor.cpp
+        src/plugin/PluginProcessor.cpp
+        src/plugin/PluginEditor.cpp
+        src/plugin/PluginState.cpp
     )
 
     target_link_libraries(KellyPlugin PRIVATE
