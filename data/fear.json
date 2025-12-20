@@ -1,480 +1,480 @@
 {
   "id": "IV",
   "name": "FEAR",
-  "description": "Negative emotional states characterized by threat perception and high arousal",
+  "description": "Negative emotional states characterized by perceived threat and desire to escape",
   "valence": "negative",
-  "arousal_range": [0.5, 1.0],
+  "arousal_range": [0.4, 1.0],
   "sub_emotions": {
-    "TERROR": {
-      "id": "IVa",
-      "description": "Extreme overwhelming fear",
-      "arousal_bias": 0.95,
+    "ANXIETY": {
+      "id": "IVi",
+      "description": "Persistent worry about uncertain future",
+      "arousal_bias": 0.6,
       "sub_sub_emotions": {
-        "horrified": {
-          "id": "IVaa",
-          "description": "Frozen with fear",
+        "worried": {
+          "id": "IVia",
+          "description": "Troubled about potential problems",
           "intensity_tiers": {
-            "1_subtle": ["startled", "alarmed", "spooked"],
-            "2_mild": ["horrified", "terrified", "petrified"],
-            "3_moderate": ["deeply horrified", "profoundly terrified", "utterly petrified"],
-            "4_strong": ["completely frozen", "absolutely paralyzed", "totally horror-struck"],
-            "5_intense": ["infinite horror", "cosmic terror", "boundless dread"],
-            "6_overwhelming": ["transcendent horror", "eternal terror", "absolute nightmare"]
+            "1_subtle": ["concerned", "thoughtful", "mindful"],
+            "2_mild": ["worried", "troubled", "uneasy"],
+            "3_moderate": ["deeply worried", "profoundly troubled", "utterly uneasy"],
+            "4_strong": ["completely worried", "absolutely troubled", "totally consumed"],
+            "5_intense": ["explosive worry", "volcanic trouble", "nuclear unease"],
+            "6_overwhelming": ["infinite worry", "cosmic trouble", "transcendent unease"]
           }
         },
-        "panic_stricken": {
-          "id": "IVab",
-          "description": "Lost to panic",
+        "anxious": {
+          "id": "IVib",
+          "description": "Nervously uncertain",
           "intensity_tiers": {
             "1_subtle": ["nervous", "jittery", "on edge"],
-            "2_mild": ["panicked", "frantic", "hysterical"],
-            "3_moderate": ["deeply panicked", "profoundly frantic", "utterly hysterical"],
-            "4_strong": ["completely panic-stricken", "absolutely frantic", "totally unhinged"],
-            "5_intense": ["infinite panic", "cosmic hysteria", "boundless frenzy"],
-            "6_overwhelming": ["transcendent panic", "eternal hysteria", "complete dissolution"]
+            "2_mild": ["anxious", "apprehensive", "tense"],
+            "3_moderate": ["deeply anxious", "profoundly apprehensive", "utterly tense"],
+            "4_strong": ["completely anxious", "absolutely apprehensive", "totally wired"],
+            "5_intense": ["explosive anxiety", "volcanic apprehension", "nuclear tension"],
+            "6_overwhelming": ["infinite anxiety", "cosmic apprehension", "transcendent dread"]
           }
         },
-        "terrorized": {
-          "id": "IVac",
-          "description": "Under sustained attack",
+        "stressed": {
+          "id": "IVic",
+          "description": "Under mental pressure",
           "intensity_tiers": {
-            "1_subtle": ["threatened", "endangered", "imperiled"],
-            "2_mild": ["terrorized", "victimized", "persecuted"],
-            "3_moderate": ["deeply terrorized", "profoundly victimized", "utterly persecuted"],
-            "4_strong": ["completely terrorized", "absolutely victimized", "totally brutalized"],
-            "5_intense": ["infinite terror", "cosmic persecution", "boundless victimization"],
-            "6_overwhelming": ["transcendent terror", "eternal persecution", "complete annihilation"]
+            "1_subtle": ["pressured", "strained", "taxed"],
+            "2_mild": ["stressed", "burdened", "weighted"],
+            "3_moderate": ["deeply stressed", "profoundly burdened", "utterly weighted"],
+            "4_strong": ["completely stressed", "absolutely overwhelmed", "totally crushed"],
+            "5_intense": ["explosive stress", "volcanic pressure", "nuclear burden"],
+            "6_overwhelming": ["infinite stress", "cosmic pressure", "transcendent crushing"]
+          }
+        },
+        "nervous": {
+          "id": "IVid",
+          "description": "Easily agitated or alarmed",
+          "intensity_tiers": {
+            "1_subtle": ["jumpy", "twitchy", "fidgety"],
+            "2_mild": ["nervous", "jittery", "skittish"],
+            "3_moderate": ["deeply nervous", "profoundly jittery", "utterly skittish"],
+            "4_strong": ["completely nervous", "absolutely jittery", "totally on edge"],
+            "5_intense": ["explosive nervousness", "volcanic jitters", "nuclear skittishness"],
+            "6_overwhelming": ["infinite nervousness", "cosmic jitters", "transcendent agitation"]
+          }
+        },
+        "apprehensive": {
+          "id": "IVie",
+          "description": "Fearful of what may happen",
+          "intensity_tiers": {
+            "1_subtle": ["wary", "cautious", "hesitant"],
+            "2_mild": ["apprehensive", "leery", "uneasy"],
+            "3_moderate": ["deeply apprehensive", "profoundly leery", "utterly uneasy"],
+            "4_strong": ["completely apprehensive", "absolutely leery", "totally dreading"],
+            "5_intense": ["explosive apprehension", "volcanic dread", "nuclear foreboding"],
+            "6_overwhelming": ["infinite apprehension", "cosmic dread", "transcendent foreboding"]
+          }
+        },
+        "overwhelmed": {
+          "id": "IVif",
+          "description": "Unable to cope with demands",
+          "intensity_tiers": {
+            "1_subtle": ["taxed", "stretched", "challenged"],
+            "2_mild": ["overwhelmed", "swamped", "flooded"],
+            "3_moderate": ["deeply overwhelmed", "profoundly swamped", "utterly flooded"],
+            "4_strong": ["completely overwhelmed", "absolutely drowning", "totally submerged"],
+            "5_intense": ["explosive overwhelm", "volcanic drowning", "nuclear submersion"],
+            "6_overwhelming": ["infinite overwhelm", "cosmic drowning", "transcendent burial"]
+          }
+        }
+      }
+    },
+    "TERROR": {
+      "id": "IVj",
+      "description": "Intense overwhelming fear",
+      "arousal_bias": 1.0,
+      "sub_sub_emotions": {
+        "terrified": {
+          "id": "IVja",
+          "description": "Extreme fear",
+          "intensity_tiers": {
+            "1_subtle": ["scared", "frightened", "afraid"],
+            "2_mild": ["terrified", "horrified", "petrified"],
+            "3_moderate": ["deeply terrified", "profoundly horrified", "utterly petrified"],
+            "4_strong": ["completely terrified", "absolutely horrified", "totally paralyzed"],
+            "5_intense": ["explosive terror", "volcanic horror", "nuclear petrification"],
+            "6_overwhelming": ["infinite terror", "cosmic horror", "transcendent petrification"]
+          }
+        },
+        "panicked": {
+          "id": "IVjb",
+          "description": "Uncontrollable fear response",
+          "intensity_tiers": {
+            "1_subtle": ["alarmed", "startled", "shaken"],
+            "2_mild": ["panicked", "frantic", "hysterical"],
+            "3_moderate": ["deeply panicked", "profoundly frantic", "utterly hysterical"],
+            "4_strong": ["completely panicked", "absolutely frantic", "totally unhinged"],
+            "5_intense": ["explosive panic", "volcanic frenzy", "nuclear hysteria"],
+            "6_overwhelming": ["infinite panic", "cosmic frenzy", "transcendent hysteria"]
+          }
+        },
+        "horrified": {
+          "id": "IVjc",
+          "description": "Shocked with fear and disgust",
+          "intensity_tiers": {
+            "1_subtle": ["shocked", "appalled", "aghast"],
+            "2_mild": ["horrified", "revolted", "sickened"],
+            "3_moderate": ["deeply horrified", "profoundly revolted", "utterly sickened"],
+            "4_strong": ["completely horrified", "absolutely revolted", "totally traumatized"],
+            "5_intense": ["explosive horror", "volcanic revulsion", "nuclear trauma"],
+            "6_overwhelming": ["infinite horror", "cosmic revulsion", "transcendent trauma"]
+          }
+        },
+        "paralyzed": {
+          "id": "IVjd",
+          "description": "Unable to move from fear",
+          "intensity_tiers": {
+            "1_subtle": ["frozen", "stuck", "immobile"],
+            "2_mild": ["paralyzed", "petrified", "rooted"],
+            "3_moderate": ["deeply paralyzed", "profoundly petrified", "utterly rooted"],
+            "4_strong": ["completely paralyzed", "absolutely petrified", "totally frozen"],
+            "5_intense": ["explosive paralysis", "volcanic petrification", "nuclear freezing"],
+            "6_overwhelming": ["infinite paralysis", "cosmic petrification", "transcendent immobility"]
+          }
+        },
+        "hysterical": {
+          "id": "IVje",
+          "description": "Uncontrolled emotional outburst",
+          "intensity_tiers": {
+            "1_subtle": ["upset", "agitated", "distressed"],
+            "2_mild": ["hysterical", "frenzied", "manic"],
+            "3_moderate": ["deeply hysterical", "profoundly frenzied", "utterly manic"],
+            "4_strong": ["completely hysterical", "absolutely frenzied", "totally unhinged"],
+            "5_intense": ["explosive hysteria", "volcanic frenzy", "nuclear mania"],
+            "6_overwhelming": ["infinite hysteria", "cosmic frenzy", "transcendent mania"]
           }
         },
         "traumatized": {
-          "id": "IVad",
+          "id": "IVjf",
           "description": "Deeply psychologically wounded",
           "intensity_tiers": {
             "1_subtle": ["shaken", "disturbed", "affected"],
             "2_mild": ["traumatized", "scarred", "damaged"],
             "3_moderate": ["deeply traumatized", "profoundly scarred", "utterly damaged"],
-            "4_strong": ["completely traumatized", "absolutely shattered", "totally broken"],
-            "5_intense": ["infinite trauma", "cosmic scarring", "boundless damage"],
-            "6_overwhelming": ["transcendent trauma", "eternal scarring", "complete psychic destruction"]
-          }
-        },
-        "frozen": {
-          "id": "IVae",
-          "description": "Unable to move or act",
-          "intensity_tiers": {
-            "1_subtle": ["still", "motionless", "stopped"],
-            "2_mild": ["frozen", "immobilized", "paralyzed"],
-            "3_moderate": ["deeply frozen", "profoundly immobilized", "utterly paralyzed"],
-            "4_strong": ["completely frozen", "absolutely immobilized", "totally locked"],
-            "5_intense": ["infinite paralysis", "cosmic freezing", "boundless immobility"],
-            "6_overwhelming": ["transcendent paralysis", "eternal freezing", "complete petrification"]
-          }
-        },
-        "nightmarish": {
-          "id": "IVaf",
-          "description": "Living a nightmare",
-          "intensity_tiers": {
-            "1_subtle": ["surreal", "dreamlike", "unreal"],
-            "2_mild": ["nightmarish", "hellish", "horrific"],
-            "3_moderate": ["deeply nightmarish", "profoundly hellish", "utterly horrific"],
-            "4_strong": ["completely nightmarish", "absolutely hellish", "totally apocalyptic"],
-            "5_intense": ["infinite nightmare", "cosmic hell", "boundless horror"],
-            "6_overwhelming": ["transcendent nightmare", "eternal hell", "absolute apocalypse"]
-          }
-        }
-      }
-    },
-    "ANXIETY": {
-      "id": "IVb",
-      "description": "Persistent worry and unease",
-      "arousal_bias": 0.7,
-      "sub_sub_emotions": {
-        "worried": {
-          "id": "IVba",
-          "description": "Troubled by possibilities",
-          "intensity_tiers": {
-            "1_subtle": ["concerned", "thoughtful", "mindful"],
-            "2_mild": ["worried", "troubled", "anxious"],
-            "3_moderate": ["deeply worried", "profoundly troubled", "utterly anxious"],
-            "4_strong": ["consumed by worry", "completely troubled", "totally anxious"],
-            "5_intense": ["infinite worry", "cosmic trouble", "boundless anxiety"],
-            "6_overwhelming": ["transcendent worry", "eternal trouble", "absolute anxiety"]
-          }
-        },
-        "nervous": {
-          "id": "IVbb",
-          "description": "Physically agitated",
-          "intensity_tiers": {
-            "1_subtle": ["tense", "edgy", "keyed up"],
-            "2_mild": ["nervous", "jittery", "jumpy"],
-            "3_moderate": ["deeply nervous", "profoundly jittery", "utterly jumpy"],
-            "4_strong": ["completely nervous", "absolutely jittery", "totally wired"],
-            "5_intense": ["infinite nervousness", "cosmic jitters", "boundless agitation"],
-            "6_overwhelming": ["transcendent nervousness", "eternal jitters", "complete nervous breakdown"]
-          }
-        },
-        "restless": {
-          "id": "IVbc",
-          "description": "Unable to be still",
-          "intensity_tiers": {
-            "1_subtle": ["fidgety", "antsy", "unsettled"],
-            "2_mild": ["restless", "agitated", "stirred"],
-            "3_moderate": ["deeply restless", "profoundly agitated", "utterly unsettled"],
-            "4_strong": ["completely restless", "absolutely agitated", "totally unable to rest"],
-            "5_intense": ["infinite restlessness", "cosmic agitation", "boundless unrest"],
-            "6_overwhelming": ["transcendent restlessness", "eternal agitation", "complete inability to settle"]
-          }
-        },
-        "apprehensive": {
-          "id": "IVbd",
-          "description": "Anticipating something bad",
-          "intensity_tiers": {
-            "1_subtle": ["wary", "cautious", "careful"],
-            "2_mild": ["apprehensive", "uneasy", "concerned"],
-            "3_moderate": ["deeply apprehensive", "profoundly uneasy", "utterly concerned"],
-            "4_strong": ["completely apprehensive", "absolutely uneasy", "totally fearful"],
-            "5_intense": ["infinite apprehension", "cosmic unease", "boundless concern"],
-            "6_overwhelming": ["transcendent apprehension", "eternal unease", "absolute dread"]
-          }
-        },
-        "overthinking": {
-          "id": "IVbe",
-          "description": "Trapped in spiraling thoughts",
-          "intensity_tiers": {
-            "1_subtle": ["mulling", "pondering", "considering"],
-            "2_mild": ["overthinking", "ruminating", "obsessing"],
-            "3_moderate": ["deeply overthinking", "profoundly ruminating", "utterly obsessing"],
-            "4_strong": ["completely overthinking", "absolutely ruminating", "totally lost in thought"],
-            "5_intense": ["infinite rumination", "cosmic obsession", "boundless thought spirals"],
-            "6_overwhelming": ["transcendent overthinking", "eternal rumination", "complete mental prison"]
-          }
-        },
-        "on_edge": {
-          "id": "IVbf",
-          "description": "Ready to snap",
-          "intensity_tiers": {
-            "1_subtle": ["alert", "vigilant", "watchful"],
-            "2_mild": ["on edge", "tense", "wound up"],
-            "3_moderate": ["deeply on edge", "profoundly tense", "utterly wound up"],
-            "4_strong": ["completely on edge", "absolutely tense", "totally ready to snap"],
-            "5_intense": ["infinite tension", "cosmic alertness", "boundless vigilance"],
-            "6_overwhelming": ["transcendent tension", "eternal alertness", "hair-trigger state"]
-          }
-        }
-      }
-    },
-    "WORRY": {
-      "id": "IVc",
-      "description": "Mental distress about future",
-      "arousal_bias": 0.6,
-      "sub_sub_emotions": {
-        "concerned": {
-          "id": "IVca",
-          "description": "Caring about outcome",
-          "intensity_tiers": {
-            "1_subtle": ["interested", "attentive", "mindful"],
-            "2_mild": ["concerned", "caring", "invested"],
-            "3_moderate": ["deeply concerned", "profoundly caring", "utterly invested"],
-            "4_strong": ["completely concerned", "absolutely caring", "totally invested"],
-            "5_intense": ["infinite concern", "cosmic caring", "boundless investment"],
-            "6_overwhelming": ["transcendent concern", "eternal caring", "absolute dedication"]
-          }
-        },
-        "fretting": {
-          "id": "IVcb",
-          "description": "Constantly worrying",
-          "intensity_tiers": {
-            "1_subtle": ["fussing", "bothering", "niggling"],
-            "2_mild": ["fretting", "stewing", "agonizing"],
-            "3_moderate": ["deeply fretting", "profoundly stewing", "utterly agonizing"],
-            "4_strong": ["completely fretting", "absolutely stewing", "totally consumed"],
-            "5_intense": ["infinite fretting", "cosmic stewing", "boundless agonizing"],
-            "6_overwhelming": ["transcendent fretting", "eternal stewing", "complete mental torture"]
-          }
-        },
-        "anticipating": {
-          "id": "IVcc",
-          "description": "Dreading what's coming",
-          "intensity_tiers": {
-            "1_subtle": ["expecting", "awaiting", "looking ahead"],
-            "2_mild": ["anticipating", "dreading", "bracing"],
-            "3_moderate": ["deeply anticipating", "profoundly dreading", "utterly bracing"],
-            "4_strong": ["completely anticipating", "absolutely dreading", "totally bracing"],
-            "5_intense": ["infinite anticipation", "cosmic dread", "boundless bracing"],
-            "6_overwhelming": ["transcendent anticipation", "eternal dread", "complete foreboding"]
-          }
-        },
-        "doubtful": {
-          "id": "IVcd",
-          "description": "Uncertain and worried",
-          "intensity_tiers": {
-            "1_subtle": ["unsure", "uncertain", "questioning"],
-            "2_mild": ["doubtful", "skeptical", "wavering"],
-            "3_moderate": ["deeply doubtful", "profoundly uncertain", "utterly questioning"],
-            "4_strong": ["completely doubtful", "absolutely uncertain", "totally lost"],
-            "5_intense": ["infinite doubt", "cosmic uncertainty", "boundless questioning"],
-            "6_overwhelming": ["transcendent doubt", "eternal uncertainty", "complete loss of faith"]
-          }
-        },
-        "catastrophizing": {
-          "id": "IVce",
-          "description": "Imagining worst case",
-          "intensity_tiers": {
-            "1_subtle": ["imagining", "projecting", "envisioning"],
-            "2_mild": ["catastrophizing", "doom-thinking", "worst-casing"],
-            "3_moderate": ["deeply catastrophizing", "profoundly doom-thinking", "utterly spiraling"],
-            "4_strong": ["completely catastrophizing", "absolutely doom-consumed", "totally spiraling"],
-            "5_intense": ["infinite catastrophe", "cosmic doom", "boundless worst-case"],
-            "6_overwhelming": ["transcendent catastrophe", "eternal doom", "absolute apocalyptic thinking"]
-          }
-        },
-        "preoccupied": {
-          "id": "IVcf",
-          "description": "Mind elsewhere with worry",
-          "intensity_tiers": {
-            "1_subtle": ["distracted", "absent", "elsewhere"],
-            "2_mild": ["preoccupied", "absorbed", "engrossed"],
-            "3_moderate": ["deeply preoccupied", "profoundly absorbed", "utterly engrossed"],
-            "4_strong": ["completely preoccupied", "absolutely absorbed", "totally consumed"],
-            "5_intense": ["infinite preoccupation", "cosmic absorption", "boundless engrossment"],
-            "6_overwhelming": ["transcendent preoccupation", "eternal absorption", "complete mental captivity"]
+            "4_strong": ["completely traumatized", "absolutely scarred", "totally shattered"],
+            "5_intense": ["explosive trauma", "volcanic scarring", "nuclear shattering"],
+            "6_overwhelming": ["infinite trauma", "cosmic scarring", "transcendent destruction"]
           }
         }
       }
     },
     "DREAD": {
-      "id": "IVd",
-      "description": "Heavy anticipation of doom",
-      "arousal_bias": 0.75,
+      "id": "IVk",
+      "description": "Anticipatory fear of something bad",
+      "arousal_bias": 0.5,
       "sub_sub_emotions": {
+        "dreading": {
+          "id": "IVka",
+          "description": "Fearful anticipation",
+          "intensity_tiers": {
+            "1_subtle": ["expecting the worst", "fearing", "anticipating badly"],
+            "2_mild": ["dreading", "foreboding", "ominous feeling"],
+            "3_moderate": ["deeply dreading", "profoundly foreboding", "utterly ominous"],
+            "4_strong": ["completely dreading", "absolutely foreboding", "totally dark anticipation"],
+            "5_intense": ["explosive dread", "volcanic foreboding", "nuclear omen"],
+            "6_overwhelming": ["infinite dread", "cosmic foreboding", "transcendent doom"]
+          }
+        },
         "foreboding": {
-          "id": "IVda",
-          "description": "Sense of impending doom",
+          "id": "IVkb",
+          "description": "Sense of coming evil",
           "intensity_tiers": {
-            "1_subtle": ["sensing", "feeling", "intuiting"],
-            "2_mild": ["foreboding", "ominous", "portentous"],
-            "3_moderate": ["deeply foreboding", "profoundly ominous", "utterly portentous"],
-            "4_strong": ["completely foreboding", "absolutely ominous", "totally doom-filled"],
-            "5_intense": ["infinite foreboding", "cosmic omen", "boundless portent"],
-            "6_overwhelming": ["transcendent foreboding", "eternal omen", "absolute prophecy of doom"]
+            "1_subtle": ["uneasy", "sensing trouble", "feeling off"],
+            "2_mild": ["foreboding", "ominous", "premonitory"],
+            "3_moderate": ["deeply foreboding", "profoundly ominous", "utterly premonitory"],
+            "4_strong": ["completely foreboding", "absolutely ominous", "totally doom-laden"],
+            "5_intense": ["explosive foreboding", "volcanic omen", "nuclear premonition"],
+            "6_overwhelming": ["infinite foreboding", "cosmic omen", "transcendent prophecy of doom"]
           }
         },
-        "doom_laden": {
-          "id": "IVdb",
-          "description": "Weighted by inevitable bad",
+        "doomed": {
+          "id": "IVkc",
+          "description": "Feeling fated for disaster",
           "intensity_tiers": {
-            "1_subtle": ["heavy", "weighted", "burdened"],
-            "2_mild": ["doom-laden", "fated", "destined"],
-            "3_moderate": ["deeply doom-laden", "profoundly fated", "utterly destined"],
-            "4_strong": ["completely doom-laden", "absolutely fated", "totally inevitable"],
-            "5_intense": ["infinite doom", "cosmic fate", "boundless destiny"],
-            "6_overwhelming": ["transcendent doom", "eternal fate", "absolute inevitability"]
-          }
-        },
-        "fatalistic": {
-          "id": "IVdc",
-          "description": "Resigned to bad outcome",
-          "intensity_tiers": {
-            "1_subtle": ["accepting", "resigned", "yielding"],
-            "2_mild": ["fatalistic", "defeatist", "pessimistic"],
-            "3_moderate": ["deeply fatalistic", "profoundly defeatist", "utterly pessimistic"],
-            "4_strong": ["completely fatalistic", "absolutely defeatist", "totally resigned"],
-            "5_intense": ["infinite fatalism", "cosmic defeatism", "boundless pessimism"],
-            "6_overwhelming": ["transcendent fatalism", "eternal defeatism", "absolute surrender to fate"]
-          }
-        },
-        "dark_expectation": {
-          "id": "IVdd",
-          "description": "Waiting for the worst",
-          "intensity_tiers": {
-            "1_subtle": ["expecting", "waiting", "anticipating"],
-            "2_mild": ["darkly expecting", "grimly waiting", "anxiously anticipating"],
-            "3_moderate": ["deeply expecting doom", "profoundly awaiting", "utterly anticipating"],
-            "4_strong": ["completely expecting the worst", "absolutely awaiting doom", "totally anticipating disaster"],
-            "5_intense": ["infinite dark expectation", "cosmic awaiting", "boundless anticipation of doom"],
-            "6_overwhelming": ["transcendent dark expectation", "eternal awaiting", "absolute certainty of doom"]
-          }
-        },
-        "oppressed": {
-          "id": "IVde",
-          "description": "Crushed by weight of fear",
-          "intensity_tiers": {
-            "1_subtle": ["pressured", "burdened", "weighted"],
-            "2_mild": ["oppressed", "crushed", "overwhelmed"],
-            "3_moderate": ["deeply oppressed", "profoundly crushed", "utterly overwhelmed"],
-            "4_strong": ["completely oppressed", "absolutely crushed", "totally flattened"],
-            "5_intense": ["infinite oppression", "cosmic crushing", "boundless overwhelming"],
-            "6_overwhelming": ["transcendent oppression", "eternal crushing", "complete obliteration"]
+            "1_subtle": ["unlucky", "cursed", "ill-fated"],
+            "2_mild": ["doomed", "damned", "fated"],
+            "3_moderate": ["deeply doomed", "profoundly damned", "utterly fated"],
+            "4_strong": ["completely doomed", "absolutely damned", "totally cursed"],
+            "5_intense": ["explosive doom", "volcanic damnation", "nuclear fate"],
+            "6_overwhelming": ["infinite doom", "cosmic damnation", "transcendent annihilation"]
           }
         },
         "ominous": {
-          "id": "IVdf",
-          "description": "Sensing dark portent",
+          "id": "IVkd",
+          "description": "Suggesting bad things to come",
           "intensity_tiers": {
-            "1_subtle": ["uneasy", "suspicious", "wary"],
-            "2_mild": ["ominous", "sinister", "menacing"],
-            "3_moderate": ["deeply ominous", "profoundly sinister", "utterly menacing"],
-            "4_strong": ["completely ominous", "absolutely sinister", "totally threatening"],
-            "5_intense": ["infinite omen", "cosmic menace", "boundless threat"],
-            "6_overwhelming": ["transcendent omen", "eternal menace", "absolute dark prophecy"]
+            "1_subtle": ["dark", "threatening", "warning"],
+            "2_mild": ["ominous", "portentous", "sinister"],
+            "3_moderate": ["deeply ominous", "profoundly portentous", "utterly sinister"],
+            "4_strong": ["completely ominous", "absolutely portentous", "totally malevolent"],
+            "5_intense": ["explosive omen", "volcanic portent", "nuclear malevolence"],
+            "6_overwhelming": ["infinite omen", "cosmic portent", "transcendent evil"]
+          }
+        },
+        "fatalistic": {
+          "id": "IVke",
+          "description": "Accepting inevitable doom",
+          "intensity_tiers": {
+            "1_subtle": ["resigned", "accepting", "surrendered"],
+            "2_mild": ["fatalistic", "deterministic", "inevitable feeling"],
+            "3_moderate": ["deeply fatalistic", "profoundly resigned", "utterly accepting"],
+            "4_strong": ["completely fatalistic", "absolutely resigned", "totally surrendered"],
+            "5_intense": ["explosive fatalism", "volcanic resignation", "nuclear surrender"],
+            "6_overwhelming": ["infinite fatalism", "cosmic resignation", "transcendent acceptance"]
+          }
+        },
+        "anticipatory_fear": {
+          "id": "IVkf",
+          "description": "Fear of future events",
+          "intensity_tiers": {
+            "1_subtle": ["expectant", "waiting fearfully", "bracing"],
+            "2_mild": ["anticipatory fear", "pre-emptive worry", "future-focused fear"],
+            "3_moderate": ["deeply anticipatory fear", "profound pre-worry", "utter future-fear"],
+            "4_strong": ["complete anticipatory fear", "absolute pre-worry", "total future-dread"],
+            "5_intense": ["explosive anticipation", "volcanic pre-fear", "nuclear future-terror"],
+            "6_overwhelming": ["infinite anticipatory fear", "cosmic pre-terror", "transcendent future-doom"]
           }
         }
       }
     },
-    "PANIC": {
-      "id": "IVe",
-      "description": "Acute overwhelming fear",
-      "arousal_bias": 0.9,
+    "VULNERABILITY": {
+      "id": "IVl",
+      "description": "Feeling exposed and unprotected",
+      "arousal_bias": 0.5,
       "sub_sub_emotions": {
-        "frantic": {
-          "id": "IVea",
-          "description": "Wild with fear",
+        "vulnerable": {
+          "id": "IVla",
+          "description": "Open to attack or harm",
           "intensity_tiers": {
-            "1_subtle": ["hurried", "rushed", "hasty"],
-            "2_mild": ["frantic", "desperate", "wild"],
-            "3_moderate": ["deeply frantic", "profoundly desperate", "utterly wild"],
-            "4_strong": ["completely frantic", "absolutely desperate", "totally unhinged"],
-            "5_intense": ["infinite franticness", "cosmic desperation", "boundless wildness"],
-            "6_overwhelming": ["transcendent franticness", "eternal desperation", "complete frenzy"]
+            "1_subtle": ["exposed", "open", "unguarded"],
+            "2_mild": ["vulnerable", "unprotected", "defenseless"],
+            "3_moderate": ["deeply vulnerable", "profoundly unprotected", "utterly defenseless"],
+            "4_strong": ["completely vulnerable", "absolutely exposed", "totally naked"],
+            "5_intense": ["explosive vulnerability", "volcanic exposure", "nuclear nakedness"],
+            "6_overwhelming": ["infinite vulnerability", "cosmic exposure", "transcendent defenselessness"]
           }
         },
-        "hysterical": {
-          "id": "IVeb",
-          "description": "Lost to emotional overwhelm",
+        "exposed": {
+          "id": "IVlb",
+          "description": "Revealed and unshielded",
           "intensity_tiers": {
-            "1_subtle": ["emotional", "overwrought", "upset"],
-            "2_mild": ["hysterical", "uncontrolled", "manic"],
-            "3_moderate": ["deeply hysterical", "profoundly uncontrolled", "utterly manic"],
-            "4_strong": ["completely hysterical", "absolutely uncontrolled", "totally lost"],
-            "5_intense": ["infinite hysteria", "cosmic loss of control", "boundless mania"],
-            "6_overwhelming": ["transcendent hysteria", "eternal loss of control", "complete psychic break"]
+            "1_subtle": ["visible", "seen", "noticed"],
+            "2_mild": ["exposed", "revealed", "uncovered"],
+            "3_moderate": ["deeply exposed", "profoundly revealed", "utterly uncovered"],
+            "4_strong": ["completely exposed", "absolutely revealed", "totally laid bare"],
+            "5_intense": ["explosive exposure", "volcanic revelation", "nuclear uncovering"],
+            "6_overwhelming": ["infinite exposure", "cosmic revelation", "transcendent nakedness"]
           }
         },
-        "desperate": {
-          "id": "IVec",
-          "description": "Willing to do anything",
+        "insecure": {
+          "id": "IVlc",
+          "description": "Lacking confidence in safety",
           "intensity_tiers": {
-            "1_subtle": ["urgent", "pressing", "needy"],
-            "2_mild": ["desperate", "frenzied", "driven"],
-            "3_moderate": ["deeply desperate", "profoundly frenzied", "utterly driven"],
-            "4_strong": ["completely desperate", "absolutely frenzied", "totally beyond reason"],
-            "5_intense": ["infinite desperation", "cosmic frenzy", "boundless drive"],
-            "6_overwhelming": ["transcendent desperation", "eternal frenzy", "absolute recklessness"]
+            "1_subtle": ["uncertain", "doubtful", "questioning"],
+            "2_mild": ["insecure", "unstable", "shaky"],
+            "3_moderate": ["deeply insecure", "profoundly unstable", "utterly shaky"],
+            "4_strong": ["completely insecure", "absolutely unstable", "totally unmoored"],
+            "5_intense": ["explosive insecurity", "volcanic instability", "nuclear shakiness"],
+            "6_overwhelming": ["infinite insecurity", "cosmic instability", "transcendent unmooring"]
           }
         },
-        "spiraling": {
-          "id": "IVed",
-          "description": "Losing control rapidly",
+        "fragile": {
+          "id": "IVld",
+          "description": "Easily broken or damaged",
           "intensity_tiers": {
-            "1_subtle": ["slipping", "sliding", "descending"],
-            "2_mild": ["spiraling", "unraveling", "disintegrating"],
-            "3_moderate": ["deeply spiraling", "profoundly unraveling", "utterly disintegrating"],
-            "4_strong": ["completely spiraling", "absolutely unraveling", "totally falling apart"],
-            "5_intense": ["infinite spiral", "cosmic unraveling", "boundless disintegration"],
-            "6_overwhelming": ["transcendent spiral", "eternal unraveling", "complete dissolution"]
+            "1_subtle": ["delicate", "tender", "sensitive"],
+            "2_mild": ["fragile", "breakable", "brittle"],
+            "3_moderate": ["deeply fragile", "profoundly breakable", "utterly brittle"],
+            "4_strong": ["completely fragile", "absolutely breakable", "totally shatterable"],
+            "5_intense": ["explosive fragility", "volcanic brittleness", "nuclear delicacy"],
+            "6_overwhelming": ["infinite fragility", "cosmic brittleness", "transcendent shatterability"]
           }
         },
-        "flight_mode": {
-          "id": "IVee",
-          "description": "Overwhelmed by urge to flee",
+        "defenseless": {
+          "id": "IVle",
+          "description": "Without protection",
           "intensity_tiers": {
-            "1_subtle": ["wanting to leave", "needing to go", "urge to run"],
-            "2_mild": ["in flight mode", "fleeing", "escaping"],
-            "3_moderate": ["deeply in flight", "profoundly fleeing", "utterly running"],
-            "4_strong": ["completely in flight", "absolutely fleeing", "total escape mode"],
-            "5_intense": ["infinite flight", "cosmic escape", "boundless fleeing"],
-            "6_overwhelming": ["transcendent flight", "eternal escape", "absolute running"]
+            "1_subtle": ["unguarded", "unshielded", "open"],
+            "2_mild": ["defenseless", "helpless", "powerless"],
+            "3_moderate": ["deeply defenseless", "profoundly helpless", "utterly powerless"],
+            "4_strong": ["completely defenseless", "absolutely helpless", "totally exposed"],
+            "5_intense": ["explosive defenselessness", "volcanic helplessness", "nuclear powerlessness"],
+            "6_overwhelming": ["infinite defenselessness", "cosmic helplessness", "transcendent vulnerability"]
           }
         },
-        "overwhelmed": {
-          "id": "IVef",
-          "description": "Unable to cope",
+        "raw": {
+          "id": "IVlf",
+          "description": "Emotionally exposed and tender",
           "intensity_tiers": {
-            "1_subtle": ["stressed", "taxed", "stretched"],
-            "2_mild": ["overwhelmed", "flooded", "inundated"],
-            "3_moderate": ["deeply overwhelmed", "profoundly flooded", "utterly inundated"],
-            "4_strong": ["completely overwhelmed", "absolutely flooded", "totally drowned"],
-            "5_intense": ["infinite overwhelm", "cosmic flooding", "boundless inundation"],
-            "6_overwhelming": ["transcendent overwhelm", "eternal flooding", "complete submersion"]
+            "1_subtle": ["sensitive", "tender", "touchable"],
+            "2_mild": ["raw", "open-wound", "unhealed"],
+            "3_moderate": ["deeply raw", "profoundly open", "utterly unhealed"],
+            "4_strong": ["completely raw", "absolutely exposed nerve", "totally bleeding"],
+            "5_intense": ["explosive rawness", "volcanic openness", "nuclear bleeding"],
+            "6_overwhelming": ["infinite rawness", "cosmic wound", "transcendent bleeding"]
           }
         }
       }
     },
-    "PARANOIA": {
-      "id": "IVf",
-      "description": "Fear of persecution or threat",
+    "UNEASE": {
+      "id": "IVm",
+      "description": "General discomfort and mild fear",
+      "arousal_bias": 0.4,
+      "sub_sub_emotions": {
+        "uneasy": {
+          "id": "IVma",
+          "description": "Slightly anxious or uncomfortable",
+          "intensity_tiers": {
+            "1_subtle": ["uncomfortable", "unsettled", "off"],
+            "2_mild": ["uneasy", "disquieted", "disturbed"],
+            "3_moderate": ["deeply uneasy", "profoundly disquieted", "utterly disturbed"],
+            "4_strong": ["completely uneasy", "absolutely disquieted", "totally unsettled"],
+            "5_intense": ["explosive unease", "volcanic disquiet", "nuclear disturbance"],
+            "6_overwhelming": ["infinite unease", "cosmic disquiet", "transcendent unsettling"]
+          }
+        },
+        "unsettled": {
+          "id": "IVmb",
+          "description": "Lacking stability or calm",
+          "intensity_tiers": {
+            "1_subtle": ["disturbed", "ruffled", "bothered"],
+            "2_mild": ["unsettled", "disrupted", "disarranged"],
+            "3_moderate": ["deeply unsettled", "profoundly disrupted", "utterly disarranged"],
+            "4_strong": ["completely unsettled", "absolutely disrupted", "totally chaotic"],
+            "5_intense": ["explosive unsettling", "volcanic disruption", "nuclear chaos"],
+            "6_overwhelming": ["infinite unsettling", "cosmic disruption", "transcendent chaos"]
+          }
+        },
+        "wary": {
+          "id": "IVmc",
+          "description": "Cautious about potential danger",
+          "intensity_tiers": {
+            "1_subtle": ["careful", "watchful", "alert"],
+            "2_mild": ["wary", "guarded", "vigilant"],
+            "3_moderate": ["deeply wary", "profoundly guarded", "utterly vigilant"],
+            "4_strong": ["completely wary", "absolutely guarded", "totally on alert"],
+            "5_intense": ["explosive wariness", "volcanic guardedness", "nuclear vigilance"],
+            "6_overwhelming": ["infinite wariness", "cosmic guardedness", "transcendent alertness"]
+          }
+        },
+        "suspicious": {
+          "id": "IVmd",
+          "description": "Distrustful and cautious",
+          "intensity_tiers": {
+            "1_subtle": ["questioning", "doubting", "skeptical"],
+            "2_mild": ["suspicious", "mistrustful", "leery"],
+            "3_moderate": ["deeply suspicious", "profoundly mistrustful", "utterly leery"],
+            "4_strong": ["completely suspicious", "absolutely mistrustful", "totally paranoid"],
+            "5_intense": ["explosive suspicion", "volcanic mistrust", "nuclear paranoia"],
+            "6_overwhelming": ["infinite suspicion", "cosmic mistrust", "transcendent paranoia"]
+          }
+        },
+        "tense": {
+          "id": "IVme",
+          "description": "Mentally or emotionally strained",
+          "intensity_tiers": {
+            "1_subtle": ["tight", "stiff", "rigid"],
+            "2_mild": ["tense", "stressed", "strained"],
+            "3_moderate": ["deeply tense", "profoundly stressed", "utterly strained"],
+            "4_strong": ["completely tense", "absolutely stressed", "totally wound up"],
+            "5_intense": ["explosive tension", "volcanic stress", "nuclear strain"],
+            "6_overwhelming": ["infinite tension", "cosmic stress", "transcendent strain"]
+          }
+        },
+        "on_edge": {
+          "id": "IVmf",
+          "description": "Ready to react to danger",
+          "intensity_tiers": {
+            "1_subtle": ["alert", "ready", "primed"],
+            "2_mild": ["on edge", "keyed up", "wound up"],
+            "3_moderate": ["deeply on edge", "profoundly keyed up", "utterly wound up"],
+            "4_strong": ["completely on edge", "absolutely wired", "totally hair-trigger"],
+            "5_intense": ["explosive edge", "volcanic wiring", "nuclear trigger-ready"],
+            "6_overwhelming": ["infinite edge", "cosmic wiring", "transcendent trigger"]
+          }
+        }
+      }
+    },
+    "PHOBIA": {
+      "id": "IVn",
+      "description": "Irrational intense fear",
       "arousal_bias": 0.8,
       "sub_sub_emotions": {
-        "suspicious": {
-          "id": "IVfa",
-          "description": "Distrusting others' motives",
+        "phobic": {
+          "id": "IVna",
+          "description": "Irrational fear of specific thing",
           "intensity_tiers": {
-            "1_subtle": ["wary", "cautious", "careful"],
-            "2_mild": ["suspicious", "mistrustful", "distrustful"],
-            "3_moderate": ["deeply suspicious", "profoundly mistrustful", "utterly distrustful"],
-            "4_strong": ["completely suspicious", "absolutely mistrustful", "totally distrustful"],
-            "5_intense": ["infinite suspicion", "cosmic mistrust", "boundless distrust"],
-            "6_overwhelming": ["transcendent suspicion", "eternal mistrust", "absolute distrust of all"]
+            "1_subtle": ["uncomfortable", "averse", "avoidant"],
+            "2_mild": ["phobic", "fearful", "dreading"],
+            "3_moderate": ["deeply phobic", "profoundly fearful", "utterly dreading"],
+            "4_strong": ["completely phobic", "absolutely fearful", "totally avoidant"],
+            "5_intense": ["explosive phobia", "volcanic fear", "nuclear dread"],
+            "6_overwhelming": ["infinite phobia", "cosmic fear", "transcendent terror"]
           }
         },
-        "persecuted": {
-          "id": "IVfb",
-          "description": "Feeling targeted",
+        "repulsed": {
+          "id": "IVnb",
+          "description": "Strong aversion driving away",
           "intensity_tiers": {
-            "1_subtle": ["watched", "observed", "monitored"],
-            "2_mild": ["persecuted", "targeted", "hunted"],
-            "3_moderate": ["deeply persecuted", "profoundly targeted", "utterly hunted"],
-            "4_strong": ["completely persecuted", "absolutely targeted", "totally hunted"],
-            "5_intense": ["infinite persecution", "cosmic targeting", "boundless hunting"],
-            "6_overwhelming": ["transcendent persecution", "eternal targeting", "absolute prey"]
+            "1_subtle": ["turned off", "put off", "averse"],
+            "2_mild": ["repulsed", "revolted", "disgusted"],
+            "3_moderate": ["deeply repulsed", "profoundly revolted", "utterly disgusted"],
+            "4_strong": ["completely repulsed", "absolutely revolted", "totally sickened"],
+            "5_intense": ["explosive repulsion", "volcanic revolt", "nuclear disgust"],
+            "6_overwhelming": ["infinite repulsion", "cosmic revolt", "transcendent disgust"]
           }
         },
-        "conspired_against": {
-          "id": "IVfc",
-          "description": "Believing others plot against you",
+        "claustrophobic": {
+          "id": "IVnc",
+          "description": "Fear of confined spaces",
           "intensity_tiers": {
-            "1_subtle": ["doubting", "questioning", "wondering"],
-            "2_mild": ["feeling conspired against", "sensing plots", "detecting schemes"],
-            "3_moderate": ["deeply sensing conspiracy", "profoundly detecting plots", "utterly convinced of schemes"],
-            "4_strong": ["completely certain of conspiracy", "absolutely convinced of plots", "totally surrounded by schemes"],
-            "5_intense": ["infinite conspiracy", "cosmic plotting", "boundless scheming"],
-            "6_overwhelming": ["transcendent conspiracy", "universal plotting", "complete reality of persecution"]
+            "1_subtle": ["confined", "restricted", "hemmed in"],
+            "2_mild": ["claustrophobic", "trapped", "closed in"],
+            "3_moderate": ["deeply claustrophobic", "profoundly trapped", "utterly closed in"],
+            "4_strong": ["completely claustrophobic", "absolutely trapped", "totally suffocating"],
+            "5_intense": ["explosive claustrophobia", "volcanic trapping", "nuclear suffocation"],
+            "6_overwhelming": ["infinite claustrophobia", "cosmic trapping", "transcendent suffocation"]
           }
         },
-        "hypervigilant": {
-          "id": "IVfd",
-          "description": "Constantly scanning for threat",
+        "agoraphobic": {
+          "id": "IVnd",
+          "description": "Fear of open or public spaces",
           "intensity_tiers": {
-            "1_subtle": ["alert", "watchful", "observant"],
-            "2_mild": ["hypervigilant", "hypersensitive", "hyperaware"],
-            "3_moderate": ["deeply hypervigilant", "profoundly alert", "utterly watchful"],
-            "4_strong": ["completely hypervigilant", "absolutely alert", "totally on guard"],
-            "5_intense": ["infinite vigilance", "cosmic alertness", "boundless watchfulness"],
-            "6_overwhelming": ["transcendent vigilance", "eternal alertness", "complete state of guard"]
+            "1_subtle": ["exposed", "visible", "unprotected"],
+            "2_mild": ["agoraphobic", "fearful of openness", "exposed-feeling"],
+            "3_moderate": ["deeply agoraphobic", "profoundly exposed", "utterly unprotected"],
+            "4_strong": ["completely agoraphobic", "absolutely exposed", "totally vulnerable"],
+            "5_intense": ["explosive agoraphobia", "volcanic exposure", "nuclear vulnerability"],
+            "6_overwhelming": ["infinite agoraphobia", "cosmic exposure", "transcendent vulnerability"]
           }
         },
-        "distrustful": {
-          "id": "IVfe",
-          "description": "Unable to trust",
+        "squeamish": {
+          "id": "IVne",
+          "description": "Easily made uncomfortable by unpleasant things",
           "intensity_tiers": {
-            "1_subtle": ["hesitant", "reserved", "guarded"],
-            "2_mild": ["distrustful", "cynical", "skeptical"],
-            "3_moderate": ["deeply distrustful", "profoundly cynical", "utterly skeptical"],
-            "4_strong": ["completely distrustful", "absolutely cynical", "totally unable to trust"],
-            "5_intense": ["infinite distrust", "cosmic cynicism", "boundless skepticism"],
-            "6_overwhelming": ["transcendent distrust", "eternal cynicism", "absolute inability to trust"]
+            "1_subtle": ["sensitive", "uncomfortable", "queasy"],
+            "2_mild": ["squeamish", "nauseated", "sickened"],
+            "3_moderate": ["deeply squeamish", "profoundly nauseated", "utterly sickened"],
+            "4_strong": ["completely squeamish", "absolutely nauseated", "totally revolted"],
+            "5_intense": ["explosive squeamishness", "volcanic nausea", "nuclear revulsion"],
+            "6_overwhelming": ["infinite squeamishness", "cosmic nausea", "transcendent revulsion"]
           }
         },
-        "isolated": {
-          "id": "IVff",
-          "description": "Cut off by fear",
+        "avoidant": {
+          "id": "IVnf",
+          "description": "Strong desire to escape or evade",
           "intensity_tiers": {
-            "1_subtle": ["withdrawn", "retreated", "pulled back"],
-            "2_mild": ["isolated", "separated", "detached"],
-            "3_moderate": ["deeply isolated", "profoundly separated", "utterly detached"],
-            "4_strong": ["completely isolated", "absolutely separated", "totally cut off"],
-            "5_intense": ["infinite isolation", "cosmic separation", "boundless detachment"],
-            "6_overwhelming": ["transcendent isolation", "eternal separation", "complete severance"]
+            "1_subtle": ["hesitant", "reluctant", "shrinking"],
+            "2_mild": ["avoidant", "evasive", "escaping"],
+            "3_moderate": ["deeply avoidant", "profoundly evasive", "utterly fleeing"],
+            "4_strong": ["completely avoidant", "absolutely evasive", "totally running"],
+            "5_intense": ["explosive avoidance", "volcanic evasion", "nuclear fleeing"],
+            "6_overwhelming": ["infinite avoidance", "cosmic evasion", "transcendent escape"]
           }
         }
       }

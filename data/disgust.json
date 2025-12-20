@@ -1,480 +1,480 @@
 {
   "id": "VI",
   "name": "DISGUST",
-  "description": "Negative emotional states characterized by rejection, revulsion, and withdrawal",
+  "description": "Negative emotional states characterized by aversion, revulsion, and rejection",
   "valence": "negative",
-  "arousal_range": [0.3, 0.7],
+  "arousal_range": [0.3, 0.8],
   "sub_emotions": {
     "REVULSION": {
-      "id": "VIa",
-      "description": "Physical repulsion and rejection",
+      "id": "VIi",
+      "description": "Strong physical disgust response",
       "arousal_bias": 0.7,
       "sub_sub_emotions": {
+        "revolted": {
+          "id": "VIia",
+          "description": "Strong disgust causing rejection",
+          "intensity_tiers": {
+            "1_subtle": ["put off", "turned off", "displeased"],
+            "2_mild": ["revolted", "repelled", "repulsed"],
+            "3_moderate": ["deeply revolted", "profoundly repelled", "utterly repulsed"],
+            "4_strong": ["completely revolted", "absolutely repelled", "totally sickened"],
+            "5_intense": ["explosive revulsion", "volcanic repulsion", "nuclear sickening"],
+            "6_overwhelming": ["infinite revulsion", "cosmic repulsion", "transcendent sickening"]
+          }
+        },
         "nauseated": {
-          "id": "VIaa",
-          "description": "Physically sickened",
+          "id": "VIib",
+          "description": "Feeling like vomiting from disgust",
           "intensity_tiers": {
-            "1_subtle": ["queasy", "uneasy", "unsettled"],
-            "2_mild": ["nauseated", "sickened", "ill"],
-            "3_moderate": ["deeply nauseated", "profoundly sickened", "utterly ill"],
-            "4_strong": ["completely nauseated", "absolutely sickened", "violently ill"],
-            "5_intense": ["infinite nausea", "cosmic sickness", "boundless revulsion"],
-            "6_overwhelming": ["transcendent nausea", "eternal sickness", "complete physical rejection"]
+            "1_subtle": ["queasy", "unsettled", "uneasy"],
+            "2_mild": ["nauseated", "sick", "ill"],
+            "3_moderate": ["deeply nauseated", "profoundly sick", "utterly ill"],
+            "4_strong": ["completely nauseated", "absolutely sick", "totally green"],
+            "5_intense": ["explosive nausea", "volcanic sickness", "nuclear illness"],
+            "6_overwhelming": ["infinite nausea", "cosmic sickness", "transcendent illness"]
           }
         },
-        "repelled": {
-          "id": "VIab",
-          "description": "Pushed away forcefully",
+        "repulsed": {
+          "id": "VIic",
+          "description": "Driven away by disgust",
           "intensity_tiers": {
-            "1_subtle": ["put off", "turned away", "disinclined"],
-            "2_mild": ["repelled", "repulsed", "rebuffed"],
-            "3_moderate": ["deeply repelled", "profoundly repulsed", "utterly rebuffed"],
-            "4_strong": ["completely repelled", "absolutely repulsed", "totally rejected"],
-            "5_intense": ["infinite repulsion", "cosmic rejection", "boundless aversion"],
-            "6_overwhelming": ["transcendent repulsion", "eternal rejection", "complete pushing away"]
+            "1_subtle": ["pushed away", "deterred", "discouraged"],
+            "2_mild": ["repulsed", "driven back", "rebuffed"],
+            "3_moderate": ["deeply repulsed", "profoundly driven back", "utterly rebuffed"],
+            "4_strong": ["completely repulsed", "absolutely driven away", "totally expelled"],
+            "5_intense": ["explosive repulsion", "volcanic driving", "nuclear expulsion"],
+            "6_overwhelming": ["infinite repulsion", "cosmic driving", "transcendent expulsion"]
           }
         },
-        "visceral_rejection": {
-          "id": "VIac",
-          "description": "Gut-level disgust",
+        "sickened": {
+          "id": "VIid",
+          "description": "Made ill by something disgusting",
           "intensity_tiers": {
-            "1_subtle": ["uncomfortable", "uneasy", "disturbed"],
-            "2_mild": ["viscerally rejecting", "gut-rejecting", "instinctively repelled"],
-            "3_moderate": ["deeply viscerally rejecting", "profoundly gut-rejecting", "utterly instinctively repelled"],
-            "4_strong": ["completely viscerally rejecting", "absolutely gut-rejecting", "totally primal rejection"],
-            "5_intense": ["infinite visceral rejection", "cosmic gut rejection", "boundless primal repulsion"],
-            "6_overwhelming": ["transcendent visceral rejection", "eternal gut rejection", "complete primal revulsion"]
+            "1_subtle": ["unwell", "ill at ease", "uncomfortable"],
+            "2_mild": ["sickened", "ill", "unwell"],
+            "3_moderate": ["deeply sickened", "profoundly ill", "utterly unwell"],
+            "4_strong": ["completely sickened", "absolutely ill", "totally diseased"],
+            "5_intense": ["explosive sickening", "volcanic illness", "nuclear disease"],
+            "6_overwhelming": ["infinite sickening", "cosmic illness", "transcendent disease"]
           }
         },
         "gagging": {
-          "id": "VIad",
-          "description": "Physical gag response",
+          "id": "VIie",
+          "description": "Reflex of disgust",
           "intensity_tiers": {
-            "1_subtle": ["throat tightening", "swallowing hard", "gulping"],
+            "1_subtle": ["choking slightly", "catching throat", "gulping"],
             "2_mild": ["gagging", "retching", "heaving"],
             "3_moderate": ["deeply gagging", "profoundly retching", "utterly heaving"],
-            "4_strong": ["violently gagging", "completely retching", "totally heaving"],
-            "5_intense": ["infinite gagging", "cosmic retching", "boundless heaving"],
-            "6_overwhelming": ["transcendent gagging", "eternal retching", "complete physical rejection"]
+            "4_strong": ["completely gagging", "absolutely retching", "totally convulsing"],
+            "5_intense": ["explosive gagging", "volcanic retching", "nuclear heaving"],
+            "6_overwhelming": ["infinite gagging", "cosmic retching", "transcendent convulsion"]
           }
         },
-        "horrified_disgust": {
-          "id": "VIae",
-          "description": "Horror mixed with revulsion",
+        "visceral_disgust": {
+          "id": "VIif",
+          "description": "Deep gut-level revulsion",
           "intensity_tiers": {
-            "1_subtle": ["shocked", "disturbed", "upset"],
-            "2_mild": ["horrified", "appalled", "aghast"],
-            "3_moderate": ["deeply horrified", "profoundly appalled", "utterly aghast"],
-            "4_strong": ["completely horrified", "absolutely appalled", "totally aghast"],
-            "5_intense": ["infinite horror-disgust", "cosmic appallment", "boundless revulsion"],
-            "6_overwhelming": ["transcendent horror-disgust", "eternal appallment", "complete moral-physical rejection"]
-          }
-        },
-        "recoiling": {
-          "id": "VIaf",
-          "description": "Physical pulling back",
-          "intensity_tiers": {
-            "1_subtle": ["pulling back", "withdrawing", "retreating"],
-            "2_mild": ["recoiling", "flinching", "shrinking"],
-            "3_moderate": ["deeply recoiling", "profoundly flinching", "utterly shrinking"],
-            "4_strong": ["violently recoiling", "completely flinching", "totally shrinking"],
-            "5_intense": ["infinite recoiling", "cosmic flinching", "boundless shrinking"],
-            "6_overwhelming": ["transcendent recoiling", "eternal flinching", "complete withdrawal"]
+            "1_subtle": ["gut reaction", "instinctive dislike", "primal aversion"],
+            "2_mild": ["visceral disgust", "gut-deep revulsion", "primal rejection"],
+            "3_moderate": ["deep visceral disgust", "profound gut revulsion", "utter primal rejection"],
+            "4_strong": ["complete visceral disgust", "absolute gut revulsion", "total primal rejection"],
+            "5_intense": ["explosive visceral disgust", "volcanic gut revulsion", "nuclear rejection"],
+            "6_overwhelming": ["infinite visceral disgust", "cosmic gut revulsion", "transcendent rejection"]
           }
         }
       }
     },
     "CONTEMPT": {
-      "id": "VIb",
-      "description": "Superior disgust and dismissal",
-      "arousal_bias": 0.5,
+      "id": "VIj",
+      "description": "Looking down on someone as inferior",
+      "arousal_bias": 0.4,
       "sub_sub_emotions": {
-        "disdainful": {
-          "id": "VIba",
-          "description": "Looking down with disgust",
+        "contemptuous": {
+          "id": "VIja",
+          "description": "Feeling someone is worthless",
           "intensity_tiers": {
-            "1_subtle": ["unimpressed", "dismissive", "indifferent"],
-            "2_mild": ["disdainful", "scornful", "contemptuous"],
-            "3_moderate": ["deeply disdainful", "profoundly scornful", "utterly contemptuous"],
-            "4_strong": ["completely disdainful", "absolutely scornful", "totally contemptuous"],
-            "5_intense": ["infinite disdain", "cosmic scorn", "boundless contempt"],
-            "6_overwhelming": ["transcendent disdain", "eternal scorn", "absolute contempt"]
+            "1_subtle": ["dismissive", "unimpressed", "looking down"],
+            "2_mild": ["contemptuous", "disdainful", "scornful"],
+            "3_moderate": ["deeply contemptuous", "profoundly disdainful", "utterly scornful"],
+            "4_strong": ["completely contemptuous", "absolutely disdainful", "totally scornful"],
+            "5_intense": ["explosive contempt", "volcanic disdain", "nuclear scorn"],
+            "6_overwhelming": ["infinite contempt", "cosmic disdain", "transcendent scorn"]
           }
         },
-        "sneering": {
-          "id": "VIbb",
-          "description": "Mocking with disgust",
+        "disdainful": {
+          "id": "VIjb",
+          "description": "Considering unworthy of respect",
           "intensity_tiers": {
-            "1_subtle": ["smirking", "mocking", "deriding"],
-            "2_mild": ["sneering", "jeering", "scoffing"],
-            "3_moderate": ["deeply sneering", "profoundly jeering", "utterly scoffing"],
-            "4_strong": ["viciously sneering", "completely jeering", "totally scoffing"],
-            "5_intense": ["infinite sneering", "cosmic jeering", "boundless scoffing"],
-            "6_overwhelming": ["transcendent sneering", "eternal jeering", "absolute mockery"]
+            "1_subtle": ["unimpressed", "superior", "aloof"],
+            "2_mild": ["disdainful", "haughty", "supercilious"],
+            "3_moderate": ["deeply disdainful", "profoundly haughty", "utterly supercilious"],
+            "4_strong": ["completely disdainful", "absolutely haughty", "totally superior"],
+            "5_intense": ["explosive disdain", "volcanic haughtiness", "nuclear superiority"],
+            "6_overwhelming": ["infinite disdain", "cosmic haughtiness", "transcendent superiority"]
+          }
+        },
+        "scornful": {
+          "id": "VIjc",
+          "description": "Mocking and contemptuous",
+          "intensity_tiers": {
+            "1_subtle": ["mocking", "sneering", "jeering"],
+            "2_mild": ["scornful", "derisive", "sardonic"],
+            "3_moderate": ["deeply scornful", "profoundly derisive", "utterly sardonic"],
+            "4_strong": ["completely scornful", "absolutely derisive", "totally mocking"],
+            "5_intense": ["explosive scorn", "volcanic derision", "nuclear mockery"],
+            "6_overwhelming": ["infinite scorn", "cosmic derision", "transcendent mockery"]
           }
         },
         "condescending": {
-          "id": "VIbc",
-          "description": "Patronizing disgust",
+          "id": "VIjd",
+          "description": "Treating as inferior",
           "intensity_tiers": {
-            "1_subtle": ["superior", "above", "better than"],
-            "2_mild": ["condescending", "patronizing", "supercilious"],
-            "3_moderate": ["deeply condescending", "profoundly patronizing", "utterly supercilious"],
-            "4_strong": ["completely condescending", "absolutely patronizing", "totally superior"],
-            "5_intense": ["infinite condescension", "cosmic patronizing", "boundless superiority"],
-            "6_overwhelming": ["transcendent condescension", "eternal patronizing", "absolute superiority complex"]
+            "1_subtle": ["patronizing", "superior", "talking down"],
+            "2_mild": ["condescending", "snobbish", "uppity"],
+            "3_moderate": ["deeply condescending", "profoundly snobbish", "utterly uppity"],
+            "4_strong": ["completely condescending", "absolutely snobbish", "totally superior"],
+            "5_intense": ["explosive condescension", "volcanic snobbery", "nuclear superiority"],
+            "6_overwhelming": ["infinite condescension", "cosmic snobbery", "transcendent superiority"]
           }
         },
         "dismissive": {
-          "id": "VIbd",
-          "description": "Brushing off as worthless",
+          "id": "VIje",
+          "description": "Treating as unworthy of consideration",
           "intensity_tiers": {
-            "1_subtle": ["ignoring", "overlooking", "disregarding"],
-            "2_mild": ["dismissive", "discharging", "rebuffing"],
-            "3_moderate": ["deeply dismissive", "profoundly discharging", "utterly rebuffing"],
-            "4_strong": ["completely dismissive", "absolutely rejecting", "totally disregarding"],
-            "5_intense": ["infinite dismissiveness", "cosmic rejection", "boundless disregard"],
-            "6_overwhelming": ["transcendent dismissiveness", "eternal rejection", "complete erasure"]
+            "1_subtle": ["ignoring", "brushing off", "overlooking"],
+            "2_mild": ["dismissive", "disregarding", "rejecting"],
+            "3_moderate": ["deeply dismissive", "profoundly disregarding", "utterly rejecting"],
+            "4_strong": ["completely dismissive", "absolutely disregarding", "totally rejecting"],
+            "5_intense": ["explosive dismissiveness", "volcanic disregard", "nuclear rejection"],
+            "6_overwhelming": ["infinite dismissiveness", "cosmic disregard", "transcendent rejection"]
           }
         },
         "superior": {
-          "id": "VIbe",
-          "description": "Feeling above",
+          "id": "VIjf",
+          "description": "Feeling better than others",
           "intensity_tiers": {
-            "1_subtle": ["better", "higher", "elevated"],
-            "2_mild": ["superior", "elevated", "exalted"],
-            "3_moderate": ["deeply superior", "profoundly elevated", "utterly exalted"],
-            "4_strong": ["completely superior", "absolutely elevated", "totally above"],
-            "5_intense": ["infinite superiority", "cosmic elevation", "boundless exaltation"],
-            "6_overwhelming": ["transcendent superiority", "eternal elevation", "godlike above"]
-          }
-        },
-        "imperious": {
-          "id": "VIbf",
-          "description": "Commanding contempt",
-          "intensity_tiers": {
-            "1_subtle": ["commanding", "authoritative", "dominant"],
-            "2_mild": ["imperious", "overbearing", "domineering"],
-            "3_moderate": ["deeply imperious", "profoundly overbearing", "utterly domineering"],
-            "4_strong": ["completely imperious", "absolutely overbearing", "totally domineering"],
-            "5_intense": ["infinite imperiousness", "cosmic overbearing", "boundless domination"],
-            "6_overwhelming": ["transcendent imperiousness", "eternal overbearing", "absolute tyranny"]
+            "1_subtle": ["above", "better", "higher"],
+            "2_mild": ["superior", "elevated", "lofty"],
+            "3_moderate": ["deeply superior", "profoundly elevated", "utterly lofty"],
+            "4_strong": ["completely superior", "absolutely elevated", "totally exalted"],
+            "5_intense": ["explosive superiority", "volcanic elevation", "nuclear exaltation"],
+            "6_overwhelming": ["infinite superiority", "cosmic elevation", "transcendent exaltation"]
           }
         }
       }
     },
     "LOATHING": {
-      "id": "VIc",
-      "description": "Intense hatred-disgust",
-      "arousal_bias": 0.65,
+      "id": "VIk",
+      "description": "Intense hatred and disgust",
+      "arousal_bias": 0.7,
       "sub_sub_emotions": {
-        "detesting": {
-          "id": "VIca",
-          "description": "Deep hatred with disgust",
+        "loathing": {
+          "id": "VIka",
+          "description": "Extreme hatred and disgust",
           "intensity_tiers": {
-            "1_subtle": ["disliking", "disapproving", "objecting"],
-            "2_mild": ["detesting", "hating", "abhorring"],
-            "3_moderate": ["deeply detesting", "profoundly hating", "utterly abhorring"],
-            "4_strong": ["completely detesting", "absolutely hating", "totally abhorring"],
-            "5_intense": ["infinite detestation", "cosmic hatred", "boundless abhorrence"],
-            "6_overwhelming": ["transcendent detestation", "eternal hatred", "absolute abhorrence"]
+            "1_subtle": ["disliking strongly", "hating", "detesting"],
+            "2_mild": ["loathing", "abhorring", "despising"],
+            "3_moderate": ["deeply loathing", "profoundly abhorring", "utterly despising"],
+            "4_strong": ["completely loathing", "absolutely abhorring", "totally despising"],
+            "5_intense": ["explosive loathing", "volcanic abhorrence", "nuclear despising"],
+            "6_overwhelming": ["infinite loathing", "cosmic abhorrence", "transcendent despising"]
+          }
+        },
+        "abhorrent": {
+          "id": "VIkb",
+          "description": "Finding completely detestable",
+          "intensity_tiers": {
+            "1_subtle": ["disliking", "rejecting", "refusing"],
+            "2_mild": ["abhorrent", "detestable", "hateful"],
+            "3_moderate": ["deeply abhorrent", "profoundly detestable", "utterly hateful"],
+            "4_strong": ["completely abhorrent", "absolutely detestable", "totally hateful"],
+            "5_intense": ["explosive abhorrence", "volcanic detestation", "nuclear hatred"],
+            "6_overwhelming": ["infinite abhorrence", "cosmic detestation", "transcendent hatred"]
           }
         },
         "despising": {
-          "id": "VIcb",
-          "description": "Looking down with hatred",
+          "id": "VIkc",
+          "description": "Feeling contemptuous hatred",
           "intensity_tiers": {
-            "1_subtle": ["looking down on", "thinking less of", "undervaluing"],
-            "2_mild": ["despising", "scorning", "disdaining"],
-            "3_moderate": ["deeply despising", "profoundly scorning", "utterly disdaining"],
-            "4_strong": ["completely despising", "absolutely scorning", "totally disdaining"],
-            "5_intense": ["infinite despising", "cosmic scorning", "boundless disdain"],
-            "6_overwhelming": ["transcendent despising", "eternal scorning", "absolute disdain"]
+            "1_subtle": ["disliking", "looking down on", "scorning"],
+            "2_mild": ["despising", "disdaining", "scorning"],
+            "3_moderate": ["deeply despising", "profoundly disdaining", "utterly scorning"],
+            "4_strong": ["completely despising", "absolutely disdaining", "totally scorning"],
+            "5_intense": ["explosive despising", "volcanic disdain", "nuclear scorn"],
+            "6_overwhelming": ["infinite despising", "cosmic disdain", "transcendent scorn"]
           }
         },
-        "abhorring": {
-          "id": "VIcc",
-          "description": "Extreme moral disgust",
+        "detesting": {
+          "id": "VIkd",
+          "description": "Intensely disliking",
           "intensity_tiers": {
-            "1_subtle": ["disapproving", "rejecting", "opposing"],
-            "2_mild": ["abhorring", "detesting", "loathing"],
-            "3_moderate": ["deeply abhorring", "profoundly detesting", "utterly loathing"],
-            "4_strong": ["completely abhorring", "absolutely detesting", "totally loathing"],
-            "5_intense": ["infinite abhorrence", "cosmic detestation", "boundless loathing"],
-            "6_overwhelming": ["transcendent abhorrence", "eternal detestation", "absolute loathing"]
+            "1_subtle": ["disliking", "not liking", "objecting to"],
+            "2_mild": ["detesting", "hating", "abominating"],
+            "3_moderate": ["deeply detesting", "profoundly hating", "utterly abominating"],
+            "4_strong": ["completely detesting", "absolutely hating", "totally abominating"],
+            "5_intense": ["explosive detestation", "volcanic hatred", "nuclear abomination"],
+            "6_overwhelming": ["infinite detestation", "cosmic hatred", "transcendent abomination"]
           }
         },
         "self_loathing": {
-          "id": "VIcd",
-          "description": "Disgust turned inward",
+          "id": "VIke",
+          "description": "Hating oneself",
           "intensity_tiers": {
-            "1_subtle": ["self-critical", "self-doubting", "self-questioning"],
-            "2_mild": ["self-loathing", "self-hating", "self-disgusted"],
-            "3_moderate": ["deeply self-loathing", "profoundly self-hating", "utterly self-disgusted"],
-            "4_strong": ["completely self-loathing", "absolutely self-hating", "totally self-rejected"],
-            "5_intense": ["infinite self-loathing", "cosmic self-hatred", "boundless self-disgust"],
-            "6_overwhelming": ["transcendent self-loathing", "eternal self-hatred", "complete self-annihilation"]
+            "1_subtle": ["self-critical", "self-doubting", "self-disliking"],
+            "2_mild": ["self-loathing", "self-hating", "self-despising"],
+            "3_moderate": ["deeply self-loathing", "profoundly self-hating", "utterly self-despising"],
+            "4_strong": ["completely self-loathing", "absolutely self-hating", "totally self-despising"],
+            "5_intense": ["explosive self-loathing", "volcanic self-hatred", "nuclear self-despising"],
+            "6_overwhelming": ["infinite self-loathing", "cosmic self-hatred", "transcendent self-destruction"]
           }
         },
-        "execrating": {
-          "id": "VIce",
-          "description": "Cursing with disgust",
+        "hatred": {
+          "id": "VIkf",
+          "description": "Intense hostility",
           "intensity_tiers": {
-            "1_subtle": ["condemning", "denouncing", "criticizing"],
-            "2_mild": ["execrating", "cursing", "damning"],
-            "3_moderate": ["deeply execrating", "profoundly cursing", "utterly damning"],
-            "4_strong": ["completely execrating", "absolutely cursing", "totally damning"],
-            "5_intense": ["infinite execration", "cosmic cursing", "boundless damnation"],
-            "6_overwhelming": ["transcendent execration", "eternal cursing", "absolute damnation"]
-          }
-        },
-        "visceral_hatred": {
-          "id": "VIcf",
-          "description": "Gut-level hatred",
-          "intensity_tiers": {
-            "1_subtle": ["deep dislike", "instinctive rejection", "gut antipathy"],
-            "2_mild": ["visceral hatred", "primal loathing", "instinctive disgust"],
-            "3_moderate": ["deeply visceral hatred", "profoundly primal loathing", "utterly instinctive disgust"],
-            "4_strong": ["completely visceral hatred", "absolutely primal loathing", "totally instinctive rejection"],
-            "5_intense": ["infinite visceral hatred", "cosmic primal loathing", "boundless instinctive rejection"],
-            "6_overwhelming": ["transcendent visceral hatred", "eternal primal loathing", "complete primal annihilation"]
+            "1_subtle": ["disliking", "opposing", "resenting"],
+            "2_mild": ["hating", "hostile", "antagonistic"],
+            "3_moderate": ["deeply hating", "profoundly hostile", "utterly antagonistic"],
+            "4_strong": ["completely hating", "absolutely hostile", "totally antagonistic"],
+            "5_intense": ["explosive hatred", "volcanic hostility", "nuclear antagonism"],
+            "6_overwhelming": ["infinite hatred", "cosmic hostility", "transcendent annihilation"]
           }
         }
       }
     },
     "AVERSION": {
-      "id": "VId",
+      "id": "VIl",
       "description": "Strong dislike and avoidance",
-      "arousal_bias": 0.45,
+      "arousal_bias": 0.4,
       "sub_sub_emotions": {
-        "avoidant": {
-          "id": "VIda",
-          "description": "Staying away from",
+        "averse": {
+          "id": "VIla",
+          "description": "Having strong disinclination",
           "intensity_tiers": {
-            "1_subtle": ["hesitant", "reluctant", "unwilling"],
-            "2_mild": ["avoidant", "evasive", "shunning"],
-            "3_moderate": ["deeply avoidant", "profoundly evasive", "utterly shunning"],
-            "4_strong": ["completely avoidant", "absolutely evasive", "totally shunning"],
-            "5_intense": ["infinite avoidance", "cosmic evasion", "boundless shunning"],
-            "6_overwhelming": ["transcendent avoidance", "eternal evasion", "complete isolation"]
+            "1_subtle": ["reluctant", "hesitant", "unwilling"],
+            "2_mild": ["averse", "opposed", "resistant"],
+            "3_moderate": ["deeply averse", "profoundly opposed", "utterly resistant"],
+            "4_strong": ["completely averse", "absolutely opposed", "totally resistant"],
+            "5_intense": ["explosive aversion", "volcanic opposition", "nuclear resistance"],
+            "6_overwhelming": ["infinite aversion", "cosmic opposition", "transcendent resistance"]
           }
         },
-        "repugnant": {
-          "id": "VIdb",
-          "description": "Finding deeply offensive",
+        "repelled": {
+          "id": "VIlb",
+          "description": "Pushed away by disgust",
           "intensity_tiers": {
-            "1_subtle": ["off-putting", "unpleasant", "distasteful"],
-            "2_mild": ["repugnant", "offensive", "objectionable"],
-            "3_moderate": ["deeply repugnant", "profoundly offensive", "utterly objectionable"],
-            "4_strong": ["completely repugnant", "absolutely offensive", "totally objectionable"],
-            "5_intense": ["infinite repugnance", "cosmic offense", "boundless objection"],
-            "6_overwhelming": ["transcendent repugnance", "eternal offense", "absolute objection"]
-          }
-        },
-        "allergic_to": {
-          "id": "VIdc",
-          "description": "Metaphorical allergic reaction",
-          "intensity_tiers": {
-            "1_subtle": ["sensitive to", "reactive to", "bothered by"],
-            "2_mild": ["allergic to", "hypersensitive to", "reactive against"],
-            "3_moderate": ["deeply allergic", "profoundly hypersensitive", "utterly reactive"],
-            "4_strong": ["completely allergic", "absolutely hypersensitive", "violently reactive"],
-            "5_intense": ["infinite allergy", "cosmic hypersensitivity", "boundless reactivity"],
-            "6_overwhelming": ["transcendent allergy", "eternal hypersensitivity", "complete anaphylactic rejection"]
+            "1_subtle": ["pushed back", "deterred", "discouraged"],
+            "2_mild": ["repelled", "driven away", "rebuffed"],
+            "3_moderate": ["deeply repelled", "profoundly driven away", "utterly rebuffed"],
+            "4_strong": ["completely repelled", "absolutely driven away", "totally expelled"],
+            "5_intense": ["explosive repelling", "volcanic driving away", "nuclear expulsion"],
+            "6_overwhelming": ["infinite repelling", "cosmic driving away", "transcendent expulsion"]
           }
         },
         "turned_off": {
-          "id": "VIdd",
+          "id": "VIlc",
           "description": "Lost interest through disgust",
           "intensity_tiers": {
-            "1_subtle": ["uninterested", "disengaged", "indifferent"],
-            "2_mild": ["turned off", "put off", "dissuaded"],
-            "3_moderate": ["deeply turned off", "profoundly put off", "utterly dissuaded"],
-            "4_strong": ["completely turned off", "absolutely put off", "totally dissuaded"],
-            "5_intense": ["infinite turn-off", "cosmic disengagement", "boundless dissuasion"],
-            "6_overwhelming": ["transcendent turn-off", "eternal disengagement", "complete withdrawal"]
+            "1_subtle": ["cooled", "dampened", "diminished"],
+            "2_mild": ["turned off", "put off", "disenchanted"],
+            "3_moderate": ["deeply turned off", "profoundly put off", "utterly disenchanted"],
+            "4_strong": ["completely turned off", "absolutely put off", "totally repulsed"],
+            "5_intense": ["explosive turn-off", "volcanic putting off", "nuclear repulsion"],
+            "6_overwhelming": ["infinite turn-off", "cosmic putting off", "transcendent repulsion"]
           }
         },
-        "squeamish": {
-          "id": "VIde",
-          "description": "Easily disgusted",
+        "allergic": {
+          "id": "VIld",
+          "description": "Strong negative reaction",
           "intensity_tiers": {
-            "1_subtle": ["sensitive", "delicate", "tender"],
-            "2_mild": ["squeamish", "queasy", "easily upset"],
-            "3_moderate": ["deeply squeamish", "profoundly queasy", "utterly sensitive"],
-            "4_strong": ["completely squeamish", "absolutely queasy", "totally over-sensitive"],
-            "5_intense": ["infinite squeamishness", "cosmic queasiness", "boundless sensitivity"],
-            "6_overwhelming": ["transcendent squeamishness", "eternal queasiness", "complete inability to tolerate"]
+            "1_subtle": ["sensitive", "reactive", "triggered"],
+            "2_mild": ["allergic", "hypersensitive", "overreactive"],
+            "3_moderate": ["deeply allergic", "profoundly hypersensitive", "utterly overreactive"],
+            "4_strong": ["completely allergic", "absolutely hypersensitive", "totally reactive"],
+            "5_intense": ["explosive allergy", "volcanic hypersensitivity", "nuclear reactivity"],
+            "6_overwhelming": ["infinite allergy", "cosmic hypersensitivity", "transcendent reactivity"]
           }
         },
-        "repulsed": {
-          "id": "VIdf",
-          "description": "Pushed back by disgust",
+        "resistant": {
+          "id": "VIle",
+          "description": "Opposing strongly",
           "intensity_tiers": {
-            "1_subtle": ["pushed back", "held off", "kept at distance"],
-            "2_mild": ["repulsed", "rebuffed", "rejected"],
-            "3_moderate": ["deeply repulsed", "profoundly rebuffed", "utterly rejected"],
-            "4_strong": ["completely repulsed", "absolutely rebuffed", "totally rejected"],
-            "5_intense": ["infinite repulsion", "cosmic rebuff", "boundless rejection"],
-            "6_overwhelming": ["transcendent repulsion", "eternal rebuff", "complete rejection"]
+            "1_subtle": ["hesitant", "reluctant", "unwilling"],
+            "2_mild": ["resistant", "opposing", "defiant"],
+            "3_moderate": ["deeply resistant", "profoundly opposing", "utterly defiant"],
+            "4_strong": ["completely resistant", "absolutely opposing", "totally defiant"],
+            "5_intense": ["explosive resistance", "volcanic opposition", "nuclear defiance"],
+            "6_overwhelming": ["infinite resistance", "cosmic opposition", "transcendent defiance"]
+          }
+        },
+        "avoiding": {
+          "id": "VIlf",
+          "description": "Deliberately staying away",
+          "intensity_tiers": {
+            "1_subtle": ["sidestepping", "evading", "dodging"],
+            "2_mild": ["avoiding", "shunning", "escaping"],
+            "3_moderate": ["deeply avoiding", "profoundly shunning", "utterly escaping"],
+            "4_strong": ["completely avoiding", "absolutely shunning", "totally fleeing"],
+            "5_intense": ["explosive avoiding", "volcanic shunning", "nuclear fleeing"],
+            "6_overwhelming": ["infinite avoiding", "cosmic shunning", "transcendent escape"]
           }
         }
       }
     },
-    "REPULSION": {
-      "id": "VIe",
-      "description": "Being pushed away forcefully",
+    "MORAL_DISGUST": {
+      "id": "VIm",
+      "description": "Disgust at ethical violations",
       "arousal_bias": 0.6,
       "sub_sub_emotions": {
-        "revolted": {
-          "id": "VIea",
-          "description": "Turned against forcefully",
+        "morally_repulsed": {
+          "id": "VIma",
+          "description": "Disgusted by unethical behavior",
           "intensity_tiers": {
-            "1_subtle": ["bothered", "disturbed", "unsettled"],
-            "2_mild": ["revolted", "disgusted", "sickened"],
-            "3_moderate": ["deeply revolted", "profoundly disgusted", "utterly sickened"],
-            "4_strong": ["completely revolted", "absolutely disgusted", "totally sickened"],
-            "5_intense": ["infinite revolt", "cosmic disgust", "boundless sickness"],
-            "6_overwhelming": ["transcendent revolt", "eternal disgust", "complete revulsion"]
+            "1_subtle": ["disapproving", "objecting", "criticizing"],
+            "2_mild": ["morally repulsed", "ethically disgusted", "righteously revolted"],
+            "3_moderate": ["deeply morally repulsed", "profoundly ethically disgusted", "utterly righteously revolted"],
+            "4_strong": ["completely morally repulsed", "absolutely ethically disgusted", "totally righteously revolted"],
+            "5_intense": ["explosive moral repulsion", "volcanic ethical disgust", "nuclear righteous revolt"],
+            "6_overwhelming": ["infinite moral repulsion", "cosmic ethical disgust", "transcendent righteous revolt"]
           }
         },
-        "grossed_out": {
-          "id": "VIeb",
-          "description": "Casual but real disgust",
+        "scandalized": {
+          "id": "VImb",
+          "description": "Shocked by impropriety",
           "intensity_tiers": {
-            "1_subtle": ["uncomfortable", "put off", "unsettled"],
-            "2_mild": ["grossed out", "icked out", "creeped out"],
-            "3_moderate": ["really grossed out", "deeply icked", "utterly creeped"],
-            "4_strong": ["completely grossed out", "absolutely icked", "totally creeped"],
-            "5_intense": ["infinite grossness", "cosmic ick", "boundless creepiness"],
-            "6_overwhelming": ["transcendent grossness", "eternal ick", "complete disgust"]
+            "1_subtle": ["shocked", "surprised", "taken aback"],
+            "2_mild": ["scandalized", "outraged", "appalled"],
+            "3_moderate": ["deeply scandalized", "profoundly outraged", "utterly appalled"],
+            "4_strong": ["completely scandalized", "absolutely outraged", "totally appalled"],
+            "5_intense": ["explosive scandal", "volcanic outrage", "nuclear appallment"],
+            "6_overwhelming": ["infinite scandal", "cosmic outrage", "transcendent appallment"]
           }
         },
-        "repugnant_feeling": {
-          "id": "VIec",
-          "description": "Experiencing repugnance",
+        "appalled": {
+          "id": "VImc",
+          "description": "Dismayed at shocking behavior",
           "intensity_tiers": {
-            "1_subtle": ["uncomfortable", "uneasy", "disturbed"],
-            "2_mild": ["feeling repugnance", "experiencing disgust", "sensing revulsion"],
-            "3_moderate": ["deep repugnance", "profound disgust", "utter revulsion"],
-            "4_strong": ["complete repugnance", "absolute disgust", "total revulsion"],
-            "5_intense": ["infinite repugnance", "cosmic disgust", "boundless revulsion"],
-            "6_overwhelming": ["transcendent repugnance", "eternal disgust", "absolute revulsion"]
+            "1_subtle": ["dismayed", "troubled", "disturbed"],
+            "2_mild": ["appalled", "horrified", "aghast"],
+            "3_moderate": ["deeply appalled", "profoundly horrified", "utterly aghast"],
+            "4_strong": ["completely appalled", "absolutely horrified", "totally shocked"],
+            "5_intense": ["explosive appallment", "volcanic horror", "nuclear shock"],
+            "6_overwhelming": ["infinite appallment", "cosmic horror", "transcendent shock"]
           }
         },
-        "skin_crawling": {
-          "id": "VIed",
-          "description": "Physical sensation of disgust",
+        "indignant": {
+          "id": "VImd",
+          "description": "Angered by injustice",
           "intensity_tiers": {
-            "1_subtle": ["tingling", "prickling", "uncomfortable"],
-            "2_mild": ["skin crawling", "creeping sensation", "goosebumps"],
-            "3_moderate": ["deeply skin crawling", "profoundly creeping", "utterly uncomfortable"],
-            "4_strong": ["completely skin crawling", "absolutely creeping", "violently uncomfortable"],
-            "5_intense": ["infinite skin crawl", "cosmic creep", "boundless physical disgust"],
-            "6_overwhelming": ["transcendent skin crawl", "eternal creep", "complete physical revulsion"]
+            "1_subtle": ["bothered", "annoyed", "irked"],
+            "2_mild": ["indignant", "affronted", "offended"],
+            "3_moderate": ["deeply indignant", "profoundly affronted", "utterly offended"],
+            "4_strong": ["completely indignant", "absolutely affronted", "totally outraged"],
+            "5_intense": ["explosive indignation", "volcanic affront", "nuclear outrage"],
+            "6_overwhelming": ["infinite indignation", "cosmic affront", "transcendent outrage"]
           }
         },
-        "visceral_push": {
-          "id": "VIee",
-          "description": "Gut pushing away",
+        "sanctimonious_disgust": {
+          "id": "VIme",
+          "description": "Self-righteous moral disgust",
           "intensity_tiers": {
-            "1_subtle": ["instinct to back off", "gut saying no", "body rejecting"],
-            "2_mild": ["visceral push", "gut rejection", "primal avoidance"],
-            "3_moderate": ["deep visceral push", "profound gut rejection", "utter primal avoidance"],
-            "4_strong": ["complete visceral push", "absolute gut rejection", "total primal avoidance"],
-            "5_intense": ["infinite visceral push", "cosmic gut rejection", "boundless primal avoidance"],
-            "6_overwhelming": ["transcendent visceral push", "eternal gut rejection", "complete primal rejection"]
+            "1_subtle": ["disapproving", "judging", "condemning"],
+            "2_mild": ["sanctimonious disgust", "holier-than-thou", "self-righteous"],
+            "3_moderate": ["deeply sanctimonious", "profoundly self-righteous", "utterly condemning"],
+            "4_strong": ["completely sanctimonious", "absolutely self-righteous", "totally condemning"],
+            "5_intense": ["explosive sanctimony", "volcanic self-righteousness", "nuclear condemnation"],
+            "6_overwhelming": ["infinite sanctimony", "cosmic self-righteousness", "divine condemnation"]
           }
         },
-        "rejecting": {
-          "id": "VIef",
-          "description": "Actively pushing out",
+        "virtue_based_rejection": {
+          "id": "VImf",
+          "description": "Rejection based on moral grounds",
           "intensity_tiers": {
-            "1_subtle": ["declining", "refusing", "saying no"],
-            "2_mild": ["rejecting", "expelling", "pushing out"],
-            "3_moderate": ["deeply rejecting", "profoundly expelling", "utterly pushing out"],
-            "4_strong": ["completely rejecting", "absolutely expelling", "totally casting out"],
-            "5_intense": ["infinite rejection", "cosmic expulsion", "boundless casting out"],
-            "6_overwhelming": ["transcendent rejection", "eternal expulsion", "complete purging"]
+            "1_subtle": ["disapproving", "objecting", "declining"],
+            "2_mild": ["rejecting morally", "ethically refusing", "principled declining"],
+            "3_moderate": ["deeply rejecting", "profoundly refusing", "utterly declining"],
+            "4_strong": ["completely rejecting", "absolutely refusing", "totally condemning"],
+            "5_intense": ["explosive rejection", "volcanic refusal", "nuclear condemnation"],
+            "6_overwhelming": ["infinite rejection", "cosmic refusal", "transcendent condemnation"]
           }
         }
       }
     },
-    "DISTASTE": {
-      "id": "VIf",
-      "description": "Mild refined disgust",
-      "arousal_bias": 0.35,
+    "BOREDOM": {
+      "id": "VIn",
+      "description": "Weary disinterest and tedium",
+      "arousal_bias": 0.2,
       "sub_sub_emotions": {
-        "unpalatable": {
-          "id": "VIfa",
-          "description": "Hard to swallow",
+        "bored": {
+          "id": "VIna",
+          "description": "Uninterested from lack of stimulation",
           "intensity_tiers": {
-            "1_subtle": ["difficult", "challenging", "hard to take"],
-            "2_mild": ["unpalatable", "distasteful", "unsavory"],
-            "3_moderate": ["deeply unpalatable", "profoundly distasteful", "utterly unsavory"],
-            "4_strong": ["completely unpalatable", "absolutely distasteful", "totally unsavory"],
-            "5_intense": ["infinite unpalatability", "cosmic distaste", "boundless unsavoriness"],
-            "6_overwhelming": ["transcendent unpalatability", "eternal distaste", "complete inability to accept"]
+            "1_subtle": ["uninterested", "uninspired", "unmotivated"],
+            "2_mild": ["bored", "weary", "tired"],
+            "3_moderate": ["deeply bored", "profoundly weary", "utterly tired"],
+            "4_strong": ["completely bored", "absolutely weary", "totally drained"],
+            "5_intense": ["explosive boredom", "volcanic weariness", "nuclear tedium"],
+            "6_overwhelming": ["infinite boredom", "cosmic weariness", "transcendent tedium"]
           }
         },
-        "off_putting": {
-          "id": "VIfb",
-          "description": "Creating distance",
+        "apathetic": {
+          "id": "VInb",
+          "description": "Lacking interest or concern",
           "intensity_tiers": {
-            "1_subtle": ["unappealing", "uninviting", "unwelcoming"],
-            "2_mild": ["off-putting", "discouraging", "deterring"],
-            "3_moderate": ["deeply off-putting", "profoundly discouraging", "utterly deterring"],
-            "4_strong": ["completely off-putting", "absolutely discouraging", "totally deterring"],
-            "5_intense": ["infinite off-putting", "cosmic discouragement", "boundless deterrent"],
-            "6_overwhelming": ["transcendent off-putting", "eternal discouragement", "complete repulsion"]
+            "1_subtle": ["indifferent", "unconcerned", "unmoved"],
+            "2_mild": ["apathetic", "detached", "disengaged"],
+            "3_moderate": ["deeply apathetic", "profoundly detached", "utterly disengaged"],
+            "4_strong": ["completely apathetic", "absolutely detached", "totally disconnected"],
+            "5_intense": ["explosive apathy", "volcanic detachment", "nuclear disconnection"],
+            "6_overwhelming": ["infinite apathy", "cosmic detachment", "transcendent nothingness"]
           }
         },
-        "distasteful": {
-          "id": "VIfc",
-          "description": "Finding bad taste",
+        "disinterested": {
+          "id": "VInc",
+          "description": "Having no interest",
           "intensity_tiers": {
-            "1_subtle": ["questionable", "dubious", "iffy"],
-            "2_mild": ["distasteful", "unseemly", "improper"],
-            "3_moderate": ["deeply distasteful", "profoundly unseemly", "utterly improper"],
-            "4_strong": ["completely distasteful", "absolutely unseemly", "totally improper"],
-            "5_intense": ["infinite distaste", "cosmic unseemliness", "boundless impropriety"],
-            "6_overwhelming": ["transcendent distaste", "eternal unseemliness", "absolute impropriety"]
+            "1_subtle": ["uninterested", "uninvolved", "unconcerned"],
+            "2_mild": ["disinterested", "indifferent", "aloof"],
+            "3_moderate": ["deeply disinterested", "profoundly indifferent", "utterly aloof"],
+            "4_strong": ["completely disinterested", "absolutely indifferent", "totally removed"],
+            "5_intense": ["explosive disinterest", "volcanic indifference", "nuclear aloofness"],
+            "6_overwhelming": ["infinite disinterest", "cosmic indifference", "transcendent removal"]
           }
         },
-        "displeased": {
-          "id": "VIfd",
-          "description": "Mild unhappy disgust",
+        "weary": {
+          "id": "VInd",
+          "description": "Tired of continued exposure",
           "intensity_tiers": {
-            "1_subtle": ["unhappy", "dissatisfied", "discontent"],
-            "2_mild": ["displeased", "annoyed", "irritated"],
-            "3_moderate": ["deeply displeased", "profoundly annoyed", "utterly irritated"],
-            "4_strong": ["completely displeased", "absolutely annoyed", "totally irritated"],
-            "5_intense": ["infinite displeasure", "cosmic annoyance", "boundless irritation"],
-            "6_overwhelming": ["transcendent displeasure", "eternal annoyance", "complete irritation"]
+            "1_subtle": ["tired", "fatigued", "drained"],
+            "2_mild": ["weary", "exhausted", "worn out"],
+            "3_moderate": ["deeply weary", "profoundly exhausted", "utterly worn out"],
+            "4_strong": ["completely weary", "absolutely exhausted", "totally depleted"],
+            "5_intense": ["explosive weariness", "volcanic exhaustion", "nuclear depletion"],
+            "6_overwhelming": ["infinite weariness", "cosmic exhaustion", "transcendent emptiness"]
           }
         },
-        "cringing": {
-          "id": "VIfe",
-          "description": "Embarrassed disgust",
+        "jaded": {
+          "id": "VIne",
+          "description": "Tired from overexposure",
           "intensity_tiers": {
-            "1_subtle": ["uncomfortable", "awkward", "embarrassed"],
-            "2_mild": ["cringing", "wincing", "flinching"],
-            "3_moderate": ["deeply cringing", "profoundly wincing", "utterly flinching"],
-            "4_strong": ["completely cringing", "absolutely wincing", "totally flinching"],
-            "5_intense": ["infinite cringe", "cosmic wince", "boundless flinch"],
-            "6_overwhelming": ["transcendent cringe", "eternal wince", "complete collapse from embarrassment"]
+            "1_subtle": ["tired", "worn", "experienced"],
+            "2_mild": ["jaded", "world-weary", "blasé"],
+            "3_moderate": ["deeply jaded", "profoundly world-weary", "utterly blasé"],
+            "4_strong": ["completely jaded", "absolutely world-weary", "totally cynical"],
+            "5_intense": ["explosive jadedness", "volcanic world-weariness", "nuclear cynicism"],
+            "6_overwhelming": ["infinite jadedness", "cosmic world-weariness", "transcendent nihilism"]
           }
         },
-        "refined_rejection": {
-          "id": "VIff",
-          "description": "Polite but firm disgust",
+        "unimpressed": {
+          "id": "VInf",
+          "description": "Not affected or moved",
           "intensity_tiers": {
-            "1_subtle": ["declining", "passing", "opting out"],
-            "2_mild": ["refined rejection", "polite disgust", "elegant refusal"],
-            "3_moderate": ["deep refined rejection", "profound polite disgust", "utter elegant refusal"],
-            "4_strong": ["complete refined rejection", "absolute polite disgust", "total elegant refusal"],
-            "5_intense": ["infinite refinement in rejection", "cosmic politeness in disgust", "boundless elegance in refusal"],
-            "6_overwhelming": ["transcendent refined rejection", "eternal polite disgust", "ultimate elegant refusal"]
+            "1_subtle": ["unmoved", "unaffected", "untouched"],
+            "2_mild": ["unimpressed", "underwhelmed", "unstirred"],
+            "3_moderate": ["deeply unimpressed", "profoundly underwhelmed", "utterly unstirred"],
+            "4_strong": ["completely unimpressed", "absolutely underwhelmed", "totally unmoved"],
+            "5_intense": ["explosive unimpression", "volcanic underwhelm", "nuclear unmovedness"],
+            "6_overwhelming": ["infinite unimpression", "cosmic underwhelm", "transcendent indifference"]
           }
         }
       }
