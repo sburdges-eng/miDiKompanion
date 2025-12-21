@@ -2,6 +2,8 @@
 
 **Kelly** is a therapeutic interactive Digital Audio Workstation (iDAW) that translates emotions into music.
 
+> 📊 **Build Status:** See [BUILD_STATUS.md](BUILD_STATUS.md) for detailed build information and troubleshooting.
+
 ## Overview
 
 Kelly helps users express and process emotions through music generation, using a unique three-phase intent system:
@@ -56,12 +58,23 @@ Kelly helps users express and process emotions through music generation, using a
 
 ## Quick Start
 
+### Core Setup (Required)
+
+```bash
+# 1. Install Python dependencies
+pip install -e ".[dev]"
+
+# 2. Install Node dependencies (for web interface)
+npm install
+
+# 3. Run tests to verify setup
+pytest tests/python -v
+npm run build
+```
+
 ### Python CLI
 
 ```bash
-# Install Python dependencies
-pip install -e ".[dev]"
-
 # List available emotions
 kelly list-emotions
 
@@ -72,9 +85,24 @@ kelly process "feeling of loss" --intensity 0.8 --output output.mid --tempo 90
 kelly version
 ```
 
-### Building C++ Components
+### Web Interface
 
 ```bash
+# Run development server
+npm run dev
+
+# Build for production
+npm run build
+```
+
+### Building C++ Components (Optional)
+
+**Note:** C++ components require Qt6 and are optional. See [BUILD_STATUS.md](BUILD_STATUS.md) for requirements.
+
+```bash
+# Install Qt6 first (example for macOS)
+brew install qt@6
+
 # Configure
 cmake -B build -DCMAKE_BUILD_TYPE=Release -DBUILD_PLUGINS=ON
 
