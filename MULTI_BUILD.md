@@ -1,6 +1,8 @@
 # Multi-Component Build Guide
 
 > **Comprehensive documentation for building all components of the miDiKompanion project**
+> 
+> 💡 **Quick Start?** See [BUILD_QUICK_REFERENCE.md](BUILD_QUICK_REFERENCE.md) for a one-page cheat sheet.
 
 This repository contains three major components that can be built independently or together:
 

@@ -120,6 +120,7 @@ Professional-grade music analysis engine with hybrid C++/Python architecture for
 
 ## Complete Documentation
 
+- **[BUILD_QUICK_REFERENCE.md](BUILD_QUICK_REFERENCE.md)** - One-page cheat sheet for quick builds
 - **[MULTI_BUILD.md](MULTI_BUILD.md)** - Comprehensive guide for building all components
 - **[README_music-brain.md](README_music-brain.md)** - Music Brain documentation
 - **[README_penta-core.md](README_penta-core.md)** - Penta Core documentation
