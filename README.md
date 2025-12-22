@@ -13,6 +13,10 @@ cd /path/to/your/repos
 ./dist/git-update.sh
 ```
 
+## Workflow
+
+See [WORKFLOW.md](WORKFLOW.md) for the canonical setup, build, test, and release flow.
+
 ## Usage
 
 - `make` - Build standard version
