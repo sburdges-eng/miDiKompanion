@@ -138,7 +138,7 @@ cd miDiKompanion
 make standard
 
 # 2. Build Music Brain (Python)
-pip install -e . -f pyproject_music-brain.toml
+pip install -e .
 
 # 3. Build Penta Core (C++/Python)
 mkdir -p build && cd build
@@ -253,23 +253,17 @@ python3 -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 
 # Install as editable package
-pip install -e . -c pyproject_music-brain.toml
-
-# With audio analysis support
-pip install -e ".[audio]" -c pyproject_music-brain.toml
-
-# With music theory support
-pip install -e ".[theory]" -c pyproject_music-brain.toml
+pip install -e .
 
 # With all optional dependencies
-pip install -e ".[audio,theory,dev]" -c pyproject_music-brain.toml
+pip install -e ".[audio,theory,dev]"
 ```
 
 ### Alternative: System-wide Installation
 
 ```bash
 # Install globally (not recommended for development)
-pip install . -c pyproject_music-brain.toml
+pip install .
 ```
 
 ### Verify Installation
@@ -425,7 +419,7 @@ cmake --build build
 cmake --install build --prefix ~/.local
 
 # Or install in development mode
-pip install -e . -c pyproject_penta-core.toml
+pip install -e .
 ```
 
 ### Install Plugins

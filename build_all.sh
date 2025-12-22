@@ -181,9 +181,9 @@ build_git_updater() {
 build_music_brain() {
     print_status "Building Music Brain (DAiW/iDAW)..."
     
-    # Check if pyproject_music-brain.toml exists
-    if [ ! -f "pyproject_music-brain.toml" ]; then
-        print_error "pyproject_music-brain.toml not found"
+    # Check if music_brain directory exists
+    if [ ! -d "music_brain" ]; then
+        print_error "music_brain directory not found"
         return 1
     fi
     
@@ -194,14 +194,14 @@ build_music_brain() {
     fi
     
     print_status "Installing Music Brain in editable mode..."
-    if $pip_cmd install -e . -c pyproject_music-brain.toml; then
+    if $pip_cmd install -e .; then
         print_success "Music Brain installed successfully"
         
         # Check if CLI is available
-        if command -v daiw &> /dev/null; then
-            print_status "CLI command 'daiw' is available"
+        if command -v daiw &> /dev/null || command -v kelly &> /dev/null || command -v idaw &> /dev/null; then
+            print_status "CLI command is available"
         else
-            print_warning "CLI command 'daiw' not found in PATH"
+            print_warning "CLI command not found in PATH"
             print_warning "You may need to add Python scripts directory to PATH"
         fi
     else
