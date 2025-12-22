@@ -23,7 +23,7 @@ iDAW/
 ├── [Root Level Python]        # Core Python modules (analyzers, engines, tools)
 ├── mcp_workstation/           # MCP Multi-AI Workstation (orchestration)
 ├── mcp_todo/                  # MCP TODO Server (cross-AI task management)
-├── penta_core_music-brain/    # MCP Swarm Server (multi-AI aggregation)
+├── penta_core/                # MCP Swarm Server (multi-AI aggregation)
 ├── DAiW-Music-Brain/          # Python Music Intelligence Toolkit
 ├── iDAW_Core/                 # JUCE Plugin Suite (C++)
 ├── src_penta-core/            # Penta-Core C++ Engines (implementation)
@@ -107,7 +107,7 @@ python -m mcp_todo.cli summary
 
 ---
 
-## 3. Penta-Core MCP Swarm (`penta_core_music-brain/`)
+## 3. Penta-Core MCP Swarm (`penta_core/`)
 
 An MCP server that aggregates the top 5 AI platforms into a single "Swarm" toolset.
 

@@ -54,7 +54,7 @@ When files or directories existed in both repositories with the same name, the f
 | src/ | src_penta-core/ | penta-core |
 | music_brain/ | music_brain/ | DAiW-Music-Brain |
 | python/ | python/ | penta-core |
-| penta_core/ | penta_core_music-brain/ | DAiW-Music-Brain |
+| penta_core/ | penta_core/ | DAiW-Music-Brain (cleaned up) |
 
 ---
 
@@ -162,7 +162,7 @@ When files or directories existed in both repositories with the same name, the f
 - `DAiW-Music-Brain/` - Nested repository copy
 - `DAiW-Music-Brain 2/` - Secondary nested copy
 - `iDAW_Core/` - Core components
-- `penta_core_music-brain/` - Penta core from music-brain
+- `penta_core/` - Penta core module (cleaned up)
 
 ### Other Files
 - `VERSION` - Version file
