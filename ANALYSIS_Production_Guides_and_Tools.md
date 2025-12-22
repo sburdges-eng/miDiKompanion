@@ -25,21 +25,23 @@ This analysis examines the current state of production guides and tools, identif
 #### Code Files
 | File | Current Location | Expected Location | Status |
 |------|----------------|-------------------|--------|
-| `drum_analysis.py` | Root | `music_brain/groove/` | ❌ Not in module |
+| `drum_analysis.py` | `scripts/drum_analysis.py` | `music_brain/groove/` | ❌ Not in module, **broken imports** |
 | `emotion_thesaurus.py` | Root + `emotion_thesaurus/` | `music_brain/emotion/` | ⚠️ Duplicated, not integrated |
 | `emotion_scale_sampler.py` | Root | `music_brain/samples/` | ⚠️ Standalone script |
 
-**Finding**: All code files are at root level and not integrated into `music_brain` module structure.
+**Finding**: Code files are not in proper module structure. `drum_analysis.py` is in `scripts/` with broken relative imports that prevent execution.
 
 ### 1.2 Dependencies and Usage
 
 #### `drum_analysis.py`
-- **Imports**: Uses `..utils.ppq` and `..utils.instruments` (suggests it should be in `music_brain/groove/`)
-- **Current Usage**: ❌ Not imported anywhere in codebase
+- **Location**: `scripts/drum_analysis.py` (not root as initially stated)
+- **Imports**: ⚠️ **BROKEN** - Uses relative imports (`from ..utils.ppq`, `from ..utils.instruments`) that fail from `scripts/` location
+- **Current Usage**: ❌ Not imported anywhere in codebase (likely due to broken imports)
 - **Dependencies**: 
   - `music_brain.utils.ppq` (STANDARD_PPQ, ticks_to_ms)
   - `music_brain.utils.instruments` (get_drum_category, is_drum_channel)
 - **Integration Points**: Should connect to `groove_engine.py` for humanization
+- **Critical Issue**: File cannot be executed from current location due to broken relative imports
 
 #### `emotion_thesaurus.py`
 - **Current Usage**: 
@@ -182,7 +184,7 @@ Song Structure (verse, chorus, bridge)
 ```
 music_brain/
 ├── groove/
-│   ├── drum_analysis.py          # Move from root
+│   ├── drum_analysis.py          # Move from scripts/, fix broken imports
 │   ├── drum_humanizer.py         # NEW: Apply guide rules
 │   ├── groove_engine.py          # Existing
 │   └── __init__.py
@@ -327,7 +329,8 @@ class DynamicsEngine:
 
 ### Priority 1: File Reorganization (HIGH)
 
-1. **Move `drum_analysis.py`** to `music_brain/groove/`
+1. **Move `drum_analysis.py` from `scripts/` to `music_brain/groove/`
+   - **CRITICAL**: Fix broken relative imports (`from ..utils.ppq` → `from music_brain.utils.ppq`)
    - Update imports to use `music_brain.utils`
    - Add to `music_brain/groove/__init__.py`
    - Update any references (currently none)
@@ -383,10 +386,11 @@ class DynamicsEngine:
 
 ### `drum_analysis.py`
 - ✅ **Good**: Well-structured dataclasses, clear thresholds
-- ⚠️ **Issue**: Located at root, should be in module
+- ⚠️ **Issue**: Located at `scripts/drum_analysis.py` (not root), should be in `music_brain/groove/`
+- ⚠️ **Issue**: **BROKEN** - Uses relative imports (`from ..utils.ppq`) that fail from current location
 - ⚠️ **Issue**: No integration with humanization engine
 - ⚠️ **Issue**: Hard-coded thresholds (should be configurable)
-- **Recommendation**: Move to `music_brain/groove/`, make thresholds configurable
+- **Recommendation**: Move to `music_brain/groove/`, fix imports to use `music_brain.utils`, make thresholds configurable
 
 ### `emotion_thesaurus.py`
 - ✅ **Good**: Proper module structure, comprehensive API

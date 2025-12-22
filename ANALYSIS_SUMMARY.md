@@ -186,7 +186,7 @@ music_brain/
 │   ├── emotion_thesaurus.py      # Moved from root
 │   └── emotion_production.py     # NEW
 ├── groove/
-│   ├── drum_analysis.py          # Moved from root
+│   ├── drum_analysis.py          # Moved from scripts/, fix broken imports
 │   ├── drum_humanizer.py         # NEW
 │   └── groove_engine.py          # Existing
 ├── production/

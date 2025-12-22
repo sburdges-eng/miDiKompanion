@@ -15,11 +15,12 @@
 
 **Actions**:
 
-1. **Move `drum_analysis.py`**
+1. **Move `drum_analysis.py` from `scripts/` to `music_brain/groove/`**
    ```bash
-   mv drum_analysis.py music_brain/groove/drum_analysis.py
+   mv scripts/drum_analysis.py music_brain/groove/drum_analysis.py
    ```
-   - Update imports: `from music_brain.utils.ppq import ...`
+   - **CRITICAL**: Fix broken relative imports - Change `from ..utils.ppq` → `from music_brain.utils.ppq`
+   - Update all imports: `from music_brain.utils.ppq import ...`
    - Add to `music_brain/groove/__init__.py`:
      ```python
      from music_brain.groove.drum_analysis import (
