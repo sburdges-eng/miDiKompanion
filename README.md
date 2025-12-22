@@ -1,8 +1,34 @@
-# Git Multi-Repository Updater
+# miDiKompanion - Multi-Component Build System
+
+This repository contains three major components:
+
+1. **Git Multi-Repository Updater** - Modular build system for Git batch operations
+2. **Music Brain (DAiW/iDAW)** - Python toolkit for music analysis and composition  
+3. **Penta Core** - C++/Python hybrid real-time music analysis engine
+
+📖 **For complete build instructions for all components, see [MULTI_BUILD.md](MULTI_BUILD.md)**
+
+---
+
+## Quick Start: Build All Components
+
+```bash
+# Build everything
+./build_all.sh
+
+# Or build specific components
+./build_all.sh --git-updater
+./build_all.sh --music-brain
+./build_all.sh --penta-core
+```
+
+---
+
+## Git Multi-Repository Updater
 
 Modular build system for creating customized Git repository batch update scripts.
 
-## Quick Start
+### Quick Start
 
 ```bash
 # Build standard version
@@ -71,3 +97,34 @@ BRANCHES=("main" "dev" "staging")
 ROOT="/path/to/repos"
 EXCLUDE=("old-repo" "archived-project")
 ```
+
+---
+
+## Other Components
+
+This repository also includes:
+
+### Music Brain (DAiW/iDAW)
+Python toolkit for music production intelligence with groove extraction, chord analysis, and AI-assisted songwriting.
+
+- **Documentation**: [README_music-brain.md](README_music-brain.md)
+- **Build**: See [MULTI_BUILD.md](MULTI_BUILD.md)
+
+### Penta Core
+Professional-grade music analysis engine with hybrid C++/Python architecture for real-time performance.
+
+- **Documentation**: [README_penta-core.md](README_penta-core.md), [BUILD.md](BUILD.md)
+- **Build**: See [MULTI_BUILD.md](MULTI_BUILD.md)
+
+---
+
+## Complete Documentation
+
+- **[MULTI_BUILD.md](MULTI_BUILD.md)** - Comprehensive guide for building all components
+- **[README_music-brain.md](README_music-brain.md)** - Music Brain documentation
+- **[README_penta-core.md](README_penta-core.md)** - Penta Core documentation
+- **[BUILD.md](BUILD.md)** - Detailed Penta Core build instructions
+
+## License
+
+MIT License - See [LICENSE](LICENSE) for details.
