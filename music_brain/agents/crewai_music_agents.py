@@ -866,9 +866,25 @@ def get_crew(
         else:
             resolved_backend = LLMBackend.OLLAMA
 
+    # Resolve ONNX config (allow runtime override)
     onnx_cfg = None
-    if resolved_backend == LLMBackend.ONNX_HTTP and onnx_url:
-        onnx_cfg = OnnxLLMConfig(base_url=onnx_url)
+    if resolved_backend == LLMBackend.ONNX_HTTP:
+        env_onnx_url = os.getenv("DAIW_ONNX_URL")
+        resolved_onnx_url = onnx_url or env_onnx_url or "http://localhost:8008"
+        onnx_cfg = OnnxLLMConfig(base_url=resolved_onnx_url)
+
+    # If a crew already exists but the backend or ONNX URL differ, recreate it.
+    if _default_crew is not None:
+        backend_changed = _default_crew.llm_backend != resolved_backend
+        onnx_changed = False
+        if not backend_changed and resolved_backend == LLMBackend.ONNX_HTTP:
+            current_url = getattr(getattr(_default_crew, "llm", None), "config", None)
+            current_base = current_url.base_url if current_url else None
+            onnx_changed = current_base != (onnx_cfg.base_url if onnx_cfg else None)
+
+        if backend_changed or onnx_changed:
+            _default_crew.shutdown()
+            _default_crew = None
 
     if _default_crew is None:
         _default_crew = MusicCrew(
@@ -877,6 +893,29 @@ def get_crew(
         )
         _default_crew.setup()
     return _default_crew
+
+
+def get_llm_status(
+    backend: Optional[LLMBackend] = None,
+    onnx_url: Optional[str] = None,
+) -> Dict[str, Any]:
+    """
+    Report LLM backend status (backend type, availability, endpoint).
+    """
+    crew = get_crew(backend=backend, onnx_url=onnx_url)
+    llm = crew.llm
+
+    status: Dict[str, Any] = {
+        "backend": crew.llm_backend.value,
+        "available": bool(getattr(llm, "is_available", False)),
+    }
+
+    cfg = getattr(llm, "config", None)
+    if cfg and hasattr(cfg, "base_url"):
+        status["url"] = getattr(cfg, "base_url", None)
+    elif cfg and hasattr(cfg, "base_url"):
+        status["url"] = getattr(cfg, "base_url", None)
+    return status
 
 
 def shutdown_crew():
