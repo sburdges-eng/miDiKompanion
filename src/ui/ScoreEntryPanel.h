@@ -28,6 +28,7 @@
 #include "../music_theory/MusicTheoryBrain.h"
 #include <memory>
 #include <vector>
+#include <functional>
 
 namespace midikompanion {
 
@@ -286,6 +287,13 @@ public:
      */
     bool exportMIDI(const juce::File& outputFile);
 
+    //==========================================================================
+    // Playback callbacks (hooked up by host)
+    //==========================================================================
+    std::function<void(const juce::MidiBuffer&)> onPlayRequested;
+    std::function<void()> onStopRequested;
+    std::function<void(bool)> onMetronomeToggledCallback;
+
 private:
     //==========================================================================
     // UI Components
@@ -416,6 +424,19 @@ private:
 
     void initializeTemplates();
     std::vector<ScoreTemplate> templates_;
+
+    //==========================================================================
+    // UI Initialization
+    //==========================================================================
+
+    void initializeComponents();
+
+    //==========================================================================
+    // Helper Methods
+    //==========================================================================
+
+    int getMaxMeasureIndex() const;
+    juce::Rectangle<int> getScoreArea() const;
 
     //==========================================================================
     // Callbacks

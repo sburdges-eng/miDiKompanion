@@ -407,6 +407,7 @@ private:
     //==========================================================================
 
     std::vector<std::unique_ptr<ChannelStrip>> channels_;
+    std::vector<std::string> channelInstruments_;
     std::map<int, std::vector<AutomationPoint>> automation_;
     std::vector<MixerSnapshot> snapshots_;
     std::vector<MixerPreset> presets_;

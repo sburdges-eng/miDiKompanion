@@ -415,10 +415,11 @@ void MixerConsolePanel::resized() {
     layoutMixerView();
 }
 
-int MixerConsolePanel::addChannel(const std::string& name, const std::string& /*instrument*/) {
+int MixerConsolePanel::addChannel(const std::string& name, const std::string& instrument) {
     auto channel = std::make_unique<ChannelStrip>(name);
     auto* ptr = channel.get();
     channels_.push_back(std::move(channel));
+    channelInstruments_.push_back(instrument);
     channelContainer_->addAndMakeVisible(ptr);
     resized();
     return static_cast<int>(channels_.size()) - 1;
@@ -430,6 +431,16 @@ void MixerConsolePanel::removeChannel(int channelIndex) {
     }
     channelContainer_->removeChildComponent(channels_[channelIndex].get());
     channels_.erase(channels_.begin() + channelIndex);
+    // channelInstruments_ must stay in lockstep with channels_
+    if (channelInstruments_.size() == channels_.size() + 1 && channelIndex < static_cast<int>(channelInstruments_.size())) {
+        channelInstruments_.erase(channelInstruments_.begin() + channelIndex);
+    } else {
+        // Invariant violation: sizes diverged; reset instruments to avoid desync
+        if (channelInstruments_.size() != channels_.size()) {
+            channelInstruments_.clear();
+            channelInstruments_.resize(channels_.size());
+        }
+    }
     resized();
 }
 
@@ -451,6 +462,7 @@ std::vector<ChannelStrip*> MixerConsolePanel::getAllChannels() {
 void MixerConsolePanel::loadPreset(const MixerPreset& preset) {
     channelContainer_->removeAllChildren();
     channels_.clear();
+    channelInstruments_.clear();
     for (const auto& ch : preset.channels) {
         int idx = addChannel(ch.name, ch.instrument);
         if (auto* channel = getChannel(idx)) {
@@ -468,14 +480,20 @@ void MixerConsolePanel::savePreset(const std::string& name) {
     MixerPreset preset;
     preset.name = name;
     preset.description = "Saved from current mixer state";
+    size_t channelIndex = 0;
     for (const auto& ch : channels_) {
         MixerPreset::ChannelSetup setup;
         setup.name = ch->getName();
-        setup.instrument = "";
+        if (channelIndex < channelInstruments_.size()) {
+            setup.instrument = channelInstruments_[channelIndex];
+        } else {
+            setup.instrument = "";
+        }
         setup.gain = ch->getGain();
         setup.pan = ch->getPan();
         setup.insertEffects = ch->getInsertEffectNames();
         preset.channels.push_back(setup);
+        ++channelIndex;
     }
     presets_.push_back(preset);
     presetSelector_->addItem(preset.name, presetSelector_->getNumItems() + 1);
@@ -674,17 +692,120 @@ bool MixerConsolePanel::exportSession(const juce::File& outputFile) {
     stream << "Channels: " << static_cast<int>(channels_.size()) << "\n";
     for (size_t i = 0; i < channels_.size(); ++i) {
         auto* ch = channels_[i].get();
-        stream << "Channel " << i << " " << ch->getName() << " gain " << ch->getGain()
-               << " pan " << ch->getPan() << " muted " << ch->isMuted() << "\n";
+        const std::string instrument = i < channelInstruments_.size() ? channelInstruments_[i] : "";
+        stream << "Channel " << i << " " << ch->getName()
+               << " gain " << ch->getGain()
+               << " pan " << ch->getPan()
+               << " muted " << ch->isMuted()
+               << " instrument " << instrument
+               << "\n";
     }
     stream.flush();
     return true;
 }
 
 bool MixerConsolePanel::importSession(const juce::File& inputFile) {
-    juce::ignoreUnused(inputFile);
-    // Placeholder: session import not implemented
-    return false;
+    juce::FileInputStream stream(inputFile);
+    if (!stream.openedOk()) {
+        juce::Logger::writeToLog("MixerConsolePanel: failed to open session file");
+        return false;
+    }
+
+    // Clear existing channels
+    channelContainer_->removeAllChildren();
+    channels_.clear();
+    channelInstruments_.clear();
+
+    const auto parseChannelLine = [](const juce::String& line) -> std::optional<MixerPreset::ChannelSetup> {
+        auto tokens = juce::StringArray::fromTokens(line, " \t", "");
+        if (tokens.size() < 6 || !tokens[0].equalsIgnoreCase("Channel")) {
+            return std::nullopt;
+        }
+
+        // Find the "gain" token to delimit the name
+        const int gainIdx = tokens.indexOf("gain");
+        if (gainIdx <= 2 || gainIdx + 3 > tokens.size()) {
+            return std::nullopt;
+        }
+
+        MixerPreset::ChannelSetup setup;
+        // Join name tokens between index and gain
+        juce::StringArray nameTokens;
+        for (int i = 2; i < gainIdx; ++i) {
+            nameTokens.add(tokens[i]);
+        }
+        setup.name = nameTokens.joinIntoString(" ").toStdString();
+
+        setup.gain = tokens[gainIdx + 1].getFloatValue();
+
+        const int panIdx = tokens.indexOf("pan");
+        if (panIdx > 0 && panIdx + 1 < tokens.size()) {
+            setup.pan = tokens[panIdx + 1].getFloatValue();
+        } else {
+            setup.pan = 0.0f;
+        }
+
+        const int mutedIdx = tokens.indexOf("muted");
+        if (mutedIdx > 0 && mutedIdx + 1 < tokens.size()) {
+            const auto mutedStr = tokens[mutedIdx + 1].toLowerCase();
+            setup.insertEffects = {};
+            const bool muted = mutedStr == "1" || mutedStr == "true" || mutedStr == "yes";
+            // Store muted as an insert flag by convention; applied later
+            if (muted) {
+                setup.insertEffects.push_back("__MUTED__");
+            }
+        }
+
+        const int instrIdx = tokens.indexOf("instrument");
+        if (instrIdx > 0 && instrIdx + 1 < tokens.size()) {
+            setup.instrument = tokens[instrIdx + 1].toStdString();
+        } else {
+            // Also allow "instrument=<val>" token
+            for (const auto& tok : tokens) {
+                if (tok.startsWith("instrument=")) {
+                    setup.instrument = tok.fromFirstOccurrenceOf("instrument=", false, false).toStdString();
+                    break;
+                }
+            }
+        }
+
+        return setup;
+    };
+
+    MixerPreset preset;
+    while (!stream.isExhausted()) {
+        auto line = stream.readNextLine().trim();
+        if (line.isEmpty() || line.startsWithIgnoreCase("Session")) {
+            continue;
+        }
+        if (line.startsWithIgnoreCase("Channels:")) {
+            continue; // informational
+        }
+        if (auto parsed = parseChannelLine(line)) {
+            preset.channels.push_back(*parsed);
+        }
+    }
+
+    if (preset.channels.empty()) {
+        juce::Logger::writeToLog("MixerConsolePanel: no channels found in session file");
+        return false;
+    }
+
+    for (const auto& ch : preset.channels) {
+        int idx = addChannel(ch.name, ch.instrument);
+        if (auto* channel = getChannel(idx)) {
+            channel->setGain(ch.gain);
+            channel->setPan(ch.pan);
+            // Apply mute flag encoded via insertEffects sentinel
+            const bool muted = std::find(ch.insertEffects.begin(), ch.insertEffects.end(), "__MUTED__") != ch.insertEffects.end();
+            if (muted) {
+                channel->setMute(true);
+            }
+        }
+    }
+
+    resized();
+    return true;
 }
 
 void MixerConsolePanel::initializePresets() {

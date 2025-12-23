@@ -56,6 +56,7 @@ The UI uses the hook from `.agents/handoffs/CURRENT_STATE.md` (mirrored here for
 | `interrogate`       | `POST /interrogate`           | Ask follow-ups / refine intent |
 
 Example payloads:
+
 - `POST /generate`
 ```json
 {
