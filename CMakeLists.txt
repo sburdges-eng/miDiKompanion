@@ -10,6 +10,11 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 option(BUILD_PLUGINS "Build VST3 and CLAP plugins" ON)
 option(BUILD_TESTS "Build tests" OFF)
 option(ENABLE_TRACY "Enable Tracy profiling" OFF)
+option(ENABLE_RTNEURAL "Enable RTNeural for ML inference" OFF)
+option(ENABLE_ONNX_RUNTIME "Enable ONNX Runtime for ML inference" OFF)
+
+# CMake modules path
+list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 
 # macOS SDK 26.2+ compatibility fix for __CLOCK_AVAILABILITY
 # The SDK header _time.h uses __CLOCK_AVAILABILITY in enum definitions, which requires
@@ -62,7 +67,44 @@ if(NOT TARGET readerwriterqueue)
     )
 endif()
 
+# ============================================================================
+# ML Dependencies (Optional)
+# ============================================================================
+
+# RTNeural - Header-only neural network library for real-time inference
+if(ENABLE_RTNEURAL)
+    find_package(RTNeural QUIET)
+    if(RTNeural_FOUND)
+        message(STATUS "RTNeural enabled: ${RTNeural_INCLUDE_DIRS}")
+    else()
+        # Try to fetch RTNeural if not found
+        message(STATUS "RTNeural not found locally, fetching from GitHub...")
+        FetchContent_Declare(
+            rtneural
+            GIT_REPOSITORY https://github.com/jatinchowdhury18/RTNeural.git
+            GIT_TAG main
+            GIT_SHALLOW TRUE
+        )
+        FetchContent_MakeAvailable(rtneural)
+        set(RTNeural_FOUND TRUE)
+        set(RTNeural_INCLUDE_DIRS ${rtneural_SOURCE_DIR})
+    endif()
+endif()
+
+# ONNX Runtime - Cross-platform inference engine
+if(ENABLE_ONNX_RUNTIME)
+    find_package(ONNXRuntime QUIET)
+    if(ONNXRuntime_FOUND)
+        message(STATUS "ONNX Runtime enabled: ${ONNXRuntime_LIBRARIES}")
+    else()
+        message(STATUS "ONNX Runtime not found. ONNX models will not be available.")
+        message(STATUS "  Install ONNX Runtime or set ONNXRuntime_ROOT")
+    endif()
+endif()
+
+# ============================================================================
 # Main Kelly library (shared core)
+# ============================================================================
 file(GLOB_RECURSE KELLY_CORE_SOURCES CONFIGURE_DEPENDS
     ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/*.mm
@@ -106,6 +148,20 @@ target_link_libraries(KellyCore PUBLIC
     juce::juce_osc
     readerwriterqueue
 )
+
+# ML Dependencies
+if(ENABLE_RTNEURAL AND RTNeural_FOUND)
+    target_include_directories(KellyCore PUBLIC ${RTNeural_INCLUDE_DIRS})
+    target_compile_definitions(KellyCore PUBLIC ENABLE_RTNEURAL)
+    message(STATUS "KellyCore: RTNeural inference enabled")
+endif()
+
+if(ENABLE_ONNX_RUNTIME AND ONNXRuntime_FOUND)
+    target_include_directories(KellyCore PUBLIC ${ONNXRuntime_INCLUDE_DIRS})
+    target_link_libraries(KellyCore PUBLIC ${ONNXRuntime_LIBRARIES})
+    target_compile_definitions(KellyCore PUBLIC ENABLE_ONNX_RUNTIME)
+    message(STATUS "KellyCore: ONNX Runtime inference enabled")
+endif()
 
 target_compile_options(KellyCore PRIVATE
     $<$<CXX_COMPILER_ID:MSVC>:/W4>
@@ -162,6 +218,7 @@ if(BUILD_TESTS)
             tests/cpp/test_emotion_engine.cpp
             tests/cpp/test_midi_pipeline.cpp
             tests/cpp/test_chord_diagnostics.cpp
+            tests/cpp/test_ml_pipeline.cpp
         )
         target_link_libraries(KellyTests PRIVATE
             KellyCore
@@ -193,3 +250,19 @@ install(DIRECTORY src/
     DESTINATION include/kelly
     FILES_MATCHING PATTERN "*.h" PATTERN "*.hpp"
 )
+
+# Install ML models
+install(DIRECTORY models/
+    DESTINATION share/kelly/models
+    FILES_MATCHING 
+    PATTERN "*.json"
+    PATTERN "*.onnx"
+)
+
+# Install Python ML module (optional)
+if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/python/penta_core)
+    install(DIRECTORY python/penta_core
+        DESTINATION share/kelly/python
+        FILES_MATCHING PATTERN "*.py"
+    )
+endif()
