@@ -1,5 +1,7 @@
 #pragma once
 
+#include "penta/common/Platform.h"
+
 #include "penta/common/RTTypes.h"
 #include "penta/harmony/ChordAnalyzer.h"
 #include "penta/harmony/ScaleDetector.h"

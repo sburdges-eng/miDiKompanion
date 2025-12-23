@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useMusicBrain } from "./hooks/useMusicBrain";
 import { EmotionWheel, SelectedEmotion } from "./components/EmotionWheel";
+import GuideNav, { Guide } from "./components/GuideNav";
+import GuideViewer from "./components/GuideViewer";
 import "./App.css";
 
 function App() {
@@ -12,6 +14,7 @@ function App() {
   const [error, setError] = useState<string | null>(null);
   const [apiStatus, setApiStatus] = useState<'checking' | 'online' | 'offline'>('checking');
   const [selectedEmotion, setSelectedEmotion] = useState<SelectedEmotion | null>(null);
+  const [selectedGuide, setSelectedGuide] = useState<Guide | null>(null);
   
   // Always call hooks unconditionally
   const musicBrain = useMusicBrain();
@@ -226,6 +229,22 @@ function App() {
           </div>
         </div>
       )}
+
+      <div className="docs-section">
+        <div className="docs-header">
+          <div>
+            <h2>Production Workflow Guides</h2>
+            <p className="docs-subtitle">
+              Search, filter, preview, and open the curated production workflow docs.
+            </p>
+          </div>
+          <span className="docs-badge">Local Markdown</span>
+        </div>
+        <div className="docs-layout">
+          <GuideNav onSelect={setSelectedGuide} />
+          <GuideViewer guide={selectedGuide} />
+        </div>
+      </div>
     </div>
   );
 }

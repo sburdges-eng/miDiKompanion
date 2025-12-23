@@ -1,7 +1,5 @@
 """
-Sample utilities for music_brain.
-
-Exposes emotion-scale sampling helpers and API fetchers.
+Sample utilities for emotion/scale-organized assets.
 """
 
 from music_brain.samples.emotion_scale_sampler import (
@@ -9,8 +7,4 @@ from music_brain.samples.emotion_scale_sampler import (
     FreesoundFetcher,
 )
 
-__all__ = [
-    "EmotionScaleSampler",
-    "FreesoundFetcher",
-]
-
+__all__ = ["EmotionScaleSampler", "FreesoundFetcher"]

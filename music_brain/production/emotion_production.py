@@ -1,5 +1,10 @@
 """
 Map emotional intent to production presets sourced from the production guides.
+
+Goals / TODOs:
+- Ingest Production_Workflows markdown into structured presets.
+- Add genre-aware overrides (hip-hop, rock, jazz, EDM, acoustic, etc.).
+- Align outputs with groove humanizer + dynamics engines for end-to-end flow.
 """
 
 from dataclasses import dataclass, field
@@ -46,8 +51,8 @@ class EmotionProductionMapper:
                 arrangement_density=0.35,
                 groove_template="lofi",
                 notes=[
-                    "Use sparse drums, gentle swing from Groove and Rhythm Guide.",
-                    "Dynamics and Arrangement: leave space, emphasize texture.",
+                    "Sparse drums; gentle swing (Groove and Rhythm Guide).",
+                    "Dynamics/Arrangement: leave space, emphasize texture.",
                 ],
             ),
             "uplifting": ProductionPreset(
@@ -56,8 +61,8 @@ class EmotionProductionMapper:
                 arrangement_density=0.65,
                 groove_template="pop",
                 notes=[
-                    "Clear downbeats, supportive bass (Bass Programming Guide).",
-                    "Dynamics: bigger chorus lifts, brighter EQ choices.",
+                    "Clear downbeats; supportive bass (Bass Guide).",
+                    "Chorus lifts with brighter EQ choices.",
                 ],
             ),
             "aggressive": ProductionPreset(
@@ -66,8 +71,8 @@ class EmotionProductionMapper:
                 arrangement_density=0.8,
                 groove_template="rock",
                 notes=[
-                    "Tighter timing, lower vulnerability (Drum Programming Guide).",
-                    "Compression/EQ deep dives: emphasize punch and midrange.",
+                    "Tight timing, low vulnerability (Drum Guide).",
+                    "Compression/EQ: emphasize punch and midrange.",
                 ],
             ),
             "dark": ProductionPreset(
@@ -76,8 +81,8 @@ class EmotionProductionMapper:
                 arrangement_density=0.55,
                 groove_template="trip-hop",
                 notes=[
-                    "Behind-the-beat feel; filtered drums with room for ambience.",
-                    "Ambient/Atmospheric guide: long tails, evolving layers.",
+                    "Behind-the-beat; filtered drums; leave ambience space.",
+                    "Ambient/Atmospheric: long tails, evolving layers.",
                 ],
             ),
             "nostalgic": ProductionPreset(
@@ -86,7 +91,7 @@ class EmotionProductionMapper:
                 arrangement_density=0.45,
                 groove_template="soul",
                 notes=[
-                    "Swinged hats, softened transients, tape-style saturation.",
+                    "Swinged hats, softened transients, tape saturation.",
                     "Lo-Fi Production Guide: gentle reverb/delay glue.",
                 ],
             ),
@@ -96,7 +101,7 @@ class EmotionProductionMapper:
                 arrangement_density=0.5,
                 groove_template="neutral",
                 notes=[
-                    "Baseline preset; adjust using intensity and genre inputs.",
+                    "Baseline preset; adjust via intensity and genre inputs.",
                 ],
             ),
         }
@@ -123,7 +128,8 @@ class EmotionProductionMapper:
             arrangement_density=base.arrangement_density,
             groove_template=base.groove_template,
             genre=genre,
-            notes=base.notes,
+            # Copy to avoid mutating the internal template when callers append.
+            notes=list(base.notes) if base.notes else [],
         )
 
         if intensity:
@@ -143,32 +149,74 @@ class EmotionProductionMapper:
         """Shortcut to only fetch drum style."""
         return self.get_production_preset(emotion).drum_style
 
-    def get_dynamics_level(self, emotion: str, intensity: Optional[str] = None) -> str:
+    def get_dynamics_level(
+        self,
+        emotion: str,
+        intensity: Optional[str] = None,
+    ) -> str:
         """Shortcut to only fetch dynamics level."""
-        return self.get_production_preset(emotion, intensity=intensity).dynamics_level
+        preset = self.get_production_preset(emotion, intensity=intensity)
+        return preset.dynamics_level
+
+    def describe_sources(self) -> List[str]:
+        """
+        List guide files that should inform this mapper.
+
+        This keeps the ingestion list close to the code until we wire in an
+        automated parser for the Production_Workflows markdown set.
+        """
+        return [
+            "Production_Workflows/Bass Programming Guide.md",
+            "Production_Workflows/Drum Programming Guide.md",
+            "Production_Workflows/Dynamics and Arrangement Guide.md",
+            "Production_Workflows/Humanization Cheat Sheet.md",
+            "Production_Workflows/Compression Deep Dive Guide.md",
+            "Production_Workflows/EQ Deep Dive Guide.md",
+            "Production_Workflows/Electronic EDM Production Guide.md",
+            "Production_Workflows/Groove and Rhythm Guide.md",
+            "Production_Workflows/Humanizing Your Music.md",
+        ]
 
     def _classify_emotion(self, emotion: str) -> str:
         if not emotion:
             return "neutral"
 
         text = emotion.lower()
-        if any(word in text for word in ["calm", "peace", "relax", "gentle", "soft"]):
+        if any(
+            word in text
+            for word in ["calm", "peace", "relax", "gentle", "soft"]
+        ):
             return "calm"
         if any(word in text for word in ["happy", "uplift", "hope", "bright"]):
             return "uplifting"
-        if any(word in text for word in ["angry", "rage", "aggressive", "drive"]):
+        if any(
+            word in text
+            for word in ["angry", "rage", "aggressive", "drive"]
+        ):
             return "aggressive"
-        if any(word in text for word in ["dark", "brood", "moody", "tension"]):
+        if any(
+            word in text
+            for word in ["dark", "brood", "moody", "tension"]
+        ):
             return "dark"
-        if any(word in text for word in ["nostalgia", "nostalgic", "memory", "retro"]):
+        if any(
+            word in text
+            for word in ["nostalgia", "nostalgic", "memory", "retro"]
+        ):
             return "nostalgic"
         return "neutral"
 
     def _apply_intensity(self, density: float, intensity: str) -> float:
         intensity_text = intensity.lower()
-        if any(word in intensity_text for word in ["high", "big", "strong", "up"]):
+        if any(
+            word in intensity_text
+            for word in ["high", "big", "strong", "up"]
+        ):
             return self._clamp(density + 0.15)
-        if any(word in intensity_text for word in ["low", "quiet", "intimate", "down"]):
+        if any(
+            word in intensity_text
+            for word in ["low", "quiet", "intimate", "down"]
+        ):
             return self._clamp(density - 0.15)
         return self._clamp(density)
 
@@ -185,4 +233,3 @@ class EmotionProductionMapper:
 
     def _clamp(self, value: float) -> float:
         return max(0.0, min(1.0, value))
-

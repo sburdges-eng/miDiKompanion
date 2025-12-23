@@ -1,5 +1,14 @@
 # Core C++ library
 
+# macOS SDK compatibility fix - Define function-style availability macros
+# These must be defined before any system headers are included
+# We define them as function-style macros (with ...) that expand to nothing
+if(APPLE)
+    # Note: CMAKE cannot pass function-style macros via -D, so we rely on
+    # JUCE's juce_StandardHeader.h which is included first via juce_core
+    # The main CMakeLists.txt sets MAC_OS_X_VERSION_MIN_REQUIRED which helps
+endif()
+
 # Readerwriterqueue: header-only library with no CMakeLists.txt
 # Must explicitly create INTERFACE target and ensure SOURCE_DIR is populated
 include(FetchContent)
@@ -54,6 +63,9 @@ set(PENTA_CORE_SOURCES
         osc/OSCHub.cpp
         osc/RTMessageQueue.cpp
 
+    # ML interface
+    ml/MLInterface.cpp
+
     # Mixer engine
     mixer/MixerEngine.cpp
 )
@@ -84,6 +96,7 @@ set(PENTA_CORE_HEADERS
     ${PROJECT_SOURCE_DIR}/include/penta/osc/OSCHub.h
 
     ${PROJECT_SOURCE_DIR}/include/penta/mixer/MixerEngine.h
+    ${PROJECT_SOURCE_DIR}/include/penta/ml/MLInterface.h
 )
 
 add_library(penta_core STATIC

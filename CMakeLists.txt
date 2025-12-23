@@ -7,6 +7,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # Options
+option(BUILD_DESKTOP "Build desktop GUI application" ON)
 option(BUILD_PLUGINS "Build VST3 and CLAP plugins" ON)
 option(BUILD_TESTS "Build tests" OFF)
 option(ENABLE_TRACY "Enable Tracy profiling" OFF)
@@ -65,6 +66,28 @@ if(NOT TARGET readerwriterqueue)
     target_include_directories(readerwriterqueue INTERFACE
         ${readerwriterqueue_SOURCE_DIR}
     )
+endif()
+
+# ============================================================================
+# Penta-Core Library (C++ RT engines)
+# ============================================================================
+add_subdirectory(src_penta-core)
+
+# ============================================================================
+# Python Bindings (Optional)
+# ============================================================================
+option(BUILD_PYTHON_BINDINGS "Build Python bindings for penta-core" ON)
+
+if(BUILD_PYTHON_BINDINGS)
+    # Find pybind11
+    find_package(pybind11 QUIET)
+    if(pybind11_FOUND)
+        message(STATUS "pybind11 found, building Python bindings")
+        add_subdirectory(bindings)
+    else()
+        message(STATUS "pybind11 not found. Python bindings will not be built.")
+        message(STATUS "  Install via: pip install pybind11")
+    endif()
 endif()
 
 # ============================================================================
@@ -169,20 +192,22 @@ target_compile_options(KellyCore PRIVATE
 )
 
 # Kelly GUI Application
-add_executable(KellyApp
-    src/gui/main.cpp
-    src/gui/main_window.cpp
-)
+if(BUILD_DESKTOP)
+    add_executable(KellyApp
+        src/gui/main.cpp
+        src/gui/main_window.cpp
+    )
 
-set_target_properties(KellyApp PROPERTIES
-    AUTOMOC ON
-)
+    set_target_properties(KellyApp PROPERTIES
+        AUTOMOC ON
+    )
 
-target_link_libraries(KellyApp PRIVATE
-    KellyCore
-    Qt6::Core
-    Qt6::Widgets
-)
+    target_link_libraries(KellyApp PRIVATE
+        KellyCore
+        Qt6::Core
+        Qt6::Widgets
+    )
+endif()
 
 # Plugin builds
 if(BUILD_PLUGINS)
@@ -240,7 +265,12 @@ if(ENABLE_TRACY)
 endif()
 
 # Installation
-install(TARGETS KellyApp KellyCore
+set(KELLY_INSTALL_TARGETS KellyCore)
+if(BUILD_DESKTOP)
+    list(APPEND KELLY_INSTALL_TARGETS KellyApp)
+endif()
+
+install(TARGETS ${KELLY_INSTALL_TARGETS}
     RUNTIME DESTINATION bin
     LIBRARY DESTINATION lib
     ARCHIVE DESTINATION lib

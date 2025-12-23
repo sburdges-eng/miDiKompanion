@@ -1,4 +1,6 @@
 #pragma once
+
+#include "penta/common/Platform.h"
 /**
  * @file MLInterface.h
  * @brief Real-time safe ML inference interface for Penta-Core
@@ -28,18 +30,26 @@ enum class ModelType {
     GrooveTransfer,      ///< Transfers groove/timing style
     KeyDetector,         ///< ML-enhanced key detection
     IntentMapper,        ///< Maps emotional intent to parameters
+    // Extended types used by DAiW model registry
+    EmotionRecognizer,   ///< Audio features -> emotion embedding
+    MelodyTransformer,   ///< Emotion embedding -> note probabilities
+    HarmonyPredictor,    ///< Context -> chord/harmony predictions
+    DynamicsEngine,      ///< Emotion -> expression parameters
+    GroovePredictor,     ///< Emotion -> groove/timing parameters
     Custom               ///< User-defined model
 };
 
 /**
  * @brief Inference request structure (RT-safe, no allocations)
  */
+constexpr size_t MAX_INPUT_SIZE = 128;
+
 struct InferenceRequest {
     ModelType model_type;
-    std::array<float, 128> input_data;  ///< Fixed-size input buffer
-    size_t input_size;                   ///< Actual input size
-    uint64_t request_id;                 ///< Unique request identifier
-    uint64_t timestamp;                  ///< Audio sample timestamp
+    std::array<float, MAX_INPUT_SIZE> input_data;  ///< Fixed-size input buffer
+    size_t input_size;                             ///< Actual input size
+    uint64_t request_id;                           ///< Unique request identifier
+    uint64_t timestamp;                            ///< Audio sample timestamp
 };
 
 /**
@@ -175,6 +185,13 @@ public:
      * @return true if loaded successfully
      */
     bool loadModel(ModelType type, const std::string& path);
+
+    /**
+     * @brief Load all models defined in a registry JSON.
+     * @param registry_path Path to registry.json (see /models/registry.json)
+     * @return true if all models loaded (partial failures return false)
+     */
+    bool loadRegistry(const std::string& registry_path);
 
     /**
      * @brief Unload a model
