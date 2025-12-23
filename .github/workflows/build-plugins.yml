@@ -25,17 +25,23 @@ jobs:
       if: runner.os == 'Linux'
       run: |
         sudo apt-get update
-        sudo apt-get install -y cmake ninja-build qt6-base-dev libasound2-dev
+        sudo apt-get install -y cmake ninja-build libasound2-dev
 
     - name: Install dependencies (macOS)
       if: runner.os == 'macOS'
       run: |
-        brew install cmake ninja qt@6
+        brew install cmake ninja
 
     - name: Install dependencies (Windows)
       if: runner.os == 'Windows'
       run: |
         choco install cmake ninja
+
+    - name: Install Qt6
+      uses: jurplel/install-qt-action@v4
+      with:
+        version: '6.5.*'
+        cache: true
 
     - name: Configure CMake
       run: |
