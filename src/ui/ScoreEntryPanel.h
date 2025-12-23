@@ -28,7 +28,6 @@
 #include "../music_theory/MusicTheoryBrain.h"
 #include <memory>
 #include <vector>
-#include <functional>
 
 namespace midikompanion {
 
@@ -287,17 +286,12 @@ public:
      */
     bool exportMIDI(const juce::File& outputFile);
 
-    //==========================================================================
-    // Playback callbacks (hooked up by host)
-    //==========================================================================
-    std::function<void(const juce::MidiBuffer&)> onPlayRequested;
-    std::function<void()> onStopRequested;
-    std::function<void(bool)> onMetronomeToggledCallback;
-
 private:
     //==========================================================================
     // UI Components
     //==========================================================================
+
+    void initializeComponents();
 
     // Entry mode selector
     std::unique_ptr<juce::ComboBox> entryModeSelector_;
@@ -426,19 +420,6 @@ private:
     std::vector<ScoreTemplate> templates_;
 
     //==========================================================================
-    // UI Initialization
-    //==========================================================================
-
-    void initializeComponents();
-
-    //==========================================================================
-    // Helper Methods
-    //==========================================================================
-
-    int getMaxMeasureIndex() const;
-    juce::Rectangle<int> getScoreArea() const;
-
-    //==========================================================================
     // Callbacks
     //==========================================================================
 
@@ -449,6 +430,13 @@ private:
     void onPlayClicked();
     void onStopClicked();
     void onMetronomeToggled();
+
+    //==========================================================================
+    // Helpers
+    //==========================================================================
+
+    int getMaxMeasureIndex() const;
+    juce::Rectangle<int> getScoreArea() const;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(ScoreEntryPanel)
 };

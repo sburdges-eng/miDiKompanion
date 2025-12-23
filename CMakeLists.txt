@@ -11,11 +11,51 @@ option(BUILD_PLUGINS "Build VST3 and CLAP plugins" ON)
 option(BUILD_TESTS "Build tests" OFF)
 option(ENABLE_TRACY "Enable Tracy profiling" OFF)
 
-# Find packages
+# macOS SDK 26.2+ compatibility fix for __CLOCK_AVAILABILITY
+# The SDK header _time.h uses __CLOCK_AVAILABILITY in enum definitions, which requires
+# __OSX_AVAILABLE to be defined. We ensure deployment target is set so Availability.h works.
+# Fix is implemented in external/JUCE/modules/juce_core/system/juce_StandardHeader.h
+# These settings MUST be configured before any targets are created to apply effectively.
+if(APPLE)
+    set(CMAKE_OSX_DEPLOYMENT_TARGET "10.12" CACHE STRING "Minimum macOS version")
+    # Ensure availability macros are available before system headers
+    # Use numeric value (101200 = 10.12 * 10000) since macro constants aren't available at CMake time
+    # MAX_ALLOWED defaults to SDK version if not set, so we only set MIN_REQUIRED
+    # Note: CMAKE_OSX_DEPLOYMENT_TARGET also sets this automatically, but we set it explicitly
+    # to ensure it's available before JUCE headers are processed
+    #
+    # For SDK 26.2+, we define simple (non-function) availability macros to empty.
+    # Function-style macros (__API_AVAILABLE, etc.) are defined in juce_StandardHeader.h
+    # because CMake can't pass function-style preprocessor definitions on the command line.
+    add_compile_definitions(
+        MAC_OS_X_VERSION_MIN_REQUIRED=101200
+        __CLOCK_AVAILABILITY=
+        __WATCHOS_PROHIBITED=
+        __TVOS_PROHIBITED=
+        __IOS_PROHIBITED=
+    )
+endif()
 find_package(Qt6 COMPONENTS Core Widgets REQUIRED)
 
 # JUCE setup
 add_subdirectory(external/JUCE EXCLUDE_FROM_ALL)
+
+# Readerwriterqueue (lock-free queue) for RT-safe OSC
+include(FetchContent)
+FetchContent_Declare(
+    readerwriterqueue
+    GIT_REPOSITORY https://github.com/cameron314/readerwriterqueue.git
+    GIT_TAG v1.0.6
+    GIT_SHALLOW TRUE
+)
+FetchContent_MakeAvailable(readerwriterqueue)
+
+if(NOT TARGET readerwriterqueue)
+    add_library(readerwriterqueue INTERFACE)
+    target_include_directories(readerwriterqueue INTERFACE
+        ${readerwriterqueue_SOURCE_DIR}
+    )
+endif()
 
 # Main Kelly library (shared core)
 file(GLOB_RECURSE KELLY_CORE_SOURCES CONFIGURE_DEPENDS
@@ -57,19 +97,15 @@ target_link_libraries(KellyCore PUBLIC
     juce::juce_events
     juce::juce_graphics
     juce::juce_gui_basics
+    juce::juce_dsp
+    juce::juce_osc
+    readerwriterqueue
 )
 
 target_compile_options(KellyCore PRIVATE
     $<$<CXX_COMPILER_ID:MSVC>:/W4>
     $<$<NOT:$<CXX_COMPILER_ID:MSVC>>:-Wall -Wextra -Wpedantic>
 )
-
-# Workaround for macOS SDK 26.2+ availability macro conflicts with JUCE
-if(APPLE)
-    target_compile_definitions(KellyCore PRIVATE
-        __CLOCK_AVAILABILITY=
-    )
-endif()
 
 # Kelly GUI Application
 add_executable(KellyApp
