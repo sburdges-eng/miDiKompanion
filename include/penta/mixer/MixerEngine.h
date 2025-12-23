@@ -1,4 +1,6 @@
 #pragma once
+
+#include "penta/common/Platform.h"
 /*
  * MixerEngine.h - Real-time safe audio mixer for Penta-Core
  * ===========================================================

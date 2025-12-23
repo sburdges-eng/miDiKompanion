@@ -1,5 +1,7 @@
 #pragma once
 
+#include "penta/common/Platform.h"
+
 #include "penta/osc/OSCClient.h"
 #include "penta/osc/OSCMessage.h"
 #include "penta/osc/OSCServer.h"

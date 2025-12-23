@@ -1,5 +1,7 @@
 #pragma once
 
+#include "penta/common/Platform.h"
+
 #include <cstdint>
 #include <string>
 #include <memory>

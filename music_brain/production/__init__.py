@@ -8,10 +8,16 @@ from music_brain.production.dynamics_engine import (
     SectionDynamics,
     SongStructure,
 )
+from music_brain.production.emotion_production import (
+    EmotionProductionMapper,
+    ProductionPreset,
+)
 
 __all__ = [
     "DynamicsEngine",
     "SectionDynamics",
     "SongStructure",
     "AutomationCurve",
+    "EmotionProductionMapper",
+    "ProductionPreset",
 ]

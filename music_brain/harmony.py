@@ -8,6 +8,11 @@ import os
 import tempfile
 from typing import Any, Dict, Optional
 
+from data.harmony_generator import (
+    HarmonyGenerator,
+    HarmonyResult,
+    generate_midi_from_harmony,
+)
 from .common import (
     api,
     make_midi_payload,
@@ -170,6 +175,9 @@ def register_tools(server) -> None:
 
 
 __all__ = [
+    "HarmonyGenerator",
+    "HarmonyResult",
+    "generate_midi_from_harmony",
     "register_tools",
 ]
 

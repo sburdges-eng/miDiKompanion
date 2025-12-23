@@ -1,4 +1,6 @@
 #pragma once
+
+#include "penta/common/Platform.h"
 /**
  * @file MLInterface.h
  * @brief Real-time safe ML inference interface for Penta-Core
@@ -40,12 +42,14 @@ enum class ModelType {
 /**
  * @brief Inference request structure (RT-safe, no allocations)
  */
+constexpr size_t MAX_INPUT_SIZE = 128;
+
 struct InferenceRequest {
     ModelType model_type;
-    std::array<float, 128> input_data;  ///< Fixed-size input buffer
-    size_t input_size;                   ///< Actual input size
-    uint64_t request_id;                 ///< Unique request identifier
-    uint64_t timestamp;                  ///< Audio sample timestamp
+    std::array<float, MAX_INPUT_SIZE> input_data;  ///< Fixed-size input buffer
+    size_t input_size;                             ///< Actual input size
+    uint64_t request_id;                           ///< Unique request identifier
+    uint64_t timestamp;                            ///< Audio sample timestamp
 };
 
 /**

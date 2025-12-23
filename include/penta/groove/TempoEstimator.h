@@ -1,7 +1,7 @@
 #pragma once
 
+#include "penta/common/Platform.h"
 #include <array>
-#include <cstdint>
 #include <atomic>
 
 namespace penta::groove {

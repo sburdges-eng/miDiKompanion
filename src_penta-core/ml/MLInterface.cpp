@@ -150,7 +150,7 @@ public:
             const std::string file_path = model.value("file", "");
             const size_t input_size = model.value("input_size", 0);
 
-            if (id.empty() || input_size == 0 || input_size > InferenceRequest{}.input_data.size()) {
+            if (id.empty() || input_size == 0 || input_size > MAX_INPUT_SIZE) {
                 all_ok = false;
                 continue;
             }

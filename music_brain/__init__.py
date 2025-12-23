@@ -1,3 +1,4 @@
+# flake8: noqa
 """
 Music Brain - Intelligent Music Analysis Toolkit
 
@@ -35,11 +36,6 @@ from music_brain.structure import (
     detect_sections,
 )
 from music_brain.audio import AudioFeatures, analyze_feel
-from music_brain.harmony import (
-    HarmonyGenerator,
-    HarmonyResult,
-    generate_midi_from_harmony,
-)
 
 # Comprehensive engine
 from music_brain.structure.comprehensive_engine import (
@@ -126,10 +122,6 @@ __all__ = [
     # Audio
     "analyze_feel",
     "AudioFeatures",
-    # Harmony
-    "HarmonyGenerator",
-    "HarmonyResult",
-    "generate_midi_from_harmony",
     # Comprehensive Engine
     "AffectAnalyzer",
     "TherapySession",
@@ -180,4 +172,3 @@ __all__ = [
     "AdaptiveTeacher",
     "generate_learning_plan",
 ]
-

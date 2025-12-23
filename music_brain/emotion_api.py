@@ -1,3 +1,5 @@
+# flake8: noqa
+# ruff: noqa: E501
 """
 Music Brain Emotion API - Clean interface for emotion-to-music generation.
 
@@ -21,7 +23,6 @@ Usage (Fluent):
 from dataclasses import dataclass
 from typing import Optional, Dict, Any, List, Tuple
 from pathlib import Path
-import json
 
 # Import existing modules
 from music_brain.session.intent_schema import (
@@ -31,9 +32,6 @@ from music_brain.session.intent_schema import (
     TechnicalConstraints,
     SystemDirective,
     suggest_rule_break,
-    validate_intent,
-    get_affect_mapping,
-    AFFECT_MODE_MAP,
 )
 from music_brain.data.emotional_mapping import (
     EmotionalState,
@@ -41,19 +39,21 @@ from music_brain.data.emotional_mapping import (
     Valence,
     Arousal,
     TimingFeel,
-    Mode,
-    EMOTIONAL_PRESETS,
     get_parameters_for_state,
-    describe_parameters,
 )
 from music_brain.daw.mixer_params import (
     MixerParameters,
     EmotionMapper,
     export_to_logic_automation,
     export_mixer_settings,
-    describe_mixer_params,
-    MIXER_PRESETS,
 )
+from music_brain.production.emotion_production import (
+    ProductionPreset,
+    EmotionProductionMapper,
+)
+from music_brain.production.dynamics_engine import DynamicsEngine
+from music_brain.production.drum_humanizer import DrumHumanizer
+from music_brain.groove.groove_engine import GrooveSettings, settings_from_intent
 
 
 # Intent examples for reference
@@ -75,6 +75,8 @@ class GeneratedMusic:
     emotional_state: EmotionalState
     musical_params: MusicalParameters
     mixer_params: MixerParameters
+    production_preset: Optional[ProductionPreset] = None
+    groove_settings: Optional[GrooveSettings] = None
     intent: Optional[CompleteSongIntent] = None
     midi_path: Optional[str] = None
     automation_path: Optional[str] = None
@@ -97,6 +99,12 @@ class GeneratedMusic:
                 "space_probability": self.musical_params.space_probability,
             },
             "mixer_params": self.mixer_params.to_dict(),
+            "production_preset": (
+                self.production_preset.as_dict() if self.production_preset else None
+            ),
+            "groove_settings": (
+                self.groove_settings.to_dict() if self.groove_settings else None
+            ),
             "paths": {
                 "midi": self.midi_path,
                 "automation": self.automation_path,
@@ -122,9 +130,12 @@ class GeneratedMusic:
             "",
             "Mixer Settings:",
             f"  Description: {self.mixer_params.description}",
-            f"  Reverb: {self.mixer_params.reverb_mix:.0%} mix, {self.mixer_params.reverb_decay:.1f}s decay",
+            f"  Reverb: {self.mixer_params.reverb_mix:.0%} mix, "
+            f"{self.mixer_params.reverb_decay:.1f}s decay",
             f"  Compression: {self.mixer_params.compression_ratio:.1f}:1",
-            f"  Saturation: {self.mixer_params.saturation:.0%} ({self.mixer_params.saturation_type})",
+            "  Saturation: "
+            f"{self.mixer_params.saturation:.0%} "
+            f"({self.mixer_params.saturation_type})",
             "",
             "Output Files:",
             f"  MIDI: {self.midi_path or 'Not generated'}",
@@ -143,8 +154,11 @@ class MusicBrain:
     making it easier to integrate with desktop apps, web services, or CLI tools.
     """
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.emotion_mapper = EmotionMapper()
+        self.production_mapper = EmotionProductionMapper()
+        self.dynamics_engine = DynamicsEngine()
+        self.drum_humanizer = DrumHumanizer()
         self._emotion_keywords = self._build_emotion_keywords()
 
     def _build_emotion_keywords(self) -> Dict[str, Tuple[float, float, str]]:
@@ -267,10 +281,24 @@ class MusicBrain:
             musical_params
         )
 
+        production_preset = self.production_mapper.get_production_preset(
+            emotion_key,
+            genre=intent.technical_constraints.technical_genre or None,
+            intensity=intent.song_intent.vulnerability_scale,
+        )
+
+        groove_settings = settings_from_intent(
+            intent.song_intent.vulnerability_scale or "Medium",
+            intent.technical_constraints.technical_groove_feel or "Organic/Breathing",
+            mood_tension=intent.song_intent.mood_secondary_tension,
+        )
+
         return GeneratedMusic(
             emotional_state=emotional_state,
             musical_params=musical_params,
             mixer_params=mixer_params,
+            production_preset=production_preset,
+            groove_settings=groove_settings,
             intent=intent
         )
 
@@ -317,10 +345,23 @@ class MusicBrain:
             musical_params
         )
 
+        production_preset = self.production_mapper.get_production_preset(
+            primary_emotion,
+            intensity="Medium",
+        )
+
+        groove_settings = settings_from_intent(
+            "Medium",
+            "Organic/Breathing",
+            mood_tension=0.5,
+        )
+
         return GeneratedMusic(
             emotional_state=emotional_state,
             musical_params=musical_params,
-            mixer_params=mixer_params
+            mixer_params=mixer_params,
+            production_preset=production_preset,
+            groove_settings=groove_settings,
         )
 
     def export_to_logic(
@@ -361,7 +402,7 @@ class MusicBrain:
         tempo_range: Tuple[int, int] = (80, 120),
         rule_to_break: str = "",
         rule_justification: str = "",
-        **kwargs
+        **kwargs: Any,
     ) -> CompleteSongIntent:
         """
         Create a CompleteSongIntent from parameters.
@@ -423,26 +464,6 @@ class MusicBrain:
         """
         return suggest_rule_break(emotion)
 
-    def get_affect_mapping(self, emotion: str) -> Optional[Dict]:
-        """
-        Get musical parameter suggestions for an emotion.
-
-        Args:
-            emotion: Target emotion
-
-        Returns:
-            Dict with modes, tempo_range, density suggestions
-        """
-        return get_affect_mapping(emotion)
-
-    def list_mixer_presets(self) -> List[str]:
-        """List all available mixer presets."""
-        return self.emotion_mapper.list_presets()
-
-    def get_mixer_preset(self, emotion: str) -> Optional[MixerParameters]:
-        """Get a specific mixer preset."""
-        return self.emotion_mapper.get_preset(emotion)
-
     # ========== FLUENT API ==========
 
     def process(self, emotional_text: str) -> 'FluentChain':
@@ -496,7 +517,7 @@ class FluentChain:
         """Map emotion to musical parameters."""
         if not self.emotional_state:
             self.map_to_emotion()
-
+        assert self.emotional_state is not None
         self.musical_params = get_parameters_for_state(self.emotional_state)
         return self
 
@@ -504,7 +525,8 @@ class FluentChain:
         """Map to mixer parameters."""
         if not self.musical_params:
             self.map_to_music()
-
+        assert self.emotional_state is not None
+        assert self.musical_params is not None
         self.mixer_params = self.brain.emotion_mapper.map_emotion_to_mixer(
             self.emotional_state,
             self.musical_params
@@ -515,6 +537,7 @@ class FluentChain:
         """Override tempo."""
         if not self.musical_params:
             self.map_to_music()
+        assert self.musical_params is not None
         self.musical_params.tempo_suggested = tempo
         return self
 
@@ -522,6 +545,7 @@ class FluentChain:
         """Override dissonance level (0.0-1.0)."""
         if not self.musical_params:
             self.map_to_music()
+        assert self.musical_params is not None
         self.musical_params.dissonance = max(0.0, min(1.0, dissonance))
         return self
 
@@ -529,6 +553,7 @@ class FluentChain:
         """Override timing feel (ahead, on, behind)."""
         if not self.musical_params:
             self.map_to_music()
+        assert self.musical_params is not None
         feel_map = {
             "ahead": TimingFeel.AHEAD,
             "on": TimingFeel.ON,
@@ -542,6 +567,7 @@ class FluentChain:
         """Export to Logic Pro and return paths."""
         if not self.mixer_params:
             self.map_to_mixer()
+        assert self.mixer_params is not None
 
         automation_path = export_to_logic_automation(
             self.mixer_params,
@@ -559,6 +585,7 @@ class FluentChain:
         """Export full settings to JSON."""
         if not self.mixer_params:
             self.map_to_mixer()
+        assert self.mixer_params is not None
 
         export_mixer_settings(self.mixer_params, output_path, format="json")
         self._paths["json"] = output_path
@@ -684,6 +711,6 @@ if __name__ == "__main__":
 
     # List available presets
     print("\n[Available Mixer Presets]")
-    print(f"  {', '.join(brain.list_mixer_presets())}")
+    print(f"  {', '.join(brain.emotion_mapper.list_presets())}")
 
     print("\n" + "=" * 70)
