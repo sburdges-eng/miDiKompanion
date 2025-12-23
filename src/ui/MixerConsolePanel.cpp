@@ -433,6 +433,7 @@ void MixerConsolePanel::removeChannel(int channelIndex) {
     }
     channelContainer_->removeChildComponent(channels_[channelIndex].get());
     channels_.erase(channels_.begin() + channelIndex);
+    
     // channelInstruments_ must stay in lockstep with channels_
     if (channelInstruments_.size() == channels_.size() + 1 && channelIndex < static_cast<int>(channelInstruments_.size())) {
         channelInstruments_.erase(channelInstruments_.begin() + channelIndex);
@@ -443,6 +444,39 @@ void MixerConsolePanel::removeChannel(int channelIndex) {
             channelInstruments_.resize(channels_.size());
         }
     }
+    
+    // Clean up channelMidi_ map: remove entry at channelIndex and reindex subsequent entries
+    auto midiIt = channelMidi_.find(channelIndex);
+    if (midiIt != channelMidi_.end()) {
+        channelMidi_.erase(midiIt);
+    }
+    // Reindex entries with index > channelIndex (shift down by 1)
+    std::map<int, juce::MidiBuffer> reindexedMidi;
+    for (const auto& entry : channelMidi_) {
+        if (entry.first > channelIndex) {
+            reindexedMidi[entry.first - 1] = entry.second;
+        } else {
+            reindexedMidi[entry.first] = entry.second;
+        }
+    }
+    channelMidi_ = std::move(reindexedMidi);
+    
+    // Clean up automation_ map: remove entry at channelIndex and reindex subsequent entries
+    auto autoIt = automation_.find(channelIndex);
+    if (autoIt != automation_.end()) {
+        automation_.erase(autoIt);
+    }
+    // Reindex entries with index > channelIndex (shift down by 1)
+    std::map<int, std::vector<AutomationPoint>> reindexedAuto;
+    for (const auto& entry : automation_) {
+        if (entry.first > channelIndex) {
+            reindexedAuto[entry.first - 1] = entry.second;
+        } else {
+            reindexedAuto[entry.first] = entry.second;
+        }
+    }
+    automation_ = std::move(reindexedAuto);
+    
     resized();
 }
 
