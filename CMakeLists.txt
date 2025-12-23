@@ -7,6 +7,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # Options
+option(BUILD_DESKTOP "Build desktop GUI application" ON)
 option(BUILD_PLUGINS "Build VST3 and CLAP plugins" ON)
 option(BUILD_TESTS "Build tests" OFF)
 option(ENABLE_TRACY "Enable Tracy profiling" OFF)
@@ -169,20 +170,22 @@ target_compile_options(KellyCore PRIVATE
 )
 
 # Kelly GUI Application
-add_executable(KellyApp
-    src/gui/main.cpp
-    src/gui/main_window.cpp
-)
+if(BUILD_DESKTOP)
+    add_executable(KellyApp
+        src/gui/main.cpp
+        src/gui/main_window.cpp
+    )
 
-set_target_properties(KellyApp PROPERTIES
-    AUTOMOC ON
-)
+    set_target_properties(KellyApp PROPERTIES
+        AUTOMOC ON
+    )
 
-target_link_libraries(KellyApp PRIVATE
-    KellyCore
-    Qt6::Core
-    Qt6::Widgets
-)
+    target_link_libraries(KellyApp PRIVATE
+        KellyCore
+        Qt6::Core
+        Qt6::Widgets
+    )
+endif()
 
 # Plugin builds
 if(BUILD_PLUGINS)
@@ -240,7 +243,12 @@ if(ENABLE_TRACY)
 endif()
 
 # Installation
-install(TARGETS KellyApp KellyCore
+set(KELLY_INSTALL_TARGETS KellyCore)
+if(BUILD_DESKTOP)
+    list(APPEND KELLY_INSTALL_TARGETS KellyApp)
+endif()
+
+install(TARGETS ${KELLY_INSTALL_TARGETS}
     RUNTIME DESTINATION bin
     LIBRARY DESTINATION lib
     ARCHIVE DESTINATION lib
