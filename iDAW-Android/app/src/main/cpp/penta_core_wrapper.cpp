@@ -50,6 +50,7 @@ struct PentaCoreInstance {
         DiagnosticsEngine::Config diagConfig;
         diagConfig.enableAudioAnalysis = true;
         diagConfig.enablePerformanceMonitoring = true;
+        diagConfig.sampleRate = sr;
         diagnosticsEngine = std::make_unique<DiagnosticsEngine>(diagConfig);
         
         initialized = true;
@@ -179,15 +180,17 @@ void pentaCoreProcessAudio(float* inputL, float* inputR,
         return;
     }
     
-    if (g_pentaCore->diagnosticsEngine != nullptr) {
+    const bool hasInput = inputL != nullptr;
+
+    if (g_pentaCore->diagnosticsEngine != nullptr && hasInput) {
         g_pentaCore->diagnosticsEngine->beginMeasurement();
     }
 
     // Process audio through groove/diagnostics engines when input is present
-    if (inputL != nullptr && g_pentaCore->grooveEngine != nullptr) {
+    if (hasInput && g_pentaCore->grooveEngine != nullptr) {
         g_pentaCore->grooveEngine->processAudio(inputL, static_cast<size_t>(frameCount));
     }
-    if (g_pentaCore->diagnosticsEngine != nullptr && inputL != nullptr) {
+    if (g_pentaCore->diagnosticsEngine != nullptr && hasInput) {
         // Analyze using left channel only; interleaving for true stereo can be added later
         g_pentaCore->diagnosticsEngine->analyzeAudio(inputL, static_cast<size_t>(frameCount), 1U);
     }
@@ -200,7 +203,7 @@ void pentaCoreProcessAudio(float* inputL, float* inputR,
         std::memcpy(outputR, inputR, frameCount * sizeof(float));
     }
 
-    if (g_pentaCore->diagnosticsEngine != nullptr) {
+    if (g_pentaCore->diagnosticsEngine != nullptr && hasInput) {
         g_pentaCore->diagnosticsEngine->endMeasurement();
     }
 }

@@ -48,6 +48,9 @@ set(PENTA_CORE_SOURCES
         osc/OSCClient.cpp
         osc/OSCHub.cpp
         osc/RTMessageQueue.cpp
+
+    # Mixer engine
+    mixer/MixerEngine.cpp
 )
 
 set(PENTA_CORE_HEADERS
@@ -74,6 +77,8 @@ set(PENTA_CORE_HEADERS
     ${PROJECT_SOURCE_DIR}/include/penta/osc/OSCMessage.h
     ${PROJECT_SOURCE_DIR}/include/penta/osc/RTMessageQueue.h
     ${PROJECT_SOURCE_DIR}/include/penta/osc/OSCHub.h
+
+    ${PROJECT_SOURCE_DIR}/include/penta/mixer/MixerEngine.h
 )
 
 add_library(penta_core STATIC

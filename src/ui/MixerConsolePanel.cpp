@@ -4,6 +4,8 @@
 #include <juce_graphics/juce_graphics.h>
 #include <algorithm>
 #include <cmath>
+#include <memory>
+#include <string>
 
 namespace midikompanion {
 
@@ -711,11 +713,6 @@ bool MixerConsolePanel::importSession(const juce::File& inputFile) {
         return false;
     }
 
-    // Clear existing channels
-    channelContainer_->removeAllChildren();
-    channels_.clear();
-    channelInstruments_.clear();
-
     const auto parseChannelLine = [](const juce::String& line) -> std::optional<MixerPreset::ChannelSetup> {
         auto tokens = juce::StringArray::fromTokens(line, " \t", "");
         if (tokens.size() < 6 || !tokens[0].equalsIgnoreCase("Channel")) {
@@ -724,7 +721,7 @@ bool MixerConsolePanel::importSession(const juce::File& inputFile) {
 
         // Find the "gain" token to delimit the name
         const int gainIdx = tokens.indexOf("gain");
-        if (gainIdx <= 2 || gainIdx + 3 > tokens.size()) {
+        if (gainIdx < 2 || gainIdx + 3 > tokens.size()) {
             return std::nullopt;
         }
 
@@ -758,7 +755,18 @@ bool MixerConsolePanel::importSession(const juce::File& inputFile) {
 
         const int instrIdx = tokens.indexOf("instrument");
         if (instrIdx > 0 && instrIdx + 1 < tokens.size()) {
-            setup.instrument = tokens[instrIdx + 1].toStdString();
+            // Collect all tokens until the next keyword (gain, pan, muted) or end
+            juce::StringArray instrumentTokens;
+            for (int i = instrIdx + 1; i < tokens.size(); ++i) {
+                const juce::String& token = tokens[i];
+                // Stop if we hit another keyword
+                if (token.equalsIgnoreCase("gain") || token.equalsIgnoreCase("pan") ||
+                    token.equalsIgnoreCase("muted")) {
+                    break;
+                }
+                instrumentTokens.add(token);
+            }
+            setup.instrument = instrumentTokens.joinIntoString(" ").toStdString();
         } else {
             // Also allow "instrument=<val>" token
             for (const auto& tok : tokens) {
@@ -790,6 +798,11 @@ bool MixerConsolePanel::importSession(const juce::File& inputFile) {
         juce::Logger::writeToLog("MixerConsolePanel: no channels found in session file");
         return false;
     }
+
+    // Apply parsed session to mixer (only now mutate existing state)
+    channelContainer_->removeAllChildren();
+    channels_.clear();
+    channelInstruments_.clear();
 
     for (const auto& ch : preset.channels) {
         int idx = addChannel(ch.name, ch.instrument);
