@@ -16,18 +16,19 @@ from collections import defaultdict
 import urllib.parse
 
 # Paths
-SCRIPT_DIR = Path(__file__).parent
-MUSIC_BRAIN_DIR = SCRIPT_DIR / "music_brain"
-SCALES_DB_PATH = MUSIC_BRAIN_DIR / "scales_database.json"
+SCRIPT_DIR = Path(__file__).resolve().parent
+PACKAGE_ROOT = SCRIPT_DIR.parent
+PROJECT_ROOT = PACKAGE_ROOT.parent
+SCALES_DB_PATH = PACKAGE_ROOT / "data" / "scales_database.json"
 GDRIVE_ROOT = Path.home() / "sburdges@gmail.com - Google Drive" / "My Drive"
 GDRIVE_SAMPLES = GDRIVE_ROOT / "iDAW_Samples" / "Emotion_Scale_Library"
 
-# Local staging (temporary)
-LOCAL_STAGING = SCRIPT_DIR / "emotion_scale_staging"
+# Local staging (temporary) - keep outside the package directory
+LOCAL_STAGING = PROJECT_ROOT / "emotion_scale_staging"
 
-# Config
-CONFIG_FILE = SCRIPT_DIR / "freesound_config.json"
-DOWNLOAD_LOG = SCRIPT_DIR / "emotion_scale_downloads.json"
+# Config and logs stored at project root so they persist across installs
+CONFIG_FILE = PROJECT_ROOT / "freesound_config.json"
+DOWNLOAD_LOG = PROJECT_ROOT / "emotion_scale_downloads.json"
 
 # Size limits
 MAX_SIZE_PER_COMBO_MB = 25
@@ -384,15 +385,15 @@ def main():
         print("74 emotions × 52 scales = 3,848 combinations")
         print("25MB limit per combination")
         print("\nUSAGE:")
-        print("  ./emotion_scale_sampler.py setup          # Configure Freesound API key")
-        print("  ./emotion_scale_sampler.py fetch <emotion> <scale>")
-        print("  ./emotion_scale_sampler.py batch <count>  # Fetch random combinations")
-        print("  ./emotion_scale_sampler.py sync           # Sync to Google Drive")
-        print("  ./emotion_scale_sampler.py stats          # Show statistics")
-        print("  ./emotion_scale_sampler.py list           # List emotions and scales")
+        print("  python -m music_brain.samples.emotion_scale_sampler setup   # Configure Freesound API key")
+        print("  python -m music_brain.samples.emotion_scale_sampler fetch <emotion> <scale>")
+        print("  python -m music_brain.samples.emotion_scale_sampler batch <count>  # Fetch random combinations")
+        print("  python -m music_brain.samples.emotion_scale_sampler sync    # Sync to Google Drive")
+        print("  python -m music_brain.samples.emotion_scale_sampler stats   # Show statistics")
+        print("  python -m music_brain.samples.emotion_scale_sampler list    # List emotions and scales")
         print("\nEXAMPLES:")
-        print("  ./emotion_scale_sampler.py fetch melancholy dorian")
-        print("  ./emotion_scale_sampler.py batch 10")
+        print("  python -m music_brain.samples.emotion_scale_sampler fetch melancholy dorian")
+        print("  python -m music_brain.samples.emotion_scale_sampler batch 10")
         print("")
         return
 
