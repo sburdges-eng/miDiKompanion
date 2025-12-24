@@ -640,6 +640,116 @@ if TORCH_AVAILABLE:
             return loss
 
 
+    # =========================================================================
+    # Class Weights Utilities
+    # =========================================================================
+
+    def compute_class_weights(
+        labels: Union[List[int], np.ndarray, "torch.Tensor"],
+        num_classes: Optional[int] = None,
+        method: str = "inverse_freq",
+        smoothing: float = 0.1,
+    ) -> "torch.Tensor":
+        """
+        Compute class weights for imbalanced datasets.
+
+        Args:
+            labels: Class labels (can be list, numpy array, or tensor)
+            num_classes: Number of classes (auto-detected if None)
+            method: Weighting method:
+                - "inverse_freq": 1 / class_frequency
+                - "inverse_sqrt": 1 / sqrt(class_frequency)
+                - "effective": (1 - beta^n) / (1 - beta), beta=0.9999
+            smoothing: Smoothing factor to avoid extreme weights
+
+        Returns:
+            Tensor of class weights (num_classes,)
+        """
+        # Convert to numpy
+        if isinstance(labels, torch.Tensor):
+            labels = labels.cpu().numpy()
+        elif isinstance(labels, list):
+            labels = np.array(labels)
+
+        if num_classes is None:
+            num_classes = int(labels.max()) + 1
+
+        # Count samples per class
+        counts = np.bincount(labels.astype(int), minlength=num_classes).astype(float)
+        counts = np.maximum(counts, 1.0)  # Avoid division by zero
+
+        total = counts.sum()
+
+        if method == "inverse_freq":
+            weights = total / (num_classes * counts)
+        elif method == "inverse_sqrt":
+            weights = np.sqrt(total / (num_classes * counts))
+        elif method == "effective":
+            beta = 0.9999
+            effective_num = 1.0 - np.power(beta, counts)
+            weights = (1.0 - beta) / effective_num
+        else:
+            raise ValueError(f"Unknown method: {method}")
+
+        # Apply smoothing
+        weights = (1 - smoothing) * weights + smoothing * weights.mean()
+
+        # Normalize so mean weight = 1
+        weights = weights / weights.mean()
+
+        return torch.tensor(weights, dtype=torch.float32)
+
+
+    def analyze_class_balance(
+        labels: Union[List[int], np.ndarray, "torch.Tensor"],
+        class_names: Optional[List[str]] = None,
+    ) -> Dict[str, Any]:
+        """
+        Analyze class balance and return statistics.
+
+        Args:
+            labels: Class labels
+            class_names: Optional names for each class
+
+        Returns:
+            Dict with balance statistics
+        """
+        if isinstance(labels, torch.Tensor):
+            labels = labels.cpu().numpy()
+        elif isinstance(labels, list):
+            labels = np.array(labels)
+
+        num_classes = int(labels.max()) + 1
+        counts = np.bincount(labels.astype(int), minlength=num_classes)
+        total = counts.sum()
+
+        # Compute statistics
+        frequencies = counts / total
+        imbalance_ratio = counts.max() / max(counts.min(), 1)
+        entropy = -np.sum(frequencies * np.log(frequencies + 1e-10)) / np.log(num_classes)
+
+        # Per-class stats
+        per_class = {}
+        for i, count in enumerate(counts):
+            name = class_names[i] if class_names and i < len(class_names) else str(i)
+            per_class[name] = {
+                "count": int(count),
+                "frequency": float(frequencies[i]),
+            }
+
+        return {
+            "num_classes": num_classes,
+            "total_samples": int(total),
+            "imbalance_ratio": float(imbalance_ratio),
+            "normalized_entropy": float(entropy),  # 1.0 = perfectly balanced
+            "min_count": int(counts.min()),
+            "max_count": int(counts.max()),
+            "per_class": per_class,
+            "is_severely_imbalanced": imbalance_ratio > 10,
+            "recommended_method": "effective" if imbalance_ratio > 10 else "inverse_freq",
+        }
+
+
 else:
     # Placeholder classes when PyTorch is not available
     class FocalLoss:
