@@ -41,6 +41,7 @@ try:
     from configs.storage import (
         StorageConfig,
         get_storage_config,
+        reset_storage_config,
         get_audio_data_root as _get_audio_root,
         get_raw_audio_dir as _get_raw,
         get_processed_dir as _get_processed,
