@@ -269,3 +269,10 @@ docs/markdown/
 docs/txt/
 docs/html/
 code/
+
+# Old/archived directories (prevent re-adding)
+lost-and-found/
+final kel/
+super-spork/
+penta_core_music-brain/
+

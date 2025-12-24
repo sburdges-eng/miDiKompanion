@@ -1,4 +1,0 @@
-# Hashes of file build rules.
-200b07bd9c30c900302f77a3c989f313 KellyMidiCompanion_artefacts/JuceLibraryCode/KellyMidiCompanion_AU/PkgInfo
-a6e7292f1ee57deb93a95476a3d925ad KellyMidiCompanion_artefacts/JuceLibraryCode/KellyMidiCompanion_Standalone/PkgInfo
-45599d177fbbe0a6fdf3037b9509a109 KellyMidiCompanion_artefacts/JuceLibraryCode/KellyMidiCompanion_VST3/PkgInfo
