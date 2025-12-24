@@ -331,11 +331,148 @@ class EmotionMetrics(MusicMetrics):
         return correct / len(predictions)
 
 
+class GenreMetrics(MusicMetrics):
+    """
+    Metrics specific to genre classification.
+
+    Includes:
+    - Per-class accuracy and F1
+    - Confusion matrix
+    - Class balance analysis
+    """
+
+    DEFAULT_GENRES = [
+        "blues", "classical", "country", "disco", "hiphop",
+        "jazz", "metal", "pop", "reggae", "rock",
+        "electronic", "folk", "rnb", "soul", "punk",
+        "alternative", "indie", "latin", "world", "other"
+    ]
+
+    def __init__(self, class_names: Optional[List[str]] = None):
+        if class_names is None:
+            class_names = self.DEFAULT_GENRES
+        super().__init__(
+            task="classification",
+            num_classes=len(class_names),
+            class_names=class_names,
+        )
+        self._confusion_matrix = None
+
+    def compute(self) -> Dict[str, MetricResult]:
+        """Compute genre-specific metrics with confusion matrix."""
+        results = super().compute()
+
+        predictions = np.concatenate(self._predictions, axis=0)
+        targets = np.concatenate(self._targets, axis=0)
+
+        # Compute and store confusion matrix
+        self._confusion_matrix = compute_confusion_matrix(
+            predictions, targets, self.num_classes, normalize=True
+        )
+
+        # Class distribution
+        class_counts = self._compute_class_distribution(targets)
+        results["class_distribution"] = MetricResult(
+            "class_distribution",
+            np.std(list(class_counts.values())),  # Imbalance measure
+            per_class=class_counts,
+            metadata={"total_samples": len(targets)},
+        )
+
+        # Top confusions
+        top_confusions = self._get_top_confusions(self._confusion_matrix, k=5)
+        results["top_confusions"] = MetricResult(
+            "top_confusions",
+            top_confusions[0][2] if top_confusions else 0.0,
+            metadata={"pairs": top_confusions},
+        )
+
+        return results
+
+    def _compute_class_distribution(self, targets: np.ndarray) -> Dict[str, int]:
+        """Compute per-class sample counts."""
+        counts = {}
+        for c in range(self.num_classes):
+            class_name = self.class_names[c] if self.class_names else str(c)
+            counts[class_name] = int(np.sum(targets == c))
+        return counts
+
+    def _get_top_confusions(
+        self,
+        cm: np.ndarray,
+        k: int = 5,
+    ) -> List[Tuple[str, str, float]]:
+        """Get top-k confusion pairs (excluding diagonal)."""
+        confusions = []
+        for i in range(self.num_classes):
+            for j in range(self.num_classes):
+                if i != j and cm[i, j] > 0.05:  # >5% confusion
+                    true_name = self.class_names[i] if self.class_names else str(i)
+                    pred_name = self.class_names[j] if self.class_names else str(j)
+                    confusions.append((true_name, pred_name, float(cm[i, j])))
+
+        # Sort by confusion rate descending
+        confusions.sort(key=lambda x: x[2], reverse=True)
+        return confusions[:k]
+
+    def get_confusion_matrix(self) -> Optional[np.ndarray]:
+        """Return the computed confusion matrix."""
+        return self._confusion_matrix
+
+    def print_report(self) -> str:
+        """Generate a text report of genre classification results."""
+        if not self._predictions:
+            return "No predictions to report."
+
+        results = self.compute()
+        lines = ["=" * 60, "Genre Classification Report", "=" * 60, ""]
+
+        # Overall accuracy
+        acc = results.get("accuracy")
+        if acc:
+            lines.append(f"Overall Accuracy: {acc.value:.1%}")
+
+        # Macro F1
+        f1 = results.get("macro_f1")
+        if f1:
+            lines.append(f"Macro F1 Score:   {f1.value:.3f}")
+
+        lines.append("")
+
+        # Per-class accuracy
+        pca = results.get("per_class_accuracy")
+        if pca and pca.per_class:
+            lines.append("Per-Class Accuracy:")
+            for name, val in sorted(pca.per_class.items(), key=lambda x: x[1]):
+                lines.append(f"  {name:15s}: {val:.1%}")
+
+        lines.append("")
+
+        # Class distribution
+        dist = results.get("class_distribution")
+        if dist and dist.per_class:
+            lines.append("Class Distribution:")
+            for name, count in sorted(dist.per_class.items(), key=lambda x: -x[1]):
+                lines.append(f"  {name:15s}: {count:5d}")
+
+        lines.append("")
+
+        # Top confusions
+        conf = results.get("top_confusions")
+        if conf and conf.metadata and conf.metadata.get("pairs"):
+            lines.append("Top Confusions (true -> predicted):")
+            for true_name, pred_name, rate in conf.metadata["pairs"]:
+                lines.append(f"  {true_name:15s} -> {pred_name:15s}: {rate:.1%}")
+
+        lines.append("=" * 60)
+        return "\n".join(lines)
+
+
 class GrooveMetrics(MusicMetrics):
     """
     Metrics specific to groove/timing prediction.
     """
-    
+
     def __init__(self):
         super().__init__(task="regression")
     
