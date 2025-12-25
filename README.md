@@ -1,62 +1,47 @@
-# Kelly - Therapeutic iDAW
+# miDiKompanion - Multi-Component Build System
 
-**Kelly** is a therapeutic interactive Digital Audio Workstation (iDAW) that translates emotions into music.
+This repository contains three major components:
 
-> 📊 **Build Status:** See [BUILD_STATUS.md](BUILD_STATUS.md) for detailed build information and troubleshooting.
+1. **Git Multi-Repository Updater** - Modular build system for Git batch operations
+2. **Music Brain (DAiW/iDAW)** - Python toolkit for music analysis and composition  
+3. **Penta Core** - C++/Python hybrid real-time music analysis engine
 
-## Overview
+📖 **For complete build instructions for all components, see [MULTI_BUILD.md](MULTI_BUILD.md)**
 
-Kelly helps users express and process emotions through music generation, using a unique three-phase intent system:
+---
 
-1. **Wound** → Identify the emotional trigger
-2. **Emotion** → Map to the 216-node emotion thesaurus
-3. **Rule-breaks** → Express through intentional musical violations
+## Quick Start: Build All Components
 
-## Architecture
+```bash
+# Build everything
+./build_all.sh
 
-### Brain (Python 3.11)
-- **music21**: Music theory and analysis
-- **librosa**: Audio analysis
-- **mido**: MIDI processing
-- **Typer**: Command-line interface
+# Or build specific components
+./build_all.sh --git-updater
+./build_all.sh --music-brain
+./build_all.sh --penta-core
+```
 
-### Body (C++20)
-- **JUCE 7**: Audio framework
-- **Qt 6**: GUI framework
-- **CMake 3.27+**: Build system
+---
 
-### Plugins
-- **CLAP 1.2**: Cross-platform plugin format
-- **VST3 3.7**: Steinberg plugin format
+## Git Multi-Repository Updater
 
-### Audio Support
-- ASIO (Windows)
-- CoreAudio (macOS)
-- JACK (Linux)
+Modular build system for creating customized Git repository batch update scripts.
 
-### Testing
-- **pytest**: Python tests
-- **Catch2**: C++ tests
-- **GoogleTest**: Additional C++ testing
+### Quick Start
 
-### CI/CD
-- GitHub Actions for continuous integration
-- Multi-platform builds (Linux, macOS, Windows)
+```bash
+# Build standard version
+make
 
-### Profiling
-- Tracy
-- Valgrind
-- Perfetto
+# Run it
+cd /path/to/your/repos
+./dist/git-update.sh
+```
 
-## Features
+## Workflow
 
-- **216-node Emotion Thesaurus**: Comprehensive emotional mapping system
-- **Groove Templates**: Rhythmic patterns for different emotional expressions
-- **Chord Diagnostics**: Analyze and generate emotionally-appropriate harmonies
-- **MIDI Pipeline**: Real-time MIDI generation based on emotional state
-- **3-Phase Intent Processing**: Wound → Emotion → Musical Rule-breaks
-
-## Quick Start
+See [WORKFLOW.md](WORKFLOW.md) for the canonical setup, build, test, and release flow.
 
 ### Core Setup (Required)
 
@@ -77,103 +62,93 @@ npm run build
 ```bash
 # List available emotions
 kelly list-emotions
+## Usage
 
-# Process an emotional wound and generate music
-kelly process "feeling of loss" --intensity 0.8 --output output.mid --tempo 90
+- `make` - Build standard version
+- `make full` - Build full-featured version with all modules
+- `make minimal` - Build minimal version
+- `make install` - Install to ~/bin
+- `make help` - Show all options
 
-# Show version
-kelly version
-```
+## Customization
 
-### Web Interface
-
-```bash
-# Run development server
-npm run dev
-
-# Build for production
-npm run build
-```
-
-### Building C++ Components (Optional)
-
-**Note:** C++ components require Qt6 and are optional. See [BUILD_STATUS.md](BUILD_STATUS.md) for requirements.
-
-```bash
-# Install Qt6 first (example for macOS)
-brew install qt@6
-
-# Configure
-cmake -B build -DCMAKE_BUILD_TYPE=Release -DBUILD_PLUGINS=ON
-
-# Build
-cmake --build build --config Release
-
-# Run tests
-cd build && ctest --output-on-failure
-```
+Edit `profiles/custom.profile` and run `make custom`
 
 ## Project Structure
 
 ```
-Kelly/
-├── src/
-│   ├── kelly/          # Python package
-│   │   ├── core/       # Core emotion processing
-│   │   ├── cli.py      # CLI interface
-│   │   └── __init__.py
-│   ├── core/           # C++ core library
-│   ├── gui/            # Qt GUI application
-│   └── plugin/         # JUCE audio plugins
-├── tests/
-│   ├── python/         # pytest tests
-│   └── cpp/            # Catch2 tests
-├── docs/               # Documentation
-├── .github/
-│   └── workflows/      # CI configuration
-├── CMakeLists.txt      # C++ build configuration
-├── pyproject.toml      # Python package configuration
-└── README.md
+git-updater/
+├── Makefile           # Build system
+├── build.sh           # Build script
+├── modules/           # Feature modules
+│   ├── colors.sh
+│   ├── config.sh
+│   ├── verbose.sh
+│   └── summary.sh
+├── core/              # Core components
+│   ├── header.sh
+│   ├── main-loop.sh
+│   └── footer.sh
+├── profiles/          # Build profiles
+│   ├── minimal.profile
+│   ├── standard.profile
+│   ├── full.profile
+│   └── custom.profile
+└── dist/              # Generated scripts
 ```
 
-## Development
+## Build Profiles
 
-### Python Development
+### Minimal
+Core functionality only - no colors, no config file support.
+
+### Standard (Recommended)
+Includes colors and config file support. Best for most users.
+
+### Full
+All features: colors, config files, verbose mode, summary reports.
+
+### Custom
+Edit `profiles/custom.profile` to pick exactly what you need.
+
+## Configuration File
+
+Create `.git-update-config` in your repos directory:
 
 ```bash
-# Install in development mode
-pip install -e ".[dev]"
-
-# Run linting
-ruff check src/kelly tests/python
-
-# Format code
-black src/kelly tests/python
-
-# Type checking
-mypy src/kelly
-
-# Run tests with coverage
-pytest tests/python -v --cov=kelly
+BRANCHES=("main" "dev" "staging")
+ROOT="/path/to/repos"
+EXCLUDE=("old-repo" "archived-project")
 ```
 
-### C++ Development
+---
 
-```bash
-# Configure with tests
-cmake -B build -DBUILD_TESTS=ON -DENABLE_TRACY=ON
+## Other Components
 
-# Build
-cmake --build build
+This repository also includes:
 
-# Run tests
-cd build && ctest -V
-```
+### Music Brain (DAiW/iDAW)
+Python toolkit for music production intelligence with groove extraction, chord analysis, and AI-assisted songwriting.
+
+- **Documentation**: [README_music-brain.md](README_music-brain.md)
+- **Build**: See [MULTI_BUILD.md](MULTI_BUILD.md)
+
+### Penta Core
+Professional-grade music analysis engine with hybrid C++/Python architecture for real-time performance.
+
+- **Documentation**: [README_penta-core.md](README_penta-core.md), [BUILD.md](BUILD.md)
+- **Build**: See [MULTI_BUILD.md](MULTI_BUILD.md)
+
+---
+
+## Complete Documentation
+
+- **[BUILD_QUICK_REFERENCE.md](BUILD_QUICK_REFERENCE.md)** - One-page cheat sheet for quick builds
+- **[MULTI_BUILD.md](MULTI_BUILD.md)** - Comprehensive guide for building all components
+- **[README_music-brain.md](README_music-brain.md)** - Music Brain documentation
+- **[README_penta-core.md](README_penta-core.md)** - Penta Core documentation
+- **[BUILD.md](BUILD.md)** - Detailed Penta Core build instructions
 
 ## License
 
-MIT
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
+MIT License - See [LICENSE](LICENSE) for details.

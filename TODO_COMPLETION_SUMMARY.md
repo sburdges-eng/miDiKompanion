@@ -158,10 +158,7 @@ The penta_core module was made importable by:
    include = ["music_brain*", "mcp_todo*", "mcp_workstation*", "penta_core*"]
    ```
 
-2. Copying the MCP server to the penta_core package:
-   ```bash
-   cp penta_core_music-brain/server.py python/penta_core/server.py
-   ```
+2. The MCP server is already integrated in the penta_core package structure.
 
 3. Installing required dependencies:
    ```bash
