@@ -43,6 +43,25 @@ cd /path/to/your/repos
 
 See [WORKFLOW.md](WORKFLOW.md) for the canonical setup, build, test, and release flow.
 
+### Core Setup (Required)
+
+```bash
+# 1. Install Python dependencies
+pip install -e ".[dev]"
+
+# 2. Install Node dependencies (for web interface)
+npm install
+
+# 3. Run tests to verify setup
+pytest tests/python -v
+npm run build
+```
+
+### Python CLI
+
+```bash
+# List available emotions
+kelly list-emotions
 ## Usage
 
 - `make` - Build standard version
