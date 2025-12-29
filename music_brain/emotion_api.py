@@ -104,35 +104,80 @@ class GeneratedMusic:
         }
 
     def summary(self) -> str:
-        """Get a human-readable summary."""
-        lines = [
+        """
+        Get a human-readable summary of the generated music.
+
+        Returns:
+            Formatted string with emotional, musical, and mixer parameters
+        """
+        return self._format_summary()
+
+    def _format_summary(self) -> str:
+        """Format a detailed summary of generated music parameters."""
+        sections = [
+            self._format_header(),
+            self._format_emotional_section(),
+            self._format_musical_section(),
+            self._format_mixer_section(),
+            self._format_output_section(),
+            self._format_footer()
+        ]
+        return "\n".join(sections)
+
+    @staticmethod
+    def _format_header() -> str:
+        """Format the summary header."""
+        return "\n".join([
             "=" * 60,
             "GENERATED MUSIC SUMMARY",
             "=" * 60,
-            "",
+            ""
+        ])
+
+    def _format_emotional_section(self) -> str:
+        """Format the emotional parameters section."""
+        return "\n".join([
             f"Primary Emotion: {self.emotional_state.primary_emotion}",
             f"Valence: {self.emotional_state.valence}",
             f"Arousal: {self.emotional_state.arousal}",
-            "",
+            ""
+        ])
+
+    def _format_musical_section(self) -> str:
+        """Format the musical parameters section."""
+        return "\n".join([
             "Musical Parameters:",
             f"  Tempo: {self.musical_params.tempo_suggested} BPM",
             f"  Timing Feel: {self.musical_params.timing_feel.value}",
             f"  Dissonance: {self.musical_params.dissonance:.0%}",
             f"  Density: {self.musical_params.density_suggested}",
-            "",
+            ""
+        ])
+
+    def _format_mixer_section(self) -> str:
+        """Format the mixer settings section."""
+        return "\n".join([
             "Mixer Settings:",
             f"  Description: {self.mixer_params.description}",
             f"  Reverb: {self.mixer_params.reverb_mix:.0%} mix, {self.mixer_params.reverb_decay:.1f}s decay",
             f"  Compression: {self.mixer_params.compression_ratio:.1f}:1",
             f"  Saturation: {self.mixer_params.saturation:.0%} ({self.mixer_params.saturation_type})",
-            "",
+            ""
+        ])
+
+    def _format_output_section(self) -> str:
+        """Format the output files section."""
+        return "\n".join([
             "Output Files:",
             f"  MIDI: {self.midi_path or 'Not generated'}",
             f"  Automation: {self.automation_path or 'Not generated'}",
-            "",
-            "=" * 60,
-        ]
-        return "\n".join(lines)
+            ""
+        ])
+
+    @staticmethod
+    def _format_footer() -> str:
+        """Format the summary footer."""
+        return "=" * 60
 
 
 class MusicBrain:
@@ -148,9 +193,111 @@ class MusicBrain:
         self._emotion_keywords = self._build_emotion_keywords()
 
     def _build_emotion_keywords(self) -> Dict[str, Tuple[float, float, str]]:
-        """Build emotion keyword to (valence, arousal, emotion) mapping."""
+        """
+        Build emotion keyword to (valence, arousal, emotion) mapping.
+
+        Returns:
+            Dict mapping emotion keywords to (valence, arousal, primary_emotion) tuples
+            where valence ranges from -1.0 (negative) to 1.0 (positive)
+            and arousal ranges from 0.0 (low) to 1.0 (high)
+        """
+        return self._create_emotion_mapping()
+
+    def _parse_emotion_from_text(self, text: str) -> EmotionalState:
+        """
+        Parse emotional state from text description.
+
+        Args:
+            text: Emotional text to parse (e.g., "grief", "anxious")
+
+        Returns:
+            EmotionalState object with valence, arousal, and primary emotion
+        """
+        valence, arousal, primary_emotion = self._extract_emotion_values(text)
+
+        return EmotionalState(
+            valence=self._convert_to_valence_enum(valence),
+            arousal=self._convert_to_arousal_enum(arousal),
+            primary_emotion=primary_emotion
+        )
+
+    def _extract_emotion_values(self, text: str) -> Tuple[float, float, str]:
+        """
+        Extract valence, arousal, and emotion key from text.
+
+        Args:
+            text: Emotional text to analyze
+
+        Returns:
+            Tuple of (valence, arousal, primary_emotion)
+        """
+        text_lower = text.lower()
+
+        # Try exact match first
+        if text_lower in self._emotion_keywords:
+            return self._emotion_keywords[text_lower]
+
+        # Try partial match
+        for keyword, (valence, arousal, emotion) in self._emotion_keywords.items():
+            if keyword in text_lower:
+                return valence, arousal, emotion
+
+        # Default for unknown emotions
+        return -0.5, 0.4, text_lower
+
+    @staticmethod
+    def _convert_to_valence_enum(valence: float) -> Valence:
+        """
+        Convert float valence (-1.0 to 1.0) to Valence enum.
+
+        Args:
+            valence: Float value from -1.0 (negative) to 1.0 (positive)
+
+        Returns:
+            Valence enum value
+        """
+        return Valence(max(-2, min(2, int(valence * 2))))
+
+    @staticmethod
+    def _convert_to_arousal_enum(arousal: float) -> Arousal:
+        """
+        Convert float arousal (0.0 to 1.0) to Arousal enum.
+
+        Args:
+            arousal: Float value from 0.0 (low) to 1.0 (high)
+
+        Returns:
+            Arousal enum value
+        """
+        return Arousal(max(-2, min(2, int((arousal - 0.5) * 4))))
+
+    @staticmethod
+    def _apply_tempo_constraints(
+        musical_params: MusicalParameters,
+        constraints: TechnicalConstraints
+    ) -> None:
+        """
+        Apply tempo constraints from intent to musical parameters.
+
+        Args:
+            musical_params: Musical parameters to modify (in-place)
+            constraints: Technical constraints from intent
+        """
+        if constraints.technical_tempo_range:
+            tempo_min, tempo_max = constraints.technical_tempo_range
+            musical_params.tempo_min = tempo_min
+            musical_params.tempo_max = tempo_max
+            musical_params.tempo_suggested = (tempo_min + tempo_max) // 2
+
+    @staticmethod
+    def _create_emotion_mapping() -> Dict[str, Tuple[float, float, str]]:
+        """
+        Create the complete emotion keyword mapping.
+
+        Organized by valence-arousal quadrants for clarity.
+        """
         return {
-            # Negative valence, low arousal
+            # Negative valence, low arousal (sadness family)
             "grief": (-0.8, 0.3, "grief"),
             "sad": (-0.6, 0.3, "grief"),
             "loss": (-0.7, 0.3, "grief"),
@@ -158,7 +305,7 @@ class MusicBrain:
             "melancholy": (-0.5, 0.2, "grief"),
             "sorrow": (-0.7, 0.3, "grief"),
 
-            # Negative valence, high arousal
+            # Negative valence, high arousal (anxiety family)
             "anxiety": (-0.6, 0.8, "anxiety"),
             "anxious": (-0.6, 0.8, "anxiety"),
             "nervous": (-0.5, 0.7, "anxiety"),
@@ -166,21 +313,21 @@ class MusicBrain:
             "fear": (-0.6, 0.8, "anxiety"),
             "worry": (-0.5, 0.6, "anxiety"),
 
-            # Negative valence, high arousal (anger)
+            # Negative valence, high arousal (anger family)
             "anger": (-0.7, 0.9, "anger"),
             "angry": (-0.7, 0.9, "anger"),
             "rage": (-0.9, 0.95, "anger"),
             "fury": (-0.8, 0.95, "anger"),
             "frustration": (-0.5, 0.7, "anger"),
 
-            # Positive valence, low arousal
+            # Positive valence, low arousal (calm family)
             "calm": (0.3, 0.2, "calm"),
             "peaceful": (0.4, 0.2, "calm"),
             "serene": (0.4, 0.15, "calm"),
             "relaxed": (0.3, 0.25, "calm"),
             "content": (0.4, 0.3, "calm"),
 
-            # Positive valence, high arousal
+            # Positive valence, high arousal (hope/joy family)
             "hope": (0.6, 0.6, "hope"),
             "hopeful": (0.6, 0.6, "hope"),
             "joy": (0.8, 0.7, "hope"),
@@ -188,7 +335,7 @@ class MusicBrain:
             "excited": (0.7, 0.8, "hope"),
             "euphoria": (0.9, 0.9, "hope"),
 
-            # Mixed/complex
+            # Mixed/complex emotions
             "nostalgia": (-0.2, 0.3, "nostalgia"),
             "nostalgic": (-0.2, 0.3, "nostalgia"),
             "bittersweet": (-0.1, 0.4, "nostalgia"),
@@ -229,37 +376,15 @@ class MusicBrain:
         Returns:
             GeneratedMusic with all parameters
         """
-        # Extract emotion from intent
+        # Parse emotion from intent
         mood = intent.song_intent.mood_primary.lower() if intent.song_intent.mood_primary else "neutral"
-
-        # Map mood to valence/arousal
-        if mood in self._emotion_keywords:
-            valence, arousal, emotion_key = self._emotion_keywords[mood]
-        else:
-            # Try to find partial match
-            emotion_key = mood
-            valence, arousal = -0.5, 0.4  # Default for unknown
-            for keyword, (v, a, e) in self._emotion_keywords.items():
-                if keyword in mood:
-                    valence, arousal, emotion_key = v, a, e
-                    break
-
-        # Create emotional state
-        emotional_state = EmotionalState(
-            valence=Valence(int(valence * 2)),  # Convert to enum
-            arousal=Arousal(int((arousal - 0.5) * 4)),  # Convert to enum
-            primary_emotion=emotion_key
-        )
+        emotional_state = self._parse_emotion_from_text(mood)
 
         # Get musical parameters
         musical_params = get_parameters_for_state(emotional_state)
 
-        # Override with technical constraints from intent
-        if intent.technical_constraints.technical_tempo_range:
-            tempo_min, tempo_max = intent.technical_constraints.technical_tempo_range
-            musical_params.tempo_min = tempo_min
-            musical_params.tempo_max = tempo_max
-            musical_params.tempo_suggested = (tempo_min + tempo_max) // 2
+        # Apply technical constraints from intent
+        self._apply_tempo_constraints(musical_params, intent.technical_constraints)
 
         # Map to mixer parameters
         mixer_params = self.emotion_mapper.map_emotion_to_mixer(
@@ -287,26 +412,8 @@ class MusicBrain:
         Returns:
             GeneratedMusic with all parameters
         """
-        # Parse text for emotion keywords
-        text_lower = emotional_text.lower()
-
-        valence = 0.0
-        arousal = 0.5
-        primary_emotion = "neutral"
-
-        # Find matching emotion
-        for keyword, (v, a, emotion) in self._emotion_keywords.items():
-            if keyword in text_lower:
-                valence, arousal = v, a
-                primary_emotion = emotion
-                break
-
-        # Create emotional state
-        emotional_state = EmotionalState(
-            valence=Valence(max(-2, min(2, int(valence * 2)))),
-            arousal=Arousal(max(-2, min(2, int((arousal - 0.5) * 4)))),
-            primary_emotion=primary_emotion
-        )
+        # Parse emotion from text
+        emotional_state = self._parse_emotion_from_text(emotional_text)
 
         # Get musical parameters
         musical_params = get_parameters_for_state(emotional_state)
@@ -473,23 +580,7 @@ class FluentChain:
 
     def map_to_emotion(self) -> 'FluentChain':
         """Map text to emotional state."""
-        text_lower = self.emotional_text.lower()
-
-        valence = 0.0
-        arousal = 0.5
-        primary_emotion = "neutral"
-
-        for keyword, (v, a, emotion) in self.brain._emotion_keywords.items():
-            if keyword in text_lower:
-                valence, arousal = v, a
-                primary_emotion = emotion
-                break
-
-        self.emotional_state = EmotionalState(
-            valence=Valence(max(-2, min(2, int(valence * 2)))),
-            arousal=Arousal(max(-2, min(2, int((arousal - 0.5) * 4)))),
-            primary_emotion=primary_emotion
-        )
+        self.emotional_state = self.brain._parse_emotion_from_text(self.emotional_text)
         return self
 
     def map_to_music(self) -> 'FluentChain':

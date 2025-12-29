@@ -185,31 +185,276 @@ def _vulnerability_to_velocity_params(vulnerability: float, base_velocity: int) 
     """
     Convert vulnerability setting to velocity processing parameters.
 
+    Vulnerability affects both the velocity target and variation:
+    - Low: Confident, tight, slightly louder
+    - Medium: Balanced feel
+    - High: Wide variance, trending softer
+
     Args:
-        vulnerability: 0.0-1.0 scale
-        base_velocity: Original velocity value
+        vulnerability: 0.0-1.0 scale of emotional fragility
+        base_velocity: Original MIDI velocity value (0-127)
 
     Returns:
-        (target_velocity, velocity_sigma)
+        Tuple of (target_velocity, velocity_sigma) for Gaussian distribution
     """
+    # Low vulnerability: confident and consistent
     if vulnerability < 0.3:
-        # Low vulnerability: confident, tight, slightly louder
-        vel_sigma = 5
-        target_vel = base_velocity + 10
-    elif vulnerability < 0.6:
-        # Medium vulnerability: balanced feel
-        vel_sigma = 10 + int((vulnerability - 0.3) * 30)
-        target_vel = base_velocity
-    else:
-        # High vulnerability: wide variance, trending softer
-        vel_sigma = 10 + int(vulnerability * 20)
-        target_vel = base_velocity - int(vulnerability * 20)
+        return base_velocity + 10, 5
 
+    # Medium vulnerability: balanced dynamics
+    if vulnerability < 0.6:
+        vel_sigma = 10 + int((vulnerability - 0.3) * 30)
+        return base_velocity, vel_sigma
+
+    # High vulnerability: fragile and variable
+    vel_sigma = 10 + int(vulnerability * 20)
+    target_vel = base_velocity - int(vulnerability * 20)
     return target_vel, vel_sigma
 
 
 # ==============================================================================
-# CORE GROOVE FUNCTION
+# GROOVE PROCESSOR CLASS
+# ==============================================================================
+
+class GrooveProcessor:
+    """
+    Encapsulates groove humanization logic.
+
+    This class processes MIDI events to add human-like imperfections
+    in timing, velocity, and note presence based on emotional parameters.
+    """
+
+    def __init__(
+        self,
+        complexity: float,
+        vulnerability: float,
+        ppq: int = 480,
+        settings: Optional[GrooveSettings] = None,
+        seed: Optional[int] = None
+    ):
+        """
+        Initialize groove processor.
+
+        Args:
+            complexity: Timing looseness and dropout probability (0.0-1.0)
+            vulnerability: Dynamic fragility and expressiveness (0.0-1.0)
+            ppq: Pulses per quarter note (default 480)
+            settings: Optional GrooveSettings for fine control
+            seed: Random seed for reproducibility
+        """
+        self.complexity = max(0.0, min(1.0, complexity))
+        self.vulnerability = max(0.0, min(1.0, vulnerability))
+        self.ppq = ppq
+        self.ppq_scale = ppq / 480.0
+
+        # Initialize or override settings
+        if settings is None:
+            self.settings = GrooveSettings(
+                complexity=self.complexity,
+                vulnerability=self.vulnerability
+            )
+        else:
+            self.settings = settings
+            self.settings.complexity = self.complexity
+            self.settings.vulnerability = self.vulnerability
+
+        # Set random seed if provided
+        if seed is not None:
+            random.seed(seed)
+
+        # Calculate derived parameters
+        self._calculate_timing_params()
+        self._calculate_dropout_params()
+
+    def _calculate_timing_params(self) -> None:
+        """Calculate timing-related parameters based on settings."""
+        base_drift = MAX_TICKS_DRIFT * self.ppq_scale
+
+        self.timing_sigma = (
+            self.settings.timing_sigma_override
+            if self.settings.timing_sigma_override is not None
+            else base_drift
+        )
+        self.max_drift = int(base_drift)
+        self.latency_bias = int(HUMAN_LATENCY_BIAS * self.ppq_scale)
+
+    def _calculate_dropout_params(self) -> None:
+        """Calculate dropout probability based on settings."""
+        self.base_dropout_prob = (
+            self.settings.dropout_prob_override
+            if self.settings.dropout_prob_override is not None
+            else self.complexity * MAX_DROPOUT_PROB
+        )
+
+    def process(self, events: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+        """
+        Process MIDI events with groove humanization.
+
+        Args:
+            events: List of note dictionaries with 'start_tick', 'velocity', 'pitch'
+
+        Returns:
+            New list of processed note events
+        """
+        processed_events = []
+
+        for note in events:
+            processed_note = self._process_single_note(note)
+
+            if processed_note is not None:
+                processed_events.append(processed_note)
+
+                # Optionally add ghost notes
+                ghost_note = self._maybe_create_ghost_note(processed_note)
+                if ghost_note is not None:
+                    processed_events.append(ghost_note)
+
+        return processed_events
+
+    def _process_single_note(self, note: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+        """
+        Process a single note event.
+
+        Args:
+            note: Note dictionary with start_tick, velocity, pitch
+
+        Returns:
+            Processed note or None if dropped
+        """
+        start_tick = int(note.get("start_tick", 0))
+        base_velocity = int(note.get("velocity", 80))
+        pitch = int(note.get("pitch", 0))
+
+        # Check if note should be dropped
+        if self._should_drop_note(pitch):
+            return None
+
+        # Apply timing jitter
+        new_tick = self._apply_timing_jitter(start_tick, pitch)
+
+        # Apply velocity shaping
+        new_vel = self._apply_velocity_shaping(base_velocity)
+
+        # Create processed note
+        new_note = note.copy()
+        new_note["start_tick"] = new_tick
+        new_note["velocity"] = new_vel
+
+        return new_note
+
+    def _should_drop_note(self, pitch: int) -> bool:
+        """
+        Determine if a note should be dropped based on complexity and protection.
+
+        Args:
+            pitch: MIDI pitch number
+
+        Returns:
+            True if note should be dropped
+        """
+        if self.base_dropout_prob <= 0.0:
+            return False
+
+        protection = _get_dropout_protection(pitch)
+        effective_dropout = self.base_dropout_prob * (1.0 - protection)
+
+        return random.random() < effective_dropout
+
+    def _apply_timing_jitter(self, start_tick: int, pitch: int) -> int:
+        """
+        Apply timing jitter to note onset.
+
+        Args:
+            start_tick: Original tick position
+            pitch: MIDI pitch for drum-specific handling
+
+        Returns:
+            New tick position with jitter applied
+        """
+        timing_mult = _get_timing_multiplier(pitch, self.settings)
+        timing_sigma = self.timing_sigma * self.complexity * timing_mult
+
+        if timing_sigma <= 0.0:
+            jitter = 0
+        else:
+            jitter = int(random.gauss(0, timing_sigma))
+
+        # Clamp jitter to safe band
+        jitter = max(-self.max_drift, min(self.max_drift, jitter))
+
+        # Add human latency bias
+        jitter += self.latency_bias
+
+        return max(0, start_tick + jitter)
+
+    def _apply_velocity_shaping(self, base_velocity: int) -> int:
+        """
+        Apply velocity shaping based on vulnerability.
+
+        Args:
+            base_velocity: Original MIDI velocity
+
+        Returns:
+            New velocity value
+        """
+        target_vel, vel_sigma = _vulnerability_to_velocity_params(
+            self.vulnerability, base_velocity
+        )
+
+        # Apply velocity range override if specified
+        vel_min = VELOCITY_MIN
+        vel_max = VELOCITY_MAX
+        if self.settings.velocity_range_override:
+            vel_min, vel_max = self.settings.velocity_range_override
+
+        new_vel = int(random.gauss(target_vel, vel_sigma))
+        return max(vel_min, min(vel_max, new_vel))
+
+    def _maybe_create_ghost_note(self, note: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+        """
+        Potentially create a ghost note near the original.
+
+        Args:
+            note: Original note dictionary
+
+        Returns:
+            Ghost note dictionary or None
+        """
+        if not self.settings.enable_ghost_notes:
+            return None
+
+        if self.vulnerability <= 0.6:
+            return None
+
+        if random.random() >= self.settings.ghost_note_probability:
+            return None
+
+        # Create ghost note
+        ghost = note.copy()
+        vel_min = (
+            self.settings.velocity_range_override[0]
+            if self.settings.velocity_range_override
+            else VELOCITY_MIN
+        )
+
+        ghost["velocity"] = max(
+            vel_min,
+            int(note["velocity"] * self.settings.ghost_note_velocity_mult)
+        )
+        ghost["start_tick"] = max(
+            0,
+            note["start_tick"] + random.randint(
+                -int(10 * self.ppq_scale),
+                int(10 * self.ppq_scale)
+            )
+        )
+        ghost["is_ghost"] = True
+
+        return ghost
+
+
+# ==============================================================================
+# CORE GROOVE FUNCTION (Legacy API)
 # ==============================================================================
 
 def apply_groove(
@@ -225,6 +470,9 @@ def apply_groove(
 
     This is the "Drunken Drummer" algorithm - it makes MIDI feel more human
     by introducing psychoacoustically-informed variations in timing and dynamics.
+
+    NOTE: This is a legacy API wrapper around GrooveProcessor for backward compatibility.
+    For new code, consider using GrooveProcessor directly for better control.
 
     Args:
         events:
@@ -248,123 +496,14 @@ def apply_groove(
     Returns:
         New list of note events with updated start_tick and velocity.
     """
-    if seed is not None:
-        random.seed(seed)
-
-    # Clamp parameters
-    complexity = max(0.0, min(1.0, complexity))
-    vulnerability = max(0.0, min(1.0, vulnerability))
-
-    # Use settings if provided, otherwise create default
-    if settings is None:
-        settings = GrooveSettings(complexity=complexity, vulnerability=vulnerability)
-    else:
-        # Override settings with passed parameters
-        settings.complexity = complexity
-        settings.vulnerability = vulnerability
-
-    processed_events: List[Dict[str, Any]] = []
-
-    # Timing sigma: how far we can realistically move from the grid.
-    # At complexity=0 -> very tight; at 1 -> near MAX_TICKS_DRIFT.
-    # Scale based on PPQ (default constants assume 480 PPQ)
-    ppq_scale = ppq / 480.0
-    base_timing_sigma = (
-        settings.timing_sigma_override
-        if settings.timing_sigma_override is not None
-        else MAX_TICKS_DRIFT * ppq_scale
+    processor = GrooveProcessor(
+        complexity=complexity,
+        vulnerability=vulnerability,
+        ppq=ppq,
+        settings=settings,
+        seed=seed
     )
-
-    # Dropout probability calculation
-    base_dropout_prob = (
-        settings.dropout_prob_override
-        if settings.dropout_prob_override is not None
-        else complexity * MAX_DROPOUT_PROB
-    )
-
-    for note in events:
-        start_tick = int(note.get("start_tick", 0))
-        base_velocity = int(note.get("velocity", 80))
-        pitch = int(note.get("pitch", 0))
-
-        # ----------------------------------------------------------------------
-        # 1. CHAOS: Dropped notes (probability mask)
-        # ----------------------------------------------------------------------
-        # At max complexity, we allow up to MAX_DROPOUT_PROB chance of dropping.
-        # Protected drums (kick, snare, crash) have reduced dropout probability.
-
-        protection = _get_dropout_protection(pitch)
-        effective_dropout = base_dropout_prob * (1.0 - protection)
-
-        if effective_dropout > 0.0 and random.random() < effective_dropout:
-            # Drop this note altogether
-            continue
-
-        # ----------------------------------------------------------------------
-        # 2. CHAOS: Timing jitter (Gaussian, not uniform)
-        # ----------------------------------------------------------------------
-        # Gaussian around 0, sigma scaled by complexity and drum type.
-        timing_mult = _get_timing_multiplier(pitch, settings)
-        timing_sigma = base_timing_sigma * complexity * timing_mult
-
-        if timing_sigma <= 0.0:
-            jitter = 0
-        else:
-            jitter = int(random.gauss(0, timing_sigma))
-
-        # Clamp jitter to a safe band
-        max_drift = int(MAX_TICKS_DRIFT * ppq_scale)
-        jitter = max(-max_drift, min(max_drift, jitter))
-
-        # Human latency bias: most humans are slightly late, not early
-        latency_bias = int(HUMAN_LATENCY_BIAS * ppq_scale)
-        jitter += latency_bias
-
-        new_tick = max(0, start_tick + jitter)
-
-        # ----------------------------------------------------------------------
-        # 3. VULNERABILITY: Velocity shaping
-        # ----------------------------------------------------------------------
-        target_vel, vel_sigma = _vulnerability_to_velocity_params(
-            vulnerability, base_velocity
-        )
-
-        # Apply velocity range override if specified
-        vel_min = VELOCITY_MIN
-        vel_max = VELOCITY_MAX
-        if settings.velocity_range_override:
-            vel_min, vel_max = settings.velocity_range_override
-
-        new_vel = int(random.gauss(target_vel, vel_sigma))
-        new_vel = max(vel_min, min(vel_max, new_vel))
-
-        # Create processed note
-        new_note = note.copy()
-        new_note["start_tick"] = new_tick
-        new_note["velocity"] = new_vel
-
-        processed_events.append(new_note)
-
-        # ----------------------------------------------------------------------
-        # 4. Optional: Ghost notes
-        # ----------------------------------------------------------------------
-        if (settings.enable_ghost_notes and
-            vulnerability > 0.6 and
-            random.random() < settings.ghost_note_probability):
-
-            ghost = new_note.copy()
-            ghost["velocity"] = max(
-                vel_min,
-                int(new_vel * settings.ghost_note_velocity_mult)
-            )
-            ghost["start_tick"] = max(
-                0,
-                new_tick + random.randint(-int(10 * ppq_scale), int(10 * ppq_scale))
-            )
-            ghost["is_ghost"] = True
-            processed_events.append(ghost)
-
-    return processed_events
+    return processor.process(events)
 
 
 def humanize_drums(
