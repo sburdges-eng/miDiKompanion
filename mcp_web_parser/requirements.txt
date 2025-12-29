@@ -1,0 +1,8 @@
+requests>=2.31.0
+beautifulsoup4>=4.12.0
+markdownify>=0.11.6
+
+# Optional: Enhanced file type detection
+# python-magic>=0.4.27  # Linux/macOS
+# python-magic-bin>=0.4.14  # Windows
+
