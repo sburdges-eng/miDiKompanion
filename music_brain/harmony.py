@@ -49,15 +49,22 @@ class HarmonyGenerator:
     """
     Generates chord progressions and voicings based on emotional intent
     and intentional rule-breaking decisions.
+
+    Philosophy: "Wrong notes with conviction."
+
+    The generator supports:
+    - Basic diatonic progressions
+    - Intentional rule-breaking (modal interchange, avoiding resolution, etc.)
+    - MIDI voicing generation
     """
-    
+
     # MIDI note numbers for reference
     NOTE_TO_MIDI = {
         'C': 0, 'C#': 1, 'Db': 1, 'D': 2, 'D#': 3, 'Eb': 3,
         'E': 4, 'F': 5, 'F#': 6, 'Gb': 6, 'G': 7, 'G#': 8,
         'Ab': 8, 'A': 9, 'A#': 10, 'Bb': 10, 'B': 11
     }
-    
+
     # Scale intervals (semitones from root)
     SCALES = {
         'major': [0, 2, 4, 5, 7, 9, 11],
@@ -69,7 +76,7 @@ class HarmonyGenerator:
         'lydian': [0, 2, 4, 6, 7, 9, 11],
         'mixolydian': [0, 2, 4, 5, 7, 9, 10],
     }
-    
+
     # Diatonic chords in major and minor (as intervals from root)
     DIATONIC_CHORDS_MAJOR = {
         'I': [0, 4, 7],      # Major triad
@@ -80,7 +87,7 @@ class HarmonyGenerator:
         'vi': [9, 0, 4],     # Minor triad
         'vii°': [11, 2, 5],  # Diminished triad
     }
-    
+
     DIATONIC_CHORDS_MINOR = {
         'i': [0, 3, 7],      # Minor triad
         'ii°': [2, 5, 8],    # Diminished triad
@@ -90,16 +97,25 @@ class HarmonyGenerator:
         'VI': [8, 0, 3],     # Major triad
         'VII': [10, 2, 5],   # Major triad
     }
-    
+
     def __init__(self, base_octave: int = 4):
         """
         Initialize harmony generator.
-        
+
         Args:
             base_octave: MIDI octave for root notes (4 = middle C octave)
         """
         self.base_octave = base_octave
-        self.rule_break_handlers = {
+        self.rule_break_handlers = self._initialize_rule_handlers()
+
+    def _initialize_rule_handlers(self) -> Dict[RuleBreakType, callable]:
+        """
+        Initialize rule-breaking handlers mapping.
+
+        Returns:
+            Dictionary mapping RuleBreakType to handler functions
+        """
+        return {
             RuleBreakType.HARMONY_ModalInterchange: self._apply_modal_interchange,
             RuleBreakType.HARMONY_AvoidTonicResolution: self._apply_avoid_resolution,
             RuleBreakType.HARMONY_ParallelMotion: self._apply_parallel_motion,
@@ -199,52 +215,104 @@ class HarmonyGenerator:
     ) -> List[str]:
         """
         Convert Roman numerals to chord symbols in a given key.
-        
+
         Args:
             roman_numerals: List of Roman numerals (e.g., ['I', 'V', 'vi', 'IV'])
             key: Musical key (e.g., "F")
             mode: "major" or "minor"
-            
+
         Returns:
             List of chord symbols (e.g., ['F', 'C', 'Dm', 'Bb'])
         """
-        scale = self.SCALES['major'] if mode == 'major' else self.SCALES['natural_minor']
+        scale = self._get_scale_for_mode(mode)
         root_midi = self.NOTE_TO_MIDI[key]
-        
+        chord_map = self._get_chord_map_for_mode(mode)
+
+        result = []
+        for roman_numeral in roman_numerals:
+            chord_symbol = self._convert_single_roman_numeral(
+                roman_numeral, root_midi, scale, chord_map, key
+            )
+            result.append(chord_symbol)
+
+        return result
+
+    def _get_scale_for_mode(self, mode: str) -> List[int]:
+        """Get the scale intervals for a given mode."""
+        return self.SCALES['major'] if mode == 'major' else self.SCALES['natural_minor']
+
+    @staticmethod
+    def _get_chord_map_for_mode(mode: str) -> Dict[str, Tuple[int, str]]:
+        """
+        Get the chord mapping for a given mode.
+
+        Returns:
+            Dict mapping roman numerals to (scale_degree, quality) tuples
+        """
         chord_map_major = {
             'I': (0, 'maj'), 'ii': (1, 'min'), 'iii': (2, 'min'),
             'IV': (3, 'maj'), 'V': (4, 'maj'), 'vi': (5, 'min'),
             'vii°': (6, 'dim')
         }
-        
+
         chord_map_minor = {
             'i': (0, 'min'), 'ii°': (1, 'dim'), 'III': (2, 'maj'),
             'iv': (3, 'min'), 'v': (4, 'min'), 'VI': (5, 'maj'),
             'VII': (6, 'maj'), 'V': (4, 'maj')  # V can be major in minor keys
         }
-        
-        chord_map = chord_map_major if mode == 'major' else chord_map_minor
-        
-        result = []
-        for rn in roman_numerals:
-            if rn in chord_map:
-                scale_degree, quality = chord_map[rn]
-                chord_root_midi = (root_midi + scale[scale_degree]) % 12
-                chord_name = self._midi_to_note_name(chord_root_midi)
-                
-                # Add quality suffix
-                if quality == 'min':
-                    chord_name += 'm'
-                elif quality == 'dim':
-                    chord_name += 'dim'
-                # 'maj' needs no suffix
-                
-                result.append(chord_name)
-            else:
-                # Unknown roman numeral, skip or use root
-                result.append(key)
-        
-        return result
+
+        return chord_map_major if mode == 'major' else chord_map_minor
+
+    def _convert_single_roman_numeral(
+        self,
+        roman_numeral: str,
+        root_midi: int,
+        scale: List[int],
+        chord_map: Dict[str, Tuple[int, str]],
+        fallback_key: str
+    ) -> str:
+        """
+        Convert a single Roman numeral to a chord symbol.
+
+        Args:
+            roman_numeral: Roman numeral to convert
+            root_midi: MIDI note number of the key root
+            scale: Scale intervals list
+            chord_map: Mapping of roman numerals to scale degrees and qualities
+            fallback_key: Fallback key if roman numeral is not recognized
+
+        Returns:
+            Chord symbol string
+        """
+        if roman_numeral not in chord_map:
+            return fallback_key
+
+        scale_degree, quality = chord_map[roman_numeral]
+        chord_root_midi = (root_midi + scale[scale_degree]) % 12
+        chord_name = self._midi_to_note_name(chord_root_midi)
+
+        return self._add_quality_suffix(chord_name, quality)
+
+    @staticmethod
+    def _add_quality_suffix(chord_name: str, quality: str) -> str:
+        """
+        Add quality suffix to chord name.
+
+        Args:
+            chord_name: Base chord name (e.g., "F")
+            quality: Chord quality ('maj', 'min', 'dim', 'aug')
+
+        Returns:
+            Chord name with quality suffix
+        """
+        if quality == 'min':
+            return chord_name + 'm'
+        elif quality == 'dim':
+            return chord_name + 'dim'
+        elif quality == 'aug':
+            return chord_name + 'aug'
+        # 'maj' needs no suffix
+        return chord_name
     
     def _midi_to_note_name(self, midi_note: int) -> str:
         """Convert MIDI note number to note name (prefers flats for readability)"""
@@ -254,44 +322,66 @@ class HarmonyGenerator:
     def _chord_symbol_to_intervals(self, chord_symbol: str) -> Tuple[str, List[int]]:
         """
         Parse chord symbol and return root + intervals.
-        
+
         Args:
             chord_symbol: e.g., "F", "Cm", "G7", "Bbm"
-            
+
         Returns:
             Tuple of (root_note, intervals_list)
         """
-        # Simple parser - can be expanded
         chord = chord_symbol.strip()
-        
+        root, quality = self._parse_chord_components(chord)
+        intervals = self._get_intervals_for_quality(quality)
+
+        return root, intervals
+
+    @staticmethod
+    def _parse_chord_components(chord: str) -> Tuple[str, str]:
+        """
+        Parse chord into root and quality components.
+
+        Args:
+            chord: Chord symbol string
+
+        Returns:
+            Tuple of (root, quality)
+        """
         # Extract root (handle sharps/flats)
         if len(chord) > 1 and chord[1] in ['#', 'b']:
             root = chord[:2]
             quality = chord[2:]
         else:
-            root = chord[0]
-            quality = chord[1:]
-        
-        # Determine intervals based on quality
-        if quality == '' or quality.upper() == 'MAJ':
-            intervals = [0, 4, 7]  # Major triad
-        elif quality == 'm' or quality.upper() == 'MIN':
-            intervals = [0, 3, 7]  # Minor triad
-        elif quality == 'dim' or quality == '°':
-            intervals = [0, 3, 6]  # Diminished triad
-        elif quality == 'aug' or quality == '+':
-            intervals = [0, 4, 8]  # Augmented triad
-        elif quality == '7':
-            intervals = [0, 4, 7, 10]  # Dominant 7th
-        elif quality == 'maj7':
-            intervals = [0, 4, 7, 11]  # Major 7th
-        elif quality == 'm7':
-            intervals = [0, 3, 7, 10]  # Minor 7th
-        else:
-            # Default to major if unknown
-            intervals = [0, 4, 7]
-        
-        return root, intervals
+            root = chord[0] if chord else 'C'
+            quality = chord[1:] if len(chord) > 1 else ''
+
+        return root, quality
+
+    @staticmethod
+    def _get_intervals_for_quality(quality: str) -> List[int]:
+        """
+        Get chord intervals for a given quality.
+
+        Args:
+            quality: Chord quality string (e.g., 'm', '7', 'maj7')
+
+        Returns:
+            List of intervals in semitones from root
+        """
+        quality_map = {
+            '': [0, 4, 7],          # Major triad
+            'MAJ': [0, 4, 7],       # Major triad
+            'm': [0, 3, 7],         # Minor triad
+            'MIN': [0, 3, 7],       # Minor triad
+            'dim': [0, 3, 6],       # Diminished triad
+            '°': [0, 3, 6],         # Diminished triad
+            'aug': [0, 4, 8],       # Augmented triad
+            '+': [0, 4, 8],         # Augmented triad
+            '7': [0, 4, 7, 10],     # Dominant 7th
+            'maj7': [0, 4, 7, 11],  # Major 7th
+            'm7': [0, 3, 7, 10],    # Minor 7th
+        }
+
+        return quality_map.get(quality.upper() if quality else '', [0, 4, 7])
     
     def _chords_to_voicings(
         self,
