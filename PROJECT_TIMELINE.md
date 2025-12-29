@@ -12,6 +12,9 @@ iDAW (Interrogate Before You DAW) is a merged repository combining:
 - **penta-core**: Real-time C++ DSP engine with Python bindings
 - **MCP Servers**: Todo management and workstation tools
 
+### Requirements
+- Ideal voice/audio requirements: `docs/ideal_voice_audio_requirements.md`
+
 ### Core Philosophy
 > "Interrogate Before Generate" - Emotional intent drives technical decisions, not the other way around.
 
