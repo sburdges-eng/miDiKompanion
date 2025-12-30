@@ -152,8 +152,12 @@ class Tier2LORAfinetuner:
             if isinstance(module, nn.Linear):
                 if any(target in name for target in self.target_modules):
                     # Replace with LoRA version
-                    parent_name, child_name = name.rsplit(".", 1)
-                    parent = dict(model.named_modules())[parent_name]
+                    if "." in name:
+                        parent_name, child_name = name.rsplit(".", 1)
+                        parent = dict(model.named_modules())[parent_name]
+                    else:
+                        parent = model
+                        child_name = name
                     setattr(parent, child_name, LoRALinear(module, self.lora_rank, self.lora_alpha))
 
         return model
