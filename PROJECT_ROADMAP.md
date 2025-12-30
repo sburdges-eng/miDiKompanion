@@ -1,5 +1,9 @@
 # DAiW - Complete Development Roadmap
 
+## Requirements
+
+- Ideal voice/audio requirements: `docs/ideal_voice_audio_requirements.md`
+
 ## 🗺️ FULL PROJECT TIMELINE
 
 ```
